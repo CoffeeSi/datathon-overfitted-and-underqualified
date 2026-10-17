@@ -35,6 +35,8 @@ python -m pip install -r requirements-ml.txt
 `requirements-ml.txt` pins PyTorch 2.13.0 and torchvision 0.28.0 using the official
 [CUDA 12.6 wheel index](https://pytorch.org/get-started/previous-versions/). The Brev GPU driver
 must be compatible with this runtime; that still needs verification on the L4 instance.
+The [experiment config](experiments/brev_l4_smoke.yaml) records the seed, device, and synthetic
+one-step forward/backward settings for that verification.
 
 ## Project layout
 
