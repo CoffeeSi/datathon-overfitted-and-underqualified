@@ -1,17 +1,34 @@
-import sys
+import ast
+import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import cv2
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from overfitted_underqualified.eda import (
-    build_groups, clip_id_from_name, inspect_video, parse_timecode,
-    propose_split, validate_dataset, window_timestamps,
-)
+# Load imports/constants and the definition cells, without running the pipeline.
+notebook_path = Path(__file__).resolve().parents[1] / "notebooks" / "01_eda.ipynb"
+notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
+definition_cells = []
+for cell in notebook["cells"]:
+    tags = cell.get("metadata", {}).get("tags", [])
+    source = "".join(cell["source"])
+    if "eda-imports" in tags:
+        tree = ast.parse(source)
+        tree.body = [node for node in tree.body
+                     if isinstance(node, (ast.Import, ast.ImportFrom))
+                     or (isinstance(node, ast.Assign)
+                         and any(isinstance(t, ast.Name) and t.id == "LABELS" for t in node.targets))]
+        exec(compile(tree, str(notebook_path), "exec"), globals())
+    elif "eda-definitions" in tags:
+        definition_cells.append(cell)
+        exec(compile(source, str(notebook_path), "exec"), globals())
+if not definition_cells:
+    raise RuntimeError("No EDA definition cells found")
+
 
 
 class EdaChecks(unittest.TestCase):
@@ -46,6 +63,30 @@ class EdaChecks(unittest.TestCase):
             self.assertEqual(record["sampled_frames_ok"], 5)
             self.assertAlmostEqual(record["duration_sec"], 2)
             self.assertEqual(len(thumbnails), 5)
+            capture = cv2.VideoCapture
+
+            class FailedSeekCapture:
+                def __init__(self, filename):
+                    self.cap = capture(filename)
+                    self.seek_failed = False
+
+                def set(self, *_args):
+                    self.seek_failed = True
+                    return False
+
+                def read(self):
+                    return (False, None) if self.seek_failed else self.cap.read()
+
+                def __getattr__(self, name):
+                    return getattr(self.cap, name)
+
+            # Seeking fails, but sequential decoding still recovers the final
+            # frame without manufacturing a frame for a timestamp past EOF.
+            with patch.object(cv2, "VideoCapture", FailedSeekCapture):
+                recovered = read_frames(path, [0, 1.9, 10])
+            self.assertIsNotNone(recovered[0])
+            self.assertIsNotNone(recovered[1])
+            self.assertIsNone(recovered[2])
             broken = root / "X-2.mov"
             broken.write_bytes(b"not a video")
             record, _ = inspect_video(broken, root)
@@ -84,6 +125,10 @@ class EdaChecks(unittest.TestCase):
         self.assertTrue(split.groupby("split")["source_label"].nunique().eq(2).all())
         again, _ = propose_split(events, groups)
         pd.testing.assert_frame_equal(split, again)
+        with_notes = events.assign(observed_event="unverified note",
+                                      candidate_violation_type="unverified category")
+        with_notes_split, _ = propose_split(with_notes, groups)
+        pd.testing.assert_frame_equal(split, with_notes_split)
 
     def test_impossible_split_has_no_random_fallback(self):
         events = pd.DataFrame([dict(clip_id="X-1", source_label="violation"), dict(clip_id="X-2", source_label="no_violation")])
@@ -92,6 +137,25 @@ class EdaChecks(unittest.TestCase):
         self.assertTrue(result.empty)
         result, _ = propose_split(events.iloc[:0], groups.iloc[:0])
         self.assertTrue(result.empty)
+
+    def test_deduplication_preserves_aliases_and_distinct_event_times(self):
+        inventory = pd.DataFrame([
+            dict(clip_id="X-4", sha256="same"),
+            dict(clip_id="X-47", sha256="same"),
+        ])
+        mapping = duplicate_mapping(inventory)
+        analysis = pd.DataFrame([
+            dict(clip_id="X-4", source_label="violation", timecode_sec=57, video_file="a.mov"),
+            dict(clip_id="X-47", source_label="violation", timecode_sec=68, video_file="b.mov"),
+        ]).merge(mapping, on="clip_id", validate="one_to_one")
+        videos = training_video_table(analysis)
+        self.assertEqual(len(videos), 1)
+        self.assertEqual(videos.iloc[0]["clip_id"], "X-4")
+        self.assertEqual(json.loads(videos.iloc[0]["source_clip_ids"]), ["X-4", "X-47"])
+        self.assertEqual(json.loads(videos.iloc[0]["event_times_sec"]), [57, 68])
+        analysis.loc[1, "source_label"] = "no_violation"
+        with self.assertRaises(ValueError):
+            training_video_table(analysis)
 
 
 if __name__ == "__main__":
