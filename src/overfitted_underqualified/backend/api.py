@@ -39,13 +39,20 @@ def _require_api_key(settings: Settings):
 def _jury_job_response(job: dict[str, object]) -> dict[str, object]:
     response: dict[str, object] = {
         "job_id": job["job_id"],
-        "status": job["status"],
+        "status": _public_job_status(job),
     }
     if job["status"] == "done":
         result = job["result"]
         assert isinstance(result, dict)
         response.update(result)
     return response
+
+
+def _public_job_status(job: dict[str, object]) -> str:
+    # Keep the internal queue state out of the API contract. Waiting and actively
+    # running jobs are both reported as processing to clients.
+    status = job["status"]
+    return "processing" if status == "queued" else str(status)
 
 
 def create_app(settings: Settings | None = None, analyzer: Analyzer | None = None) -> FastAPI:
@@ -174,7 +181,7 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
             raise HTTPException(status_code=404, detail="Job not found")
         response: dict[str, object] = {
             "job_id": job["job_id"],
-            "status": job["status"],
+            "status": _public_job_status(job),
             "analysis_provider": job["analysis_provider"],
         }
         if job["status"] == "done":

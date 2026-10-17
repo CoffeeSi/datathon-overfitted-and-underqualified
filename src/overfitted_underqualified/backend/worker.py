@@ -107,11 +107,13 @@ async def run_retention_cleanup(
     stop: asyncio.Event,
 ) -> None:
     while not stop.is_set():
-        for path in store.delete_expired(now=current_time()):
+        for job_id, path in store.expired_uploads(now=current_time()):
             try:
                 path.unlink(missing_ok=True)
             except OSError:
                 logger.exception("Could not remove expired upload %s", path)
+                continue
+            store.delete_expired_job(job_id, now=current_time())
         try:
             await asyncio.wait_for(stop.wait(), timeout=min(60, retention_seconds))
         except TimeoutError:

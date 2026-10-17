@@ -240,16 +240,22 @@ class JobStore:
             result["result"] = None
         return result
 
-    def delete_expired(self, *, now: float) -> list[Path]:
-        with self._transaction() as connection:
+    def expired_uploads(self, *, now: float) -> list[tuple[str, Path]]:
+        with self._connect() as connection:
             rows = connection.execute(
-                "SELECT file_path FROM jobs WHERE expires_at IS NOT NULL AND expires_at <= ?",
+                "SELECT job_id, file_path FROM jobs WHERE expires_at IS NOT NULL AND expires_at <= ?",
                 (now,),
             ).fetchall()
-            connection.execute(
-                "DELETE FROM jobs WHERE expires_at IS NOT NULL AND expires_at <= ?", (now,)
+        return [(row["job_id"], Path(row["file_path"])) for row in rows]
+
+    def delete_expired_job(self, job_id: str, *, now: float) -> bool:
+        """Forget an expired job after its upload has been removed successfully."""
+        with self._transaction() as connection:
+            cursor = connection.execute(
+                "DELETE FROM jobs WHERE job_id = ? AND expires_at IS NOT NULL AND expires_at <= ?",
+                (job_id, now),
             )
-        return [Path(row["file_path"]) for row in rows]
+            return cursor.rowcount == 1
 
 
 def current_time() -> float:
