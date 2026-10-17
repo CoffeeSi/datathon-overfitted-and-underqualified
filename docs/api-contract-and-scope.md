@@ -38,8 +38,7 @@ Proposed response: HTTP `202 Accepted`.
 
 ```json
 {
-  "job_id": "3f2a9c1e",
-  "status": "processing"
+  "job_id": "3f2a9c1e"
 }
 ```
 
@@ -89,11 +88,11 @@ For `no_violation` or `insufficient_data`, return an empty `violations` array. I
 
 ### Failed jobs and request errors
 
-The case specifies a `failed` job status but does not define its response body or HTTP error codes. Proposed behavior: include a short machine-readable error code and a safe, concise message for `failed` jobs; reject missing/invalid API keys and unsupported or malformed uploads with standard client-error responses. Do not include a `verdict` for a failed job.
+The case specifies a `failed` job status but does not define its response body or HTTP error codes. For a known failed job, return HTTP `200` with only `job_id` and `status: "failed"` in the jury response; do not include a `verdict`. A separate authenticated UI endpoint may provide a safe error code and concise message. Unknown or expired IDs return `404`; a server-side retrieval failure returns `5xx`. Reject missing/invalid API keys and unsupported or malformed uploads with appropriate client-error responses. See the agreed decisions in [PLAN.md](../PLAN.md).
 
 ## Proposed event scope
 
-The case provides only a violation flag and timestamp for each training video; it does not provide event types. Final categories therefore depend on inspecting the dataset and researching the public rules.
+The training labels are binary, while [video-labels-split.md](video-labels-split.md) contains provisional descriptions and candidate categories for the 42 clips. These annotations are a starting point, not a final event taxonomy. Normalize similar visible observations into a small, consistent set of `observed_event_type` values before using them as ML outputs. Keep `candidate_violation_type` and source mapping as separate, provisional backend interpretations. Do not train the model to predict a legal conclusion from a visual label.
 
 Include an event type only when all of these are true:
 
@@ -122,6 +121,6 @@ Defer any category that lacks visible evidence, a defensible source, or consiste
 ## Team decisions to record after alignment
 
 - Final response schema and error behavior, including the jury's exact “insufficient data” token if it differs from `insufficient_data`.
-- Initial event catalog, source links, and cautious descriptions.
+- Initial normalized visual-event catalog, source links, and cautious descriptions. The split label table is the provisional annotation source; its one-off and inconsistent tag names still need consolidation.
 - Validation split by video and the way false alarms, misses, timestamps, and evidence quality will be reviewed.
 - Whether the API returns image data inline only, or also supports a separate evidence URL. The sample response shows base64 frames.

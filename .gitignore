@@ -36,6 +36,8 @@ runs/
 *.mp4
 *.avi
 
+data/service/
+
 # Generated outputs
 reports/figures/*
 !reports/figures/.gitkeep
