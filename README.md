@@ -22,15 +22,18 @@ If PowerShell blocks environment activation, run the commands below from a termi
 ## ML dependencies on Brev L4
 
 Open a terminal on the Brev L4 instance, clone this repository (or pull the latest commit), and
-run these commands from the repository root. Use Python 3.11.9, recorded in `.python-version`.
-If `python3.11 --version` reports a different patch version, install or select 3.11.9 before
-creating the environment.
+run these commands from the repository root. The instance may not have `python3.11` installed.
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) to get the exact Python
+3.11.9 version recorded in `.python-version`:
 
 ```bash
-python3.11 --version  # expected: Python 3.11.9
-nvidia-smi           # expected GPU: NVIDIA L4
-python3.11 -m venv .venv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"
+uv python install 3.11.9
+uv venv --seed --python 3.11.9 .venv
 source .venv/bin/activate
+python --version      # expected: Python 3.11.9
+nvidia-smi            # expected GPU: NVIDIA L4
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 python -m pip install -r requirements-ml.txt
@@ -42,7 +45,8 @@ python -c "import torch, torchvision; print('torch:', torch.__version__, 'torchv
 file. The PyTorch check should print `PyTorch CUDA: 12.6` and `CUDA available: True`.
 The CUDA version displayed by `nvidia-smi` describes the driver, so it may be different.
 The [experiment config](experiments/brev_l4_smoke.yaml) records the seed, device, and synthetic
-one-step forward/backward settings for that verification.
+one-step forward/backward settings for that verification. The [Brev L4 result](experiments/brev_l4_smoke_result.md)
+records the observed versions, GPU, and successful optimizer step.
 
 ## Project layout
 
