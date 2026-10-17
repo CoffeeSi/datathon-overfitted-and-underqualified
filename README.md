@@ -19,6 +19,18 @@ If PowerShell blocks environment activation, run the commands below from a termi
 .\.venv\Scripts\jupyter.exe lab
 ```
 
+## Backend dependencies
+
+Install the API dependencies separately from the notebook environment:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-backend.txt
+```
+
+The main `requirements.txt` includes this file, so a full project installation
+also installs the backend dependencies. SQLite is provided by Python; ML model
+dependencies belong to the selected analyzer and are not included here.
+
 ## ML dependencies on Brev L4
 
 Open a terminal on the Brev L4 instance, clone this repository (or pull the latest commit), and
@@ -71,7 +83,7 @@ in the first section because video inspection also uses it. There is no separate
 EDA Python module. Tests load imports and the `eda-definitions` cells without
 executing the video analysis pipeline.
 
-- `data/annotations/events.csv` is the editable annotation source. EDA never overwrites it.
+- `data/annotations/events.csv` is the sole editable source of event labels and timestamps, accepted by the team. EDA never overwrites it or requires a separate approval table.
   `source_label` and `timecode` preserve the supplied supervision. Descriptions, event tags, candidate categories and rule references
   are provisional interpretations of the supplied text, used only for exploration.
   They are not verified multiclass targets or classifier input features. The former
@@ -90,16 +102,20 @@ executing the video analysis pipeline.
   `data/processed/frame_extraction.csv` records whether every requested frame was decoded.
 - `data/processed/scene_candidates.csv` lists visually similar scene candidates; these are heuristics
   to review, not confirmed camera identities. Inspect the scene preview and contact sheets.
-- Copy `data/processed/scenes_template.csv` to `data/annotations/scenes.csv` and fill in camera,
-  session or scene groups after reviewing the footage. IDs refer to the same camera/session across clips.
-  Set `reviewed=true` only after checking each clip. This optional source file is never overwritten.
-- `data/processed/split_proposal.csv` proposes a reproducible train/validation split of canonical
-  video IDs from `training_videos.csv`. Exact copies,
-  candidate scenes and known cameras/sessions stay together. The proposal is provisional until scenes
-  have been reviewed. If no suitable group split exists, the file is empty and the reason is reported.
-  All clips from a group must remain together in downstream frame/segment datasets.
-- `data/processed/eda_checklist.csv` records current-run checks; `eda_run.json` records input hashes
-  and parameters. Fix errors and review groups before using the proposed split for training.
+- `data/processed/split_proposal.csv` records the agreed preliminary train/validation split
+  by unique video SHA-256, approximately 75/25 with seed 42. Both subsets contain both
+  classes. Each row includes canonical ID, hash, source aliases and all event markers.
+  Exact copies never cross subsets. The file is allowed in Git to retain the baseline assignment;
+  it is generated from `events.csv` and is not another editable annotation source.
+- Scene similarity remains diagnostic only for this protocol. The room, people and unknown
+  recording sessions may overlap between subsets. Results describe within-room performance,
+  not generalization to independent sessions or new cameras. There is no final held-out test set.
+- `data/processed/eda_checklist.csv` records current-run checks; `eda_run.json` records
+  input hashes and parameters. `training_readiness.json` distinguishes preliminary baseline
+  readiness from independent evaluation readiness. P0 completion refers to the agreed
+  preliminary protocol only.
+
+See [the annotation workflow](docs/temporal-annotation-workflow.md) for the single-source annotation protocol and current split limitation.
 
 Optional frame zones live in `data/annotations/zones.json`, using
 `{"X-N": {"zone_name": [x1, y1, x2, y2]}}`. Coordinates are checked against the decoded frame.

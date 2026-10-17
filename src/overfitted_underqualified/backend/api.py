@@ -6,9 +6,9 @@ import asyncio
 import hmac
 import logging
 import uuid
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import AsyncIterator
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -55,7 +55,9 @@ def _public_job_status(job: dict[str, object]) -> str:
     return "processing" if status == "queued" else str(status)
 
 
-def create_app(settings: Settings | None = None, analyzer: Analyzer | None = None) -> FastAPI:
+def create_app(
+    settings: Settings | None = None, analyzer: Analyzer | None = None
+) -> FastAPI:
     settings = settings or Settings.from_env()
     settings.upload_dir.mkdir(parents=True, exist_ok=True)
     store = JobStore(settings.database_path)
@@ -65,7 +67,7 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
         analyzer = configured_analyzer(settings)
 
     @asynccontextmanager
-    async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+    async def lifespan(_: FastAPI) -> AsyncGenerator[None, None]:
         store.initialize()
         store.recover_expired_leases(
             now=current_time(), retention_seconds=settings.retention_seconds
@@ -87,7 +89,9 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
                 except asyncio.CancelledError:
                     pass
 
-    app = FastAPI(title="ForteBank Video Review API", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(
+        title="ForteBank Video Review API", version="0.1.0", lifespan=lifespan
+    )
     app.state.settings = settings
     app.state.store = store
     app.state.analyzer = analyzer
@@ -96,7 +100,9 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
     )
     app.state.analysis_ready = analysis_ready
     authenticate = _require_api_key(settings)
-    app.add_middleware(UploadLimitMiddleware, max_upload_bytes=settings.max_upload_bytes)
+    app.add_middleware(
+        UploadLimitMiddleware, max_upload_bytes=settings.max_upload_bytes
+    )
 
     if settings.frontend_origin:
         app.add_middleware(
@@ -139,10 +145,14 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
             or not isinstance(file, StarletteUploadFile)
         ):
             await form.close()
-            raise HTTPException(status_code=422, detail="A video file is required in the 'file' field")
+            raise HTTPException(
+                status_code=422, detail="A video file is required in the 'file' field"
+            )
         if not file.filename or Path(file.filename).suffix.lower() != ".mov":
             await form.close()
-            raise HTTPException(status_code=415, detail="Only .mov uploads are supported")
+            raise HTTPException(
+                status_code=415, detail="Only .mov uploads are supported"
+            )
 
         job_id = str(uuid.uuid4())
         saved_path = settings.upload_dir / f"{job_id}.mov"
@@ -154,15 +164,22 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
                 while chunk := await file.read(1024 * 1024):
                     total_bytes += len(chunk)
                     if total_bytes > settings.max_upload_bytes:
-                        raise HTTPException(status_code=413, detail="Upload exceeds the configured size limit")
+                        raise HTTPException(
+                            status_code=413,
+                            detail="Upload exceeds the configured size limit",
+                        )
                     if len(header) < 12:
                         header.extend(chunk[: 12 - len(header)])
                     destination.write(chunk)
 
             if total_bytes < 12 or bytes(header[4:8]) != b"ftyp":
-                raise HTTPException(status_code=422, detail="The uploaded .mov file is unreadable")
+                raise HTTPException(
+                    status_code=422, detail="The uploaded .mov file is unreadable"
+                )
             if not has_valid_mov_container(saved_path):
-                raise HTTPException(status_code=422, detail="The uploaded .mov file is unreadable")
+                raise HTTPException(
+                    status_code=422, detail="The uploaded .mov file is unreadable"
+                )
 
             accepted = store.admit_job(
                 job_id=job_id,
@@ -173,13 +190,17 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
                 analysis_provider=analyzer.name,
             )
             if not accepted:
-                raise HTTPException(status_code=503, detail="The analysis queue is full; retry shortly")
+                raise HTTPException(
+                    status_code=503, detail="The analysis queue is full; retry shortly"
+                )
             return {"job_id": job_id}
         except HTTPException:
             raise
         except Exception as exc:
             logger.exception("Could not accept video upload")
-            raise HTTPException(status_code=500, detail="The upload could not be accepted") from exc
+            raise HTTPException(
+                status_code=500, detail="The upload could not be accepted"
+            ) from exc
         finally:
             await form.close()
             if not accepted:
@@ -203,7 +224,9 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
             "analysis_provider": job["analysis_provider"],
         }
         if job["status"] == "done":
-            response.update(job["result"])
+            result = job["result"]
+            assert isinstance(result, dict)
+            response.update(result)
         elif job["status"] == "failed":
             response["error"] = {
                 "code": job["error_code"],

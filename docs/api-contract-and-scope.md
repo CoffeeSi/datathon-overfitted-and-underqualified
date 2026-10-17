@@ -121,6 +121,6 @@ Defer any category that lacks visible evidence, a defensible source, or consiste
 ## Team decisions to record after alignment
 
 - Final response schema and error behavior, including the jury's exact “insufficient data” token if it differs from `insufficient_data`.
-- Initial normalized visual-event catalog, source links, and cautious descriptions. The split label table is the provisional annotation source; its one-off and inconsistent tag names still need consolidation.
+- Initial normalized visual-event catalog, source links, and cautious descriptions. `data/annotations/events.csv` is the sole source of the agreed binary labels and event timestamps; the Markdown split label table is a readable snapshot. Its provisional event tags still need consolidation before multiclass training.
 - Validation split by video and the way false alarms, misses, timestamps, and evidence quality will be reviewed.
 - Whether the API returns image data inline only, or also supports a separate evidence URL. The sample response shows base64 frames.

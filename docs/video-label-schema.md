@@ -73,9 +73,9 @@ No human review should be inferred from any current event field.
    establish that it never occurred. Authorization, transaction status and similar
    external facts cannot be assumed from a single frame.
 4. A timestamp marks an event, not its duration. Do not automatically label every
-   adjacent frame positive. Segment training requires additional interval labels.
-5. Human verification requires an explicit, separately designed review process;
-   these provisional notes must not be silently treated as verified annotations.
+   adjacent frame positive. A context window around a timestamp is a sampling choice, not a labeled event duration.
+5. The team accepts the supplied labels and markers for the baseline. This does not
+   turn provisional descriptive notes into independently verified multiclass targets.
 6. Edit the CSV, regenerate its Markdown snapshot, then rerun EDA. The notebook
    never rebuilds annotations from Markdown and never overwrites the source CSV.
 
@@ -93,15 +93,35 @@ No human review should be inferred from any current event field.
   Exact copies do not become multiple video-level training examples; different
   event markers are preserved rather than dropped.
 - `data/processed/validation_issues.csv`: file/ID/label/timestamp errors and warnings.
-- `data/annotations/scenes.csv`: optional `clip_id`, `camera_id`, `session_id`,
-  `scene_group`, `reviewed` for scene grouping. This separate `reviewed` flag
-  concerns camera/scene grouping only; it does not verify event or legal notes.
 - `data/processed/split_proposal.csv`: proposed grouped train/validation assignment
   for canonical IDs in `training_videos.csv`.
-  It uses source binary labels, file hashes, scene similarity and optional scene
-  metadata, not provisional event categories or legal interpretations.
+  The agreed `within_room_unique_video` protocol uses source binary labels and file hashes; scene similarity is diagnostic only. Exact copies remain together. Descriptive notes and legal interpretations are not split features.
 
-The CSV is explicitly allowed by `.gitignore` for versioning with the code. Other
-annotation files are ignored by default. The word "split" in the documentation
-snapshot refers to separating event types and candidate categories, not the
-train/validation split.
+Only `events.csv` supplies event labels and timestamps. It has been accepted by the
+team for the current baseline; no separate approval table or action catalog is required.
+This agreement does not establish independent legal verification of the descriptive notes.
+
+`events.csv` is explicitly allowed by `.gitignore`. There is no separate scene annotation file. The documentation snapshot is not an independent annotation source.
+The word "split" in that snapshot concerns event/category columns, not train/validation.
+
+## Point annotation and readiness
+
+Each positive source record has one event marker in `timecode`; `timecode_sec` is
+its numeric conversion. Negative rows have no violation marker. No start/end bounds
+or per-event review flags are required. EDA checks source IDs, labels, timestamps,
+matching video files, decoding, and duplicate consistency. It does not reapprove events.
+
+All event markers survive deduplication in `training_videos.csv` (`event_times_sec`).
+X-4 and X-47 share one canonical video but retain different source event markers.
+A context window is a sampling parameter, not annotation of event duration.
+
+The team agreed to a preliminary within-room split by unique video SHA-256,
+approximately 75/25 with seed 42 and both binary classes in each subset. All aliases
+and event markers for a canonical video inherit its subset. `split_proposal.csv`
+is generated and tracked to retain the assignment; `events.csv` remains the sole
+editable label source. Split changes invalidate direct comparisons to earlier runs.
+
+This protocol does not establish camera/session independence. Related recordings,
+people and background may cross subsets; validation is small and not a final test set.
+P0 baseline readiness and independent evaluation readiness are reported separately.
+See [temporal-annotation-workflow.md](temporal-annotation-workflow.md).

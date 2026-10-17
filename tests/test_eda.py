@@ -113,9 +113,11 @@ class EdaChecks(unittest.TestCase):
     def test_group_split_keeps_duplicates_and_scenes_together(self):
         events = pd.DataFrame([dict(clip_id=f"X-{i}", source_label="violation" if i % 2 else "no_violation") for i in range(1, 17)])
         inventory = pd.DataFrame([dict(clip_id=f"X-{i}", sha256="same" if i in (1, 3) else str(i)) for i in range(1, 17)])
-        pairs = pd.DataFrame([dict(clip_a="X-2", clip_b="X-4")])
-        scenes = pd.DataFrame([dict(clip_id="X-5", camera_id="A"), dict(clip_id="X-6", camera_id="A")])
-        groups = build_groups(events, inventory, pairs, scenes)
+        pairs = pd.DataFrame([dict(clip_a="X-2", clip_b="X-4"), dict(clip_a="X-5", clip_b="X-6")])
+        groups = build_groups(events, inventory, pairs)
+        conservative = build_groups(events, inventory, pairs, keep_together=True)
+        self.assertEqual(conservative["group_id"].nunique(), 1)
+        self.assertTrue(propose_split(events, conservative)[0].empty)
         index = groups.set_index("clip_id")["group_id"]
         for a, b in ((1, 3), (2, 4), (5, 6)):
             self.assertEqual(index[f"X-{a}"], index[f"X-{b}"])
