@@ -19,6 +19,18 @@ If PowerShell blocks environment activation, run the commands below from a termi
 .\.venv\Scripts\jupyter.exe lab
 ```
 
+## Backend dependencies
+
+Install the API dependencies separately from the notebook environment:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-backend.txt
+```
+
+The main `requirements.txt` includes this file, so a full project installation
+also installs the backend dependencies. SQLite is provided by Python; ML model
+dependencies belong to the selected analyzer and are not included here.
+
 ## Project layout
 
 ```text
