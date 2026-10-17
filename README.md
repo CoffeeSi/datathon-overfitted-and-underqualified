@@ -31,3 +31,36 @@ src/overfitted_underqualified/ # Reusable project code
 ```
 
 Start with `notebooks/01_eda.ipynb`. Put the open-set videos into `open/` (or `data/open/`). Put reusable functions in `src/overfitted_underqualified/` once they are useful in more than one notebook. Keep notebooks focused, restart and run them top to bottom before sharing results, and record important findings and data sources here or in the notebook.
+
+## EDA inputs and outputs
+
+The notebook also discovers videos in `data/raw/videos/`. Set `VIDEO_DIR` to use an explicit directory.
+Run the notebook with the repository's `.venv` interpreter. Checks are implemented in
+`src/overfitted_underqualified/eda.py`.
+
+- `data/annotations/events.csv` is the editable annotation source. EDA never overwrites it.
+- `data/processed/validation_issues.csv` lists missing files, duplicate IDs, invalid timestamps,
+  decoding problems, exact copies and conflicting duplicate labels.
+- `data/processed/events_enriched.csv` combines eligible annotations with current video metadata.
+- `reports/figures/event_frames/` and `normal_frames/` contain contact sheets for both classes.
+  `data/processed/frame_extraction.csv` records whether every requested frame was decoded.
+- `data/processed/scene_candidates.csv` lists visually similar scene candidates; these are heuristics
+  to review, not confirmed camera identities. Inspect the scene preview and contact sheets.
+- Copy `data/processed/scenes_template.csv` to `data/annotations/scenes.csv` and fill in camera,
+  session or scene groups after reviewing the footage. IDs refer to the same camera/session across clips.
+  Set `reviewed=true` only after checking each clip. This optional source file is never overwritten.
+- `data/processed/split_proposal.csv` proposes a reproducible train/validation split. Exact copies,
+  candidate scenes and known cameras/sessions stay together. The proposal is provisional until scenes
+  have been reviewed. If no suitable group split exists, the file is empty and the reason is reported.
+  All clips from a group must remain together in downstream frame/segment datasets.
+- `data/processed/eda_checklist.csv` records current-run checks; `eda_run.json` records input hashes
+  and parameters. Fix errors and review groups before using the proposed split for training.
+
+Optional frame zones live in `data/annotations/zones.json`, using
+`{"X-N": {"zone_name": [x1, y1, x2, y2]}}`. Coordinates are checked against the decoded frame.
+
+Run the validation tests with:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```

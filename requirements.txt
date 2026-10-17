@@ -2,6 +2,8 @@ numpy
 pandas
 matplotlib
 seaborn
+opencv-python
+tqdm
 scikit-learn
 pyarrow
 jupyterlab

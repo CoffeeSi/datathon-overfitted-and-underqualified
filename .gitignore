@@ -16,12 +16,25 @@ dist/
 !.env.example
 
 # Data files: keep directory guidance/placeholders, not local datasets
-data/raw/*
-!data/raw/README.md
+data/raw/**
+data/processed/**
+data/annotations/**
+
 !data/raw/.gitkeep
-data/processed/*
-!data/processed/README.md
 !data/processed/.gitkeep
+!data/annotations/.gitkeep
+!data/annotations/events.csv
+
+models/**/*.pt
+models/**/*.pth
+models/**/*.onnx
+
+# Sensitive outputs
+outputs/
+runs/
+*.mov
+*.mp4
+*.avi
 
 # Generated outputs
 reports/figures/*
