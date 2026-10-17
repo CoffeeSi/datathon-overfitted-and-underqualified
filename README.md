@@ -167,6 +167,12 @@ this verifies the pipeline, not useful detector quality. Historical metrics rema
 
 See [the annotation workflow](docs/temporal-annotation-workflow.md) for the single-source annotation protocol and current split limitation.
 
+P1 rules catalog: [`src/overfitted_underqualified/rules/catalog.json`](src/overfitted_underqualified/rules/catalog.json).
+Verification notes and acceptance checklist:
+[docs/rules-catalog-review.md](docs/rules-catalog-review.md).
+Only `api_supported` event types may be attached to a finding; binary `violation`
+is not an event type. Unconfirmed claims (X-1, X-28, door/№14, X-46) stay excluded.
+
 Optional frame zones live in `data/annotations/zones.json`, using
 `{"X-N": {"zone_name": [x1, y1, x2, y2]}}`. Coordinates are checked against the decoded frame.
 
