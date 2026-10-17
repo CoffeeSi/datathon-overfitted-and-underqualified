@@ -1,0 +1,9 @@
+# Fixed exploratory settings, not selected on validation.
+scan:
+  window_sec: 4.0
+  step_sec: 2.0
+  batch_size: 2
+  frames: 16
+  threshold: 0.5
+  merge_gap_sec: 0.0
+matching_tolerance_sec: 5.0

@@ -43,6 +43,20 @@ def parse_time(value: str) -> float | None:
 
 
 @dataclass(frozen=True)
+class VideoInfo:
+    """Decode metadata only; no supervision is required for an unseen video."""
+
+    clip_id: str
+    path: Path
+    fps: float
+    frame_count: int
+
+    @property
+    def last_time(self) -> float:
+        return (self.frame_count - 1) / self.fps
+
+
+@dataclass(frozen=True)
 class VideoRecord:
     clip_id: str
     path: Path
@@ -145,7 +159,7 @@ def sample_times(center: float, last_time: float, window_sec: float, frames: int
     return np.linspace(start, start + span, frames)
 
 
-def decode_frames(record: VideoRecord, times: np.ndarray) -> torch.Tensor:
+def decode_frames(record: VideoRecord | VideoInfo, times: np.ndarray) -> torch.Tensor:
     """Return uint8 RGB (T,C,H,W); recover broken MOV seeks by sequential decoding."""
     indices = np.clip(np.rint(times * record.fps).astype(int), 0, record.frame_count - 1)
     wanted = set(indices.tolist())

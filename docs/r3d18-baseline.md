@@ -1,5 +1,9 @@
 # R3D-18 baseline
 
+The window protocol documented here is retained as protocol A. The new full-video
+protocol B is described in [full-video-inference.md](full-video-inference.md), including
+fixed scan settings, candidate times, one-to-one matching, local evidence and ZIP export.
+
 ## Video-level quality evaluation
 
 Evaluate an existing checkpoint without training or downloading pretrained weights:
@@ -118,7 +122,9 @@ from the current directory on Windows and Linux/Brev.
    `evaluate_prepared` computes loss, precision, recall, F1, accuracy and confusion
    matrix with threshold 0.5; research cells separately analyze FP/FN, evidence frames
    and sampling offsets. Timestamp prediction error is N/A: the model has no temporal
-   localization output. Known annotation-centred windows cannot establish detection accuracy.
+   localization output in protocol A. Known annotation-centred windows cannot establish detection accuracy.
+   Set `EVAL_PROTOCOL=full_video` or `both` to run the separate full-video protocol B,
+   inspect candidate timestamps, missed markers and false alarms, and export its own report/ZIP.
 
 Notebook environment overrides (set before launching Jupyter, or edit the settings cell):
 
@@ -174,7 +180,8 @@ These metrics evaluate **annotation-centred window classification**: positive va
 windows use known event timestamps, while negative windows use fixed positions.
 They do not evaluate blind event localization or full-video detection. The small,
 within-room split may share people, backgrounds and recording sessions. An independent
-evaluation, sliding-window inference and backend integration are separate tasks.
+evaluation and typed backend integration remain separate tasks. Sliding-window inference
+now has a separate full-video protocol; it does not change these historical window metrics.
 
 Run tests with `python -m unittest discover -s tests` after installing dependencies.
 Tests exercise real video decoding, preprocessing, duplicate/source validation,

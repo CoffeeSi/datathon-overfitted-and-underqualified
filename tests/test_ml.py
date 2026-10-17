@@ -23,6 +23,7 @@ from overfitted_underqualified.ml.train import (
     run_epoch, seed_everything, prepare_training, build_model, save_checkpoint,
 )
 from overfitted_underqualified.ml.evaluate import prepare_evaluation, evaluate_prepared
+from overfitted_underqualified.ml.inference import prepare_scanner, ScanConfig
 
 
 class TinyVideoModel(nn.Module):
@@ -180,6 +181,14 @@ class BaselineTests(unittest.TestCase):
             evaluation = prepare_evaluation(checkpoint_path, events_path=self.events,
                                             split_path=self.split, video_dir=self.root)
         constructor.assert_called_once_with(weights=None)
+        with patch("overfitted_underqualified.ml.train.r3d_18", wraps=r3d_18) as constructor:
+            scanner = prepare_scanner(checkpoint_path, ScanConfig(), device="cpu")
+        constructor.assert_called_once_with(weights=None)
+        scanned = scanner.scan(self.root / "X-3.avi")
+        self.assertEqual(len(scanned["windows"]), 1)
+        self.assertEqual(scanner.provenance["checkpoint_sha256"], sha256(checkpoint_path))
+        for key, tensor in scanner.model.state_dict().items():
+            torch.testing.assert_close(tensor, model.state_dict()[key], rtol=0, atol=0)
         self.assertEqual(evaluation["config"]["device"], "cpu")
         restored = evaluation["model"]
         for key, tensor in restored.state_dict().items():

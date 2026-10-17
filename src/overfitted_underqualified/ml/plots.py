@@ -37,15 +37,33 @@ def plot_history(history):
     plt.close(fig)
 
 
-def plot_confusion(metrics):
+def plot_confusion(metrics, threshold=0.5):
     matrix = np.asarray(metrics["confusion_matrix"])
     fig, ax = plt.subplots(figsize=(5, 4))
     ax.imshow(matrix, cmap="Blues", vmin=0)
     names = ["no_violation", "violation"]
     ax.set(xticks=[0, 1], yticks=[0, 1], xticklabels=names, yticklabels=names,
-           xlabel="Prediction (threshold 0.5)", ylabel="Source label")
+           xlabel=f"Prediction (threshold {threshold:g})", ylabel="Source label")
     for (i, j), value in np.ndenumerate(matrix):
         ax.text(j, i, str(value), ha="center", va="center", color="red")
+    fig.tight_layout()
+    plt.show()
+    plt.close(fig)
+
+
+def show_evidence(frames, title="Local candidate context"):
+    """Display backend JPEG context in memory only. Clear notebook outputs before Git."""
+    import base64
+    from io import BytesIO
+    from PIL import Image
+
+    fig, axes = plt.subplots(1, len(frames), figsize=(4 * len(frames), 4), squeeze=False)
+    for ax, frame in zip(axes[0], frames):
+        with Image.open(BytesIO(base64.b64decode(frame["image_base64"]))) as picture:
+            ax.imshow(picture)
+        ax.set_title(f"frame {frame['frame_index']} / PTS {frame['timestamp_sec']:.3f}s")
+        ax.axis("off")
+    fig.suptitle(title)
     fig.tight_layout()
     plt.show()
     plt.close(fig)

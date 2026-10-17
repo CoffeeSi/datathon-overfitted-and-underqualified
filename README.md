@@ -96,6 +96,8 @@ Restart the kernel and run cells from top to bottom. Clear outputs before commit
 - `ml/dataset.py`: validated sources and 16-frame training/validation windows.
 - `ml/train.py`: preparation, model loading, training and the CLI.
 - `ml/evaluate.py`, `ml/plots.py`: checkpoint evaluation, loss, confusion matrix and error views.
+- `ml/inference.py`: annotation-free sliding-window scanning, untyped candidates and local evidence.
+- `ml/full_video_evaluation.py`: full-video validation, one-to-one temporal matching and private report/ZIP export.
 
 The baseline notebook uses YAML settings. `RUN_TRAINING=False` by default lets you
 inspect data and existing experiments without loading pretrained weights or training.
@@ -113,9 +115,17 @@ See [the notebook and CLI instructions](docs/r3d18-baseline.md#notebook-workflow
 
 Notebooks own research choices, inspection tables, experiment comparisons and written
 conclusions; modules own decoding, datasets, preprocessing, training and metric computation.
-Evaluation separates FP/FN and shows evidence frames. Timestamp localization error is
-reported as unavailable because the baseline predicts window classes, not event times;
-frame-sampling offsets are displayed separately and are not model localization errors.
+Evaluation separates FP/FN and shows local evidence frames. Protocol A (known windows)
+has no predicted timestamp; sampling offsets are not localization errors. Protocol B
+(full-video scan) derives candidate timestamps from peak windows and reports matching
+errors and missed markers separately. It does not identify concrete action types.
+
+Full-video settings and commands: [docs/full-video-inference.md](docs/full-video-inference.md).
+In 02, set `RUN_FULL_SCAN=true` and optionally `SCAN_VIDEO`; training is controlled separately.
+In 03, select `EVAL_PROTOCOL=annotation_windows`, `full_video`, or `both`.
+All full-video parameters are fixed in `configs/full_video.yaml`, without validation tuning.
+The catalog's data coverage and action-recognition limitations are recorded in
+[reports/catalog_coverage.md](reports/catalog_coverage.md).
 
 ## EDA inputs and outputs
 
@@ -160,8 +170,9 @@ These readers intentionally have different semantics.
   readiness from independent evaluation readiness. P0 completion refers to the agreed
   preliminary protocol only.
 
-ML metrics describe windows around known annotations, not automatic event discovery
-in a full video. The first smoke run predicted violation for every validation window;
+Historical baseline metrics describe windows around known annotations. New full-video
+metrics use a separate protocol and cannot be equated directly with window F1.
+The first smoke run predicted violation for every validation window;
 this verifies the pipeline, not useful detector quality. Historical metrics remain in
 [the experiment record](experiments/r3d18_smoke_result.md).
 
