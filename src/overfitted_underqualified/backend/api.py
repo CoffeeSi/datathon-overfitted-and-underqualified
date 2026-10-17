@@ -91,6 +91,10 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
     app.state.settings = settings
     app.state.store = store
     app.state.analyzer = analyzer
+    analysis_ready = analyzer.name != "unconfigured" and not (
+        analyzer.name == "mock" and not settings.allow_mock_results
+    )
+    app.state.analysis_ready = analysis_ready
     authenticate = _require_api_key(settings)
     app.add_middleware(UploadLimitMiddleware, max_upload_bytes=settings.max_upload_bytes)
 
@@ -107,11 +111,25 @@ def create_app(settings: Settings | None = None, analyzer: Analyzer | None = Non
     async def health() -> dict[str, str]:
         return {"status": "ok"}
 
+    @app.get("/readyz")
+    async def readiness() -> dict[str, str]:
+        if not analysis_ready:
+            raise HTTPException(
+                status_code=503,
+                detail="A local video analysis provider is not configured",
+            )
+        return {"status": "ready", "analysis_provider": analyzer.name}
+
     @app.post("/api/v1/analyze", status_code=202)
     async def analyze(
         request: Request,
         _: None = Depends(authenticate),
     ) -> dict[str, str]:
+        if not analysis_ready:
+            raise HTTPException(
+                status_code=503,
+                detail="A local video analysis provider is not configured",
+            )
         # Parse multipart only after the API-key dependency has run.
         form = await request.form(max_files=1, max_fields=1)
         file = form.get("file")

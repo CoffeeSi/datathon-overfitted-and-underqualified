@@ -39,10 +39,21 @@ class MockAnalyzer:
         return AnalysisResult(verdict="no_violation", violations=[])
 
 
+class UnconfiguredAnalyzer:
+    """Provider marker used until a real local analyzer is configured."""
+
+    name = "unconfigured"
+
+    async def analyze(self, video_path: Path) -> AnalysisResult:
+        raise RuntimeError("No local video analysis provider is configured")
+
+
 def configured_analyzer(settings: Settings) -> Analyzer:
-    """Load a local provider factory or use the development mock."""
+    """Load a local provider, an explicitly enabled mock, or an unavailable marker."""
     if not settings.analyzer_factory:
-        return MockAnalyzer(settings.mock_fixture_path)
+        if settings.allow_mock_results:
+            return MockAnalyzer(settings.mock_fixture_path)
+        return UnconfiguredAnalyzer()
     try:
         module_name, factory_name = settings.analyzer_factory.split(":", maxsplit=1)
     except ValueError as exc:

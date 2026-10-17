@@ -49,12 +49,14 @@ async def run_worker(
                 pass
             continue
 
-        if analyzer.name == "mock" and not settings.allow_mock_results:
+        if analyzer.name == "unconfigured" or (
+            analyzer.name == "mock" and not settings.allow_mock_results
+        ):
             store.fail(
                 job.job_id,
                 job.attempts,
                 "analyzer_not_configured",
-                "A real local video analysis provider is not configured.",
+                "A local video analysis provider is not configured.",
                 now=current_time(),
                 retention_seconds=settings.retention_seconds,
             )
