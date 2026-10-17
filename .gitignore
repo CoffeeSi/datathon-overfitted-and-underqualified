@@ -22,6 +22,7 @@ data/raw/*
 data/processed/*
 !data/processed/README.md
 !data/processed/.gitkeep
+data/service/
 
 # Generated outputs
 reports/figures/*
