@@ -104,9 +104,11 @@ to create a fresh experiment directory; notebook 02 rereads `.env` in its settin
 Shell environment variables override `.env`. The local `.env` is ignored by Git.
 `TRAIN_EPOCHS=1` limits that explicitly enabled run to one epoch.
 Set `TRAIN_DEVICE=cpu` explicitly if needed.
-For evaluation, set `CHECKPOINT_PATH` to the printed `best.pt` path. Its default is
-the historical `runs/r3d18_smoke/best.pt`, which must exist locally. Evaluation verifies
+For evaluation, set `CHECKPOINT_PATH` in `.env` to the printed `best.pt` path. If unset,
+the only available `runs/*/best.pt` is selected; multiple files require an explicit choice. Evaluation verifies
 source/split/video provenance, uses threshold 0.5 and does not download pretrained weights.
+Its final cell automatically saves results under `reports/evaluation_<run>_<UTC>_<id>/`
+and displays a ZIP download link, without weights or banking images.
 See [the notebook and CLI instructions](docs/r3d18-baseline.md#notebook-workflow).
 
 Notebooks own research choices, inspection tables, experiment comparisons and written

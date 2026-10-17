@@ -18,6 +18,13 @@ full data manifest, environment, window/video metrics and synchronized timing.
 `video_predictions.csv` counts each canonical video once; `window_predictions.csv`
 retains each sampled window. The fixed aggregation is max violation probability per
 video, threshold 0.5. `confusion_matrix.png` and `report.md` summarize the result.
+Notebook `03_evaluation.ipynb` automatically saves its already computed results in a
+unique `reports/evaluation_<run>_<UTC>_<id>/` directory and creates a neighboring ZIP.
+The final cell displays a download link. No second inference pass is performed.
+The archive also includes FP/FN and sampling-diagnostic CSVs, plus available training
+history/config/environment when the training manifest matches the checkpoint.
+Weights, video frames, original videos and `.env` are excluded. Keep generated archives
+local; source notebook outputs must still be cleared before committing.
 Timing covers one cold batched pass over the selected windows including video decoding;
 preparation time is separate. The per-video time is an amortized mean, not request latency.
 
@@ -119,7 +126,8 @@ Notebook environment overrides (set before launching Jupyter, or edit the settin
 - `TRAIN_EPOCHS`: optional epoch override; `1` is enough to check the pipeline.
 - `TRAIN_DEVICE`: explicit `cpu` or `cuda`; default comes from YAML.
 - `TRAIN_OUTPUT_DIR`: optional fresh run directory; default includes a UTC timestamp.
-- `CHECKPOINT_PATH`: checkpoint to evaluate; default is `runs/r3d18_smoke/best.pt`.
+- `CHECKPOINT_PATH`: checkpoint to evaluate, read from `.env` or the shell. If unset,
+  the only available `runs/*/best.pt` is selected; multiple files require an explicit choice.
 - `EVAL_DEVICE`: defaults to `cpu`; set `cuda` for GPU evaluation.
 
 PowerShell example (one epoch only after setting `RUN_TRAINING=True` in notebook 02,

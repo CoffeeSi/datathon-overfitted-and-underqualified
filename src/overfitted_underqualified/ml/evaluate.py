@@ -11,6 +11,8 @@ import json
 import math
 import platform
 import time
+import shutil
+from zipfile import ZipFile, ZIP_DEFLATED
 
 import torch
 import torchvision
@@ -22,9 +24,37 @@ from .dataset import VideoWindowDataset, load_records, sha256
 from .train import ROOT, load_checkpoint, run_epoch, seed_everything
 
 
+def resolve_checkpoint(checkpoint_path=None, *, root=ROOT):
+    """Use an explicit checkpoint, or the only available best.pt; never guess among runs."""
+    root = Path(root).resolve()
+    if checkpoint_path:
+        path = Path(checkpoint_path).expanduser()
+        path = (root / path).resolve() if not path.is_absolute() else path.resolve()
+        if not path.is_file():
+            raise FileNotFoundError(
+                f"Checkpoint not found: {path}. Copy best.pt from Brev into this repository "
+                "or set CHECKPOINT_PATH to its actual location."
+            )
+        return path
+    candidates = sorted((root / "runs").glob("*/best.pt"))
+    if len(candidates) == 1:
+        return candidates[0].resolve()
+    if not candidates:
+        raise FileNotFoundError(
+            f"No runs/*/best.pt under {root}. Download the training run from Brev, "
+            "or run evaluation on Brev where the checkpoint exists."
+        )
+    available = "\n".join(str(path.relative_to(root)) for path in candidates)
+    raise ValueError(f"Multiple checkpoints found. Set CHECKPOINT_PATH explicitly:\n{available}")
+
+
 def prepare_evaluation(checkpoint_path, *, device="cpu", events_path=None,
                        split_path=None, video_dir=None):
+    checkpoint_path = Path(checkpoint_path).resolve()
+    checkpoint_digest = sha256(checkpoint_path)
     model, checkpoint = load_checkpoint(Path(checkpoint_path), device)
+    if sha256(checkpoint_path) != checkpoint_digest:
+        raise ValueError("Checkpoint changed during loading")
     config = dict(checkpoint["config"])
     config["device"] = str(torch.device(device))
     for key, override in (("events_path", events_path), ("split_path", split_path),
@@ -50,7 +80,8 @@ def prepare_evaluation(checkpoint_path, *, device="cpu", events_path=None,
         raise ValueError("Validation windows differ from checkpoint provenance")
     loader = DataLoader(dataset, batch_size=config["batch_size"], shuffle=False, num_workers=0)
     return dict(model=model, checkpoint=checkpoint, config=config, dataset=dataset,
-                loader=loader, device=torch.device(device))
+                loader=loader, device=torch.device(device), checkpoint_path=checkpoint_path,
+                checkpoint_sha256=checkpoint_digest)
 
 
 def evaluate_prepared(prepared):
@@ -118,6 +149,23 @@ def write_evaluation_report(checkpoint_path, output_dir, **kwargs):
     window_metrics, windows = evaluate_prepared(prepared)
     _sync(prepared["device"])
     processing_sec = time.perf_counter() - start
+    return save_evaluation_report(prepared, checkpoint_path, output, window_metrics, windows,
+                                  processing_sec=processing_sec, preparation_sec=preparation_sec,
+                                  checkpoint_digest=checkpoint_digest)
+
+
+def save_evaluation_report(prepared, checkpoint_path, output_dir, window_metrics, windows, *,
+                           processing_sec, preparation_sec=None, checkpoint_digest=None):
+    """Save results already computed by a notebook; never run inference again."""
+    output = Path(output_dir)
+    if output.exists() and any(output.iterdir()):
+        raise FileExistsError(f"Use a new report directory: {output}")
+    if not math.isfinite(processing_sec) or processing_sec <= 0:
+        raise ValueError("processing_sec must be positive and finite")
+    checkpoint_path = Path(checkpoint_path).resolve()
+    if "checkpoint_path" in prepared and checkpoint_path != prepared["checkpoint_path"]:
+        raise ValueError("Report checkpoint differs from loaded model")
+    checkpoint_digest = prepared.get("checkpoint_sha256", checkpoint_digest) or sha256(checkpoint_path)
     expected_windows = [(record.clip_id, float(center)) for record, center in prepared["dataset"].samples]
     actual_windows = [(row["clip_id"], float(row["center_sec"])) for row in windows]
     if actual_windows != expected_windows:
@@ -174,7 +222,7 @@ def write_evaluation_report(checkpoint_path, output_dir, **kwargs):
              "", f"Videos: {len(videos)}; windows: {len(windows)}.",
              f"Precision={video_metrics['precision']:.4f}; recall={video_metrics['recall']:.4f}; F1={video_metrics['f1']:.4f}; accuracy={video_metrics['accuracy']:.4f}.",
              f"Confusion matrix (true rows / predicted columns; no_violation, violation): `{matrix}`.", "",
-             f"Processing: {processing_sec:.3f} s; preparation: {preparation_sec:.3f} s; amortized {processing_sec/len(videos):.3f} s/video.",
+             f"Processing: {processing_sec:.3f} s; preparation: {str(preparation_sec) + ' s' if preparation_sec is not None else 'not measured'}; amortized {processing_sec/len(videos):.3f} s/video.",
              "Timing includes decoding/preprocessing/inference and window metrics; one cold pass, no full-video scan.", "", "## Errors", ""]
     lines += [f"- {row['outcome']} {row['clip_id']}: p={row['probability']:.6f}, true={row['label']}, predicted={row['prediction']}." for row in report["errors"]]
     if not report["errors"]:
@@ -192,6 +240,42 @@ def write_evaluation_report(checkpoint_path, output_dir, **kwargs):
     figure.savefig(output / "confusion_matrix.png", dpi=120)
     plt.close(figure)
     return report
+
+
+def archive_evaluation_report(output_dir, checkpoint_path):
+    """ZIP an explicit list of result files, never weights, frames or .env.
+
+    Matching training provenance is required before including optional run artifacts.
+    A pre-existing archive is never overwritten.
+    """
+    output = Path(output_dir).resolve()
+    report = json.loads((output / "evaluation.json").read_text(encoding="utf-8"))
+    checkpoint_path = Path(checkpoint_path).resolve()
+    if sha256(checkpoint_path) != report["checkpoint_sha256"]:
+        raise ValueError("Archive checkpoint differs from evaluation")
+    training_dir = checkpoint_path.parent
+    training_manifest = training_dir / "data_manifest.json"
+    optional = []
+    if training_manifest.is_file() and json.loads(training_manifest.read_text(encoding="utf-8")) == report["data_manifest"]:
+        for name in ("history.json", "config.yaml", "environment.json", "data_manifest.json"):
+            source = training_dir / name
+            if source.is_file():
+                target = output / ("training_" + name)
+                if target.exists():
+                    if target.read_bytes() != source.read_bytes():
+                        raise FileExistsError(f"Different training artifact already exists: {target}")
+                else:
+                    shutil.copy2(source, target)
+                optional.append(target.name)
+    allowed = ["evaluation.json", "video_predictions.csv", "window_predictions.csv", "report.md",
+               "confusion_matrix.png", "error_analysis.csv", "sampling_diagnostics.csv", *optional]
+    archive = output.with_suffix(output.suffix + ".zip")
+    with ZipFile(archive, "x", compression=ZIP_DEFLATED) as stream:
+        for name in allowed:
+            path = output / name
+            if path.is_file():
+                stream.write(path, arcname=output.name + "/" + name)
+    return archive
 
 
 def main():
