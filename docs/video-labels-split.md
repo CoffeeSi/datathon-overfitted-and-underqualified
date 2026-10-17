@@ -2,7 +2,8 @@
 
 Readable snapshot of `data/annotations/events.csv`: **42 records**,
 **22 violation** and **20 no_violation**. The CSV is the source; edit it first
-and regenerate this snapshot.
+and regenerate this snapshot. The team accepts its binary labels and single event
+timestamps for the current baseline; no separate approval table is required.
 
 Source labels and time markers provide the supplied supervision and its mechanical
 conversions. Descriptions, event tags, candidate categories and rule references
@@ -17,7 +18,7 @@ separation; training/validation assignments live in `data/processed/split_propos
 
 | `clip_id` | `timecode` | `source_label_ru` | `observed_event` | `observed_event_type` | `candidate_violation_type` | `legal_basis` | `source_label` | `timecode_sec` |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| X-1 | 00:22 | Нарушение | После завершения пересчёта принятые деньги оставлены на рабочем столе | accepted_cash_left_on_desk_after_count | cash_storage | №231, п. 20, абз. 2 | violation | 22.0 |
+| X-1 | 00:22 | Нарушение | Кассир получила наличные, пересчитала их на машинке и вернула часть купюр клиенту | cash_received_counted_partially_returned | cash_receipt_accounting | №231, п. 19, пп. 4; п. 20 | violation | 22.0 |
 | X-2 | 00:10 | Нарушение | В кадре не наблюдается визуальная идентификация клиента, вносящего наличные | cash_deposit_without_visible_id_check | customer_identification | №231, п. 19, пп. 1, если это клиент в смысле Правил | violation | 10.0 |
 | X-3 | — | Без нарушения | Событие отдельно не описано в исходной разметке | not_reported | — | — | no_violation | — |
 | X-4 | 00:57 | Нарушение | Деньги клиента №1 остались на столе при входе клиента №2 | prior_client_cash_left_during_next_client_entry | cash_storage | №231, п. 20, абз. 2; подтвердить, что деньги уже приняты | violation | 57.0 |

@@ -22,6 +22,7 @@ data/annotations/**
 
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+!data/processed/split_proposal.csv
 !data/annotations/.gitkeep
 !data/annotations/events.csv
 
