@@ -19,6 +19,23 @@ If PowerShell blocks environment activation, run the commands below from a termi
 .\.venv\Scripts\jupyter.exe lab
 ```
 
+## ML dependencies on Brev L4
+
+Use Python 3.11.9, recorded in `.python-version`. On the Linux Brev instance, check that
+`python3.11 --version` reports exactly `3.11.9`, then install the general dependencies and
+the pinned CUDA 12.6 PyTorch wheels:
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m pip install -r requirements-ml.txt
+```
+
+`requirements-ml.txt` pins PyTorch 2.13.0 and torchvision 0.28.0 using the official
+[CUDA 12.6 wheel index](https://pytorch.org/get-started/previous-versions/). The Brev GPU driver
+must be compatible with this runtime; that still needs verification on the L4 instance.
+
 ## Project layout
 
 ```text
