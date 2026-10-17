@@ -30,4 +30,4 @@ reports/figures/ # Charts and exported figures
 src/overfitted_underqualified/ # Reusable project code
 ```
 
-Start with `notebooks/01_eda.ipynb`. Put reusable functions in `src/overfitted_underqualified/` once they are useful in more than one notebook. Keep notebooks focused, restart and run them top to bottom before sharing results, and record important findings and data sources here or in the notebook.
+Start with `notebooks/01_eda.ipynb`. Put the open-set videos into `open/` (or `data/open/`). Put reusable functions in `src/overfitted_underqualified/` once they are useful in more than one notebook. Keep notebooks focused, restart and run them top to bottom before sharing results, and record important findings and data sources here or in the notebook.
