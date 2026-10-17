@@ -1,0 +1,40 @@
+# Synthetic one-step GPU check; no project videos or model weights are used.
+experiment:
+  name: brev_l4_smoke
+  seed: 42
+
+hardware:
+  provider: NVIDIA Brev
+  gpu: NVIDIA L4
+  gpu_count: 1
+  device: cuda:0
+
+environment:
+  python: "3.11.9"
+  pytorch: "2.13.0"
+  torchvision: "0.28.0"
+  cuda_runtime: "12.6"
+  pytorch_wheel_index: https://download.pytorch.org/whl/cu126
+
+check:
+  inputs:
+    distribution: standard_normal
+    batch_size: 8
+    features: 16
+  targets:
+    distribution: standard_normal
+    features: 1
+  model:
+    type: two_layer_mlp
+    hidden_features: 32
+    output_features: 1
+    activation: relu
+  loss: mean_squared_error
+  optimizer:
+    type: AdamW
+    learning_rate: 0.001
+  optimizer_steps: 1
+  acceptance:
+    cuda_available: true
+    gpu_name: NVIDIA L4
+    gradients_finite: true

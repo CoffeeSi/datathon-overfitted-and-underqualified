@@ -31,6 +31,31 @@ The main `requirements.txt` includes this file, so a full project installation
 also installs the backend dependencies. SQLite is provided by Python; ML model
 dependencies belong to the selected analyzer and are not included here.
 
+## ML dependencies on Brev L4
+
+Open a terminal on the Brev L4 instance, clone this repository (or pull the latest commit), and
+run these commands from the repository root. Use Python 3.11.9, recorded in `.python-version`.
+If `python3.11 --version` reports a different patch version, install or select 3.11.9 before
+creating the environment.
+
+```bash
+python3.11 --version  # expected: Python 3.11.9
+nvidia-smi           # expected GPU: NVIDIA L4
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -r requirements-ml.txt
+python -c "import torch, torchvision; print('torch:', torch.__version__, 'torchvision:', torchvision.__version__, 'PyTorch CUDA:', torch.version.cuda, 'CUDA available:', torch.cuda.is_available())"
+```
+
+`requirements-ml.txt` pins PyTorch 2.13.0 and torchvision 0.28.0 using the official
+[CUDA 12.6 wheel index](https://pytorch.org/get-started/previous-versions/) specified inside that
+file. The PyTorch check should print `PyTorch CUDA: 12.6` and `CUDA available: True`.
+The CUDA version displayed by `nvidia-smi` describes the driver, so it may be different.
+The [experiment config](experiments/brev_l4_smoke.yaml) records the seed, device, and synthetic
+one-step forward/backward settings for that verification.
+
 ## Project layout
 
 ```text
