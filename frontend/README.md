@@ -1,36 +1,230 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Фокус — просмотр кассового видео
 
-## Getting Started
+Рабочий интерфейс ForteBank Datathon: загрузка `.mov`, ожидание задания,
+просмотр результата, временная шкала, описание событий и подтверждающие кадры.
+Next.js App Router, React, TypeScript и Tailwind; зависимости фиксирует `package-lock.json`.
 
-First, run the development server:
+## Локальный запуск
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Используйте Node.js 24 (проверено на 24.14.0) или 22.13+, npm и отдельное
+Python-окружение backend. Команды ниже выполняются в PowerShell.
+
+Из корня репозитория запустите API:
+
+```powershell
+$env:PYTHONPATH = "src"
+$env:FORTEBANK_API_KEY = "<ваш локальный секрет>"
+$env:FORTEBANK_MAX_UPLOAD_MB = "100"
+.\.venv\Scripts\python.exe -m uvicorn overfitted_underqualified.backend.api:app --host 127.0.0.1 --port 8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+В другом терминале:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```powershell
+cd frontend
+npm ci
+Copy-Item .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+В `frontend/.env.local` укажите **тот же** `FORTEBANK_API_KEY`, что задан backend.
+Frontend не читает автоматически `.env` из корня Python-проекта.
 
-## Learn More
+```powershell
+npm run dev -- --hostname 127.0.0.1
+```
 
-To learn more about Next.js, take a look at the following resources:
+Откройте [http://127.0.0.1:3000](http://127.0.0.1:3000). На Linux команды npm те же;
+для копирования используйте `cp .env.example .env.local`, а переменные Python-процесса
+задавайте через `export`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Без настроенного Analyzer API запускается, но `/readyz` отвечает `503`.
+Интерфейс показывает, что анализатор пока не подключён; доступен выбор и локальный
+предпросмотр файла. Это ожидаемое состояние текущего проекта.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Конфигурация
 
-## Deploy on Vercel
+Все переменные находятся только на сервере Next.js:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `BACKEND_URL`: origin API, по умолчанию `http://127.0.0.1:8000`; без пути,
+  query, логина и пароля. Допускаются HTTP и HTTPS.
+- `FORTEBANK_API_KEY`: общий секрет для запросов к защищённым endpoint API.
+  Если пуст, реальная отправка и чтение задания недоступны. Неверный ключ приводит к `401`.
+- `MAX_UPLOAD_MB`: целое число от 1 до 10240, по умолчанию 100; согласуйте с
+  `FORTEBANK_MAX_UPLOAD_MB` backend и лимитом reverse proxy/хостинга.
+- `DEMO_ENABLED`: только `true` включает синтетические примеры; по умолчанию `false`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Не помещайте ключ в `NEXT_PUBLIC_*`, исходники, URL или браузерное хранилище.
+После изменения серверной конфигурации перезапустите Next.js.
+`.env.local` игнорируется Git; `.env.example` содержит только безопасный шаблон.
+
+## Явный демонстрационный режим
+
+Установите `DEMO_ENABLED=true` в `.env.local` и перезапустите frontend.
+Примеры доступны без работающего Python API и явно помечены как демонстрационные:
+
+- `/review/demo-violation`: три синтетических события, в том числе близкие отметки,
+  длинное описание и новый неизвестный тип.
+- `/review/demo-processing`: ожидание, затем демонстрационный результат
+  после двух секунд наблюдения страницы.
+- `/review/demo-no-violation`: результат без нарушений.
+- `/review/demo-insufficient`: недостаточно данных.
+- `/review/demo-failed`: завершение с ошибкой.
+
+Статические JPEG в `public/demo/` — нарисованные схемы, а не банковские кадры.
+Provider `synthetic-demo` не обращается к модели и никогда не подменяет ошибку
+реального запроса успешным результатом. При выключенном режиме эти ID возвращают `404`.
+
+Отдельный режим backend `mock` тоже явно выделяется интерфейсом. Он включается
+на стороне Python через `FORTEBANK_ENABLE_MOCK_RESULTS` и, при необходимости,
+`FORTEBANK_MOCK_FIXTURE_PATH`. Загрузка в mock API действительно передаёт файл
+backend; синтетические ссылки выше ничего не загружают.
+
+## API и поведение
+
+Браузер обращается только к same-origin BFF:
+
+- `GET /api/review/service` запрашивает `/healthz` и `/readyz`, возвращает состояние
+  соединения, готовность, provider, лимит загрузки и доступность демо.
+- `POST /api/review/analyze` передаёт multipart с единственным полем `file`
+  в `POST /api/v1/analyze`. Ответ `202` содержит `job_id`.
+- `GET /api/review/jobs/{jobId}` получает `GET /api/v1/ui/jobs/{jobId}`.
+  UI-версия сохраняет `analysis_provider` и безопасную ошибку failed-задания.
+
+Ключ добавляется BFF на сервере. У upstream фиксированный набор путей;
+редиректы не выполняются. Ответы приватные, `Cache-Control: private, no-store`.
+Транспорт проверяет статусы, verdict, конечные неотрицательные времена,
+форму findings, 1–3 JPEG evidence frames и соответствие `violation` непустому списку.
+Неизвестный тип события остаётся доступен как исходный тип и описание.
+Повреждённый кадр имеет отдельное UI-состояние.
+
+Загрузка проходит потоком `Request.body → TransformStream → fetch`, без
+`formData()` и полного копирования видео в памяти Next.js. Поток ограничен лимитом
+файла плюс 1 MiB на multipart. Backend дополнительно проверяет точный размер
+файла, единственное поле `file`, расширение и MOV-контейнер. POST требует тот же
+Origin, что origin страницы приложения; при ручных HTTP-проверках его нужно указать явно.
+
+Процент относится к передаче файла из браузера в BFF. 100% не означает завершение
+анализа или подтверждённое принятие backend. Пока нет ответа `202`, интерфейс
+ожидает подтверждения. POST автоматически не повторяется: после сетевого обрыва
+или timeout сервис мог принять файл, а новая отправка создаст другое задание.
+
+Polling работает последовательно, останавливается на `done`/`failed`, отменяется
+при смене задания и скрытой вкладке, возобновляется при возвращении. Временные
+ошибки чтения получают backoff; `401`/`403`/`404` требуют явного действия.
+После пяти минут наблюдения автоматическая проверка приостанавливается; задание
+может продолжить работу на сервере. Счётчик отражает наблюдение в этой вкладке,
+а не неизвестное время работы модели.
+
+Таймауты BFF: health/readiness — 4 секунды, чтение задания — 12 секунд,
+приём загрузки — 180 секунд. Браузер ждёт ответ загрузки до 185 секунд.
+Хостинг должен поддерживать Node.js route handlers, потоковую передачу и выбранные
+размеры/таймауты; для небольших serverless upload-лимитов потребуется другая
+согласованная схема загрузки, а не только повышение `MAX_UPLOAD_MB`.
+
+## Просмотр, локальные данные и ограничения
+
+`/` содержит загрузку и недавние задания. `/review/[jobId]` можно открыть напрямую
+или восстановить по ID. Выбор события связан со списком, временной шкалой,
+описанием и кадрами. При доступном локальном видео выбор переводит плеер к отметке.
+JSON скачивается только по действию пользователя.
+
+История «На этом устройстве» сохраняет в localStorage не больше 20 записей:
+`job_id`, имя файла, время создания и последнее известное состояние. Исходные видео,
+полные результаты, base64 кадров и ключи там не хранятся. Историю можно очистить;
+это не удаляет задания backend. В среде без localStorage список работает в памяти.
+
+Выбранный видеофайл остаётся в памяти текущей вкладки. После перезагрузки результат
+и кадры запрашиваются из API, а для воспроизведения нужно снова выбрать исходный файл.
+Backend не возвращает его URL или хеш, поэтому соответствие повторно выбранного
+файла заданию нельзя подтвердить автоматически. Некоторые MOV-кодеки не поддерживаются
+браузером: ошибка preview не запрещает отправку корректного файла на анализ.
+
+Срок хранения задаётся backend (по умолчанию 24 часа). Неизвестные и истёкшие задания
+возвращают `404`; локальная история не гарантирует наличие результата на сервере.
+
+Текущий R3D-18 scanner возвращает **бинарные кандидаты без типа действия**. Он ещё
+не является типизированным `Analyzer`, подходящим к публичному `Finding`.
+Frontend не назначает статью закона по бинарному verdict, не выдумывает confidence
+и не превращает отсутствие кадров в доказательство отсутствия действия.
+В текущем API Finding нет нормативных ссылок; они не синтезируются интерфейсом.
+Граница интеграции описана в [full-video-inference.md](../docs/full-video-inference.md).
+
+## Доступ и приватность
+
+Проект предназначен для локального или закрытого datathon-демо. BFF скрывает общий
+backend key и проверяет origin POST, но **не авторизует пользователя**. У endpoints
+нет пользовательских аккаунтов, проверки владельца задания или разграничения доступа.
+Не публикуйте BFF с реальными видео в открытый интернет без отдельного слоя доступа,
+TLS и согласованных ограничений сети/прокси. Для локального запуска используйте
+`--hostname 127.0.0.1`, как в инструкции выше.
+
+Видео и evidence не отправляются в сторонние AI/CDN/image-optimization сервисы.
+Банковские кадры не входят в `public/`, fixtures или Git. Скриншоты реальной сессии
+и скачанные JSON могут содержать чувствительные данные; храните их локально.
+Публичные demo assets содержат только синтетические схемы.
+
+## Структура и проверки
+
+- `app/`: маршруты, layout, страницы и server-only BFF.
+- `features/upload/`: выбор, предпросмотр, проверка и отправка файла.
+- `features/analysis-job/`: жизненный цикл задания и polling.
+- `features/review/`: presentation model, timeline, просмотр событий и кадров.
+- `features/recent-jobs/`: ограниченная локальная история метаданных.
+- `components/ui/`: общие доступные элементы интерфейса.
+- `lib/contracts.ts`: wire types и runtime validation.
+- `lib/client.ts`: браузерный транспорт; `lib/server/`: конфигурация, upstream и демо.
+- `tests/`: контракты, сетевые границы и поведение сценариев.
+
+```powershell
+npm run lint
+npm run typecheck
+npm test
+npm run build
+npm run start -- --hostname 127.0.0.1
+```
+
+### Браузерные проверки Playwright
+
+Установите браузер для тестов:
+
+```powershell
+npx playwright install chromium
+npm run test:e2e
+```
+
+Вместо загрузки Chromium можно использовать уже установленный Google Chrome:
+
+```powershell
+$env:PW_BROWSER_CHANNEL = "chrome"
+npm run test:e2e
+```
+
+Если frontend ещё не запущен, Playwright поднимает dev server на `127.0.0.1:3000`
+с явно установленным `DEMO_ENABLED=true`. Если локальный сервер уже работает,
+тесты используют его: включите demo самостоятельно и перезапустите сервер.
+Синтетические сценарии не требуют backend. Проверка неизвестного задания пропускается,
+если FastAPI недоступен.
+
+Опциональная проверка настоящей HTTP-загрузки требует явно включённого **mock** backend,
+совпадающих ключей и безопасного MOV длительностью не меньше 5 секунд, который браузер
+может воспроизвести. В `FORTEBANK_MOCK_FIXTURE_PATH` задайте валидный JSON AnalysisResult:
+`verdict=violation`, два Finding на 2-й и 4-й секунде, каждый с 1–3 синтетическими JPEG
+в `evidence_frames`. Тест ожидает второй таймкод 4 секунды.
+
+```powershell
+$env:E2E_MOV_PATH = "D:\absolute\path\synthetic-review.mov"
+npm run test:e2e
+```
+
+Без `E2E_MOV_PATH` этот интеграционный тест пропускается. Не используйте банковские
+записи для тестовых screenshots/traces. `test-results/` и `playwright-report/`
+содержат локальные артефакты тестов и исключены из Git.
+Измеренные HTTP-проверки текущей реализации описаны в [VERIFICATION.md](VERIFICATION.md).
+
+Для ручной проверки пройдите upload, processing, три вида результата, failed,
+backend offline и provider unavailable. Проверьте прямую ссылку на задание,
+поиск и выбор событий, близкие маркеры, увеличение кадра, клавиатурную навигацию,
+узкий экран и уменьшение анимаций через `prefers-reduced-motion`.
+
+Автоматические проверки используют синтетические данные. Успешная проверка демо
+подтверждает работу интерфейса, а не качество реальной модели.

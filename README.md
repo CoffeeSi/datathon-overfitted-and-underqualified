@@ -31,6 +31,15 @@ The main `requirements.txt` includes this file, so a full project installation
 also installs the backend dependencies. SQLite is provided by Python; ML model
 dependencies belong to the selected analyzer and are not included here.
 
+## Frontend — Фокус
+
+The research-review UI lives in [`frontend/`](frontend/README.md): MOV upload,
+job status, synchronized event timeline, evidence frames and local recent-job metadata.
+See [frontend setup and configuration](frontend/README.md) for npm commands,
+server-only API credentials and explicitly enabled synthetic examples. A typed ML
+Analyzer is still required for real findings; the UI preserves the unavailable-provider
+state and never substitutes demo results for a failed analysis.
+
 ## ML dependencies on Brev L4
 
 The current requirements and `.python-version` match the local Python 3.14.5
