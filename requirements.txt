@@ -1,11 +1,14 @@
-numpy
-pandas
-matplotlib
-seaborn
-opencv-python
-tqdm
-scikit-learn
-pyarrow
-jupyterlab
-ipykernel
+# Direct dependency versions from the current local .venv (Python 3.14.5).
+numpy==2.5.4
+pandas==3.0.6
+matplotlib==3.11.2
+seaborn==0.13.2
+opencv-python==5.0.0.93
+tqdm==4.70.1
+scikit-learn==1.9.1
+pyarrow==26.0.0
+jupyterlab==4.6.4
+ipykernel==7.4.0
+PyYAML==6.0.3
+python-dotenv==1.2.4
 -r requirements-backend.txt

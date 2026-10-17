@@ -1,5 +1,5 @@
-# NVIDIA Brev L4 / Linux: CUDA 12.6 wheels for the Python version in .python-version.
+# CUDA 12.6 wheels matching the current local environment (see README for Python compatibility).
 # Install general project dependencies from requirements.txt first.
 --index-url https://download.pytorch.org/whl/cu126
-torch==2.13.0
-torchvision==0.28.0
+torch==2.13.0+cu126
+torchvision==0.28.0+cu126

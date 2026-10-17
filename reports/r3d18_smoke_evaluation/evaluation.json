@@ -1,0 +1,821 @@
+{
+  "created_utc": "2026-10-17T17:52:59.299774+00:00",
+  "checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_smoke\\best.pt",
+  "checkpoint_sha256": "0da7d29c0e0a6a6891bf1bb5f123a89b00a3c8bb56196307e80a41a11ca67c47",
+  "epoch": 1,
+  "saved_config": {
+    "seed": 42,
+    "device": "cuda",
+    "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+    "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+    "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+    "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_smoke",
+    "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+    "weights": "KINETICS400_V1",
+    "freeze_backbone": true,
+    "frames": 16,
+    "window_sec": 4.0,
+    "negative_windows": 1,
+    "epochs": 1,
+    "batch_size": 2,
+    "num_workers": 0,
+    "cpu_threads": 4,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001
+  },
+  "effective_config": {
+    "seed": 42,
+    "device": "cuda",
+    "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+    "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+    "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+    "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_smoke",
+    "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+    "weights": "KINETICS400_V1",
+    "freeze_backbone": true,
+    "frames": 16,
+    "window_sec": 4.0,
+    "negative_windows": 1,
+    "epochs": 1,
+    "batch_size": 2,
+    "num_workers": 0,
+    "cpu_threads": 4,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001
+  },
+  "data_manifest": {
+    "events_sha256": "2ec181a7af08257f882aeb006b6f98b5ccb0f204470adb92d252616a67b1e062",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "evaluation": "annotation-centred window classification; provisional within-room split",
+    "independent_evaluation": false,
+    "videos": [
+      {
+        "clip_id": "X-1",
+        "split": "train",
+        "sha256": "8911a9219b9433091824e553a70bb80335f075fd8ac982d2062d2ecf023c16bc",
+        "source_clip_ids": [
+          "X-1"
+        ],
+        "event_times": [
+          22.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-2",
+        "split": "validation",
+        "sha256": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+        "source_clip_ids": [
+          "X-2"
+        ],
+        "event_times": [
+          10.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-3",
+        "split": "train",
+        "sha256": "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+        "source_clip_ids": [
+          "X-3"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-4",
+        "split": "train",
+        "sha256": "5385be9420e6a70547d6bcfd0b13d60f9c0738877645afa277d09550a96b8445",
+        "source_clip_ids": [
+          "X-4",
+          "X-47"
+        ],
+        "event_times": [
+          57.0,
+          68.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-5",
+        "split": "train",
+        "sha256": "1f5840bff58f298e89c4afa00cb1c18f6dafc5c4096c251d9b507604ebefe906",
+        "source_clip_ids": [
+          "X-5",
+          "X-48"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-8",
+        "split": "train",
+        "sha256": "6a53e10acdcf52396ad5b1697eead32d8322c0911d792523a5c33fe5b388f4e7",
+        "source_clip_ids": [
+          "X-8"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-10",
+        "split": "validation",
+        "sha256": "57a0e46c7a45f0e831f61d9c80722fefe4b74dbcfe1d3031ff58307d481f9a5c",
+        "source_clip_ids": [
+          "X-10"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-11",
+        "split": "train",
+        "sha256": "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+        "source_clip_ids": [
+          "X-11"
+        ],
+        "event_times": [
+          18.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-12",
+        "split": "train",
+        "sha256": "955755baf54418b48ea645dcd98e7e8dcca1d1e227e9b286a9427062db304fd4",
+        "source_clip_ids": [
+          "X-12"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-13",
+        "split": "train",
+        "sha256": "a37930cf119bb691be77d8624b18333b04d9c67066a7f4627d63e3208dfa6057",
+        "source_clip_ids": [
+          "X-13"
+        ],
+        "event_times": [
+          47.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-14",
+        "split": "validation",
+        "sha256": "7d6890ecb4a2b28bbdd3b61b6711566eee84a53ab3439c40cd9b6a3a6714c681",
+        "source_clip_ids": [
+          "X-14"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-15",
+        "split": "train",
+        "sha256": "69caf59620fcd80bedcb664514730ab38f2f800da27000a8e037d7440be5dc7a",
+        "source_clip_ids": [
+          "X-15"
+        ],
+        "event_times": [
+          15.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-16",
+        "split": "validation",
+        "sha256": "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+        "source_clip_ids": [
+          "X-16"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-17",
+        "split": "train",
+        "sha256": "0378b8026b2e6afd1775a5d0fdd12dd09c491785b626e9c20428f7dc6bd59364",
+        "source_clip_ids": [
+          "X-17"
+        ],
+        "event_times": [
+          7.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-18",
+        "split": "train",
+        "sha256": "90607b0b0cb772fcf29b0c7e0e56fa6af36da6fac0efe93b8a616b5de94a156c",
+        "source_clip_ids": [
+          "X-18"
+        ],
+        "event_times": [
+          20.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-19",
+        "split": "train",
+        "sha256": "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+        "source_clip_ids": [
+          "X-19"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-20",
+        "split": "train",
+        "sha256": "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+        "source_clip_ids": [
+          "X-20"
+        ],
+        "event_times": [
+          5.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-21",
+        "split": "train",
+        "sha256": "efd876a04224cac781ac64bf5d6e107ded67340b7b7715fd9ca3408b240a1075",
+        "source_clip_ids": [
+          "X-21"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-22",
+        "split": "train",
+        "sha256": "c9a30d44907e4a41b3a8ccf101774cd2e0804de20927bfbc9e1ccba1f2326b78",
+        "source_clip_ids": [
+          "X-22"
+        ],
+        "event_times": [
+          14.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-23",
+        "split": "train",
+        "sha256": "b637677ef5a7f0fa54d9f116ce6493cf74a4c99b8149a9c9916b96ef257535bd",
+        "source_clip_ids": [
+          "X-23"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-24",
+        "split": "train",
+        "sha256": "c175a683749401d5a9ecf6f1c188b64fa8a09543f41482c1e4eb2232255715d3",
+        "source_clip_ids": [
+          "X-24"
+        ],
+        "event_times": [
+          8.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-25",
+        "split": "train",
+        "sha256": "901f61cf1a1b8754dda56466308c19fc203a1a4c0e85d1e7827849d34e2d52f0",
+        "source_clip_ids": [
+          "X-25"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-26",
+        "split": "train",
+        "sha256": "e3a00b6e0f38b1d9b5498140f14906c71e204359262a90ce7a9974d64bf081e9",
+        "source_clip_ids": [
+          "X-26"
+        ],
+        "event_times": [
+          9.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-27",
+        "split": "train",
+        "sha256": "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+        "source_clip_ids": [
+          "X-27"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-28",
+        "split": "validation",
+        "sha256": "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+        "source_clip_ids": [
+          "X-28"
+        ],
+        "event_times": [
+          7.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-29",
+        "split": "train",
+        "sha256": "b9bfb76ac8ea47eb368fc78a2f6370e4d98e79185972f63cf301ee22f12b5941",
+        "source_clip_ids": [
+          "X-29"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-30",
+        "split": "train",
+        "sha256": "05af66ce27b83d7c10c5d33b6f1847ec042c01ed21afdcbd43a13abcefd28199",
+        "source_clip_ids": [
+          "X-30"
+        ],
+        "event_times": [
+          13.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-31",
+        "split": "validation",
+        "sha256": "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+        "source_clip_ids": [
+          "X-31"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-32",
+        "split": "train",
+        "sha256": "bcc277cbf1a36245156b2bb9a0e0b826432390b42040c0b82201a8c21ab23ce9",
+        "source_clip_ids": [
+          "X-32"
+        ],
+        "event_times": [
+          5.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-33",
+        "split": "train",
+        "sha256": "209e8aaca88df59064e5f28b3bcc489fee3eea9eb920889b69c03c83d52430c6",
+        "source_clip_ids": [
+          "X-33"
+        ],
+        "event_times": [
+          6.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-34",
+        "split": "validation",
+        "sha256": "f3e351bea71150f4e8c76e2c8f0656a4e92063319d7cd39e264078c5ba9139c3",
+        "source_clip_ids": [
+          "X-34"
+        ],
+        "event_times": [
+          13.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-35",
+        "split": "train",
+        "sha256": "26430119e074d6f0eb5dbc7ec3e26bbc31cf18903265bb4372bd7d7104908640",
+        "source_clip_ids": [
+          "X-35"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-37",
+        "split": "train",
+        "sha256": "ac4cf04844c0aa08a5e19f5f7fe984f1477943294922d6ef77bdc5b88b97160e",
+        "source_clip_ids": [
+          "X-37"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-38",
+        "split": "validation",
+        "sha256": "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+        "source_clip_ids": [
+          "X-38"
+        ],
+        "event_times": [
+          33.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-39",
+        "split": "validation",
+        "sha256": "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+        "source_clip_ids": [
+          "X-39"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-40",
+        "split": "train",
+        "sha256": "6a81739ced0efdcd4a4feb76ea16562a20ceb53a2232a801528716c450366c9f",
+        "source_clip_ids": [
+          "X-40"
+        ],
+        "event_times": [
+          17.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-43",
+        "split": "train",
+        "sha256": "39e28d7be01cdb090ede1881ce3ef704fa413271deb69d6735c1953f340d6069",
+        "source_clip_ids": [
+          "X-43"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-44",
+        "split": "validation",
+        "sha256": "9774ed882153af3ba1a7e71c9b9249619e2b3a97ae336aad6143369802ca3522",
+        "source_clip_ids": [
+          "X-44"
+        ],
+        "event_times": [
+          16.0
+        ],
+        "label": 1
+      },
+      {
+        "clip_id": "X-45",
+        "split": "train",
+        "sha256": "524bf9ff2d5e81211dbbeff73129dbb5f3a5e5e35a64f443f53e16b1c2d471c7",
+        "source_clip_ids": [
+          "X-45"
+        ],
+        "event_times": [],
+        "label": 0
+      },
+      {
+        "clip_id": "X-46",
+        "split": "train",
+        "sha256": "66fc5d28c2371592f9260305589bdc86636fdd2ebe7a7ec976eec00a23d43df4",
+        "source_clip_ids": [
+          "X-46"
+        ],
+        "event_times": [
+          11.0
+        ],
+        "label": 1
+      }
+    ],
+    "windows": {
+      "train": [
+        {
+          "clip_id": "X-1",
+          "center_sec": 22.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-3",
+          "center_sec": 9.999944351697273,
+          "label": 0
+        },
+        {
+          "clip_id": "X-4",
+          "center_sec": 57.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-4",
+          "center_sec": 68.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-5",
+          "center_sec": 35.78331002331002,
+          "label": 0
+        },
+        {
+          "clip_id": "X-8",
+          "center_sec": 18.99998538011696,
+          "label": 0
+        },
+        {
+          "clip_id": "X-11",
+          "center_sec": 18.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-12",
+          "center_sec": 21.133307024467246,
+          "label": 0
+        },
+        {
+          "clip_id": "X-13",
+          "center_sec": 47.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-15",
+          "center_sec": 15.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-17",
+          "center_sec": 7.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-18",
+          "center_sec": 20.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-19",
+          "center_sec": 28.69997093023256,
+          "label": 0
+        },
+        {
+          "clip_id": "X-20",
+          "center_sec": 5.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-21",
+          "center_sec": 9.783247863247864,
+          "label": 0
+        },
+        {
+          "clip_id": "X-22",
+          "center_sec": 14.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-23",
+          "center_sec": 9.1165749235474,
+          "label": 0
+        },
+        {
+          "clip_id": "X-24",
+          "center_sec": 8.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-25",
+          "center_sec": 15.833315789473685,
+          "label": 0
+        },
+        {
+          "clip_id": "X-26",
+          "center_sec": 9.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-27",
+          "center_sec": 13.199957859249896,
+          "label": 0
+        },
+        {
+          "clip_id": "X-29",
+          "center_sec": 8.633203883495145,
+          "label": 0
+        },
+        {
+          "clip_id": "X-30",
+          "center_sec": 13.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-32",
+          "center_sec": 5.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-33",
+          "center_sec": 6.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-35",
+          "center_sec": 28.366637254901963,
+          "label": 0
+        },
+        {
+          "clip_id": "X-37",
+          "center_sec": 7.916560958421424,
+          "label": 0
+        },
+        {
+          "clip_id": "X-40",
+          "center_sec": 17.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-43",
+          "center_sec": 11.666618979494515,
+          "label": 0
+        },
+        {
+          "clip_id": "X-45",
+          "center_sec": 16.649933065595718,
+          "label": 0
+        },
+        {
+          "clip_id": "X-46",
+          "center_sec": 11.0,
+          "label": 1
+        }
+      ],
+      "validation": [
+        {
+          "clip_id": "X-2",
+          "center_sec": 10.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-10",
+          "center_sec": 7.766666666666667,
+          "label": 0
+        },
+        {
+          "clip_id": "X-14",
+          "center_sec": 71.24998829861924,
+          "label": 0
+        },
+        {
+          "clip_id": "X-16",
+          "center_sec": 11.349950980392158,
+          "label": 0
+        },
+        {
+          "clip_id": "X-28",
+          "center_sec": 7.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-31",
+          "center_sec": 11.883263009845288,
+          "label": 0
+        },
+        {
+          "clip_id": "X-34",
+          "center_sec": 13.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-38",
+          "center_sec": 33.0,
+          "label": 1
+        },
+        {
+          "clip_id": "X-39",
+          "center_sec": 39.349978804578214,
+          "label": 0
+        },
+        {
+          "clip_id": "X-44",
+          "center_sec": 16.0,
+          "label": 1
+        }
+      ]
+    }
+  },
+  "protocol": "within_room_unique_video; annotation-centred window aggregation",
+  "aggregation": "max probability per canonical video",
+  "threshold": 0.5,
+  "confusion_matrix_order": [
+    "no_violation",
+    "violation"
+  ],
+  "confusion_matrix_axes": "rows=true; columns=predicted",
+  "video_metrics": {
+    "videos": 10,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "confusion_matrix": [
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        5
+      ]
+    ]
+  },
+  "window_metrics": {
+    "loss": 0.7603230059146882,
+    "windows": 10,
+    "accuracy": 0.5,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "confusion_matrix": [
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        5
+      ]
+    ]
+  },
+  "errors": [
+    {
+      "clip_id": "X-10",
+      "label": 0,
+      "probability": 0.657528281211853,
+      "prediction": 1,
+      "windows": 1,
+      "outcome": "FP"
+    },
+    {
+      "clip_id": "X-14",
+      "label": 0,
+      "probability": 0.5544756054878235,
+      "prediction": 1,
+      "windows": 1,
+      "outcome": "FP"
+    },
+    {
+      "clip_id": "X-16",
+      "label": 0,
+      "probability": 0.7404370307922363,
+      "prediction": 1,
+      "windows": 1,
+      "outcome": "FP"
+    },
+    {
+      "clip_id": "X-31",
+      "label": 0,
+      "probability": 0.7694379687309265,
+      "prediction": 1,
+      "windows": 1,
+      "outcome": "FP"
+    },
+    {
+      "clip_id": "X-39",
+      "label": 0,
+      "probability": 0.7813191413879395,
+      "prediction": 1,
+      "windows": 1,
+      "outcome": "FP"
+    }
+  ],
+  "timing": {
+    "preparation_sec": 1.5888961000018753,
+    "processing_sec": 3.771140899974853,
+    "mean_sec_per_video": 0.3771140899974853,
+    "mean_sec_per_window": 0.3771140899974853,
+    "videos_per_sec": 2.6517174152964382,
+    "scope": "single cold pass: decode + preprocessing + transfer + inference + window metrics; no full-video scan",
+    "batch_size": 2,
+    "warmup_passes": 0
+  },
+  "environment": {
+    "python": "3.14.5",
+    "torch": "2.13.0+cu126",
+    "torchvision": "0.28.0+cu126",
+    "device": "cuda",
+    "cpu": "AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",
+    "cpu_threads": 4,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU"
+  },
+  "limitations": [
+    "Known positive timestamps determine evaluated windows; no blind full-video detection",
+    "Shared room/people and unknown sessions may cross subsets",
+    "Validation was used for checkpoint selection; no independent held-out test",
+    "Max aggregation can increase false alarms when the number of windows increases",
+    "Single timing pass is not a latency benchmark; per-video time is an amortized mean"
+  ]
+}

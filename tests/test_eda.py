@@ -1,4 +1,4 @@
-import ast
+import sys
 import json
 import tempfile
 import unittest
@@ -9,29 +9,27 @@ import cv2
 import numpy as np
 import pandas as pd
 
-# Load imports/constants and the definition cells, without running the pipeline.
-notebook_path = Path(__file__).resolve().parents[1] / "notebooks" / "01_eda.ipynb"
-notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
-definition_cells = []
-for cell in notebook["cells"]:
-    tags = cell.get("metadata", {}).get("tags", [])
-    source = "".join(cell["source"])
-    if "eda-imports" in tags:
-        tree = ast.parse(source)
-        tree.body = [node for node in tree.body
-                     if isinstance(node, (ast.Import, ast.ImportFrom))
-                     or (isinstance(node, ast.Assign)
-                         and any(isinstance(t, ast.Name) and t.id == "LABELS" for t in node.targets))]
-        exec(compile(tree, str(notebook_path), "exec"), globals())
-    elif "eda-definitions" in tags:
-        definition_cells.append(cell)
-        exec(compile(source, str(notebook_path), "exec"), globals())
-if not definition_cells:
-    raise RuntimeError("No EDA definition cells found")
-
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from overfitted_underqualified.eda.video import clip_id_from_name, inspect_video, read_frames
+from overfitted_underqualified.eda.annotations import parse_timecode, validate_dataset
+from overfitted_underqualified.eda.split import build_groups, propose_split, duplicate_mapping, training_video_table, preserve_split
+from overfitted_underqualified.eda.plots import window_timestamps
 
 
 class EdaChecks(unittest.TestCase):
+    def test_existing_split_is_checked_without_rewriting(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "split.csv"
+            proposed = pd.DataFrame({"clip_id": ["X-1", "X-2"], "split": ["train", "validation"]})
+            preserve_split(proposed, path)
+            original = path.read_bytes()
+            preserve_split(proposed, path)
+            self.assertEqual(path.read_bytes(), original)
+            proposed.loc[0, "split"] = "validation"
+            with self.assertRaises(AssertionError):
+                preserve_split(proposed, path)
+            self.assertEqual(path.read_bytes(), original)
+
     def test_timecodes_reject_invalid_components(self):
         for value in ("00:60", "-1", "abc", "1:99:00", "inf"):
             self.assertTrue(np.isnan(parse_timecode(value)))
