@@ -92,7 +92,7 @@ The case specifies a `failed` job status but does not define its response body o
 
 ## Proposed event scope
 
-The training labels are binary, while [video-labels-split.md](video-labels-split.md) contains provisional descriptions and candidate categories for the 42 clips. These annotations are a starting point, not a final event taxonomy. Normalize similar visible observations into a small, consistent set of `observed_event_type` values before using them as ML outputs. Keep `candidate_violation_type` and source mapping as separate, provisional backend interpretations. Do not train the model to predict a legal conclusion from a visual label.
+The training labels are binary, while [video-labels-split.md](video-labels-split.md) contains provisional descriptions and candidate categories for the 42 clips. The event descriptions and candidate categories were prepared from supplied text descriptions and have not been independently verified against the footage. They are exploratory notes, not a final event taxonomy or multiclass targets. Human verification against the videos and normalization into a consistent taxonomy are required before using event types as ML outputs. Keep `candidate_violation_type` and source mapping as separate, provisional backend interpretations. Do not train the model to predict a legal conclusion from a visual label.
 
 Include an event type only when all of these are true:
 

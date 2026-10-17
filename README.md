@@ -60,13 +60,28 @@ Start with `notebooks/01_eda.ipynb`. Put the open-set videos into `open/` (or `d
 ## EDA inputs and outputs
 
 The notebook also discovers videos in `data/raw/videos/`. Set `VIDEO_DIR` to use an explicit directory.
-Run the notebook with the repository's `.venv` interpreter. Checks are implemented in
-`src/overfitted_underqualified/eda.py`.
+Run the notebook with the repository's `.venv` interpreter, from top to bottom.
+EDA functions are defined in the sections that use them: video reading, annotation
+validation, plots, contact sheets and scene grouping. Shared frame reading is defined
+in the first section because video inspection also uses it. There is no separate
+EDA Python module. Tests load imports and the `eda-definitions` cells without
+executing the video analysis pipeline.
 
 - `data/annotations/events.csv` is the editable annotation source. EDA never overwrites it.
+  `source_label` and `timecode` preserve the supplied supervision. Descriptions, event tags, candidate categories and rule references
+  are provisional interpretations of the supplied text, used only for exploration.
+  They are not verified multiclass targets or classifier input features. The former
+  `confidence` and `review_status` columns have been removed.
 - `data/processed/validation_issues.csv` lists missing files, duplicate IDs, invalid timestamps,
-  decoding problems, exact copies and conflicting duplicate labels.
+  decoding problems and conflicting duplicate labels. Failed MOV seeks are retried by
+  sequential decoding against frame timestamps before reporting an end-frame warning.
 - `data/processed/events_enriched.csv` combines eligible annotations with current video metadata.
+  It keeps every source record and adds `canonical_clip_id` for identical files.
+- `data/processed/duplicate_map.csv` maps source IDs to canonical video IDs by SHA-256;
+  handled copies are informational entries in `dataset_notes.csv`.
+- `data/processed/training_videos.csv` contains one row per unique video, with all original
+  IDs in `source_clip_ids` and all distinct event markers in `event_times_sec` (JSON arrays).
+  Use this table for video-level sampling; retain `events_enriched.csv` for event annotations.
 - `reports/figures/event_frames/` and `normal_frames/` contain contact sheets for both classes.
   `data/processed/frame_extraction.csv` records whether every requested frame was decoded.
 - `data/processed/scene_candidates.csv` lists visually similar scene candidates; these are heuristics
@@ -74,7 +89,8 @@ Run the notebook with the repository's `.venv` interpreter. Checks are implement
 - Copy `data/processed/scenes_template.csv` to `data/annotations/scenes.csv` and fill in camera,
   session or scene groups after reviewing the footage. IDs refer to the same camera/session across clips.
   Set `reviewed=true` only after checking each clip. This optional source file is never overwritten.
-- `data/processed/split_proposal.csv` proposes a reproducible train/validation split. Exact copies,
+- `data/processed/split_proposal.csv` proposes a reproducible train/validation split of canonical
+  video IDs from `training_videos.csv`. Exact copies,
   candidate scenes and known cameras/sessions stay together. The proposal is provisional until scenes
   have been reviewed. If no suitable group split exists, the file is empty and the reason is reported.
   All clips from a group must remain together in downstream frame/segment datasets.
