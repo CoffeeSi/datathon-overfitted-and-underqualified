@@ -1,0 +1,327 @@
+{
+  "version": "1.1",
+  "status": "p1_accepted",
+  "reviewed_on": "2026-10-18",
+  "visible_events_source": "data/annotations/events.csv",
+  "review_doc": "docs/rules-catalog-review.md",
+  "p1": {
+    "role": "Data Analyst / Rules Researcher",
+    "acceptance": "Each api_supported event has a named public source, official URL, locator, quoted provision, and applicability conditions. Claims without a public source stay in excluded. Binary source_label is not an event type.",
+    "text_checked_via": "https://adilet.zan.kz"
+  },
+  "disclaimer": "This catalog maps visible cashier events to Kazakhstan public rules for human review. It is not a legal opinion, disciplinary finding, or proof that a clip is a violation. A binary source_label of violation does not by itself select an event type. Inference may emit only api_supported=true types, and only when the listed visual conditions hold.",
+  "sources": [
+    {
+      "id": "nb_231",
+      "short_name": "Правила НБ РК №231",
+      "title": "Правила осуществления кассовых операций и операций по инкассации банкнот, монет и ценностей в банках второго уровня, филиалах банков-нерезидентов Республики Казахстан, Национальном операторе почты и юридических лицах, исключительной деятельностью которых является инкассация банкнот, монет и ценностей",
+      "adopted": "постановление Правления Национального Банка РК от 29 ноября 2019 года № 231",
+      "registry_no": "19680",
+      "official_url": "https://adilet.zan.kz/rus/docs/V1900019680",
+      "text_checked_as_of": "16.03.2026"
+    },
+    {
+      "id": "nb_14",
+      "short_name": "Правила НБ РК №14",
+      "title": "Правила организации охраны и устройства помещений банков второго уровня, филиалов банков-нерезидентов Республики Казахстан, Национального оператора почты, юридических лиц, исключительной деятельностью которых является инкассация банкнот, монет и ценностей, и юридических лиц, осуществляющих деятельность исключительно через обменные пункты на основании лицензии Национального Банка Республики Казахстан на обменные операции с наличной иностранной валютой",
+      "adopted": "постановление Правления Национального Банка РК от 24 февраля 2020 года № 14",
+      "registry_no": "20075",
+      "official_url": "https://adilet.zan.kz/rus/docs/V2000020075",
+      "text_checked_as_of": "24.12.2024"
+    },
+    {
+      "id": "law_191",
+      "short_name": "Закон №191-IV",
+      "title": "О противодействии легализации (отмыванию) доходов, полученных преступным путем, финансированию терроризма и финансированию распространения оружия массового уничтожения",
+      "adopted": "Закон Республики Казахстан от 28 августа 2009 года № 191-IV",
+      "official_url": "https://adilet.zan.kz/rus/docs/Z090000191_",
+      "text_checked_as_of": "2026-10-17",
+      "note": "Cited for X-17 together with №231 п. 19 пп. 1 when a cash bag is received and identity/authority checks are not visible. Article 7 only sets the timing of CDD, not a separate cashier gesture."
+    }
+  ],
+  "provisions": [
+    {
+      "id": "nb_231_p12",
+      "source_id": "nb_231",
+      "locator": "п. 12",
+      "official_url": "https://adilet.zan.kz/rus/docs/V1900019680#z12",
+      "text": "Хранение личных вещей, наличных денег и ценностей работников банка осуществляется вне кассового узла в порядке, установленном внутренними документами банка. Допускается внос работниками банка в кассовый узел лекарственных средств, медицинских изделий и средств связи, не имеющих функции фото и видео фиксации."
+    },
+    {
+      "id": "nb_231_p19_1",
+      "source_id": "nb_231",
+      "locator": "п. 19, пп. 1",
+      "official_url": "https://adilet.zan.kz/rus/docs/V1900019680#z19",
+      "text": "Кассовый работник банка проводит визуальную идентификацию клиента, вносящего наличные деньги, с документом, удостоверяющим его личность, либо данными, подтверждающими (идентифицирующими) личность клиента, полученными посредством сервиса цифровых документов."
+    },
+    {
+      "id": "nb_231_p20_1",
+      "source_id": "nb_231",
+      "locator": "п. 20, абз. 1",
+      "official_url": "https://adilet.zan.kz/rus/docs/V1900019680#z20",
+      "text": "Наличные деньги принимаются и пересчитываются кассовым работником в присутствии клиента."
+    },
+    {
+      "id": "nb_231_p20_2",
+      "source_id": "nb_231",
+      "locator": "п. 20, абз. 2, предл. 2",
+      "official_url": "https://adilet.zan.kz/rus/docs/V1900019680#z20",
+      "text": "На рабочем месте кассового работника находятся наличные деньги клиента. Все ранее принятые наличные деньги хранятся в специальных устройствах, находящихся на рабочем месте кассового работника, закрывающихся на ключ, предназначенных для хранения наличных денег (металлический шкаф, сейф, тележка, ящики стола, тумба)."
+    },
+    {
+      "id": "nb_231_p22",
+      "source_id": "nb_231",
+      "locator": "п. 22",
+      "official_url": "https://adilet.zan.kz/rus/docs/V1900019680#z22",
+      "text": "Кассовому работнику не допускается покидать рабочее место до окончания обслуживания клиента."
+    },
+    {
+      "id": "nb_231_p24_2",
+      "source_id": "nb_231",
+      "locator": "п. 24, пп. 2",
+      "official_url": "https://adilet.zan.kz/rus/docs/V1900019680#z24",
+      "text": "Кассовый работник осуществляет регистрацию суммы принимаемых наличных денег в порядке, установленном внутренними документами банка."
+    },
+    {
+      "id": "nb_231_p42",
+      "source_id": "nb_231",
+      "locator": "п. 42",
+      "official_url": "https://adilet.zan.kz/rus/docs/V1900019680#z42",
+      "text": "Кассовые операции по пересчету, сортировке и упаковке наличных денег осуществляются кассовым работником в присутствии контролирующего работника, за исключением случаев совершения кассовых операций по приему и выдаче наличных денег клиенту."
+    },
+    {
+      "id": "nb_231_p80",
+      "source_id": "nb_231",
+      "locator": "п. 80",
+      "official_url": "https://adilet.zan.kz/rus/docs/V1900019680#z80",
+      "text": "Порядок хранения, выдачи и передачи ценностей, печатей, ключей и кодов от электронных и механических замков кладовой и (или) сейфовой комнаты, пломбираторов, клише, именных штампов и ключей от специальных устройств, находящихся на рабочем месте кассового работника, предназначенных для хранения наличных денег (металлический шкаф, сейф, тележка, ящики стола), определяется внутренними документами банка, обеспечивающими исключение их несанкционированного использования."
+    },
+    {
+      "id": "nb_14_p8",
+      "source_id": "nb_14",
+      "locator": "п. 8",
+      "official_url": "https://adilet.zan.kz/rus/docs/V2000020075#z8",
+      "text": "Кассовый узел подлежит изолированию от других производственных, подсобных, подвальных и служебных помещений одним закрывающимся служебным входом. Допускается оборудовать дополнительный закрывающийся вход для осуществления погрузочно-разгрузочных работ с наличными деньгами и ценностями в боксе или на погрузочно-разгрузочной площадке."
+    },
+    {
+      "id": "law_191_art5",
+      "source_id": "law_191",
+      "locator": "ст. 5",
+      "official_url": "https://adilet.zan.kz/rus/docs/Z090000191_#z5",
+      "text": "Надлежащая проверка включает идентификацию клиента (представителя) и бенефициарного собственника. В отношении представителя дополнительно проверяются полномочия действовать от имени и (или) в интересах клиента. Меры применяются в случаях, указанных в пункте 2 статьи 5, с изъятиями пункта 3-1."
+    },
+    {
+      "id": "law_191_art7",
+      "source_id": "law_191",
+      "locator": "ст. 7",
+      "official_url": "https://adilet.zan.kz/rus/docs/Z090000191_#z7",
+      "text": "Статья 7 задаёт момент надлежащей проверки при операциях с деньгами и (или) иным имуществом. Она не является отдельным общим правилом визуальной идентификации на кассе."
+    }
+  ],
+  "events": [
+    {
+      "event_type": "unsecured_accepted_cash",
+      "api_supported": true,
+      "link_kind": "direct_text",
+      "maps_from_observed_event_type": [
+        "prior_client_cash_left_during_next_client_entry",
+        "unattended_bag_contents_unknown",
+        "suspected_accepted_cash_left_after_client_departure",
+        "employee_handles_suspected_cash_without_client",
+        "accepted_cash_not_moved_to_lockable_storage"
+      ],
+      "visible_action": "Ранее принятые наличные остаются на столе либо не помещены в запираемое устройство хранения на рабочем месте кассира.",
+      "provision_ids": ["nb_231_p20_2"],
+      "applicability": [
+        "Деньги уже приняты банком, а не являются текущим взносом клиента, который ещё пересчитывается в его присутствии.",
+        "Предметы в кадре идентифицируются как наличные, либо оставлена без присмотра сумка, которую команда считает содержащей ранее принятые наличные (X-15).",
+        "Работа с этими деньгами завершена либо это ранее принятые деньги, которые п. 20 абз. 2 требует хранить в закрывающемся устройстве."
+      ],
+      "video_cannot_establish": [
+        "Факт бухгалтерского приёма и завершения операции, если он не следует из видимого действия.",
+        "Содержимое закрытой сумки, если команда не принимает рабочую гипотезу, что внутри наличные."
+      ],
+      "example_clip_ids": ["X-4", "X-15", "X-38", "X-44", "X-47"]
+    },
+    {
+      "event_type": "cash_counted_without_client_present",
+      "api_supported": true,
+      "link_kind": "direct_text",
+      "maps_from_observed_event_type": ["cash_count_after_client_departure"],
+      "visible_action": "Кассир принимает или пересчитывает наличные клиента после того, как клиент ушёл.",
+      "provision_ids": ["nb_231_p20_1"],
+      "applicability": [
+        "Это именно приём или пересчёт наличных клиента, а не внутренний пересчёт, сортировка или упаковка (для них см. п. 42)."
+      ],
+      "video_cannot_establish": [
+        "Была ли операция уже завершена до ухода клиента."
+      ],
+      "example_clip_ids": ["X-34"]
+    },
+    {
+      "event_type": "cashier_leaves_during_client_service",
+      "api_supported": true,
+      "link_kind": "direct_text",
+      "maps_from_observed_event_type": ["employee_steps_away_suspected_cash_on_desk"],
+      "visible_action": "Кассовый работник покидает рабочее место, пока обслуживание клиента не закончено.",
+      "provision_ids": ["nb_231_p22"],
+      "applicability": [
+        "В кадре ещё идёт обслуживание клиента.",
+        "Если одновременно на столе остаются ранее принятые наличные, дополнительно применим unsecured_accepted_cash / п. 20 абз. 2."
+      ],
+      "video_cannot_establish": [
+        "Завершён ли клиентский цикл, если клиента уже нет в кадре и операция могла быть закрыта."
+      ],
+      "example_clip_ids": ["X-26"]
+    },
+    {
+      "event_type": "client_identity_check_not_visible",
+      "api_supported": true,
+      "link_kind": "direct_text",
+      "maps_from_observed_event_type": ["cash_deposit_without_visible_id_check"],
+      "visible_action": "Клиент вносит наличные, и в кадре не видно сверки с документом, удостоверяющим личность, либо с данными сервиса цифровых документов.",
+      "provision_ids": ["nb_231_p19_1"],
+      "applicability": [
+        "Лицо в кадре является клиентом в смысле Правил №231.",
+        "Формулировка результата должна быть «в кадре не наблюдается визуальная идентификация», а не «идентификация не проводилась»."
+      ],
+      "video_cannot_establish": [
+        "Проверку вне кадра, через операциониста или цифровой сервис, который не попал в обзор камеры."
+      ],
+      "example_clip_ids": ["X-2", "X-18"]
+    },
+    {
+      "event_type": "employee_personal_items_in_cash_unit",
+      "api_supported": true,
+      "link_kind": "direct_text",
+      "maps_from_observed_event_type": ["employee_personal_items_on_cashier_desk"],
+      "visible_action": "Личные вещи работника (сумка, верхняя одежда и аналогичные предметы) находятся в кассовом узле, в том числе на кассовом столе.",
+      "provision_ids": ["nb_231_p12"],
+      "applicability": [
+        "Вещи принадлежат работнику банка, а не клиенту.",
+        "Место находится в кассовом узле.",
+        "Это не лекарства, медизделия или средство связи без фото/видеосъёмки, которые п. 12 прямо допускает."
+      ],
+      "video_cannot_establish": [
+        "Принадлежность вещи, если это нельзя отличить по кадру."
+      ],
+      "example_clip_ids": ["X-40"]
+    },
+    {
+      "event_type": "recount_without_visible_controller",
+      "api_supported": true,
+      "link_kind": "direct_text",
+      "maps_from_observed_event_type": ["cash_count_from_safe_without_visible_controller"],
+      "visible_action": "Кассир пересчитывает, сортирует или упаковывает наличные без видимого контролирующего работника.",
+      "provision_ids": ["nb_231_p42"],
+      "applicability": [
+        "Операция относится к пересчёту, сортировке или упаковке, а не к приёму или выдаче наличных клиенту (эти случаи п. 42 прямо исключает)."
+      ],
+      "video_cannot_establish": [
+        "Наличие контролёра вне кадра.",
+        "Вид операции, если по видео нельзя отличить клиентский приём от внутреннего пересчёта."
+      ],
+      "example_clip_ids": ["X-20"]
+    },
+    {
+      "event_type": "collection_cash_amount_registration_not_observed",
+      "api_supported": true,
+      "link_kind": "team_visible_plus_source",
+      "maps_from_observed_event_type": ["collection_cash_amount_registration_not_observed"],
+      "visible_action": "Деньги из инкассаторской сумки помещают на хранение, и в кадре не видно регистрации принимаемой суммы.",
+      "provision_ids": ["nb_231_p24_2"],
+      "applicability": [
+        "Это приём наличных клиента от инкассации банка или инкассаторской организации по препроводительному документу.",
+        "Команда считает отсутствие видимой регистрации суммы событием для API, хотя сам порядок регистрации задают внутренние документы банка."
+      ],
+      "video_cannot_establish": [
+        "Запись суммы в учётной системе вне кадра."
+      ],
+      "example_clip_ids": ["X-13"]
+    },
+    {
+      "event_type": "cash_bag_received_without_visible_identity_authority_check",
+      "api_supported": true,
+      "link_kind": "team_visible_plus_source",
+      "maps_from_observed_event_type": ["cash_bag_received_without_visible_identity_authority_check"],
+      "visible_action": "Принята сумка с наличными; в кадре не видно проверки личности и полномочий передавшего лица.",
+      "provision_ids": ["nb_231_p19_1", "law_191_art5"],
+      "applicability": [
+        "Лицо передаёт наличные как клиент в смысле №231, п. 19 пп. 1, либо как представитель клиента, к которому применима ст. 5 Закона №191-IV.",
+        "Формулировка: «в кадре не наблюдается проверка личности и полномочий», а не «проверка не проводилась».",
+        "Ст. 7 Закона №191-IV задаёт момент надлежащей проверки и отдельно как тип не используется."
+      ],
+      "video_cannot_establish": [
+        "Статус клиента или представителя и то, требовалась ли CDD по сумме и виду операции."
+      ],
+      "example_clip_ids": ["X-17"]
+    },
+    {
+      "event_type": "safe_key_left_in_lock",
+      "api_supported": true,
+      "link_kind": "team_visible_plus_source",
+      "maps_from_observed_event_type": [
+        "safe_key_left_in_lock",
+        "employee_steps_away_key_left_in_safe_lock"
+      ],
+      "visible_action": "Ключ оставлен в замке сейфа или кладовой, в том числе когда сотрудник отходит.",
+      "provision_ids": ["nb_231_p80"],
+      "applicability": [
+        "П. 80 требует, чтобы внутренние документы банка исключали несанкционированное использование ключей от сейфа, кладовой и устройств хранения.",
+        "Команда трактует ключ, оставленный в замке, как такое несанкционированное использование, видимое на видео."
+      ],
+      "video_cannot_establish": [
+        "Текст внутреннего регламента ForteBank и точный запрет «не оставлять ключ в замке»."
+      ],
+      "example_clip_ids": ["X-11", "X-22"]
+    },
+    {
+      "event_type": "suspected_stamp_or_seal_left_unattended",
+      "api_supported": true,
+      "link_kind": "team_visible_plus_source",
+      "maps_from_observed_event_type": ["suspected_stamp_or_seal_left_unattended"],
+      "visible_action": "Предполагаемые банковские печати или штампы оставлены на столе без присмотра.",
+      "provision_ids": ["nb_231_p80"],
+      "applicability": [
+        "П. 80 относит хранение печатей, клише и именных штампов к внутренним документам, которые должны исключать несанкционированное использование.",
+        "Команда считает предметы в кадре банковскими печатями или штампами."
+      ],
+      "video_cannot_establish": [
+        "Точная идентификация предмета, если по кадру нельзя отличить печать банка от иного предмета."
+      ],
+      "example_clip_ids": ["X-24"]
+    }
+  ],
+  "excluded": [
+    {
+      "observed_event_type": "cash_received_counted_partially_returned",
+      "clip_ids": ["X-1"],
+      "cited_in_events_csv": "№231, п. 19, пп. 4; п. 20",
+      "reason": "П. 19 пп. 4 требует сверки суммы приходного документа с фактически принятыми деньгами. Возврат части купюр клиенту на видео сам по себе не доказывает расхождение с документом. Связь не подтверждена."
+    },
+    {
+      "observed_event_type": "employee_steps_away_workstation_lock_unknown",
+      "clip_ids": ["X-28"],
+      "cited_in_events_csv": "Внутренние правила ИБ ForteBank; точный пункт не установлен",
+      "reason": "Публичного пункта нет. Состояние блокировки сессии по описанию не установлено."
+    },
+    {
+      "observed_event_type": "person_enters_cash_work_area_authorization_unknown",
+      "clip_ids": ["X-30"],
+      "cited_in_events_csv": "Правила №14, п. 8",
+      "reason": "П. 8 требует изоляции кассового узла закрывающимся служебным входом. Он не устанавливает полномочия вошедшего человека."
+    },
+    {
+      "observed_event_type": "cash_area_door_open_during_work",
+      "clip_ids": ["X-32", "X-33"],
+      "cited_in_events_csv": "Правила №14, п. 8",
+      "reason": "Открытая дверь на кадре не доказывает, что кассовый узел не изолирован одним закрывающимся служебным входом. Нужно знать, какие помещения соединяет дверь."
+    },
+    {
+      "observed_event_type": "beverage_near_suspected_cash",
+      "clip_ids": ["X-46"],
+      "cited_in_events_csv": "Внутренний регламент ForteBank; №231, п. 12 — только условная ссылка",
+      "reason": "П. 12 регулирует хранение личных вещей, наличных и ценностей работников вне кассового узла и не запрещает напиток."
+    }
+  ]
+}
