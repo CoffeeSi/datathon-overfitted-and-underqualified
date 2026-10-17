@@ -173,13 +173,14 @@ class BaselineTests(unittest.TestCase):
         optimizer = torch.optim.AdamW(model.fc.parameters())
         # Mimic a checkpoint copied from another computer, including Windows -> Linux relocation.
         saved_config = dict(config, events_path="Z:/old/events.csv", split_path="Z:/old/split.csv",
-                            video_dir="Z:/old/videos")
+                            video_dir="Z:/old/videos", device="cuda")
         checkpoint_path = self.root / "checkpoint.pt"
         save_checkpoint(checkpoint_path, model, optimizer, 1, saved_config, prepared["manifest"], {})
         with patch("overfitted_underqualified.ml.train.r3d_18", wraps=r3d_18) as constructor:
             evaluation = prepare_evaluation(checkpoint_path, events_path=self.events,
                                             split_path=self.split, video_dir=self.root)
         constructor.assert_called_once_with(weights=None)
+        self.assertEqual(evaluation["config"]["device"], "cpu")
         restored = evaluation["model"]
         for key, tensor in restored.state_dict().items():
             torch.testing.assert_close(tensor, model.state_dict()[key], rtol=0, atol=0)

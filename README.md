@@ -33,18 +33,22 @@ dependencies belong to the selected analyzer and are not included here.
 
 ## ML dependencies on Brev L4
 
+The current requirements and `.python-version` match the local Python 3.14.5
+environment. NumPy 2.5.4 requires Python >=3.12. Historical Brev experiment records
+retain the Python 3.11.9 runtime used for those experiments.
+
 Open a terminal on the Brev L4 instance, clone this repository (or pull the latest commit), and
-run these commands from the repository root. The instance may not have `python3.11` installed.
+run these commands from the repository root. The instance may not have Python 3.14 installed.
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) to get the exact Python
-3.11.9 version recorded in `.python-version`:
+3.14.5 version recorded in `.python-version`:
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 export PATH="$HOME/.local/bin:$PATH"
-uv python install 3.11.9
-uv venv --seed --python 3.11.9 .venv
+uv python install 3.14.5
+uv venv --seed --python 3.14.5 .venv
 source .venv/bin/activate
-python --version      # expected: Python 3.11.9
+python --version      # expected: Python 3.14.5
 nvidia-smi            # expected GPU: NVIDIA L4
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
@@ -65,6 +69,9 @@ records the observed versions, GPU, and successful optimizer step.
 The implementation and run commands are documented in [docs/r3d18-baseline.md](docs/r3d18-baseline.md).
 Settings live in `configs/r3d18.yaml`; training uses the fixed 30/10 split and saves
 checkpoints, effective configuration and metrics under `runs/`.
+Video-level evaluation, confusion matrix, error analysis and processing time are recorded
+in [reports/r3d18_smoke_evaluation/report.md](reports/r3d18_smoke_evaluation/report.md).
+The evaluation CLI is documented in [the baseline guide](docs/r3d18-baseline.md#video-level-quality-evaluation).
 
 ## Project layout
 
@@ -77,7 +84,7 @@ reports/figures/ # Charts and exported figures
 src/overfitted_underqualified/ # Reusable project code
 ```
 
-Run `01_eda.ipynb` → `02_r3d18_baseline.ipynb` → `03_evaluation.ipynb` with the project's
+Run `01_eda.ipynb` → `02_detection.ipynb` → `03_evaluation.ipynb` with the project's
 Python kernel. Each notebook locates `src/` from either the repository root or
 `notebooks/`, on Windows or Linux/Brev. ML notebooks require `requirements-ml.txt`.
 Restart the kernel and run cells from top to bottom. Clear outputs before committing.
@@ -92,7 +99,9 @@ Restart the kernel and run cells from top to bottom. Clear outputs before commit
 
 The baseline notebook uses YAML settings. `RUN_TRAINING=False` by default lets you
 inspect data and existing experiments without loading pretrained weights or training.
-Set `RUN_TRAINING=True` in its settings cell to create a fresh experiment directory;
+Copy `.env.example` to the repository-root `.env` and set `RUN_TRAINING=true` there
+to create a fresh experiment directory; notebook 02 rereads `.env` in its settings cell.
+Shell environment variables override `.env`. The local `.env` is ignored by Git.
 `TRAIN_EPOCHS=1` limits that explicitly enabled run to one epoch.
 Set `TRAIN_DEVICE=cpu` explicitly if needed.
 For evaluation, set `CHECKPOINT_PATH` to the printed `best.pt` path. Its default is

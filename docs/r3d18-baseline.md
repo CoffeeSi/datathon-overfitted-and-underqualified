@@ -1,5 +1,31 @@
 # R3D-18 baseline
 
+## Video-level quality evaluation
+
+Evaluate an existing checkpoint without training or downloading pretrained weights:
+
+```powershell
+$env:PYTHONPATH = "src"
+.\.venv\Scripts\python.exe -m overfitted_underqualified.ml.evaluate --checkpoint runs/r3d18_smoke/best.pt --output-dir reports/r3d18_new_evaluation --device cuda
+```
+
+Linux/Brev: use `PYTHONPATH=src python -m overfitted_underqualified.ml.evaluate` with
+the same arguments. Explicit input overrides are `--events-path`, `--split-path`,
+`--video-dir`; their contents must match checkpoint provenance. Use a new output directory.
+
+`evaluation.json` records the checkpoint SHA-256, epoch, saved/effective configuration,
+full data manifest, environment, window/video metrics and synchronized timing.
+`video_predictions.csv` counts each canonical video once; `window_predictions.csv`
+retains each sampled window. The fixed aggregation is max violation probability per
+video, threshold 0.5. `confusion_matrix.png` and `report.md` summarize the result.
+Timing covers one cold batched pass over the selected windows including video decoding;
+preparation time is separate. The per-video time is an amortized mean, not request latency.
+
+The [measured smoke-baseline report](../reports/r3d18_smoke_evaluation/report.md) includes
+a [manual error analysis](../reports/r3d18_smoke_evaluation/error_analysis.md).
+It measures annotation-centred window aggregation, not blind full-video detection.
+No threshold selection, training, label changes or independent-session evaluation occurs.
+
 ## Data and model
 
 `events.csv` supplies binary labels and single event timestamps. The tracked
@@ -72,11 +98,13 @@ from the current directory on Windows and Linux/Brev.
 1. `01_eda.ipynb`: inspect files, validate `events.csv`, examine distributions/contact
    sheets, verify the fixed split and write readiness reports. Functions live in
    `eda/video.py`, `annotations.py`, `split.py`, `plots.py`, and `reports.py`.
-2. `02_r3d18_baseline.ipynb`: load YAML → `prepare_training` (hashes, source coverage,
+2. `02_detection.ipynb`: load YAML → `prepare_training` (hashes, source coverage,
    datasets/loaders) → show sampled windows → `build_model` → `train_prepared` →
    loss/accuracy curves, validation results, compatible-run comparisons and conclusions.
    `RUN_TRAINING=False` by default skips model initialization and training; it reads
-   `EXISTING_RUN` for results. Set it to `True` explicitly to train. The CLI `run`
+   `EXISTING_RUN` for results. Copy `.env.example` to `.env` in the repository root
+   and set `RUN_TRAINING=true` explicitly to train. Notebook 02 rereads this file
+   in its settings cell; existing shell variables take precedence. The CLI `run`
    uses the same phases and retains its existing explicit training behavior.
 3. `03_evaluation.ipynb`: `prepare_evaluation` restores saved model/configuration
    and checks annotation/split hashes, canonical video records and validation windows;

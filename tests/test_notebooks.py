@@ -7,7 +7,7 @@ import unittest
 class NotebookSourceTests(unittest.TestCase):
     def test_research_notebooks_contain_no_saved_outputs_or_attachments(self):
         directory = Path(__file__).resolve().parents[1] / "notebooks"
-        for name in ("01_eda.ipynb", "02_r3d18_baseline.ipynb", "03_evaluation.ipynb"):
+        for name in ("01_eda.ipynb", "02_detection.ipynb", "03_evaluation.ipynb"):
             with self.subTest(notebook=name):
                 notebook = json.loads((directory / name).read_text(encoding="utf-8"))
                 for cell in notebook["cells"]:

@@ -9,7 +9,7 @@ The historical [smoke-run record](r3d18_smoke_result.md) and its artifacts remai
   `video`, `annotations`, `split`, `plots`, and `reports`.
 - `01_eda.ipynb` contains settings, ordered calls and interpretation. Tests import
   Python modules instead of extracting definitions from notebook JSON.
-- `02_training.ipynb` uses the same preparation/model/training phases as the CLI.
+- `02_detection.ipynb` uses the same preparation/model/training phases as the CLI.
 - `03_evaluation.ipynb` restores a checkpoint, validates provenance, evaluates the
   fixed validation windows and displays errors without training or threshold tuning.
 
