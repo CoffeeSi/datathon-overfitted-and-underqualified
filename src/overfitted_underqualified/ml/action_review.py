@@ -8,7 +8,7 @@ import math
 from pathlib import Path
 
 from .dataset import parse_time, sha256
-from ..rules.catalog import CATALOG_PATH, supported_event_types
+from ..rules.catalog import CATALOG_PATH, supported_event_types, catalog_digest_matches
 from ..rules.evidence import SEMANTIC_GAPS
 
 REVIEW_SCHEMA = "action_window_review_v1"
@@ -22,7 +22,7 @@ def validate_review(value, *, center, window_sec, video_sha256):
     """
     if not isinstance(value, dict) or value.get("schema") != REVIEW_SCHEMA:
         raise ValueError("Invalid action review schema")
-    if value.get("catalog_sha256") != sha256(CATALOG_PATH) or value.get("video_sha256") != video_sha256:
+    if not catalog_digest_matches(value.get("catalog_sha256")) or value.get("video_sha256") != video_sha256:
         raise ValueError("Action review refers to stale catalog/video")
     for key, expected in (("center_sec", center), ("window_sec", window_sec)):
         actual = value.get(key)

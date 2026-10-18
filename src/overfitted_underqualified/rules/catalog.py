@@ -1,11 +1,22 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 CATALOG_PATH = Path(__file__).with_name("catalog.json")
+
+
+def catalog_digest_matches(expected: str, path: Path | None = None) -> bool:
+    """Accept historical LF/CRLF byte hashes, never changes to catalog content."""
+    raw = (CATALOG_PATH if path is None else path).read_bytes()
+    lf = raw.replace(b"\r\n", b"\n")
+    return expected in {
+        hashlib.sha256(value).hexdigest()
+        for value in (raw, lf, lf.replace(b"\n", b"\r\n"))
+    }
 
 
 @lru_cache(maxsize=1)

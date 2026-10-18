@@ -31,21 +31,35 @@ The main `requirements.txt` includes this file, so a full project installation
 also installs the backend dependencies. SQLite is provided by Python; ML model
 dependencies belong to the selected analyzer and are not included here.
 
-For the local trained cash-sequence analyzer on Windows (requires all three
-checkpoints referenced by `configs/action_service_cash_sequence.yaml` and CUDA):
+The default service has been rolled back to the previous R3D-18 action head.
+It requires the two checkpoints in `configs/action_service_backend_smoke.yaml` and CUDA:
 
 ```powershell
 # Set the shared FORTEBANK_API_KEY in .env.compose (also read by the Docker frontend).
 .\scripts\start-backend.ps1 -Port 8000
 ```
 
-The launcher explicitly selects the real action provider and disables mocks,
-overriding stale terminal settings. Check `GET http://127.0.0.1:8000/readyz` for
-200 and `local-cash-sequence`. The supported scenario is receipt, client departure
-and cash remaining on the counter. It does not detect every legal type; no candidate
-returns insufficient_data. See [the live integration report](reports/cash_sequence_backend_20261018.md).
-To reproduce the old action-head service explicitly, pass
-`-ActionConfig configs/action_service_backend_smoke.yaml`.
+`GET http://127.0.0.1:8000/readyz` should return 200 and `local-r3d18-actions`.
+The two enabled types are `client_identity_check_not_visible` and
+`unsecured_accepted_cash`. This restores the earlier experimental behavior,
+including its known false positives; it does not recognize every catalog type.
+Existing jobs retain their original provider and results. Upload again to use the selected model.
+Historical action checkpoint catalog hashes accept LF and CRLF encodings of the
+same bytes apart from line endings, so Windows-trained weights load on Linux.
+Catalog content changes still invalidate the checkpoint; stored hashes and weights are preserved.
+
+For Brev, after updating the source and ensuring both checkpoints exist, select
+`ACTION_SERVICE_CONFIG=./configs/action_service_backend_smoke.yaml` in `.env.compose`, then:
+
+```bash
+docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml up -d --force-recreate backend frontend
+```
+
+The cash-sequence model and its weights remain available as an explicit alternative:
+`-ActionConfig configs/action_service_cash_sequence.yaml` on Windows, or
+`ACTION_SERVICE_CONFIG=./configs/action_service_cash_sequence.yaml` for Compose.
+See [the cash-sequence integration report](reports/cash_sequence_backend_20261018.md)
+for its narrower recognition scope and historical results.
 
 ## Action model improvement study
 

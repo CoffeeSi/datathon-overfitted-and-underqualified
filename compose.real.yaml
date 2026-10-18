@@ -1,4 +1,4 @@
-# Full GPU deployment (Brev): frontend and the current cash-sequence backend.
+# Full GPU deployment (Brev): frontend and the previous R3D-18 action backend.
 # Use with: docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml up --build -d
 services:
   frontend:
@@ -31,7 +31,7 @@ services:
         bind:
           create_host_path: false
       - type: bind
-        source: ${ACTION_SERVICE_CONFIG:-./configs/action_service_cash_sequence.yaml}
+        source: ${ACTION_SERVICE_CONFIG:-./configs/action_service_backend_smoke.yaml}
         target: /app/configs/action_service.yaml
         read_only: true
         bind:

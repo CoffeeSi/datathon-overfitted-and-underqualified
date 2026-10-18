@@ -16,7 +16,7 @@ from .dataset import sha256
 from .train import ROOT, build_model, seed_everything, seed_worker, set_training_mode
 from .preprocessing import video_transform
 from .features import cache_frozen_loaders
-from ..rules.catalog import CATALOG_PATH, supported_event_types
+from ..rules.catalog import CATALOG_PATH, supported_event_types, catalog_digest_matches
 
 
 def read_config(path):
@@ -140,7 +140,7 @@ def load_action_checkpoint(path, device="cpu"):
     if (checkpoint.get("schema") != SCHEMA or checkpoint.get("architecture") != "r3d_18_multilabel"
             or checkpoint["class_to_idx"] != {name: i for i, name in enumerate(classes)}
             or checkpoint["config"]["weights"] != "KINETICS400_V1" or checkpoint["config"]["frames"] != 16
-            or checkpoint["data_manifest"]["catalog_sha256"] != sha256(CATALOG_PATH)):
+            or not catalog_digest_matches(checkpoint["data_manifest"]["catalog_sha256"])):
         raise ValueError("Incompatible action checkpoint, class mapping or catalog")
     video_transform(checkpoint["config"])
     requested = checkpoint["config"].get("target_types")

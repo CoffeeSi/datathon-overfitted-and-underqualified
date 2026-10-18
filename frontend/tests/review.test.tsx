@@ -105,6 +105,25 @@ describe("review workspace", () => {
     expect(within(navigation).getByRole("button", { name: /Описание нового типа/ })).toBeTruthy();
   });
 
+  it("explains an unconfirmed sequence with its actual timestamp, without blaming video quality", () => {
+    jobMock.mockReturnValue(ready({ job: { job_id: id, analysis_provider: "local-cash-sequence",
+      status: "done", verdict: "insufficient_data", violations: [],
+      unresolved_candidates: [{ timestamp_sec: 32, binary_score: .506, reason: "unknown" }] } }));
+    render(<ReviewWorkspace jobId={id} />);
+    expect(screen.getByRole("heading", { name: "Есть эпизод для ручной проверки" })).toBeTruthy();
+    expect(screen.getByText(/Видео обработано.*00:32/)).toBeTruthy();
+    expect(screen.queryByText(/Проверьте качество и полноту видео/)).toBeNull();
+    expect(screen.queryByRole("heading", { name: "Нарушения не обнаружены" })).toBeNull();
+  });
+
+  it("limits an empty sequence result to the supported scenario", () => {
+    jobMock.mockReturnValue(ready({ job: { job_id: id, analysis_provider: "local-cash-sequence",
+      status: "done", verdict: "insufficient_data", violations: [] } }));
+    render(<ReviewWorkspace jobId={id} />);
+    expect(screen.getByRole("heading", { name: "Поддерживаемый сценарий не найден" })).toBeTruthy();
+    expect(screen.getByText(/это не заключение об отсутствии нарушений/)).toBeTruthy();
+  });
+
   it.each([
     ["no_violation", "Нарушения не обнаружены", "Список событий пуст."],
     ["insufficient_data", "Недостаточно данных", "Нужен дополнительный контекст."],

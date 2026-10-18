@@ -1,5 +1,6 @@
 """Partial label review safety, independent of real banking ground truth."""
 import csv
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -15,7 +16,7 @@ from overfitted_underqualified.ml.action_data import ActionDataset, prepare_acti
 from overfitted_underqualified.ml.action_review import REVIEW_SCHEMA, apply_decisions, validate_review
 from overfitted_underqualified.ml.action_evaluation import temporal_summary
 from overfitted_underqualified.ml.dataset import sha256
-from overfitted_underqualified.rules.catalog import CATALOG_PATH
+from overfitted_underqualified.rules.catalog import CATALOG_PATH, catalog_digest_matches
 
 A, B = "safe_key_left_in_lock", "unsecured_accepted_cash"
 
@@ -33,6 +34,24 @@ def row(clip_id, value=None, time="00:05", tag="safe_key_left_in_lock"):
 
 
 class ReviewTests(unittest.TestCase):
+    def test_catalog_hash_accepts_line_endings_but_rejects_content_changes(self):
+        lf = b'{\n  "events": []\n}\n'
+        crlf = lf.replace(b"\n", b"\r\n")
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "catalog.json"
+            for raw in (lf, crlf):
+                path.write_bytes(raw)
+                for original in (lf, crlf):
+                    self.assertTrue(catalog_digest_matches(hashlib.sha256(original).hexdigest(), path))
+                self.assertFalse(catalog_digest_matches(hashlib.sha256(lf.replace(b"events", b"edited")).hexdigest(), path))
+
+    def test_review_accepts_catalog_from_another_platform(self):
+        value = review(self.record, present=[A])
+        lf = CATALOG_PATH.read_bytes().replace(b"\r\n", b"\n")
+        for raw in (lf, lf.replace(b"\n", b"\r\n")):
+            value["catalog_sha256"] = hashlib.sha256(raw).hexdigest()
+            validate_review(value, center=5., window_sec=4., video_sha256=self.record.sha256)
+
     def setUp(self):
         self.record=SimpleNamespace(clip_id="X-4", aliases=("X-4", "X-47"), split="train", sha256="a"*64, last_time=100.)
 

@@ -1,0 +1,41 @@
+{
+  "base_url": "https://backend-hapejow6c.gobrev.dev",
+  "payload": "synthetic generated 2-second 96x64 MOV, no banking images",
+  "checks": [
+    {
+      "check": "missing_key",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "check": "invalid_key",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "check": "valid_key_unknown_job",
+      "status": 404,
+      "expected": 404
+    }
+  ],
+  "api_key_persisted": false,
+  "evidence_images_exported": false,
+  "job": {
+    "job_id": "41b01a77-a901-4a48-8ea0-c03230bacc78",
+    "status": "done",
+    "provider": "local-cash-sequence",
+    "verdict": "insufficient_data",
+    "error": null,
+    "recognition_scope": [
+      "unsecured_accepted_cash"
+    ],
+    "statuses": [
+      "processing",
+      "done"
+    ],
+    "poll_elapsed_sec": 20.25324270001147,
+    "findings_count": 0
+  },
+  "jury_contract_checked": true,
+  "all_checks_passed": true
+}
