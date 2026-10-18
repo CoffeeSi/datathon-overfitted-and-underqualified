@@ -1,0 +1,26 @@
+{
+  "regression_tests_passed": 139,
+  "notebook_section_clean_kernels": [
+    {
+      "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified",
+      "executed_code_cells": 3,
+      "errors": 0
+    },
+    {
+      "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\notebooks",
+      "executed_code_cells": 3,
+      "errors": 0
+    }
+  ],
+  "unchanged_sha256": {
+    "events": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "catalog": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+    "baseline_checkpoint": "00b07713d0fd1c219fcefa00416f6e68668201ee8abec0e8b6bd43682dab00d9"
+  },
+  "git_diff_check": "passed",
+  "notebook_outputs_cleared": true,
+  "new_model_trained": false,
+  "backend_frontend_contracts_changed": false,
+  "independent_test_created": false
+}

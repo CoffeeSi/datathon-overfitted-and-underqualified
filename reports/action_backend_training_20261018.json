@@ -1,0 +1,143 @@
+{
+  "schema": "action_backend_training_v1",
+  "checkpoint": "runs/r3d18_actions_backend_20261018/last.pt",
+  "checkpoint_sha256": "63ac3f12001f78a26f238ca0f8c57da342c023692a0b6a9201e5017788748674",
+  "config": "configs/actions_backend_smoke.yaml",
+  "config_sha256": "ee6ed39af705ba16eaa4d7b9429d5c243176d8226bd4bc6342afbb4d4784ac99",
+  "service_config": "configs/action_service_backend_smoke.yaml",
+  "service_config_sha256": "94310c7bb29820ea3376b7d1c8f170feccf479cba4e65811aab06e0575960a83",
+  "binary_checkpoint": "runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented\\last.pt",
+  "binary_sha256": "00b07713d0fd1c219fcefa00416f6e68668201ee8abec0e8b6bd43682dab00d9",
+  "source_hashes": {
+    "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe"
+  },
+  "source_files_unchanged": true,
+  "binary_checkpoint_unchanged": true,
+  "frozen_backbone_and_batchnorm_equal_pretrained": true,
+  "compared_backbone_tensors": 120,
+  "checkpoint_loaded_without_pretrained_download": true,
+  "epoch": 30,
+  "class_names": [
+    "client_identity_check_not_visible",
+    "unsecured_accepted_cash"
+  ],
+  "train_last_online_epoch": {
+    "per_class": [
+      {
+        "event_type": "client_identity_check_not_visible",
+        "support": 1,
+        "known_negatives": 23,
+        "unknown": 0,
+        "confusion_matrix": [
+          [
+            23,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "evaluable": true
+      },
+      {
+        "event_type": "unsecured_accepted_cash",
+        "support": 2,
+        "known_negatives": 22,
+        "unknown": 0,
+        "confusion_matrix": [
+          [
+            22,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "evaluable": true
+      }
+    ],
+    "macro": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "macro_class_count": 2,
+    "threshold": 0.7,
+    "loss": 0.15286047818760076
+  },
+  "validation": {
+    "per_class": [
+      {
+        "event_type": "client_identity_check_not_visible",
+        "support": 1,
+        "known_negatives": 6,
+        "unknown": 1,
+        "confusion_matrix": [
+          [
+            6,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "evaluable": true
+      },
+      {
+        "event_type": "unsecured_accepted_cash",
+        "support": 1,
+        "known_negatives": 3,
+        "unknown": 4,
+        "confusion_matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "evaluable": true
+      }
+    ],
+    "macro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "macro_class_count": 2,
+    "threshold": 0.7,
+    "loss": 0.5684970942410555
+  },
+  "environment": {
+    "python": "3.14.5",
+    "torch": "2.13.0+cu126",
+    "device": "cuda"
+  },
+  "preparation": {
+    "cached_features": true,
+    "feature_extraction_sec": 10.265970800013747,
+    "preprocessing": "AspectPreservingVideo(v1, roi=[0.0, 0.1, 1.0, 0.7], output=112x112, mean=[0.43216, 0.394666, 0.37645], std=[0.22803, 0.22145, 0.216989])"
+  },
+  "independent_evaluation": false,
+  "quality_approved": false,
+  "limitation": "Integration-only trained checkpoint. Two positive validation windows missed at fixed 0.7 threshold. Per-type unknown labels masked; no full-video negative attestation."
+}

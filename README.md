@@ -31,6 +31,19 @@ The main `requirements.txt` includes this file, so a full project installation
 also installs the backend dependencies. SQLite is provided by Python; ML model
 dependencies belong to the selected analyzer and are not included here.
 
+For the local trained action integration experiment on Windows (requires the
+checkpoints referenced by `configs/action_service_backend_smoke.yaml` and CUDA):
+
+```powershell
+$env:FORTEBANK_API_KEY = "local-test-8001" # Local testing only; use the same key in the client.
+.\scripts\start-backend.ps1 -Port 8001
+```
+
+The launcher explicitly selects the real action provider and disables mocks,
+overriding stale terminal settings. Check `GET http://127.0.0.1:8001/readyz` for
+200 and `local-r3d18-actions`. This is an integration checkpoint with validation
+F1=0, not an approved recognition model; see [the experiment report](reports/action_backend_20261018.md).
+
 ## Frontend — Фокус
 
 The research-review UI lives in [`frontend/`](frontend/README.md): MOV upload,

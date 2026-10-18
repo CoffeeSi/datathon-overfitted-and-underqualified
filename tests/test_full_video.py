@@ -206,6 +206,10 @@ class FullVideoTests(unittest.TestCase):
         self.assertEqual(cash["canonical_videos"], 4)
         self.assertEqual(cash["distinct_markers"], 5)
         self.assertFalse(cash["verified_multiclass_targets"])
+        self.assertTrue(cash['raw_catalog_hypotheses_only'])
+        self.assertEqual(cash['usable_proposal_source_ids'],['X-4','X-47'])
+        self.assertEqual(cash['usable_proposal_canonical_videos'],1)
+        self.assertEqual(set(cash['needs_context_review_ids']),{'X-15','X-38','X-44'})
 
 
 if __name__ == "__main__":

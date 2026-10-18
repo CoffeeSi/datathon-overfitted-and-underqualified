@@ -1,0 +1,95 @@
+{
+  "schema": "real_action_backend_smoke_v1",
+  "mock_enabled": false,
+  "service_config": "configs/action_service_backend_smoke.yaml",
+  "jobs": [
+    {
+      "clip_id": "X-2",
+      "status": "done",
+      "status_transitions": [
+        "processing",
+        "done"
+      ],
+      "analysis_provider": "local-r3d18-actions",
+      "verdict": "violation",
+      "elapsed_sec": 4.100670999963768,
+      "error_code": null,
+      "recognition_scope": [
+        "client_identity_check_not_visible",
+        "unsecured_accepted_cash"
+      ],
+      "unresolved_count": 1,
+      "findings": [
+        {
+          "type": "unsecured_accepted_cash",
+          "timecode_sec": 4.0,
+          "binary_score": 0.5259459018707275,
+          "type_confidence": 0.8835521936416626,
+          "source_links": [
+            {
+              "event_type": "unsecured_accepted_cash",
+              "source": "Правила НБ РК №231",
+              "locator": "п. 20, абз. 2, предл. 2",
+              "url": "https://adilet.zan.kz/rus/docs/V1900019680#z20",
+              "title": "Правила осуществления кассовых операций и операций по инкассации банкнот, монет и ценностей в банках второго уровня, филиалах банков-нерезидентов Республики Казахстан, Национальном операторе почты и юридических лицах, исключительной деятельностью которых является инкассация банкнот, монет и ценностей"
+            }
+          ],
+          "legal_conclusion": null,
+          "evidence_frame_count": 3
+        }
+      ],
+      "jury_http_status": 200
+    },
+    {
+      "clip_id": "X-38",
+      "status": "done",
+      "status_transitions": [
+        "processing",
+        "done"
+      ],
+      "analysis_provider": "local-r3d18-actions",
+      "verdict": "insufficient_data",
+      "elapsed_sec": 11.140856300015002,
+      "error_code": null,
+      "recognition_scope": [
+        "client_identity_check_not_visible",
+        "unsecured_accepted_cash"
+      ],
+      "unresolved_count": 7,
+      "findings": [],
+      "jury_http_status": 200
+    },
+    {
+      "clip_id": "X-31",
+      "status": "done",
+      "status_transitions": [
+        "processing",
+        "done"
+      ],
+      "analysis_provider": "local-r3d18-actions",
+      "verdict": "insufficient_data",
+      "elapsed_sec": 5.083424500015099,
+      "error_code": null,
+      "recognition_scope": [
+        "client_identity_check_not_visible",
+        "unsecured_accepted_cash"
+      ],
+      "unresolved_count": 4,
+      "findings": [],
+      "jury_http_status": 200
+    }
+  ],
+  "api_key_persisted": false,
+  "evidence_images_exported": false,
+  "health_status": 200,
+  "readiness": {
+    "http_status": 200,
+    "body": {
+      "status": "ready",
+      "analysis_provider": "local-r3d18-actions"
+    }
+  },
+  "unauthenticated_upload_status": 401,
+  "all_jobs_completed": true,
+  "owned_server_stopped": true
+}

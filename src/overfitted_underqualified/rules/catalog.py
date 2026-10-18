@@ -29,10 +29,10 @@ def event_by_type(event_type: str) -> dict[str, Any] | None:
 
 
 def event_type_for_observed(observed_event_type: str) -> str | None:
-    for event in supported_events():
-        if observed_event_type in event.get("maps_from_observed_event_type", []):
-            return event["event_type"]
-    return None
+    """Return an unambiguous proposal; this is never evidence of recognition."""
+    from .evidence import proposed_mapping
+    candidates = proposed_mapping(observed_event_type)['candidate_types']
+    return candidates[0] if len(candidates) == 1 else None
 
 
 def source_links_for(event_type: str) -> list[dict[str, str]]:

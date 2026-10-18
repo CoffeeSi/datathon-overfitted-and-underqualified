@@ -1,0 +1,4967 @@
+{
+  "schema": "action_quality_coverage_v1",
+  "created_utc": "2026-10-18T03:48:42.307755+00:00",
+  "inputs": {
+    "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe"
+  },
+  "window_sec": 4.0,
+  "source_of_editable_labels": "data/annotations/events.csv",
+  "protocol": "Same fixed canonical split; explicit per-type window reviews; unknown stays unknown.",
+  "canonical_videos": 40,
+  "source_ids": 42,
+  "partition_counts": {
+    "train": 30,
+    "validation": 10
+  },
+  "reviewed_windows": 32,
+  "review_basis": {
+    "batch_supplied_labels": 32,
+    "declared_frame_sequence_review": 1
+  },
+  "coverage": [
+    {
+      "event_type": "unsecured_accepted_cash",
+      "required_visual_facts": [
+        "banknotes_visible",
+        "prior_receipt_observed",
+        "cash_remains_after_service_transition",
+        "accepted_cash_outside_lockable_storage_visible"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 2,
+        "positive_ids": [
+          "X-4"
+        ],
+        "positive_source_ids": [
+          "X-4",
+          "X-47"
+        ],
+        "negative_windows": 22,
+        "negative_window_ids": [
+          "X-11",
+          "X-12",
+          "X-13",
+          "X-17",
+          "X-18",
+          "X-19",
+          "X-20",
+          "X-21",
+          "X-22",
+          "X-23",
+          "X-24",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-40",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 2
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 1,
+        "positive_ids": [
+          "X-38"
+        ],
+        "positive_source_ids": [
+          "X-38"
+        ],
+        "negative_windows": 3,
+        "negative_window_ids": [
+          "X-2",
+          "X-31",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "declared_frame_sequence_review": 1
+        },
+        "non_batch_positive_ids": [
+          "X-38"
+        ],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": true,
+      "window_validation_evaluable": true,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "single_canonical_train_positive",
+        "no_whole_video_negative_attestation",
+        "train_positives_include_batch_labels"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 4,
+        "additional_validation_positive_videos": 1,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "both_partitions_present_but_sparse"
+      }
+    },
+    {
+      "event_type": "cash_counted_without_client_present",
+      "required_visual_facts": [
+        "cash_count_observed",
+        "client_receipt_context_observed",
+        "client_absent_during_count"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 0,
+        "positive_ids": [],
+        "positive_source_ids": [],
+        "negative_windows": 24,
+        "negative_window_ids": [
+          "X-11",
+          "X-12",
+          "X-13",
+          "X-17",
+          "X-18",
+          "X-19",
+          "X-20",
+          "X-21",
+          "X-22",
+          "X-23",
+          "X-24",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-4",
+          "X-40",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {},
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 1,
+        "positive_ids": [
+          "X-34"
+        ],
+        "positive_source_ids": [
+          "X-34"
+        ],
+        "negative_windows": 6,
+        "negative_window_ids": [
+          "X-10",
+          "X-14",
+          "X-16",
+          "X-2",
+          "X-31",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 1
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": false,
+      "window_validation_evaluable": true,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "no_train_positive_video",
+        "no_whole_video_negative_attestation",
+        "validation_positives_include_batch_labels"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 5,
+        "additional_validation_positive_videos": 1,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "missing_train_type"
+      }
+    },
+    {
+      "event_type": "cashier_leaves_during_client_service",
+      "required_visual_facts": [
+        "cashier_departure_observed",
+        "ongoing_client_service_observed"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 0,
+        "positive_ids": [],
+        "positive_source_ids": [],
+        "negative_windows": 24,
+        "negative_window_ids": [
+          "X-11",
+          "X-12",
+          "X-13",
+          "X-17",
+          "X-18",
+          "X-19",
+          "X-20",
+          "X-21",
+          "X-22",
+          "X-23",
+          "X-24",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-4",
+          "X-40",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {},
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 0,
+        "positive_ids": [],
+        "positive_source_ids": [],
+        "negative_windows": 7,
+        "negative_window_ids": [
+          "X-10",
+          "X-14",
+          "X-16",
+          "X-2",
+          "X-31",
+          "X-34",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {},
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": false,
+      "window_validation_evaluable": false,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "no_train_positive_video",
+        "no_validation_positive_video",
+        "no_whole_video_negative_attestation"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 5,
+        "additional_validation_positive_videos": 2,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "missing_partition_support"
+      }
+    },
+    {
+      "event_type": "client_identity_check_not_visible",
+      "required_visual_facts": [
+        "cash_deposit_observed",
+        "identity_check_context_covered",
+        "identity_check_not_visible"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 1,
+        "positive_ids": [
+          "X-18"
+        ],
+        "positive_source_ids": [
+          "X-18"
+        ],
+        "negative_windows": 23,
+        "negative_window_ids": [
+          "X-11",
+          "X-12",
+          "X-13",
+          "X-17",
+          "X-19",
+          "X-20",
+          "X-21",
+          "X-22",
+          "X-23",
+          "X-24",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-4",
+          "X-40",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 1
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 1,
+        "positive_ids": [
+          "X-2"
+        ],
+        "positive_source_ids": [
+          "X-2"
+        ],
+        "negative_windows": 6,
+        "negative_window_ids": [
+          "X-10",
+          "X-14",
+          "X-16",
+          "X-31",
+          "X-34",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 1
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": true,
+      "window_validation_evaluable": true,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "single_canonical_train_positive",
+        "no_whole_video_negative_attestation",
+        "train_positives_include_batch_labels",
+        "validation_positives_include_batch_labels"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 4,
+        "additional_validation_positive_videos": 1,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "both_partitions_present_but_sparse"
+      }
+    },
+    {
+      "event_type": "employee_personal_items_in_cash_unit",
+      "required_visual_facts": [
+        "personal_item_visible",
+        "employee_ownership_observed",
+        "cash_unit_context_observed",
+        "permitted_item_exceptions_checked"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 1,
+        "positive_ids": [
+          "X-40"
+        ],
+        "positive_source_ids": [
+          "X-40"
+        ],
+        "negative_windows": 23,
+        "negative_window_ids": [
+          "X-11",
+          "X-12",
+          "X-13",
+          "X-17",
+          "X-18",
+          "X-19",
+          "X-20",
+          "X-21",
+          "X-22",
+          "X-23",
+          "X-24",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-4",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 1
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 0,
+        "positive_ids": [],
+        "positive_source_ids": [],
+        "negative_windows": 7,
+        "negative_window_ids": [
+          "X-10",
+          "X-14",
+          "X-16",
+          "X-2",
+          "X-31",
+          "X-34",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {},
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": true,
+      "window_validation_evaluable": false,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "single_canonical_train_positive",
+        "no_validation_positive_video",
+        "no_whole_video_negative_attestation",
+        "train_positives_include_batch_labels"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 4,
+        "additional_validation_positive_videos": 2,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "missing_partition_support"
+      }
+    },
+    {
+      "event_type": "recount_without_visible_controller",
+      "required_visual_facts": [
+        "cash_count_observed",
+        "internal_recount_context_observed",
+        "controller_context_covered",
+        "controller_not_visible"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 1,
+        "positive_ids": [
+          "X-20"
+        ],
+        "positive_source_ids": [
+          "X-20"
+        ],
+        "negative_windows": 23,
+        "negative_window_ids": [
+          "X-11",
+          "X-12",
+          "X-13",
+          "X-17",
+          "X-18",
+          "X-19",
+          "X-21",
+          "X-22",
+          "X-23",
+          "X-24",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-4",
+          "X-40",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 1
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 0,
+        "positive_ids": [],
+        "positive_source_ids": [],
+        "negative_windows": 7,
+        "negative_window_ids": [
+          "X-10",
+          "X-14",
+          "X-16",
+          "X-2",
+          "X-31",
+          "X-34",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {},
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": true,
+      "window_validation_evaluable": false,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "single_canonical_train_positive",
+        "no_validation_positive_video",
+        "no_whole_video_negative_attestation",
+        "train_positives_include_batch_labels"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 4,
+        "additional_validation_positive_videos": 2,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "missing_partition_support"
+      }
+    },
+    {
+      "event_type": "collection_cash_amount_registration_not_observed",
+      "required_visual_facts": [
+        "collection_cash_receipt_observed",
+        "registration_context_covered",
+        "registration_not_visible"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 1,
+        "positive_ids": [
+          "X-13"
+        ],
+        "positive_source_ids": [
+          "X-13"
+        ],
+        "negative_windows": 23,
+        "negative_window_ids": [
+          "X-11",
+          "X-12",
+          "X-17",
+          "X-18",
+          "X-19",
+          "X-20",
+          "X-21",
+          "X-22",
+          "X-23",
+          "X-24",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-4",
+          "X-40",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 1
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 0,
+        "positive_ids": [],
+        "positive_source_ids": [],
+        "negative_windows": 7,
+        "negative_window_ids": [
+          "X-10",
+          "X-14",
+          "X-16",
+          "X-2",
+          "X-31",
+          "X-34",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {},
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": true,
+      "window_validation_evaluable": false,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "single_canonical_train_positive",
+        "no_validation_positive_video",
+        "no_whole_video_negative_attestation",
+        "train_positives_include_batch_labels"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 4,
+        "additional_validation_positive_videos": 2,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "missing_partition_support"
+      }
+    },
+    {
+      "event_type": "cash_bag_received_without_visible_identity_authority_check",
+      "required_visual_facts": [
+        "cash_bag_receipt_observed",
+        "identity_authority_context_covered",
+        "identity_authority_check_not_visible"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 1,
+        "positive_ids": [
+          "X-17"
+        ],
+        "positive_source_ids": [
+          "X-17"
+        ],
+        "negative_windows": 23,
+        "negative_window_ids": [
+          "X-11",
+          "X-12",
+          "X-13",
+          "X-18",
+          "X-19",
+          "X-20",
+          "X-21",
+          "X-22",
+          "X-23",
+          "X-24",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-4",
+          "X-40",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 1
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 0,
+        "positive_ids": [],
+        "positive_source_ids": [],
+        "negative_windows": 7,
+        "negative_window_ids": [
+          "X-10",
+          "X-14",
+          "X-16",
+          "X-2",
+          "X-31",
+          "X-34",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {},
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": true,
+      "window_validation_evaluable": false,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "single_canonical_train_positive",
+        "no_validation_positive_video",
+        "no_whole_video_negative_attestation",
+        "train_positives_include_batch_labels"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 4,
+        "additional_validation_positive_videos": 2,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "missing_partition_support"
+      }
+    },
+    {
+      "event_type": "safe_key_left_in_lock",
+      "required_visual_facts": [
+        "safe_lock_identified",
+        "key_visible_in_lock",
+        "key_left_in_lock_sequence_observed"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 2,
+        "positive_ids": [
+          "X-11",
+          "X-22"
+        ],
+        "positive_source_ids": [
+          "X-11",
+          "X-22"
+        ],
+        "negative_windows": 22,
+        "negative_window_ids": [
+          "X-12",
+          "X-13",
+          "X-17",
+          "X-18",
+          "X-19",
+          "X-20",
+          "X-21",
+          "X-23",
+          "X-24",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-4",
+          "X-40",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 2
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 0,
+        "positive_ids": [],
+        "positive_source_ids": [],
+        "negative_windows": 7,
+        "negative_window_ids": [
+          "X-10",
+          "X-14",
+          "X-16",
+          "X-2",
+          "X-31",
+          "X-34",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {},
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": true,
+      "window_validation_evaluable": false,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "no_validation_positive_video",
+        "no_whole_video_negative_attestation",
+        "train_positives_include_batch_labels"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 3,
+        "additional_validation_positive_videos": 2,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "missing_partition_support"
+      }
+    },
+    {
+      "event_type": "suspected_stamp_or_seal_left_unattended",
+      "required_visual_facts": [
+        "stamp_or_seal_identified",
+        "item_left_unattended_sequence_observed"
+      ],
+      "catalog_membership_is_model_support": false,
+      "train": {
+        "positive_windows": 1,
+        "positive_ids": [
+          "X-24"
+        ],
+        "positive_source_ids": [
+          "X-24"
+        ],
+        "negative_windows": 23,
+        "negative_window_ids": [
+          "X-11",
+          "X-12",
+          "X-13",
+          "X-17",
+          "X-18",
+          "X-19",
+          "X-20",
+          "X-21",
+          "X-22",
+          "X-23",
+          "X-25",
+          "X-27",
+          "X-29",
+          "X-3",
+          "X-35",
+          "X-37",
+          "X-4",
+          "X-40",
+          "X-43",
+          "X-45",
+          "X-5",
+          "X-8"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {
+          "batch_supplied_labels": 1
+        },
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-3",
+            "source_ids": [
+              "X-3"
+            ],
+            "center_sec": 9.999944351697273,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-4"
+            ],
+            "center_sec": 57.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-4",
+            "source_ids": [
+              "X-47"
+            ],
+            "center_sec": 68.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-5",
+            "source_ids": [
+              "X-5",
+              "X-48"
+            ],
+            "center_sec": 35.78331002331002,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-8",
+            "source_ids": [
+              "X-8"
+            ],
+            "center_sec": 18.99998538011696,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-11",
+            "source_ids": [
+              "X-11"
+            ],
+            "center_sec": 18.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-12",
+            "source_ids": [
+              "X-12"
+            ],
+            "center_sec": 21.133307024467246,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-13",
+            "source_ids": [
+              "X-13"
+            ],
+            "center_sec": 47.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-17",
+            "source_ids": [
+              "X-17"
+            ],
+            "center_sec": 7.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-18",
+            "source_ids": [
+              "X-18"
+            ],
+            "center_sec": 20.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-19",
+            "source_ids": [
+              "X-19"
+            ],
+            "center_sec": 28.69997093023256,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-20",
+            "source_ids": [
+              "X-20"
+            ],
+            "center_sec": 5.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-21",
+            "source_ids": [
+              "X-21"
+            ],
+            "center_sec": 9.783247863247864,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-22",
+            "source_ids": [
+              "X-22"
+            ],
+            "center_sec": 14.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-23",
+            "source_ids": [
+              "X-23"
+            ],
+            "center_sec": 9.1165749235474,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-24",
+            "source_ids": [
+              "X-24"
+            ],
+            "center_sec": 8.0,
+            "target": "present"
+          },
+          {
+            "clip_id": "X-25",
+            "source_ids": [
+              "X-25"
+            ],
+            "center_sec": 15.833315789473685,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-27",
+            "source_ids": [
+              "X-27"
+            ],
+            "center_sec": 13.199957859249896,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-29",
+            "source_ids": [
+              "X-29"
+            ],
+            "center_sec": 8.633203883495145,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-35",
+            "source_ids": [
+              "X-35"
+            ],
+            "center_sec": 28.366637254901963,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-37",
+            "source_ids": [
+              "X-37"
+            ],
+            "center_sec": 7.916560958421424,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-40",
+            "source_ids": [
+              "X-40"
+            ],
+            "center_sec": 17.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-43",
+            "source_ids": [
+              "X-43"
+            ],
+            "center_sec": 11.666618979494515,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-45",
+            "source_ids": [
+              "X-45"
+            ],
+            "center_sec": 16.649933065595718,
+            "target": "absent"
+          }
+        ]
+      },
+      "validation": {
+        "positive_windows": 0,
+        "positive_ids": [],
+        "positive_source_ids": [],
+        "negative_windows": 7,
+        "negative_window_ids": [
+          "X-10",
+          "X-14",
+          "X-16",
+          "X-2",
+          "X-31",
+          "X-34",
+          "X-39"
+        ],
+        "whole_video_negative_ids": [],
+        "positive_review_basis": {},
+        "non_batch_positive_ids": [],
+        "points": [
+          {
+            "clip_id": "X-2",
+            "source_ids": [
+              "X-2"
+            ],
+            "center_sec": 10.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-10",
+            "source_ids": [
+              "X-10"
+            ],
+            "center_sec": 7.766666666666667,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-14",
+            "source_ids": [
+              "X-14"
+            ],
+            "center_sec": 71.24998829861924,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-16",
+            "source_ids": [
+              "X-16"
+            ],
+            "center_sec": 11.349950980392158,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-31",
+            "source_ids": [
+              "X-31"
+            ],
+            "center_sec": 11.883263009845288,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-34",
+            "source_ids": [
+              "X-34"
+            ],
+            "center_sec": 13.0,
+            "target": "absent"
+          },
+          {
+            "clip_id": "X-38",
+            "source_ids": [
+              "X-38"
+            ],
+            "center_sec": 33.0,
+            "target": "unknown"
+          },
+          {
+            "clip_id": "X-39",
+            "source_ids": [
+              "X-39"
+            ],
+            "center_sec": 39.349978804578214,
+            "target": "absent"
+          }
+        ]
+      },
+      "can_fit_with_existing_declared_labels": true,
+      "window_validation_evaluable": false,
+      "has_whole_video_negative_support": false,
+      "full_video_validation_evaluable": false,
+      "quality_limitations": [
+        "single_canonical_train_positive",
+        "no_validation_positive_video",
+        "no_whole_video_negative_attestation",
+        "train_positives_include_batch_labels"
+      ],
+      "deployment_approved": false,
+      "collection_goals": {
+        "target_train_positive_videos": 5,
+        "target_validation_positive_videos": 2,
+        "additional_train_positive_videos": 4,
+        "additional_validation_positive_videos": 2,
+        "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+        "priority": "missing_partition_support"
+      }
+    }
+  ],
+  "mappings": [
+    {
+      "observed_event_type": "cash_received_counted_partially_returned",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-1",
+      "canonical_id": "X-1",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:22",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {}
+    },
+    {
+      "observed_event_type": "cash_deposit_without_visible_id_check",
+      "catalog_candidates": [
+        "client_identity_check_not_visible"
+      ],
+      "candidate_types": [
+        "client_identity_check_not_visible"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-2",
+      "canonical_id": "X-2",
+      "split": "validation",
+      "source_label": "violation",
+      "annotation_timecode": "00:10",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "client_identity_check_not_visible": {
+          "candidate_event_type": "client_identity_check_not_visible",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "cash_deposit_observed",
+            "identity_check_context_covered",
+            "identity_check_not_visible"
+          ],
+          "unknown_visual_facts": [
+            "cash_deposit_observed",
+            "identity_check_context_covered",
+            "identity_check_not_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Лицо в кадре является клиентом в смысле Правил №231.",
+            "Формулировка результата должна быть «в кадре не наблюдается визуальная идентификация», а не «идентификация не проводилась»."
+          ],
+          "video_cannot_establish": [
+            "Проверку вне кадра, через операциониста или цифровой сервис, который не попал в обзор камеры."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "client_identity_check_not_visible"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-3",
+      "canonical_id": "X-3",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "prior_client_cash_left_during_next_client_entry",
+      "catalog_candidates": [
+        "unsecured_accepted_cash"
+      ],
+      "candidate_types": [
+        "unsecured_accepted_cash"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-4",
+      "canonical_id": "X-4",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:57",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "unsecured_accepted_cash": {
+          "candidate_event_type": "unsecured_accepted_cash",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "unknown_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Деньги уже приняты банком, а не являются текущим взносом клиента, который ещё пересчитывается в его присутствии.",
+            "Предметы в кадре идентифицируются как наличные, либо оставлена без присмотра сумка, которую команда считает содержащей ранее принятые наличные (X-15).",
+            "Работа с этими деньгами завершена либо это ранее принятые деньги, которые п. 20 абз. 2 требует хранить в закрывающемся устройстве."
+          ],
+          "video_cannot_establish": [
+            "Факт бухгалтерского приёма и завершения операции, если он не следует из видимого действия.",
+            "Содержимое закрытой сумки, если команда не принимает рабочую гипотезу, что внутри наличные."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "unsecured_accepted_cash"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-5",
+      "canonical_id": "X-5",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-8",
+      "canonical_id": "X-8",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-10",
+      "canonical_id": "X-10",
+      "split": "validation",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "safe_key_left_in_lock",
+      "catalog_candidates": [
+        "safe_key_left_in_lock"
+      ],
+      "candidate_types": [
+        "safe_key_left_in_lock"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-11",
+      "canonical_id": "X-11",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:18",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "safe_key_left_in_lock": {
+          "candidate_event_type": "safe_key_left_in_lock",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "safe_lock_identified",
+            "key_visible_in_lock",
+            "key_left_in_lock_sequence_observed"
+          ],
+          "unknown_visual_facts": [
+            "safe_lock_identified",
+            "key_visible_in_lock",
+            "key_left_in_lock_sequence_observed"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "П. 80 требует, чтобы внутренние документы банка исключали несанкционированное использование ключей от сейфа, кладовой и устройств хранения.",
+            "Команда трактует ключ, оставленный в замке, как такое несанкционированное использование, видимое на видео."
+          ],
+          "video_cannot_establish": [
+            "Текст внутреннего регламента ForteBank и точный запрет «не оставлять ключ в замке»."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "safe_key_left_in_lock"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-12",
+      "canonical_id": "X-12",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "collection_cash_amount_registration_not_observed",
+      "catalog_candidates": [
+        "collection_cash_amount_registration_not_observed"
+      ],
+      "candidate_types": [
+        "collection_cash_amount_registration_not_observed"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-13",
+      "canonical_id": "X-13",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:47",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "collection_cash_amount_registration_not_observed": {
+          "candidate_event_type": "collection_cash_amount_registration_not_observed",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "collection_cash_receipt_observed",
+            "registration_context_covered",
+            "registration_not_visible"
+          ],
+          "unknown_visual_facts": [
+            "collection_cash_receipt_observed",
+            "registration_context_covered",
+            "registration_not_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Это приём наличных клиента от инкассации банка или инкассаторской организации по препроводительному документу.",
+            "Команда считает отсутствие видимой регистрации суммы событием для API, хотя сам порядок регистрации задают внутренние документы банка."
+          ],
+          "video_cannot_establish": [
+            "Запись суммы в учётной системе вне кадра."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "collection_cash_amount_registration_not_observed"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-14",
+      "canonical_id": "X-14",
+      "split": "validation",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "unattended_bag_contents_unknown",
+      "catalog_candidates": [
+        "unsecured_accepted_cash"
+      ],
+      "candidate_types": [],
+      "status": "needs_context_review",
+      "reason": "Содержимое сумки и факт предыдущего приёма наличных не установлены.",
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-15",
+      "canonical_id": "X-15",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:15",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "unsecured_accepted_cash": {
+          "candidate_event_type": "unsecured_accepted_cash",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "unknown_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Деньги уже приняты банком, а не являются текущим взносом клиента, который ещё пересчитывается в его присутствии.",
+            "Предметы в кадре идентифицируются как наличные, либо оставлена без присмотра сумка, которую команда считает содержащей ранее принятые наличные (X-15).",
+            "Работа с этими деньгами завершена либо это ранее принятые деньги, которые п. 20 абз. 2 требует хранить в закрывающемся устройстве."
+          ],
+          "video_cannot_establish": [
+            "Факт бухгалтерского приёма и завершения операции, если он не следует из видимого действия.",
+            "Содержимое закрытой сумки, если команда не принимает рабочую гипотезу, что внутри наличные."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      }
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-16",
+      "canonical_id": "X-16",
+      "split": "validation",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "cash_bag_received_without_visible_identity_authority_check",
+      "catalog_candidates": [
+        "cash_bag_received_without_visible_identity_authority_check"
+      ],
+      "candidate_types": [
+        "cash_bag_received_without_visible_identity_authority_check"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-17",
+      "canonical_id": "X-17",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:07",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "cash_bag_received_without_visible_identity_authority_check": {
+          "candidate_event_type": "cash_bag_received_without_visible_identity_authority_check",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "cash_bag_receipt_observed",
+            "identity_authority_context_covered",
+            "identity_authority_check_not_visible"
+          ],
+          "unknown_visual_facts": [
+            "cash_bag_receipt_observed",
+            "identity_authority_context_covered",
+            "identity_authority_check_not_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Подтвердить, что операция и передающее лицо подпадают под №231, п. 19 пп. 1.",
+            "Отсутствие видимой идентификации не означает, что проверка не проводилась вне кадра."
+          ],
+          "video_cannot_establish": [
+            "Статус клиента или представителя и то, требовалась ли CDD по сумме и виду операции.",
+            "Идентификатор типа сохранён для совместимости; вывод о проверке полномочий по одному п. 19 пп. 1 не делается."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "cash_bag_received_without_visible_identity_authority_check"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "cash_deposit_without_visible_id_check",
+      "catalog_candidates": [
+        "client_identity_check_not_visible"
+      ],
+      "candidate_types": [
+        "client_identity_check_not_visible"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-18",
+      "canonical_id": "X-18",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:20",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "client_identity_check_not_visible": {
+          "candidate_event_type": "client_identity_check_not_visible",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "cash_deposit_observed",
+            "identity_check_context_covered",
+            "identity_check_not_visible"
+          ],
+          "unknown_visual_facts": [
+            "cash_deposit_observed",
+            "identity_check_context_covered",
+            "identity_check_not_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Лицо в кадре является клиентом в смысле Правил №231.",
+            "Формулировка результата должна быть «в кадре не наблюдается визуальная идентификация», а не «идентификация не проводилась»."
+          ],
+          "video_cannot_establish": [
+            "Проверку вне кадра, через операциониста или цифровой сервис, который не попал в обзор камеры."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "client_identity_check_not_visible"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-19",
+      "canonical_id": "X-19",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "cash_count_from_safe_without_visible_controller",
+      "catalog_candidates": [
+        "recount_without_visible_controller"
+      ],
+      "candidate_types": [
+        "recount_without_visible_controller"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-20",
+      "canonical_id": "X-20",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:05",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "recount_without_visible_controller": {
+          "candidate_event_type": "recount_without_visible_controller",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "cash_count_observed",
+            "internal_recount_context_observed",
+            "controller_context_covered",
+            "controller_not_visible"
+          ],
+          "unknown_visual_facts": [
+            "cash_count_observed",
+            "internal_recount_context_observed",
+            "controller_context_covered",
+            "controller_not_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Операция относится к пересчёту, сортировке или упаковке, а не к приёму или выдаче наличных клиенту (эти случаи п. 42 прямо исключает)."
+          ],
+          "video_cannot_establish": [
+            "Наличие контролёра вне кадра.",
+            "Вид операции, если по видео нельзя отличить клиентский приём от внутреннего пересчёта."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "recount_without_visible_controller"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-21",
+      "canonical_id": "X-21",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "employee_steps_away_key_left_in_safe_lock",
+      "catalog_candidates": [
+        "safe_key_left_in_lock"
+      ],
+      "candidate_types": [
+        "safe_key_left_in_lock"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-22",
+      "canonical_id": "X-22",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:14",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "safe_key_left_in_lock": {
+          "candidate_event_type": "safe_key_left_in_lock",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "safe_lock_identified",
+            "key_visible_in_lock",
+            "key_left_in_lock_sequence_observed"
+          ],
+          "unknown_visual_facts": [
+            "safe_lock_identified",
+            "key_visible_in_lock",
+            "key_left_in_lock_sequence_observed"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "П. 80 требует, чтобы внутренние документы банка исключали несанкционированное использование ключей от сейфа, кладовой и устройств хранения.",
+            "Команда трактует ключ, оставленный в замке, как такое несанкционированное использование, видимое на видео."
+          ],
+          "video_cannot_establish": [
+            "Текст внутреннего регламента ForteBank и точный запрет «не оставлять ключ в замке»."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "safe_key_left_in_lock"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-23",
+      "canonical_id": "X-23",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "suspected_stamp_or_seal_left_unattended",
+      "catalog_candidates": [
+        "suspected_stamp_or_seal_left_unattended"
+      ],
+      "candidate_types": [
+        "suspected_stamp_or_seal_left_unattended"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-24",
+      "canonical_id": "X-24",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:08",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "suspected_stamp_or_seal_left_unattended": {
+          "candidate_event_type": "suspected_stamp_or_seal_left_unattended",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "stamp_or_seal_identified",
+            "item_left_unattended_sequence_observed"
+          ],
+          "unknown_visual_facts": [
+            "stamp_or_seal_identified",
+            "item_left_unattended_sequence_observed"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "П. 80 относит хранение печатей, клише и именных штампов к внутренним документам, которые должны исключать несанкционированное использование.",
+            "Команда считает предметы в кадре банковскими печатями или штампами."
+          ],
+          "video_cannot_establish": [
+            "Точная идентификация предмета, если по кадру нельзя отличить печать банка от иного предмета."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "suspected_stamp_or_seal_left_unattended"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-25",
+      "canonical_id": "X-25",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "employee_steps_away_suspected_cash_on_desk",
+      "catalog_candidates": [
+        "cashier_leaves_during_client_service"
+      ],
+      "candidate_types": [],
+      "status": "needs_context_review",
+      "reason": "Уход от стола не подтверждает, что обслуживание клиента ещё продолжалось.",
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-26",
+      "canonical_id": "X-26",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:09",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "cashier_leaves_during_client_service": {
+          "candidate_event_type": "cashier_leaves_during_client_service",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "cashier_departure_observed",
+            "ongoing_client_service_observed"
+          ],
+          "unknown_visual_facts": [
+            "cashier_departure_observed",
+            "ongoing_client_service_observed"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "В кадре ещё идёт обслуживание клиента.",
+            "Если одновременно на столе остаются ранее принятые наличные, дополнительно применим unsecured_accepted_cash / п. 20 абз. 2."
+          ],
+          "video_cannot_establish": [
+            "Завершён ли клиентский цикл, если клиента уже нет в кадре и операция могла быть закрыта."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      }
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-27",
+      "canonical_id": "X-27",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "employee_steps_away_workstation_lock_unknown",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-28",
+      "canonical_id": "X-28",
+      "split": "validation",
+      "source_label": "violation",
+      "annotation_timecode": "00:07",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {}
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-29",
+      "canonical_id": "X-29",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "person_enters_cash_work_area_authorization_unknown",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-30",
+      "canonical_id": "X-30",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:13",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {}
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-31",
+      "canonical_id": "X-31",
+      "split": "validation",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "cash_area_door_open_during_work",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-32",
+      "canonical_id": "X-32",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:05",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {}
+    },
+    {
+      "observed_event_type": "employee_starts_work_entry_door_open",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-33",
+      "canonical_id": "X-33",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:06",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {}
+    },
+    {
+      "observed_event_type": "cash_count_after_client_departure",
+      "catalog_candidates": [
+        "cash_counted_without_client_present"
+      ],
+      "candidate_types": [
+        "cash_counted_without_client_present"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-34",
+      "canonical_id": "X-34",
+      "split": "validation",
+      "source_label": "violation",
+      "annotation_timecode": "00:13",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "cash_counted_without_client_present": {
+          "candidate_event_type": "cash_counted_without_client_present",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "cash_count_observed",
+            "client_receipt_context_observed",
+            "client_absent_during_count"
+          ],
+          "unknown_visual_facts": [
+            "cash_count_observed",
+            "client_receipt_context_observed",
+            "client_absent_during_count"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Это именно приём или пересчёт наличных клиента, а не внутренний пересчёт, сортировка или упаковка (для них см. п. 42)."
+          ],
+          "video_cannot_establish": [
+            "Была ли операция уже завершена до ухода клиента."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "cash_counted_without_client_present"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-35",
+      "canonical_id": "X-35",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-37",
+      "canonical_id": "X-37",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "suspected_accepted_cash_left_after_client_departure",
+      "catalog_candidates": [
+        "unsecured_accepted_cash"
+      ],
+      "candidate_types": [],
+      "status": "needs_context_review",
+      "reason": "Не установлены предмет (наличные) и факт его предыдущего приёма.",
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-38",
+      "canonical_id": "X-38",
+      "split": "validation",
+      "source_label": "violation",
+      "annotation_timecode": "00:33",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "unsecured_accepted_cash": {
+          "candidate_event_type": "unsecured_accepted_cash",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "unknown_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Деньги уже приняты банком, а не являются текущим взносом клиента, который ещё пересчитывается в его присутствии.",
+            "Предметы в кадре идентифицируются как наличные, либо оставлена без присмотра сумка, которую команда считает содержащей ранее принятые наличные (X-15).",
+            "Работа с этими деньгами завершена либо это ранее принятые деньги, которые п. 20 абз. 2 требует хранить в закрывающемся устройстве."
+          ],
+          "video_cannot_establish": [
+            "Факт бухгалтерского приёма и завершения операции, если он не следует из видимого действия.",
+            "Содержимое закрытой сумки, если команда не принимает рабочую гипотезу, что внутри наличные."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "unsecured_accepted_cash"
+      ],
+      "declared_review_basis": "declared_frame_sequence_review"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-39",
+      "canonical_id": "X-39",
+      "split": "validation",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "employee_personal_items_on_cashier_desk",
+      "catalog_candidates": [
+        "employee_personal_items_in_cash_unit"
+      ],
+      "candidate_types": [
+        "employee_personal_items_in_cash_unit"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-40",
+      "canonical_id": "X-40",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:17",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "employee_personal_items_in_cash_unit": {
+          "candidate_event_type": "employee_personal_items_in_cash_unit",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "personal_item_visible",
+            "employee_ownership_observed",
+            "cash_unit_context_observed",
+            "permitted_item_exceptions_checked"
+          ],
+          "unknown_visual_facts": [
+            "personal_item_visible",
+            "employee_ownership_observed",
+            "cash_unit_context_observed",
+            "permitted_item_exceptions_checked"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Вещи принадлежат работнику банка, а не клиенту.",
+            "Место находится в кассовом узле.",
+            "Это не лекарства, медизделия или средство связи без фото/видеосъёмки, которые п. 12 прямо допускает."
+          ],
+          "video_cannot_establish": [
+            "Принадлежность вещи, если это нельзя отличить по кадру."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "employee_personal_items_in_cash_unit"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-43",
+      "canonical_id": "X-43",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "employee_handles_suspected_cash_without_client",
+      "catalog_candidates": [
+        "unsecured_accepted_cash"
+      ],
+      "candidate_types": [],
+      "status": "needs_context_review",
+      "reason": "Работа с предполагаемыми наличными не устанавливает нарушение хранения принятых денег.",
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-44",
+      "canonical_id": "X-44",
+      "split": "validation",
+      "source_label": "violation",
+      "annotation_timecode": "00:16",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "unsecured_accepted_cash": {
+          "candidate_event_type": "unsecured_accepted_cash",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "unknown_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Деньги уже приняты банком, а не являются текущим взносом клиента, который ещё пересчитывается в его присутствии.",
+            "Предметы в кадре идентифицируются как наличные, либо оставлена без присмотра сумка, которую команда считает содержащей ранее принятые наличные (X-15).",
+            "Работа с этими деньгами завершена либо это ранее принятые деньги, которые п. 20 абз. 2 требует хранить в закрывающемся устройстве."
+          ],
+          "video_cannot_establish": [
+            "Факт бухгалтерского приёма и завершения операции, если он не следует из видимого действия.",
+            "Содержимое закрытой сумки, если команда не принимает рабочую гипотезу, что внутри наличные."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      }
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-45",
+      "canonical_id": "X-45",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "beverage_near_suspected_cash",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-46",
+      "canonical_id": "X-46",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "00:11",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {}
+    },
+    {
+      "observed_event_type": "accepted_cash_not_moved_to_lockable_storage",
+      "catalog_candidates": [
+        "unsecured_accepted_cash"
+      ],
+      "candidate_types": [
+        "unsecured_accepted_cash"
+      ],
+      "status": "candidate_only",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-47",
+      "canonical_id": "X-4",
+      "split": "train",
+      "source_label": "violation",
+      "annotation_timecode": "01:08",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {
+        "unsecured_accepted_cash": {
+          "candidate_event_type": "unsecured_accepted_cash",
+          "event_type": null,
+          "visual_basis_sufficient": false,
+          "required_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "unknown_visual_facts": [
+            "banknotes_visible",
+            "prior_receipt_observed",
+            "cash_remains_after_service_transition",
+            "accepted_cash_outside_lockable_storage_visible"
+          ],
+          "contradicted_visual_facts": [],
+          "evidence_provenance_valid": false,
+          "source_links": [],
+          "rule_status": "unresolved",
+          "applicability_to_verify": [
+            "Деньги уже приняты банком, а не являются текущим взносом клиента, который ещё пересчитывается в его присутствии.",
+            "Предметы в кадре идентифицируются как наличные, либо оставлена без присмотра сумка, которую команда считает содержащей ранее принятые наличные (X-15).",
+            "Работа с этими деньгами завершена либо это ранее принятые деньги, которые п. 20 абз. 2 требует хранить в закрывающемся устройстве."
+          ],
+          "video_cannot_establish": [
+            "Факт бухгалтерского приёма и завершения операции, если он не следует из видимого действия.",
+            "Содержимое закрытой сумки, если команда не принимает рабочую гипотезу, что внутри наличные."
+          ],
+          "legal_conclusion": null,
+          "requires_review": true,
+          "reason": "Unsupported type, missing/contradicted visual facts, or unverified evidence."
+        }
+      },
+      "declared_review_positive_types": [
+        "unsecured_accepted_cash"
+      ],
+      "declared_review_basis": "batch_supplied_labels"
+    },
+    {
+      "observed_event_type": "not_reported",
+      "catalog_candidates": [],
+      "candidate_types": [],
+      "status": "unmapped",
+      "reason": null,
+      "confirmed_type": null,
+      "requires_review": true,
+      "clip_id": "X-48",
+      "canonical_id": "X-5",
+      "split": "train",
+      "source_label": "no_violation",
+      "annotation_timecode": "",
+      "legal_basis_is_action_target": false,
+      "evidence_check": {},
+      "declared_review_positive_types": [],
+      "declared_review_basis": "batch_supplied_labels"
+    }
+  ],
+  "supplemental": {
+    "audit_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+    "counts": {
+      "augmentations": {
+        "eligible_train_parent": 128,
+        "quarantined_validation_descendant": 40
+      },
+      "synthetic": {
+        "auxiliary_train_only_requires_visual_review": 8,
+        "quarantined_unlabelled": 1
+      }
+    },
+    "augmentation_files": 168,
+    "synthetic_files": 9,
+    "synthetic_parent_scenarios": 4,
+    "missing_files": [],
+    "verified_available_files": 177,
+    "independent_test_eligible_files": 0,
+    "reasons": [
+      "X-* descendants inherit the already used canonical partitions.",
+      "S01-S04 are synthetic scenarios; mirrors are not new source cases.",
+      "The unlabelled scenario has no approved action targets."
+    ],
+    "synthetic_screening": [
+      {
+        "filename": "S01_original.mp4",
+        "sha256": "0100fbf9dc6d738a8e677a1829af2a6e387da08f4e849df9286009a5475fd6e1",
+        "source_id": "S01",
+        "status": "auxiliary_train_only_requires_visual_review",
+        "origin": "synthetic_generated",
+        "existing_training_eligible": false,
+        "verified_available_path": "C:\\Users\\ewgen\\Desktop\\videos\\S01_original.mp4",
+        "test_eligible": false,
+        "scenario_claim": "Контроль: пересчет при клиенте",
+        "claim_is_confirmed_label": false
+      },
+      {
+        "filename": "S01_hflip.mp4",
+        "sha256": "c7194b6dd5004447c4b2d3c0dd3583eb80e2d6838bbf37cae0fea13eef81c44f",
+        "source_id": "S01",
+        "status": "auxiliary_train_only_requires_visual_review",
+        "origin": "synthetic_generated",
+        "existing_training_eligible": false,
+        "verified_available_path": "C:\\Users\\ewgen\\Desktop\\videos\\S01_hflip.mp4",
+        "test_eligible": false,
+        "scenario_claim": "Контроль: пересчет при клиенте",
+        "claim_is_confirmed_label": false
+      },
+      {
+        "filename": "S02_original.mp4",
+        "sha256": "51323794aded20776ccc71abc240df39dd838ebf0125777a0b71aa5f18b29824",
+        "source_id": "S02",
+        "status": "auxiliary_train_only_requires_visual_review",
+        "origin": "synthetic_generated",
+        "existing_training_eligible": false,
+        "verified_available_path": "C:\\Users\\ewgen\\Desktop\\videos\\S02_original.mp4",
+        "test_eligible": false,
+        "scenario_claim": "Кассир покидает место до окончания обслуживания",
+        "claim_is_confirmed_label": false
+      },
+      {
+        "filename": "S02_hflip.mp4",
+        "sha256": "6620a739b3820a7ac4b6abdf267609b656f49acc4947dc58395e5670d1e60846",
+        "source_id": "S02",
+        "status": "auxiliary_train_only_requires_visual_review",
+        "origin": "synthetic_generated",
+        "existing_training_eligible": false,
+        "verified_available_path": "C:\\Users\\ewgen\\Desktop\\videos\\S02_hflip.mp4",
+        "test_eligible": false,
+        "scenario_claim": "Кассир покидает место до окончания обслуживания",
+        "claim_is_confirmed_label": false
+      },
+      {
+        "filename": "S03_original.mp4",
+        "sha256": "a0a94d2d01c4bce060067201633c33059c1ce03bb7c83951174b5bef8c7b261f",
+        "source_id": "S03",
+        "status": "auxiliary_train_only_requires_visual_review",
+        "origin": "synthetic_generated",
+        "existing_training_eligible": false,
+        "verified_available_path": "C:\\Users\\ewgen\\Desktop\\videos\\S03_original.mp4",
+        "test_eligible": false,
+        "scenario_claim": "Пересчет после ухода клиента",
+        "claim_is_confirmed_label": false
+      },
+      {
+        "filename": "S03_hflip.mp4",
+        "sha256": "3bea15d941a189de473303cab29e4024d46a8b9755ec57cf0dea0b5d4ac101dd",
+        "source_id": "S03",
+        "status": "auxiliary_train_only_requires_visual_review",
+        "origin": "synthetic_generated",
+        "existing_training_eligible": false,
+        "verified_available_path": "C:\\Users\\ewgen\\Desktop\\videos\\S03_hflip.mp4",
+        "test_eligible": false,
+        "scenario_claim": "Пересчет после ухода клиента",
+        "claim_is_confirmed_label": false
+      },
+      {
+        "filename": "S04_original.mp4",
+        "sha256": "b6f426e845214c250095225d838377b41f3ea2a98ae0901ced9559ae701cc608",
+        "source_id": "S04",
+        "status": "auxiliary_train_only_requires_visual_review",
+        "origin": "synthetic_generated",
+        "existing_training_eligible": false,
+        "verified_available_path": "C:\\Users\\ewgen\\Desktop\\videos\\S04_original.mp4",
+        "test_eligible": false,
+        "scenario_claim": "Личная сумка кассира на рабочем месте",
+        "claim_is_confirmed_label": false
+      },
+      {
+        "filename": "S04_hflip.mp4",
+        "sha256": "d4966693b60bd5132d2fe34542a6a0e0a36d6678ef04b77dff8d23e50bcba215",
+        "source_id": "S04",
+        "status": "auxiliary_train_only_requires_visual_review",
+        "origin": "synthetic_generated",
+        "existing_training_eligible": false,
+        "verified_available_path": "C:\\Users\\ewgen\\Desktop\\videos\\S04_hflip.mp4",
+        "test_eligible": false,
+        "scenario_claim": "Личная сумка кассира на рабочем месте",
+        "claim_is_confirmed_label": false
+      },
+      {
+        "filename": "scenario_01_clean.mov",
+        "sha256": "b2d369c7edfe585673556a41664298d631099b88ec234eb688218ba6e9eb6732",
+        "source_id": null,
+        "status": "quarantined_unlabelled",
+        "origin": "unverified",
+        "existing_training_eligible": false,
+        "verified_available_path": "C:\\Users\\ewgen\\Desktop\\videos\\scenario_01_clean.mov",
+        "test_eligible": false,
+        "scenario_claim": null,
+        "claim_is_confirmed_label": false
+      }
+    ]
+  },
+  "independently_confirmed_quality": false,
+  "independent_test": {
+    "ready": false,
+    "eligible_real_video_ids": [],
+    "reason": "No new real sessions available; current validation already inspected repeatedly.",
+    "preserve_current_split": true,
+    "required_before_intake": [
+      "source/recording provenance",
+      "session and canonical group",
+      "original vs derivative relation",
+      "unseen real footage",
+      "reviewed labels and explicit unknowns"
+    ],
+    "do_not_relabel_existing_validation_as_test": true
+  },
+  "next_actions": [
+    "Collect train positives for types present only in validation.",
+    "Add distinct reviewed positives/near-miss negatives for sparse types, keeping relatives together.",
+    "Review batch-labelled windows against actual footage; do not silently change existing labels.",
+    "Use grounded_rule_match to bind only evidence-supported candidates to conditional rule references.",
+    "Freeze a new real holdout before any future tuning; synthetic videos cannot supply it."
+  ]
+}

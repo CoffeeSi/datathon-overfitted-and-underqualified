@@ -9,20 +9,10 @@ from pathlib import Path
 
 from .dataset import parse_time, sha256
 from ..rules.catalog import CATALOG_PATH, supported_event_types
+from ..rules.evidence import SEMANTIC_GAPS
 
 REVIEW_SCHEMA = "action_window_review_v1"
 REVIEW_COLUMN = "action_review"
-
-# Catalog mappings are research hypotheses. These tags omit a defining condition.
-# Keep the catalog/API and historical coverage intact; never use these automatically
-# as supervised action targets. An explicit reviewed target can resolve the condition.
-SEMANTIC_GAPS = {
-    "unattended_bag_contents_unknown": "Содержимое сумки и факт предыдущего приёма наличных не установлены.",
-    "employee_handles_suspected_cash_without_client": "Работа с предполагаемыми наличными не устанавливает нарушение хранения принятых денег.",
-    "suspected_accepted_cash_left_after_client_departure": "Не установлены предмет (наличные) и факт его предыдущего приёма.",
-    "employee_steps_away_suspected_cash_on_desk": "Уход от стола не подтверждает, что обслуживание клиента ещё продолжалось.",
-}
-
 
 def validate_review(value, *, center, window_sec, video_sha256):
     """Validate a review independently of its storage (CSV, import or checkpoint).

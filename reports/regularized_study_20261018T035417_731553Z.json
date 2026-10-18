@@ -1,0 +1,2760 @@
+{
+  "schema": "regularized_heads_study_v1",
+  "plan": {
+    "schema": "regularized_heads_plan_v1",
+    "settings": {
+      "checkpoint": "runs/r3d18_matched_20261018T025716_174675Z/mild_augmented/last.pt",
+      "device": "cuda",
+      "seed": 42,
+      "cpu_threads": 2,
+      "original_fraction": 0.8,
+      "logistic_l2": 1.0,
+      "logistic_max_iter": 250,
+      "lda_shrinkage": 0.9,
+      "variance_floor": 0.001
+    },
+    "baseline_checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented\\last.pt",
+    "baseline_sha256": "00b07713d0fd1c219fcefa00416f6e68668201ee8abec0e8b6bd43682dab00d9",
+    "backbone_sha256": "4570523ca6aa5c4a68969c90ac3df7fa656e989a5e5491487966fcf0b7f8cf20",
+    "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "candidates": [
+      "l2_logistic",
+      "shrinkage_lda"
+    ],
+    "threshold": 0.5,
+    "preprocessing": "Identical to baseline",
+    "selection": "Both candidates fixed before validation; no threshold/grid/epoch search.",
+    "limitation": "Repeatedly inspected within-room development validation; not an independent test."
+  },
+  "diagnostics": {
+    "baseline": {
+      "train": {
+        "window_metrics": {
+          "loss": 0.5076947048787148,
+          "windows": 31,
+          "accuracy": 0.7741935483870968,
+          "precision": 0.7777777777777778,
+          "recall": 0.8235294117647058,
+          "f1": 0.8,
+          "confusion_matrix": [
+            [
+              10,
+              4
+            ],
+            [
+              3,
+              14
+            ]
+          ]
+        },
+        "video_metrics": {
+          "videos": 30,
+          "precision": 0.7777777777777778,
+          "recall": 0.875,
+          "f1": 0.8235294117647058,
+          "accuracy": 0.8,
+          "confusion_matrix": [
+            [
+              10,
+              4
+            ],
+            [
+              2,
+              14
+            ]
+          ]
+        },
+        "window_predictions": [
+          {
+            "clip_id": "X-1",
+            "center_sec": 22.0,
+            "label": 1,
+            "probability": 0.36293941736221313,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-3",
+            "center_sec": 9.999944351697273,
+            "label": 0,
+            "probability": 0.4229678213596344,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-4",
+            "center_sec": 57.0,
+            "label": 1,
+            "probability": 0.6426318883895874,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-4",
+            "center_sec": 68.0,
+            "label": 1,
+            "probability": 0.4112197458744049,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-5",
+            "center_sec": 35.78331002331002,
+            "label": 0,
+            "probability": 0.2525663673877716,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-8",
+            "center_sec": 18.99998538011696,
+            "label": 0,
+            "probability": 0.3777198791503906,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-11",
+            "center_sec": 18.0,
+            "label": 1,
+            "probability": 0.8583377003669739,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-12",
+            "center_sec": 21.133307024467246,
+            "label": 0,
+            "probability": 0.5091695189476013,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-13",
+            "center_sec": 47.0,
+            "label": 1,
+            "probability": 0.6793131828308105,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-15",
+            "center_sec": 15.0,
+            "label": 1,
+            "probability": 0.7699809074401855,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-17",
+            "center_sec": 7.0,
+            "label": 1,
+            "probability": 0.7294385433197021,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-18",
+            "center_sec": 20.0,
+            "label": 1,
+            "probability": 0.6234502792358398,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-19",
+            "center_sec": 28.69997093023256,
+            "label": 0,
+            "probability": 0.3895893394947052,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-20",
+            "center_sec": 5.0,
+            "label": 1,
+            "probability": 0.5642794966697693,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-21",
+            "center_sec": 9.783247863247864,
+            "label": 0,
+            "probability": 0.46638330817222595,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-22",
+            "center_sec": 14.0,
+            "label": 1,
+            "probability": 0.6691474914550781,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-23",
+            "center_sec": 9.1165749235474,
+            "label": 0,
+            "probability": 0.4991043210029602,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-24",
+            "center_sec": 8.0,
+            "label": 1,
+            "probability": 0.7216283082962036,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-25",
+            "center_sec": 15.833315789473685,
+            "label": 0,
+            "probability": 0.5773757696151733,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-26",
+            "center_sec": 9.0,
+            "label": 1,
+            "probability": 0.4901893734931946,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-27",
+            "center_sec": 13.199957859249896,
+            "label": 0,
+            "probability": 0.5048774480819702,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-29",
+            "center_sec": 8.633203883495145,
+            "label": 0,
+            "probability": 0.5648679137229919,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-30",
+            "center_sec": 13.0,
+            "label": 1,
+            "probability": 0.5398528575897217,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-32",
+            "center_sec": 5.0,
+            "label": 1,
+            "probability": 0.6317960619926453,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-33",
+            "center_sec": 6.0,
+            "label": 1,
+            "probability": 0.7618097066879272,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-35",
+            "center_sec": 28.366637254901963,
+            "label": 0,
+            "probability": 0.1916911005973816,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-37",
+            "center_sec": 7.916560958421424,
+            "label": 0,
+            "probability": 0.33005762100219727,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-40",
+            "center_sec": 17.0,
+            "label": 1,
+            "probability": 0.7207958698272705,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-43",
+            "center_sec": 11.666618979494515,
+            "label": 0,
+            "probability": 0.3411565124988556,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-45",
+            "center_sec": 16.649933065595718,
+            "label": 0,
+            "probability": 0.2779879570007324,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-46",
+            "center_sec": 11.0,
+            "label": 1,
+            "probability": 0.5918998718261719,
+            "prediction": 1
+          }
+        ],
+        "video_predictions": [
+          {
+            "clip_id": "X-1",
+            "label": 1,
+            "probability": 0.36293941736221313,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-3",
+            "label": 0,
+            "probability": 0.4229678213596344,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-4",
+            "label": 1,
+            "probability": 0.6426318883895874,
+            "prediction": 1,
+            "windows": 2,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-5",
+            "label": 0,
+            "probability": 0.2525663673877716,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-8",
+            "label": 0,
+            "probability": 0.3777198791503906,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-11",
+            "label": 1,
+            "probability": 0.8583377003669739,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-12",
+            "label": 0,
+            "probability": 0.5091695189476013,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "FP"
+          },
+          {
+            "clip_id": "X-13",
+            "label": 1,
+            "probability": 0.6793131828308105,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-15",
+            "label": 1,
+            "probability": 0.7699809074401855,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-17",
+            "label": 1,
+            "probability": 0.7294385433197021,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-18",
+            "label": 1,
+            "probability": 0.6234502792358398,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-19",
+            "label": 0,
+            "probability": 0.3895893394947052,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-20",
+            "label": 1,
+            "probability": 0.5642794966697693,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-21",
+            "label": 0,
+            "probability": 0.46638330817222595,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-22",
+            "label": 1,
+            "probability": 0.6691474914550781,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-23",
+            "label": 0,
+            "probability": 0.4991043210029602,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-24",
+            "label": 1,
+            "probability": 0.7216283082962036,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-25",
+            "label": 0,
+            "probability": 0.5773757696151733,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "FP"
+          },
+          {
+            "clip_id": "X-26",
+            "label": 1,
+            "probability": 0.4901893734931946,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-27",
+            "label": 0,
+            "probability": 0.5048774480819702,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "FP"
+          },
+          {
+            "clip_id": "X-29",
+            "label": 0,
+            "probability": 0.5648679137229919,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "FP"
+          },
+          {
+            "clip_id": "X-30",
+            "label": 1,
+            "probability": 0.5398528575897217,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-32",
+            "label": 1,
+            "probability": 0.6317960619926453,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-33",
+            "label": 1,
+            "probability": 0.7618097066879272,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-35",
+            "label": 0,
+            "probability": 0.1916911005973816,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-37",
+            "label": 0,
+            "probability": 0.33005762100219727,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-40",
+            "label": 1,
+            "probability": 0.7207958698272705,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-43",
+            "label": 0,
+            "probability": 0.3411565124988556,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-45",
+            "label": 0,
+            "probability": 0.2779879570007324,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-46",
+            "label": 1,
+            "probability": 0.5918998718261719,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          }
+        ]
+      },
+      "validation": {
+        "window_metrics": {
+          "loss": 0.7253880977630616,
+          "windows": 10,
+          "accuracy": 0.6,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "video_metrics": {
+          "videos": 10,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5,
+          "accuracy": 0.6,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "window_predictions": [
+          {
+            "clip_id": "X-2",
+            "center_sec": 10.0,
+            "label": 1,
+            "probability": 0.31883642077445984,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-10",
+            "center_sec": 7.766666666666667,
+            "label": 0,
+            "probability": 0.3647894263267517,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-14",
+            "center_sec": 71.24998829861924,
+            "label": 0,
+            "probability": 0.26716384291648865,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-16",
+            "center_sec": 11.349950980392158,
+            "label": 0,
+            "probability": 0.5496678352355957,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-28",
+            "center_sec": 7.0,
+            "label": 1,
+            "probability": 0.5552027225494385,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-31",
+            "center_sec": 11.883263009845288,
+            "label": 0,
+            "probability": 0.4942416846752167,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-34",
+            "center_sec": 13.0,
+            "label": 1,
+            "probability": 0.32342496514320374,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-38",
+            "center_sec": 33.0,
+            "label": 1,
+            "probability": 0.6146594882011414,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-39",
+            "center_sec": 39.349978804578214,
+            "label": 0,
+            "probability": 0.32387763261795044,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-44",
+            "center_sec": 16.0,
+            "label": 1,
+            "probability": 0.2804310917854309,
+            "prediction": 0
+          }
+        ],
+        "video_predictions": [
+          {
+            "clip_id": "X-2",
+            "label": 1,
+            "probability": 0.31883642077445984,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-10",
+            "label": 0,
+            "probability": 0.3647894263267517,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-14",
+            "label": 0,
+            "probability": 0.26716384291648865,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-16",
+            "label": 0,
+            "probability": 0.5496678352355957,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "FP"
+          },
+          {
+            "clip_id": "X-28",
+            "label": 1,
+            "probability": 0.5552027225494385,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-31",
+            "label": 0,
+            "probability": 0.4942416846752167,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-34",
+            "label": 1,
+            "probability": 0.32342496514320374,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-38",
+            "label": 1,
+            "probability": 0.6146594882011414,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-39",
+            "label": 0,
+            "probability": 0.32387763261795044,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-44",
+            "label": 1,
+            "probability": 0.2804310917854309,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          }
+        ]
+      }
+    },
+    "l2_logistic": {
+      "train": {
+        "window_metrics": {
+          "loss": 0.17753993755867403,
+          "windows": 31,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "confusion_matrix": [
+            [
+              14,
+              0
+            ],
+            [
+              0,
+              17
+            ]
+          ]
+        },
+        "video_metrics": {
+          "videos": 30,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "confusion_matrix": [
+            [
+              14,
+              0
+            ],
+            [
+              0,
+              16
+            ]
+          ]
+        },
+        "window_predictions": [
+          {
+            "clip_id": "X-1",
+            "center_sec": 22.0,
+            "label": 1,
+            "probability": 0.782499372959137,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-3",
+            "center_sec": 9.999944351697273,
+            "label": 0,
+            "probability": 0.23671630024909973,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-4",
+            "center_sec": 57.0,
+            "label": 1,
+            "probability": 0.7278482913970947,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-4",
+            "center_sec": 68.0,
+            "label": 1,
+            "probability": 0.703580915927887,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-5",
+            "center_sec": 35.78331002331002,
+            "label": 0,
+            "probability": 0.0899345800280571,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-8",
+            "center_sec": 18.99998538011696,
+            "label": 0,
+            "probability": 0.05761693790555,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-11",
+            "center_sec": 18.0,
+            "label": 1,
+            "probability": 0.967810869216919,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-12",
+            "center_sec": 21.133307024467246,
+            "label": 0,
+            "probability": 0.14076334238052368,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-13",
+            "center_sec": 47.0,
+            "label": 1,
+            "probability": 0.8570730686187744,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-15",
+            "center_sec": 15.0,
+            "label": 1,
+            "probability": 0.9595926403999329,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-17",
+            "center_sec": 7.0,
+            "label": 1,
+            "probability": 0.9087589979171753,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-18",
+            "center_sec": 20.0,
+            "label": 1,
+            "probability": 0.9238633513450623,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-19",
+            "center_sec": 28.69997093023256,
+            "label": 0,
+            "probability": 0.16296640038490295,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-20",
+            "center_sec": 5.0,
+            "label": 1,
+            "probability": 0.6837952136993408,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-21",
+            "center_sec": 9.783247863247864,
+            "label": 0,
+            "probability": 0.4049279987812042,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-22",
+            "center_sec": 14.0,
+            "label": 1,
+            "probability": 0.7136003375053406,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-23",
+            "center_sec": 9.1165749235474,
+            "label": 0,
+            "probability": 0.15759728848934174,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-24",
+            "center_sec": 8.0,
+            "label": 1,
+            "probability": 0.8533862233161926,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-25",
+            "center_sec": 15.833315789473685,
+            "label": 0,
+            "probability": 0.16115419566631317,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-26",
+            "center_sec": 9.0,
+            "label": 1,
+            "probability": 0.7057936787605286,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-27",
+            "center_sec": 13.199957859249896,
+            "label": 0,
+            "probability": 0.07346051931381226,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-29",
+            "center_sec": 8.633203883495145,
+            "label": 0,
+            "probability": 0.3788888156414032,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-30",
+            "center_sec": 13.0,
+            "label": 1,
+            "probability": 0.8408631682395935,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-32",
+            "center_sec": 5.0,
+            "label": 1,
+            "probability": 0.8692132830619812,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-33",
+            "center_sec": 6.0,
+            "label": 1,
+            "probability": 0.9548164010047913,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-35",
+            "center_sec": 28.366637254901963,
+            "label": 0,
+            "probability": 0.007952999323606491,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-37",
+            "center_sec": 7.916560958421424,
+            "label": 0,
+            "probability": 0.04429854825139046,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-40",
+            "center_sec": 17.0,
+            "label": 1,
+            "probability": 0.9054113626480103,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-43",
+            "center_sec": 11.666618979494515,
+            "label": 0,
+            "probability": 0.047085750848054886,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-45",
+            "center_sec": 16.649933065595718,
+            "label": 0,
+            "probability": 0.06221809610724449,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-46",
+            "center_sec": 11.0,
+            "label": 1,
+            "probability": 0.8481793403625488,
+            "prediction": 1
+          }
+        ],
+        "video_predictions": [
+          {
+            "clip_id": "X-1",
+            "label": 1,
+            "probability": 0.782499372959137,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-3",
+            "label": 0,
+            "probability": 0.23671630024909973,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-4",
+            "label": 1,
+            "probability": 0.7278482913970947,
+            "prediction": 1,
+            "windows": 2,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-5",
+            "label": 0,
+            "probability": 0.0899345800280571,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-8",
+            "label": 0,
+            "probability": 0.05761693790555,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-11",
+            "label": 1,
+            "probability": 0.967810869216919,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-12",
+            "label": 0,
+            "probability": 0.14076334238052368,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-13",
+            "label": 1,
+            "probability": 0.8570730686187744,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-15",
+            "label": 1,
+            "probability": 0.9595926403999329,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-17",
+            "label": 1,
+            "probability": 0.9087589979171753,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-18",
+            "label": 1,
+            "probability": 0.9238633513450623,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-19",
+            "label": 0,
+            "probability": 0.16296640038490295,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-20",
+            "label": 1,
+            "probability": 0.6837952136993408,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-21",
+            "label": 0,
+            "probability": 0.4049279987812042,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-22",
+            "label": 1,
+            "probability": 0.7136003375053406,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-23",
+            "label": 0,
+            "probability": 0.15759728848934174,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-24",
+            "label": 1,
+            "probability": 0.8533862233161926,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-25",
+            "label": 0,
+            "probability": 0.16115419566631317,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-26",
+            "label": 1,
+            "probability": 0.7057936787605286,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-27",
+            "label": 0,
+            "probability": 0.07346051931381226,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-29",
+            "label": 0,
+            "probability": 0.3788888156414032,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-30",
+            "label": 1,
+            "probability": 0.8408631682395935,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-32",
+            "label": 1,
+            "probability": 0.8692132830619812,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-33",
+            "label": 1,
+            "probability": 0.9548164010047913,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-35",
+            "label": 0,
+            "probability": 0.007952999323606491,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-37",
+            "label": 0,
+            "probability": 0.04429854825139046,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-40",
+            "label": 1,
+            "probability": 0.9054113626480103,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-43",
+            "label": 0,
+            "probability": 0.047085750848054886,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-45",
+            "label": 0,
+            "probability": 0.06221809610724449,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-46",
+            "label": 1,
+            "probability": 0.8481793403625488,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          }
+        ]
+      },
+      "validation": {
+        "window_metrics": {
+          "loss": 1.1077211022377014,
+          "windows": 10,
+          "accuracy": 0.5,
+          "precision": 0.5,
+          "recall": 0.2,
+          "f1": 0.2857142857142857,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        },
+        "video_metrics": {
+          "videos": 10,
+          "precision": 0.5,
+          "recall": 0.2,
+          "f1": 0.2857142857142857,
+          "accuracy": 0.5,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        },
+        "window_predictions": [
+          {
+            "clip_id": "X-2",
+            "center_sec": 10.0,
+            "label": 1,
+            "probability": 0.23893260955810547,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-10",
+            "center_sec": 7.766666666666667,
+            "label": 0,
+            "probability": 0.30462273955345154,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-14",
+            "center_sec": 71.24998829861924,
+            "label": 0,
+            "probability": 0.042820751667022705,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-16",
+            "center_sec": 11.349950980392158,
+            "label": 0,
+            "probability": 0.7854755520820618,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-28",
+            "center_sec": 7.0,
+            "label": 1,
+            "probability": 0.5643430948257446,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-31",
+            "center_sec": 11.883263009845288,
+            "label": 0,
+            "probability": 0.4768594205379486,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-34",
+            "center_sec": 13.0,
+            "label": 1,
+            "probability": 0.10200220346450806,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-38",
+            "center_sec": 33.0,
+            "label": 1,
+            "probability": 0.3831039071083069,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-39",
+            "center_sec": 39.349978804578214,
+            "label": 0,
+            "probability": 0.1243269070982933,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-44",
+            "center_sec": 16.0,
+            "label": 1,
+            "probability": 0.04485723748803139,
+            "prediction": 0
+          }
+        ],
+        "video_predictions": [
+          {
+            "clip_id": "X-2",
+            "label": 1,
+            "probability": 0.23893260955810547,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-10",
+            "label": 0,
+            "probability": 0.30462273955345154,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-14",
+            "label": 0,
+            "probability": 0.042820751667022705,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-16",
+            "label": 0,
+            "probability": 0.7854755520820618,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "FP"
+          },
+          {
+            "clip_id": "X-28",
+            "label": 1,
+            "probability": 0.5643430948257446,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-31",
+            "label": 0,
+            "probability": 0.4768594205379486,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-34",
+            "label": 1,
+            "probability": 0.10200220346450806,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-38",
+            "label": 1,
+            "probability": 0.3831039071083069,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-39",
+            "label": 0,
+            "probability": 0.1243269070982933,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-44",
+            "label": 1,
+            "probability": 0.04485723748803139,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          }
+        ]
+      }
+    },
+    "shrinkage_lda": {
+      "train": {
+        "window_metrics": {
+          "loss": 0.008581222180274543,
+          "windows": 31,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "confusion_matrix": [
+            [
+              14,
+              0
+            ],
+            [
+              0,
+              17
+            ]
+          ]
+        },
+        "video_metrics": {
+          "videos": 30,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "confusion_matrix": [
+            [
+              14,
+              0
+            ],
+            [
+              0,
+              16
+            ]
+          ]
+        },
+        "window_predictions": [
+          {
+            "clip_id": "X-1",
+            "center_sec": 22.0,
+            "label": 1,
+            "probability": 0.9995933175086975,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-3",
+            "center_sec": 9.999944351697273,
+            "label": 0,
+            "probability": 1.9586459529818967e-05,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-4",
+            "center_sec": 57.0,
+            "label": 1,
+            "probability": 0.9994543194770813,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-4",
+            "center_sec": 68.0,
+            "label": 1,
+            "probability": 0.9954343438148499,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-5",
+            "center_sec": 35.78331002331002,
+            "label": 0,
+            "probability": 1.2908157875912707e-10,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-8",
+            "center_sec": 18.99998538011696,
+            "label": 0,
+            "probability": 4.7937448281742956e-12,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-11",
+            "center_sec": 18.0,
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-12",
+            "center_sec": 21.133307024467246,
+            "label": 0,
+            "probability": 1.60470918331157e-07,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-13",
+            "center_sec": 47.0,
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-15",
+            "center_sec": 15.0,
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-17",
+            "center_sec": 7.0,
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-18",
+            "center_sec": 20.0,
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-19",
+            "center_sec": 28.69997093023256,
+            "label": 0,
+            "probability": 1.7511239320811e-06,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-20",
+            "center_sec": 5.0,
+            "label": 1,
+            "probability": 0.9995443224906921,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-21",
+            "center_sec": 9.783247863247864,
+            "label": 0,
+            "probability": 0.14852608740329742,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-22",
+            "center_sec": 14.0,
+            "label": 1,
+            "probability": 0.9998181462287903,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-23",
+            "center_sec": 9.1165749235474,
+            "label": 0,
+            "probability": 7.253268995555118e-05,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-24",
+            "center_sec": 8.0,
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-25",
+            "center_sec": 15.833315789473685,
+            "label": 0,
+            "probability": 3.7643265386577696e-05,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-26",
+            "center_sec": 9.0,
+            "label": 1,
+            "probability": 0.998290479183197,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-27",
+            "center_sec": 13.199957859249896,
+            "label": 0,
+            "probability": 5.1563453951075644e-08,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-29",
+            "center_sec": 8.633203883495145,
+            "label": 0,
+            "probability": 0.09264576435089111,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-30",
+            "center_sec": 13.0,
+            "label": 1,
+            "probability": 0.9999998807907104,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-32",
+            "center_sec": 5.0,
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-33",
+            "center_sec": 6.0,
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-35",
+            "center_sec": 28.366637254901963,
+            "label": 0,
+            "probability": 8.203760826624987e-20,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-37",
+            "center_sec": 7.916560958421424,
+            "label": 0,
+            "probability": 1.1438856047270296e-13,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-40",
+            "center_sec": 17.0,
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-43",
+            "center_sec": 11.666618979494515,
+            "label": 0,
+            "probability": 2.297090198177115e-13,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-45",
+            "center_sec": 16.649933065595718,
+            "label": 0,
+            "probability": 8.06324137233444e-13,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-46",
+            "center_sec": 11.0,
+            "label": 1,
+            "probability": 0.9999998807907104,
+            "prediction": 1
+          }
+        ],
+        "video_predictions": [
+          {
+            "clip_id": "X-1",
+            "label": 1,
+            "probability": 0.9995933175086975,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-3",
+            "label": 0,
+            "probability": 1.9586459529818967e-05,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-4",
+            "label": 1,
+            "probability": 0.9994543194770813,
+            "prediction": 1,
+            "windows": 2,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-5",
+            "label": 0,
+            "probability": 1.2908157875912707e-10,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-8",
+            "label": 0,
+            "probability": 4.7937448281742956e-12,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-11",
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-12",
+            "label": 0,
+            "probability": 1.60470918331157e-07,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-13",
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-15",
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-17",
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-18",
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-19",
+            "label": 0,
+            "probability": 1.7511239320811e-06,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-20",
+            "label": 1,
+            "probability": 0.9995443224906921,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-21",
+            "label": 0,
+            "probability": 0.14852608740329742,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-22",
+            "label": 1,
+            "probability": 0.9998181462287903,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-23",
+            "label": 0,
+            "probability": 7.253268995555118e-05,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-24",
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-25",
+            "label": 0,
+            "probability": 3.7643265386577696e-05,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-26",
+            "label": 1,
+            "probability": 0.998290479183197,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-27",
+            "label": 0,
+            "probability": 5.1563453951075644e-08,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-29",
+            "label": 0,
+            "probability": 0.09264576435089111,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-30",
+            "label": 1,
+            "probability": 0.9999998807907104,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-32",
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-33",
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-35",
+            "label": 0,
+            "probability": 8.203760826624987e-20,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-37",
+            "label": 0,
+            "probability": 1.1438856047270296e-13,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-40",
+            "label": 1,
+            "probability": 1.0,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-43",
+            "label": 0,
+            "probability": 2.297090198177115e-13,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-45",
+            "label": 0,
+            "probability": 8.06324137233444e-13,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-46",
+            "label": 1,
+            "probability": 0.9999998807907104,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          }
+        ]
+      },
+      "validation": {
+        "window_metrics": {
+          "loss": 8.349403572082519,
+          "windows": 10,
+          "accuracy": 0.4,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25,
+          "confusion_matrix": [
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        },
+        "video_metrics": {
+          "videos": 10,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25,
+          "accuracy": 0.4,
+          "confusion_matrix": [
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        },
+        "window_predictions": [
+          {
+            "clip_id": "X-2",
+            "center_sec": 10.0,
+            "label": 1,
+            "probability": 9.765659342519939e-06,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-10",
+            "center_sec": 7.766666666666667,
+            "label": 0,
+            "probability": 7.396879664156586e-05,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-14",
+            "center_sec": 71.24998829861924,
+            "label": 0,
+            "probability": 1.1411703559113112e-13,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-16",
+            "center_sec": 11.349950980392158,
+            "label": 0,
+            "probability": 0.9999980926513672,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-28",
+            "center_sec": 7.0,
+            "label": 1,
+            "probability": 0.9923162460327148,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-31",
+            "center_sec": 11.883263009845288,
+            "label": 0,
+            "probability": 0.9729256629943848,
+            "prediction": 1
+          },
+          {
+            "clip_id": "X-34",
+            "center_sec": 13.0,
+            "label": 1,
+            "probability": 6.743168801115473e-10,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-38",
+            "center_sec": 33.0,
+            "label": 1,
+            "probability": 0.025128191336989403,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-39",
+            "center_sec": 39.349978804578214,
+            "label": 0,
+            "probability": 2.413513833232628e-09,
+            "prediction": 0
+          },
+          {
+            "clip_id": "X-44",
+            "center_sec": 16.0,
+            "label": 1,
+            "probability": 6.456220649243838e-14,
+            "prediction": 0
+          }
+        ],
+        "video_predictions": [
+          {
+            "clip_id": "X-2",
+            "label": 1,
+            "probability": 9.765659342519939e-06,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-10",
+            "label": 0,
+            "probability": 7.396879664156586e-05,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-14",
+            "label": 0,
+            "probability": 1.1411703559113112e-13,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-16",
+            "label": 0,
+            "probability": 0.9999980926513672,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "FP"
+          },
+          {
+            "clip_id": "X-28",
+            "label": 1,
+            "probability": 0.9923162460327148,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "TP"
+          },
+          {
+            "clip_id": "X-31",
+            "label": 0,
+            "probability": 0.9729256629943848,
+            "prediction": 1,
+            "windows": 1,
+            "outcome": "FP"
+          },
+          {
+            "clip_id": "X-34",
+            "label": 1,
+            "probability": 6.743168801115473e-10,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-38",
+            "label": 1,
+            "probability": 0.025128191336989403,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          },
+          {
+            "clip_id": "X-39",
+            "label": 0,
+            "probability": 2.413513833232628e-09,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "TN"
+          },
+          {
+            "clip_id": "X-44",
+            "label": 1,
+            "probability": 6.456220649243838e-14,
+            "prediction": 0,
+            "windows": 1,
+            "outcome": "FN"
+          }
+        ]
+      }
+    }
+  },
+  "robustness": {
+    "baseline": {
+      "schema": "binary_augmentation_robustness_v1",
+      "created_utc": "2026-10-18T03:57:52.198387+00:00",
+      "checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented\\last.pt",
+      "checkpoint_sha256": "00b07713d0fd1c219fcefa00416f6e68668201ee8abec0e8b6bd43682dab00d9",
+      "config": {
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+        "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+        "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+        "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented",
+        "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+        "weights": "KINETICS400_V1",
+        "freeze_backbone": true,
+        "frames": 16,
+        "window_sec": 4.0,
+        "negative_windows": 5,
+        "validation_negative_windows": 1,
+        "negative_sampling": "coverage",
+        "loss_weighting": "video_class_balanced",
+        "cache_frozen_features": true,
+        "preprocessing": "aspect_letterbox_v1",
+        "roi": [
+          0.0,
+          0.1,
+          1.0,
+          0.7
+        ],
+        "epochs": 1,
+        "matched_steps": 120,
+        "batch_size": 16,
+        "num_workers": 0,
+        "cpu_threads": 2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "supplemental_manifest": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\supplemental\\audit.json",
+        "supplemental_manifest_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+        "original_fraction": 0.8,
+        "checkpoint_selection": "fixed_final_step_no_validation"
+      },
+      "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+      "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+      "audit_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+      "original_window_metrics": {
+        "loss": 0.725384533405304,
+        "windows": 10,
+        "accuracy": 0.6,
+        "precision": 0.6666666666666666,
+        "recall": 0.4,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            4,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      "original_video_metrics": {
+        "videos": 10,
+        "accuracy": 0.6,
+        "precision": 0.6666666666666666,
+        "recall": 0.4,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            4,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      "augmented_window_metrics": {
+        "loss": 0.7218079596757889,
+        "windows": 40,
+        "accuracy": 0.65,
+        "precision": 0.8,
+        "recall": 0.4,
+        "f1": 0.5333333333333333,
+        "confusion_matrix": [
+          [
+            18,
+            2
+          ],
+          [
+            12,
+            8
+          ]
+        ]
+      },
+      "transformed_video_metrics": {
+        "videos": 40,
+        "accuracy": 0.65,
+        "precision": 0.8,
+        "recall": 0.4,
+        "f1": 0.5333333333333333,
+        "confusion_matrix": [
+          [
+            18,
+            2
+          ],
+          [
+            12,
+            8
+          ]
+        ]
+      },
+      "per_variant_video_metrics": {
+        "cctv_low_quality": {
+          "videos": 10,
+          "accuracy": 0.7,
+          "precision": 1.0,
+          "recall": 0.4,
+          "f1": 0.5714285714285714,
+          "confusion_matrix": [
+            [
+              5,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "cool_camera": {
+          "videos": 10,
+          "accuracy": 0.7,
+          "precision": 1.0,
+          "recall": 0.4,
+          "f1": 0.5714285714285714,
+          "confusion_matrix": [
+            [
+              5,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "mirror": {
+          "videos": 10,
+          "accuracy": 0.6,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "warm_sepia": {
+          "videos": 10,
+          "accuracy": 0.6,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      },
+      "canonical_validation_parents": 10,
+      "threshold": 0.5,
+      "processing_sec": 23.922851799987257,
+      "independent_evaluation": false,
+      "limitations": [
+        "Annotation-centred binary windows, not full-video localization or action-type recognition.",
+        "Four descendants of each validation parent are correlated robustness cases, not new independent videos.",
+        "Train descendants only fit weights; fixed final checkpoint selected without validation; validation descendants never optimize weights or thresholds.",
+        "Mirror orientation restored before fixed ROI; all other preprocessing matches training.",
+        "Same room/people and repeatedly inspected validation; no independent test."
+      ]
+    },
+    "l2_logistic": {
+      "schema": "binary_augmentation_robustness_v1",
+      "created_utc": "2026-10-18T03:58:29.963286+00:00",
+      "checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_regularized_20261018T035417_731553Z\\l2_logistic\\last.pt",
+      "checkpoint_sha256": "34129ea83b44756ec5c10b9c18c76d9a340b8b101ed69480b836d463052212d8",
+      "config": {
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+        "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+        "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+        "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_regularized_20261018T035417_731553Z\\l2_logistic",
+        "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+        "weights": "KINETICS400_V1",
+        "freeze_backbone": true,
+        "frames": 16,
+        "window_sec": 4.0,
+        "negative_windows": 5,
+        "validation_negative_windows": 1,
+        "negative_sampling": "coverage",
+        "loss_weighting": "video_class_balanced",
+        "cache_frozen_features": true,
+        "preprocessing": "aspect_letterbox_v1",
+        "roi": [
+          0.0,
+          0.1,
+          1.0,
+          0.7
+        ],
+        "epochs": 1,
+        "matched_steps": 120,
+        "batch_size": 16,
+        "num_workers": 0,
+        "cpu_threads": 2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "supplemental_manifest": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\supplemental\\audit.json",
+        "supplemental_manifest_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+        "original_fraction": 0.8,
+        "checkpoint_selection": "fixed_final_step_no_validation",
+        "regularized_head": "l2_logistic",
+        "regularized_head_settings": {
+          "checkpoint": "runs/r3d18_matched_20261018T025716_174675Z/mild_augmented/last.pt",
+          "device": "cuda",
+          "seed": 42,
+          "cpu_threads": 2,
+          "original_fraction": 0.8,
+          "logistic_l2": 1.0,
+          "logistic_max_iter": 250,
+          "lda_shrinkage": 0.9,
+          "variance_floor": 0.001
+        },
+        "normalization_folded_into_fc": true,
+        "initial_backbone_checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented\\last.pt"
+      },
+      "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+      "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+      "audit_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+      "original_window_metrics": {
+        "loss": 1.1075985431671143,
+        "windows": 10,
+        "accuracy": 0.5,
+        "precision": 0.5,
+        "recall": 0.2,
+        "f1": 0.2857142857142857,
+        "confusion_matrix": [
+          [
+            4,
+            1
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      },
+      "original_video_metrics": {
+        "videos": 10,
+        "accuracy": 0.5,
+        "precision": 0.5,
+        "recall": 0.2,
+        "f1": 0.2857142857142857,
+        "confusion_matrix": [
+          [
+            4,
+            1
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      },
+      "augmented_window_metrics": {
+        "loss": 1.037888533808291,
+        "windows": 40,
+        "accuracy": 0.45,
+        "precision": 0.4166666666666667,
+        "recall": 0.25,
+        "f1": 0.3125,
+        "confusion_matrix": [
+          [
+            13,
+            7
+          ],
+          [
+            15,
+            5
+          ]
+        ]
+      },
+      "transformed_video_metrics": {
+        "videos": 40,
+        "accuracy": 0.45,
+        "precision": 0.4166666666666667,
+        "recall": 0.25,
+        "f1": 0.3125,
+        "confusion_matrix": [
+          [
+            13,
+            7
+          ],
+          [
+            15,
+            5
+          ]
+        ]
+      },
+      "per_variant_video_metrics": {
+        "cctv_low_quality": {
+          "videos": 10,
+          "accuracy": 0.4,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25,
+          "confusion_matrix": [
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        },
+        "cool_camera": {
+          "videos": 10,
+          "accuracy": 0.5,
+          "precision": 0.5,
+          "recall": 0.4,
+          "f1": 0.4444444444444444,
+          "confusion_matrix": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "mirror": {
+          "videos": 10,
+          "accuracy": 0.5,
+          "precision": 0.5,
+          "recall": 0.2,
+          "f1": 0.2857142857142857,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        },
+        "warm_sepia": {
+          "videos": 10,
+          "accuracy": 0.4,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25,
+          "confusion_matrix": [
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        }
+      },
+      "canonical_validation_parents": 10,
+      "threshold": 0.5,
+      "processing_sec": 25.01426129997708,
+      "independent_evaluation": false,
+      "limitations": [
+        "Annotation-centred binary windows, not full-video localization or action-type recognition.",
+        "Four descendants of each validation parent are correlated robustness cases, not new independent videos.",
+        "Train descendants only fit weights; fixed final checkpoint selected without validation; validation descendants never optimize weights or thresholds.",
+        "Mirror orientation restored before fixed ROI; all other preprocessing matches training.",
+        "Same room/people and repeatedly inspected validation; no independent test."
+      ]
+    },
+    "shrinkage_lda": {
+      "schema": "binary_augmentation_robustness_v1",
+      "created_utc": "2026-10-18T03:59:07.454020+00:00",
+      "checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_regularized_20261018T035417_731553Z\\shrinkage_lda\\last.pt",
+      "checkpoint_sha256": "7c2c6eefd60bbca209f3b5507077d8d83325f8f7b73a1102d910d760e7dc0e7a",
+      "config": {
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+        "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+        "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+        "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_regularized_20261018T035417_731553Z\\shrinkage_lda",
+        "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+        "weights": "KINETICS400_V1",
+        "freeze_backbone": true,
+        "frames": 16,
+        "window_sec": 4.0,
+        "negative_windows": 5,
+        "validation_negative_windows": 1,
+        "negative_sampling": "coverage",
+        "loss_weighting": "video_class_balanced",
+        "cache_frozen_features": true,
+        "preprocessing": "aspect_letterbox_v1",
+        "roi": [
+          0.0,
+          0.1,
+          1.0,
+          0.7
+        ],
+        "epochs": 1,
+        "matched_steps": 120,
+        "batch_size": 16,
+        "num_workers": 0,
+        "cpu_threads": 2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "supplemental_manifest": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\supplemental\\audit.json",
+        "supplemental_manifest_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+        "original_fraction": 0.8,
+        "checkpoint_selection": "fixed_final_step_no_validation",
+        "regularized_head": "shrinkage_lda",
+        "regularized_head_settings": {
+          "checkpoint": "runs/r3d18_matched_20261018T025716_174675Z/mild_augmented/last.pt",
+          "device": "cuda",
+          "seed": 42,
+          "cpu_threads": 2,
+          "original_fraction": 0.8,
+          "logistic_l2": 1.0,
+          "logistic_max_iter": 250,
+          "lda_shrinkage": 0.9,
+          "variance_floor": 0.001
+        },
+        "normalization_folded_into_fc": true,
+        "initial_backbone_checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented\\last.pt"
+      },
+      "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+      "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+      "audit_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+      "original_window_metrics": {
+        "loss": 8.348111152648926,
+        "windows": 10,
+        "accuracy": 0.4,
+        "precision": 0.3333333333333333,
+        "recall": 0.2,
+        "f1": 0.25,
+        "confusion_matrix": [
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      },
+      "original_video_metrics": {
+        "videos": 10,
+        "accuracy": 0.4,
+        "precision": 0.3333333333333333,
+        "recall": 0.2,
+        "f1": 0.25,
+        "confusion_matrix": [
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      },
+      "augmented_window_metrics": {
+        "loss": 8.050701314216997,
+        "windows": 40,
+        "accuracy": 0.45,
+        "precision": 0.4166666666666667,
+        "recall": 0.25,
+        "f1": 0.3125,
+        "confusion_matrix": [
+          [
+            13,
+            7
+          ],
+          [
+            15,
+            5
+          ]
+        ]
+      },
+      "transformed_video_metrics": {
+        "videos": 40,
+        "accuracy": 0.45,
+        "precision": 0.4166666666666667,
+        "recall": 0.25,
+        "f1": 0.3125,
+        "confusion_matrix": [
+          [
+            13,
+            7
+          ],
+          [
+            15,
+            5
+          ]
+        ]
+      },
+      "per_variant_video_metrics": {
+        "cctv_low_quality": {
+          "videos": 10,
+          "accuracy": 0.5,
+          "precision": 0.5,
+          "recall": 0.2,
+          "f1": 0.2857142857142857,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        },
+        "cool_camera": {
+          "videos": 10,
+          "accuracy": 0.5,
+          "precision": 0.5,
+          "recall": 0.4,
+          "f1": 0.4444444444444444,
+          "confusion_matrix": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "mirror": {
+          "videos": 10,
+          "accuracy": 0.4,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25,
+          "confusion_matrix": [
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        },
+        "warm_sepia": {
+          "videos": 10,
+          "accuracy": 0.4,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25,
+          "confusion_matrix": [
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        }
+      },
+      "canonical_validation_parents": 10,
+      "threshold": 0.5,
+      "processing_sec": 23.689839500002563,
+      "independent_evaluation": false,
+      "limitations": [
+        "Annotation-centred binary windows, not full-video localization or action-type recognition.",
+        "Four descendants of each validation parent are correlated robustness cases, not new independent videos.",
+        "Train descendants only fit weights; fixed final checkpoint selected without validation; validation descendants never optimize weights or thresholds.",
+        "Mirror orientation restored before fixed ROI; all other preprocessing matches training.",
+        "Same room/people and repeatedly inspected validation; no independent test."
+      ]
+    }
+  },
+  "runs": {
+    "baseline": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented\\last.pt",
+    "l2_logistic": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_regularized_20261018T035417_731553Z\\l2_logistic\\last.pt",
+    "shrinkage_lda": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_regularized_20261018T035417_731553Z\\shrinkage_lda\\last.pt"
+  },
+  "checks": {
+    "l2_logistic": {
+      "checkpoint_sha256": "34129ea83b44756ec5c10b9c18c76d9a340b8b101ed69480b836d463052212d8",
+      "backbone_before": "4570523ca6aa5c4a68969c90ac3df7fa656e989a5e5491487966fcf0b7f8cf20",
+      "backbone_after": "4570523ca6aa5c4a68969c90ac3df7fa656e989a5e5491487966fcf0b7f8cf20",
+      "validation_used_for_fitting": false,
+      "threshold": 0.5,
+      "original_checkpoint_unchanged": true
+    },
+    "shrinkage_lda": {
+      "checkpoint_sha256": "7c2c6eefd60bbca209f3b5507077d8d83325f8f7b73a1102d910d760e7dc0e7a",
+      "backbone_before": "4570523ca6aa5c4a68969c90ac3df7fa656e989a5e5491487966fcf0b7f8cf20",
+      "backbone_after": "4570523ca6aa5c4a68969c90ac3df7fa656e989a5e5491487966fcf0b7f8cf20",
+      "validation_used_for_fitting": false,
+      "threshold": 0.5,
+      "original_checkpoint_unchanged": true
+    }
+  },
+  "active_model_replaced": false,
+  "independent_evaluation": false,
+  "environment": {
+    "torch": "2.13.0+cu126",
+    "device": "cuda",
+    "cuda": "12.6"
+  },
+  "verification": {
+    "regression_tests_passed": 144,
+    "baseline_and_split_unchanged": true,
+    "frozen_backbone_and_batchnorm_unchanged": true,
+    "native_checkpoint_restore_and_evaluation_passed": true,
+    "pretrained_weights_redownloaded": false
+  }
+}

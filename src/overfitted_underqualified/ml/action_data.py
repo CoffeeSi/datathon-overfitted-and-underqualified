@@ -9,16 +9,13 @@ from torch.utils.data import Dataset
 from .dataset import decode_frames, load_records, parse_time, sample_times, sha256
 from .action_review import SEMANTIC_GAPS, read_review, validate_review
 from ..rules.catalog import CATALOG_PATH, supported_events
+from ..rules.evidence import proposed_mapping
 
 SCHEMA = "catalog_actions_multilabel_v1"
 
 
 def mapped_types(tag):
-    # A closed bag's contents cannot be established by confirming the visible tag.
-    if tag in SEMANTIC_GAPS:
-        return []
-    return sorted(e["event_type"] for e in supported_events()
-                  if tag in e.get("maps_from_observed_event_type", []))
+    return proposed_mapping(tag)['candidate_types']
 
 
 @dataclass

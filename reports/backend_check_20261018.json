@@ -1,0 +1,186 @@
+{
+  "schema": "backend_smoke_check_v1",
+  "phases": {
+    "real_config": {
+      "kind": "requested_real_analyzer",
+      "checks": [
+        {
+          "check": "health",
+          "http_status": 200,
+          "expected_status": 200,
+          "passed": true
+        },
+        {
+          "check": "readiness",
+          "http_status": 503,
+          "expected_status": 503,
+          "passed": true
+        },
+        {
+          "check": "missing_key",
+          "http_status": 401,
+          "expected_status": 401,
+          "passed": true
+        },
+        {
+          "check": "wrong_key",
+          "http_status": 401,
+          "expected_status": 401,
+          "passed": true
+        },
+        {
+          "check": "jury_unknown_job",
+          "http_status": 404,
+          "expected_status": 404,
+          "passed": true
+        },
+        {
+          "check": "ui_unknown_job",
+          "http_status": 404,
+          "expected_status": 404,
+          "passed": true
+        },
+        {
+          "check": "real_mov_rejected_without_analyzer",
+          "http_status": 503,
+          "expected_status": 503,
+          "passed": true
+        }
+      ],
+      "isolated_port": 56367,
+      "readiness": {
+        "detail": "A local video analysis provider is not configured"
+      },
+      "upload_response": {
+        "detail": "A local video analysis provider is not configured"
+      },
+      "real_ml_inference_completed": false,
+      "blocker": "Configured action provider has no enabled types; both configured checkpoint files are absent.",
+      "owned_server_stopped": true
+    },
+    "synthetic_transport": {
+      "kind": "transport_fixture_only",
+      "checks": [
+        {
+          "check": "health",
+          "http_status": 200,
+          "expected_status": 200,
+          "passed": true
+        },
+        {
+          "check": "readiness",
+          "http_status": 200,
+          "expected_status": 200,
+          "passed": true
+        },
+        {
+          "check": "missing_key",
+          "http_status": 401,
+          "expected_status": 401,
+          "passed": true
+        },
+        {
+          "check": "wrong_key",
+          "http_status": 401,
+          "expected_status": 401,
+          "passed": true
+        },
+        {
+          "check": "jury_unknown_job",
+          "http_status": 404,
+          "expected_status": 404,
+          "passed": true
+        },
+        {
+          "check": "ui_unknown_job",
+          "http_status": 404,
+          "expected_status": 404,
+          "passed": true
+        },
+        {
+          "check": "unsupported_extension",
+          "http_status": 415,
+          "expected_status": 415,
+          "passed": true
+        },
+        {
+          "check": "malformed_mov",
+          "http_status": 422,
+          "expected_status": 422,
+          "passed": true
+        },
+        {
+          "check": "synthetic_upload",
+          "http_status": 202,
+          "expected_status": 202,
+          "passed": true
+        },
+        {
+          "check": "jury_completed_job",
+          "http_status": 200,
+          "expected_status": 200,
+          "passed": true
+        },
+        {
+          "check": "job_requires_key",
+          "http_status": 401,
+          "expected_status": 401,
+          "passed": true
+        }
+      ],
+      "isolated_port": 56374,
+      "readiness": {
+        "status": "ready",
+        "analysis_provider": "mock"
+      },
+      "job_statuses": [
+        "done"
+      ],
+      "final_ui_response": {
+        "job_id": "c6d032e4-8dbc-48f5-aaae-8ca8306f1a50",
+        "status": "done",
+        "analysis_provider": "mock",
+        "verdict": "no_violation",
+        "violations": []
+      },
+      "final_jury_response": {
+        "job_id": "c6d032e4-8dbc-48f5-aaae-8ca8306f1a50",
+        "status": "done",
+        "verdict": "no_violation",
+        "violations": []
+      },
+      "real_ml_inference_completed": false,
+      "limitation": "Explicit mock tests HTTP/upload/queue/SQLite/result paths only; no model predictions.",
+      "owned_server_stopped": true
+    }
+  },
+  "api_key_persisted": false,
+  "configured_ml": {
+    "enabled_types": [],
+    "binary_checkpoint": "runs/binary_improvements_20261017T230201_728607Z/roi/best.pt",
+    "binary_checkpoint_exists": false,
+    "action_checkpoint": "runs/r3d18_actions_balanced_20261018T004011Z/last.pt",
+    "action_checkpoint_exists": false
+  },
+  "existing_server_8000": {
+    "/healthz": {
+      "http_status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "/readyz": {
+      "http_status": 503,
+      "body": {
+        "detail": "A local video analysis provider is not configured"
+      }
+    }
+  },
+  "all_expected_checks_passed": true,
+  "adapter_tests_passed": 14,
+  "real_ml_integration_ready": false,
+  "backend_source_modified": false,
+  "running_server_8000_interrupted": false,
+  "observations_commit": "0b9ed63",
+  "supplied_commands_syntax_valid_in_this_environment": true
+}

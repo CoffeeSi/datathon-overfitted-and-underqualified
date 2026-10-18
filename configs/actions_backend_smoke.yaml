@@ -1,0 +1,31 @@
+# Fixed experiment for real backend integration; quality is assessed separately.
+seed: 42
+device: cuda
+events_path: data/annotations/events.csv
+split_path: data/processed/split_proposal.csv
+video_dir: data/raw/videos
+output_dir: runs/r3d18_actions_backend_20261018
+weights_cache: models/pretrained
+weights: KINETICS400_V1
+frames: 16
+preprocessing: aspect_letterbox_v1
+roi: [0.0, 0.1, 1.0, 0.7]
+window_sec: 4.0
+epochs: 30
+batch_size: 2
+cpu_threads: 2
+learning_rate: 0.001
+threshold: 0.7
+background_ceiling: 0.2
+positive_weighting: train_ratio
+cache_frozen_features: true
+target_types:
+  - client_identity_check_not_visible
+  - unsecured_accepted_cash
+review:
+  label_mode: per_type_v1
+  events_sha256: 4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b
+  listed_actions_verified: true
+  catalog_mapping_verified: true
+  complete_action_lists: false
+  provenance: Window-level action labels; unresolved entries masked. Existing review provenance retained; no new review asserted.

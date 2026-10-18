@@ -1,0 +1,272 @@
+[
+  {
+    "event_type": "unsecured_accepted_cash",
+    "train_positive_ids": [
+      "X-4"
+    ],
+    "validation_positive_ids": [
+      "X-38"
+    ],
+    "quality_limitations": [
+      "single_canonical_train_positive",
+      "no_whole_video_negative_attestation",
+      "train_positives_include_batch_labels"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 4,
+      "additional_validation_positive_videos": 1,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "both_partitions_present_but_sparse"
+    },
+    "required_visual_facts": [
+      "banknotes_visible",
+      "prior_receipt_observed",
+      "cash_remains_after_service_transition",
+      "accepted_cash_outside_lockable_storage_visible"
+    ],
+    "status": "pending_new_sources_or_review"
+  },
+  {
+    "event_type": "cash_counted_without_client_present",
+    "train_positive_ids": [],
+    "validation_positive_ids": [
+      "X-34"
+    ],
+    "quality_limitations": [
+      "no_train_positive_video",
+      "no_whole_video_negative_attestation",
+      "validation_positives_include_batch_labels"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 5,
+      "additional_validation_positive_videos": 1,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "missing_train_type"
+    },
+    "required_visual_facts": [
+      "cash_count_observed",
+      "client_receipt_context_observed",
+      "client_absent_during_count"
+    ],
+    "status": "pending_new_sources_or_review"
+  },
+  {
+    "event_type": "cashier_leaves_during_client_service",
+    "train_positive_ids": [],
+    "validation_positive_ids": [],
+    "quality_limitations": [
+      "no_train_positive_video",
+      "no_validation_positive_video",
+      "no_whole_video_negative_attestation"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 5,
+      "additional_validation_positive_videos": 2,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "missing_partition_support"
+    },
+    "required_visual_facts": [
+      "cashier_departure_observed",
+      "ongoing_client_service_observed"
+    ],
+    "status": "pending_new_sources_or_review"
+  },
+  {
+    "event_type": "client_identity_check_not_visible",
+    "train_positive_ids": [
+      "X-18"
+    ],
+    "validation_positive_ids": [
+      "X-2"
+    ],
+    "quality_limitations": [
+      "single_canonical_train_positive",
+      "no_whole_video_negative_attestation",
+      "train_positives_include_batch_labels",
+      "validation_positives_include_batch_labels"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 4,
+      "additional_validation_positive_videos": 1,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "both_partitions_present_but_sparse"
+    },
+    "required_visual_facts": [
+      "cash_deposit_observed",
+      "identity_check_context_covered",
+      "identity_check_not_visible"
+    ],
+    "status": "pending_new_sources_or_review"
+  },
+  {
+    "event_type": "employee_personal_items_in_cash_unit",
+    "train_positive_ids": [
+      "X-40"
+    ],
+    "validation_positive_ids": [],
+    "quality_limitations": [
+      "single_canonical_train_positive",
+      "no_validation_positive_video",
+      "no_whole_video_negative_attestation",
+      "train_positives_include_batch_labels"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 4,
+      "additional_validation_positive_videos": 2,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "missing_partition_support"
+    },
+    "required_visual_facts": [
+      "personal_item_visible",
+      "employee_ownership_observed",
+      "cash_unit_context_observed",
+      "permitted_item_exceptions_checked"
+    ],
+    "status": "pending_new_sources_or_review"
+  },
+  {
+    "event_type": "recount_without_visible_controller",
+    "train_positive_ids": [
+      "X-20"
+    ],
+    "validation_positive_ids": [],
+    "quality_limitations": [
+      "single_canonical_train_positive",
+      "no_validation_positive_video",
+      "no_whole_video_negative_attestation",
+      "train_positives_include_batch_labels"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 4,
+      "additional_validation_positive_videos": 2,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "missing_partition_support"
+    },
+    "required_visual_facts": [
+      "cash_count_observed",
+      "internal_recount_context_observed",
+      "controller_context_covered",
+      "controller_not_visible"
+    ],
+    "status": "pending_new_sources_or_review"
+  },
+  {
+    "event_type": "collection_cash_amount_registration_not_observed",
+    "train_positive_ids": [
+      "X-13"
+    ],
+    "validation_positive_ids": [],
+    "quality_limitations": [
+      "single_canonical_train_positive",
+      "no_validation_positive_video",
+      "no_whole_video_negative_attestation",
+      "train_positives_include_batch_labels"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 4,
+      "additional_validation_positive_videos": 2,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "missing_partition_support"
+    },
+    "required_visual_facts": [
+      "collection_cash_receipt_observed",
+      "registration_context_covered",
+      "registration_not_visible"
+    ],
+    "status": "pending_new_sources_or_review"
+  },
+  {
+    "event_type": "cash_bag_received_without_visible_identity_authority_check",
+    "train_positive_ids": [
+      "X-17"
+    ],
+    "validation_positive_ids": [],
+    "quality_limitations": [
+      "single_canonical_train_positive",
+      "no_validation_positive_video",
+      "no_whole_video_negative_attestation",
+      "train_positives_include_batch_labels"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 4,
+      "additional_validation_positive_videos": 2,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "missing_partition_support"
+    },
+    "required_visual_facts": [
+      "cash_bag_receipt_observed",
+      "identity_authority_context_covered",
+      "identity_authority_check_not_visible"
+    ],
+    "status": "pending_new_sources_or_review"
+  },
+  {
+    "event_type": "safe_key_left_in_lock",
+    "train_positive_ids": [
+      "X-11",
+      "X-22"
+    ],
+    "validation_positive_ids": [],
+    "quality_limitations": [
+      "no_validation_positive_video",
+      "no_whole_video_negative_attestation",
+      "train_positives_include_batch_labels"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 3,
+      "additional_validation_positive_videos": 2,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "missing_partition_support"
+    },
+    "required_visual_facts": [
+      "safe_lock_identified",
+      "key_visible_in_lock",
+      "key_left_in_lock_sequence_observed"
+    ],
+    "status": "pending_new_sources_or_review"
+  },
+  {
+    "event_type": "suspected_stamp_or_seal_left_unattended",
+    "train_positive_ids": [
+      "X-24"
+    ],
+    "validation_positive_ids": [],
+    "quality_limitations": [
+      "single_canonical_train_positive",
+      "no_validation_positive_video",
+      "no_whole_video_negative_attestation",
+      "train_positives_include_batch_labels"
+    ],
+    "collection_goals": {
+      "target_train_positive_videos": 5,
+      "target_validation_positive_videos": 2,
+      "additional_train_positive_videos": 4,
+      "additional_validation_positive_videos": 2,
+      "evidence_required": "New source videos with provenance and reviewed visible facts; not shifted windows or augmentations.",
+      "priority": "missing_partition_support"
+    },
+    "required_visual_facts": [
+      "stamp_or_seal_identified",
+      "item_left_unattended_sequence_observed"
+    ],
+    "status": "pending_new_sources_or_review"
+  }
+]

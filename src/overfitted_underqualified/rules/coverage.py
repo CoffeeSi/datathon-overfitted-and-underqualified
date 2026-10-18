@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from .catalog import CATALOG_PATH, event_type_for_observed, supported_events
+from .evidence import proposed_mapping
 from ..ml.dataset import parse_time, sha256
 
 
@@ -26,7 +27,11 @@ def catalog_coverage(events_path: Path, split_path: Path) -> dict:
         raise ValueError("Source coverage differs from split")
     rows = []
     for event in supported_events():
-        selected = [r for r in events if event_type_for_observed(r["observed_event_type"]) == event["event_type"]]
+        # Retain raw catalog hypotheses for historical counts. Expose the guarded
+        # proposals separately: neither group constitutes reviewed action targets.
+        selected = [r for r in events if r['observed_event_type'] in event.get('maps_from_observed_event_type', [])]
+        usable = [r for r in selected if event['event_type'] in proposed_mapping(r['observed_event_type'])['candidate_types']]
+        blocked = [r['clip_id'] for r in selected if r not in usable]
         by_subset = {subset: {aliases[r["clip_id"]]["clip_id"] for r in selected
                               if aliases[r["clip_id"]]["split"] == subset} for subset in ("train", "validation")}
         points = {(aliases[r["clip_id"]]["clip_id"], parse_time(r["timecode"])) for r in selected}
@@ -36,6 +41,10 @@ def catalog_coverage(events_path: Path, split_path: Path) -> dict:
                          canonical_videos=len(by_subset["train"] | by_subset["validation"]),
                          train_videos=len(by_subset["train"]), validation_videos=len(by_subset["validation"]),
                          distinct_markers=len(points), source_ids=[r["clip_id"] for r in selected],
+                         raw_catalog_hypotheses_only=True,
+                         usable_proposal_source_ids=[r['clip_id'] for r in usable],
+                         usable_proposal_canonical_videos=len({aliases[r['clip_id']]['clip_id'] for r in usable}),
+                         needs_context_review_ids=blocked,
                          example_ids_without_tag_match=sorted(set(event.get("example_clip_ids", [])) - {r["clip_id"] for r in selected}),
                          present_in_both_subsets=has_both, verified_multiclass_targets=False,
                          assessment="Exploratory only; too few independent videos and unverified action tags" if has_both

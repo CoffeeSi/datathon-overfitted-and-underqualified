@@ -1,0 +1,15 @@
+# Integration experiment only; positive/negative support does not imply good quality.
+# Start explicitly with FORTEBANK_ACTION_CONFIG=configs/action_service_backend_smoke.yaml.
+binary_checkpoint: runs/r3d18_matched_20261018T025716_174675Z/mild_augmented/last.pt
+action_checkpoint: runs/r3d18_actions_backend_20261018/last.pt
+enabled_types:
+  - client_identity_check_not_visible
+  - unsecured_accepted_cash
+device: cuda
+scan:
+  window_sec: 4.0
+  step_sec: 2.0
+  batch_size: 2
+  threshold: 0.5
+  merge_gap_sec: 0.0
+  frames: 16

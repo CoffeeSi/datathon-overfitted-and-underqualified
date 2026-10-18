@@ -1,5 +1,12 @@
 # P1 — проверенный каталог правил
 
+**Актуальное дополнение:** [аудит качества и визуальных оснований](quality-readiness.md).
+Членство в каталоге не разрешает выдачу распознанного типа. Новый строгий
+`grounded_rule_match` требует явных визуальных фактов и provenance; неизвестные
+условия дают unresolved. Справочные `source_links_for` и legacy `link_action`
+не являются этой проверкой. Тексты каталога и SHA-256 сохранены, повторная
+онлайн-проверка редакций не заявляется.
+
 **Роль:** Data Analyst / Rules Researcher  
 **Артефакты:** [`src/overfitted_underqualified/rules/catalog.json`](../src/overfitted_underqualified/rules/catalog.json), этот файл, [`src/overfitted_underqualified/rules/catalog.py`](../src/overfitted_underqualified/rules/catalog.py)  
 **Видимые события (задача 1):** `data/annotations/events.csv`  

@@ -1,0 +1,10 @@
+# Fixed before scoring validation. No hyperparameter/threshold search.
+checkpoint: runs/r3d18_matched_20261018T025716_174675Z/mild_augmented/last.pt
+device: cuda
+seed: 42
+cpu_threads: 2
+original_fraction: 0.8
+logistic_l2: 1.0
+logistic_max_iter: 250
+lda_shrinkage: 0.9
+variance_floor: 0.001
