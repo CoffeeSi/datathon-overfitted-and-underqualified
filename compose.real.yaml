@@ -1,4 +1,4 @@
-# Opt-in service adapter for the R3D-18 binary + action checkpoints.
+# Full GPU deployment (Brev): frontend and the current cash-sequence backend.
 # Use with: docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml up --build -d
 services:
   frontend:
@@ -9,6 +9,13 @@ services:
       BACKEND_URL: http://backend:8000
   backend:
     profiles: !reset []
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     build:
       args:
         INSTALL_ML: "true"
@@ -24,8 +31,15 @@ services:
         bind:
           create_host_path: false
       - type: bind
-        source: ${ACTION_SERVICE_CONFIG:-./configs/action_service.local.yaml}
+        source: ${ACTION_SERVICE_CONFIG:-./configs/action_service_cash_sequence.yaml}
         target: /app/configs/action_service.yaml
         read_only: true
         bind:
           create_host_path: false
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=2).read()"
+      start_period: 60s

@@ -6,6 +6,29 @@ Next.js App Router, React, TypeScript и Tailwind; зависимости фик
 
 ## Docker Compose
 
+### Brev: оба сервиса в Docker с NVIDIA GPU
+
+Используйте оба файла: `compose.yaml` и `compose.real.yaml`. Базовый файл
+рассчитан на ML на локальном хосте и сам не запускает backend по умолчанию.
+Override включает backend, ML-зависимости, одну NVIDIA GPU, read-only `runs/`
+и текущий `configs/action_service_cash_sequence.yaml`. Frontend обращается к
+`http://backend:8000`; он стартует после успешного `/readyz` модели.
+
+Создайте `.env.compose` с непустым `FORTEBANK_API_KEY`. Перенесите все три веса
+по путям из конфига: они не входят в Git. Если в старом `.env.compose` задан
+`ACTION_SERVICE_CONFIG`, замените его на `./configs/action_service_cash_sequence.yaml`.
+
+```bash
+docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml up --build -d
+docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml ps
+curl -i http://127.0.0.1:8000/readyz
+```
+
+Ожидается `local-cash-sequence`. Диагностика:
+`docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml logs --tail=100 backend`.
+Нужны NVIDIA GPU, совместимый драйвер и GPU runtime Docker; одним наличием GPU
+в `nvidia-smi` на хосте её доступ внутри контейнера не подтверждается.
+
 ### Текущий запуск: настоящая ML-модель на Windows, frontend в Docker
 
 Backend запускается из корня через `scripts/start-backend.ps1 -Port 8000`.
