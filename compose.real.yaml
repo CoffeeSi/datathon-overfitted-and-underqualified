@@ -8,6 +8,7 @@ services:
     environment:
       BACKEND_URL: http://backend:8000
   backend:
+    profiles: !reset []
     build:
       args:
         INSTALL_ML: "true"

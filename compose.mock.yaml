@@ -2,6 +2,7 @@
 # docker compose --env-file .env.compose -f compose.yaml -f compose.mock.yaml up -d --build
 services:
   backend:
+    profiles: !reset []
     environment:
       FORTEBANK_ENABLE_MOCK_RESULTS: "true"
   frontend:

@@ -12,7 +12,7 @@ import { validateVideoFile } from "@/features/upload/validation";
 import { reviewEvents } from "./presentation";
 import { Timeline } from "./timeline";
 import { EvidenceGallery, EvidenceImage } from "./evidence";
-import { ActionContext, UnresolvedActions } from "./action-context";
+import { ActionContext, RecognitionScope, UnresolvedActions } from "./action-context";
 
 const verdictCopy = {
   violation: ["Требует внимания", "Сервис отметил возможные нарушения. Проверьте события в контексте записи."],
@@ -137,6 +137,7 @@ export function ReviewWorkspace({ jobId }: { jobId: string }) {
     {job?.status === "failed" && <section className="failed-state"><span className="state-symbol"><Icon name="alert" size={32} /></span><p className="eyebrow">ОБРАБОТКА НЕ ЗАВЕРШЕНА</p><h2>Не удалось разобрать запись.</h2><p>{job.error.message}</p><span className="error-code mono">Код: {job.error.code}</span><Link className="button button-primary" href="/">Выбрать видео заново <Icon name="arrow-right" /></Link><small>Повторная отправка создаст новое задание.</small></section>}
 
     {job?.status === "done" && <>
+      <RecognitionScope provider={job.analysis_provider} />
       <UnresolvedActions candidates={job.unresolved_candidates} />
       <div className="verdict-bar" data-verdict={job.verdict}><div className="verdict-icon"><Icon name={job.verdict === "violation" ? "eye" : job.verdict === "no_violation" ? "check" : "alert"} /></div><div><h2>{verdictCopy[job.verdict][0]}</h2><p>{verdictCopy[job.verdict][1]}</p></div><span className="event-total"><strong>{String(events.length).padStart(2, "0")}</strong><span>событий</span></span></div>
       <div className="review-grid">

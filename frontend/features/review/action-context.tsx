@@ -1,4 +1,5 @@
 import type { Finding, UnresolvedCandidate } from "@/lib/contracts";
+import Link from "next/link";
 import { timecode } from "@/lib/format";
 
 export function ActionContext({ finding }: { finding: Finding }) {
@@ -19,11 +20,24 @@ export function UnresolvedActions({ candidates }: { candidates?: UnresolvedCandi
   if (!candidates?.length) return null;
   return <section className="event-technical" aria-label="Неопределённые кандидаты">
     <h2>Нужна ручная проверка</h2>
-    <p>Бинарный анализ выделил {candidates.length} окон, но распознаватель не подтвердил поддерживаемый тип. Это не означает отсутствие события.</p>
+    <p>Сервис выделил {candidates.length} эпизодов, но распознаватель не подтвердил поддерживаемый тип. Это не означает отсутствие события.</p>
     <details><summary>Таймкоды неопределённых окон</summary>
       <ul>{candidates.map((candidate, index) => <li key={`${candidate.timestamp_sec}-${index}`}>
         {timecode(candidate.timestamp_sec, true)} · {candidate.reason === "background" ? "Низкие оценки известных действий" : "Тип не определён"}
       </li>)}</ul>
     </details>
+  </section>;
+}
+
+export function RecognitionScope({ provider }: { provider: string }) {
+  if (provider === "local-r3d18-actions") return <section className="event-technical" aria-label="Версия модели">
+    <h2>Результат прежней модели</h2>
+    <p>Это сохранённый анализ старой action-модели. Для проверки новой моделью <Link href="/">загрузите видео заново</Link>.</p>
+  </section>;
+  if (provider !== "local-cash-sequence") return null;
+  return <section className="event-technical" aria-label="Область анализа модели">
+    <h2>Что проверяет модель</h2>
+    <p>Передача денег кассиру → уход клиента → купюры остаются на столе.</p>
+    <p>Сейчас проверяется только этот сценарий. Другие типы нарушений не анализируются. Отсутствие события не означает отсутствие нарушений.</p>
   </section>;
 }

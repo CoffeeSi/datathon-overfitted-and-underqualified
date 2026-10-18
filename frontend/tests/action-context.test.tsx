@@ -1,7 +1,7 @@
 import React from "react";
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
-import { ActionContext, UnresolvedActions } from "../features/review/action-context";
+import { ActionContext, RecognitionScope, UnresolvedActions } from "../features/review/action-context";
 import { parseJob, type Finding } from "../lib/contracts";
 
 const finding: Finding = {
@@ -14,6 +14,16 @@ const finding: Finding = {
 };
 afterEach(cleanup);
 describe("typed action UI", () => {
+  it("shows the limited cash-sequence scope without claiming all types are checked", () => {
+    render(<RecognitionScope provider="local-cash-sequence" />);
+    expect(screen.getByRole("region", { name: "Область анализа модели" })).toBeTruthy();
+    expect(screen.getByText(/Другие типы нарушений не анализируются/)).toBeTruthy();
+  });
+  it("distinguishes saved legacy predictions from new model results", () => {
+    render(<RecognitionScope provider="local-r3d18-actions" />);
+    expect(screen.getByText("Результат прежней модели")).toBeTruthy();
+    expect(screen.getByRole("link", { name: "загрузите видео заново" }).getAttribute("href")).toBe("/");
+  });
   it("preserves actual rule links and unresolved windows through the BFF parser", () => {
     const job = parseJob({ job_id: "test", analysis_provider: "local-r3d18-actions", status: "done", verdict: "violation",
       violations: [finding], unresolved_candidates: [{ timestamp_sec: 20, binary_score: .8, reason: "unknown" }] });

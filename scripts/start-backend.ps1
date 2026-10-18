@@ -1,6 +1,6 @@
 param(
-    [ValidateRange(1, 65535)][int]$Port = 8001,
-    [string]$ActionConfig = "configs/action_service_backend_smoke.yaml"
+    [ValidateRange(1, 65535)][int]$Port = 8000,
+    [string]$ActionConfig = "configs/action_service_cash_sequence.yaml"
 )
 
 $ErrorActionPreference = "Stop"

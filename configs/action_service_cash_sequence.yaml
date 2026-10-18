@@ -1,0 +1,12 @@
+# Research candidate: one visually supported scenario, not all legal violations.
+pipeline: cash_sequence
+device: cuda
+enabled_types: [unsecured_accepted_cash]
+banknote_tracking: true
+primitive_checkpoint: runs/action_improvement_20261018/primitives/last.pt
+primitive_sha256: 175d2cbd46bca3c084b5a86097ef7c229f660af3fe7f8117c76f08e699ba2411
+banknote_checkpoint: runs/action_improvement_20261018/banknotes_stage2/last.pt
+banknote_sha256: 57f74d4efc547d2c72fedb56b22ff919b425b99c07bacdcb044c4e1ab312c1c8
+# Actual auxiliary binary score for API compatibility; does not gate typed events.
+binary_checkpoint: runs/r3d18_matched_20261018T025716_174675Z/mild_augmented/last.pt
+binary_sha256: 00b07713d0fd1c219fcefa00416f6e68668201ee8abec0e8b6bd43682dab00d9

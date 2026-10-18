@@ -12,8 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--port", type=int, default=8001)
-    parser.add_argument("--action-config", default="configs/action_service_backend_smoke.yaml")
+    parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--action-config", default="configs/action_service_cash_sequence.yaml")
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error("port must be between 1 and 65535")
