@@ -4,6 +4,34 @@
 просмотр результата, временная шкала, описание событий и подтверждающие кадры.
 Next.js App Router, React, TypeScript и Tailwind; зависимости фиксирует `package-lock.json`.
 
+## Docker Compose
+
+Из корня репозитория скопируйте `.env.compose.example` в `.env.compose`, задайте
+непустой `FORTEBANK_API_KEY` и запустите:
+
+```powershell
+Copy-Item .env.compose.example .env.compose
+# Задайте FORTEBANK_API_KEY в .env.compose
+docker compose --env-file .env.compose up --build -d
+```
+
+Откройте [http://127.0.0.1:3000](http://127.0.0.1:3000). Проверка соединения:
+
+```powershell
+Invoke-RestMethod http://127.0.0.1:3000/api/review/service
+```
+
+Ожидаются `health=online`, `ready=true`, `provider=mock`. Контейнеры используют
+Next.js BFF и FastAPI в одной Docker-сети; API также доступен локально на порту
+8000. Данные заданий сохраняются в Docker volume `backend-data`. Этот запуск
+явно использует mock analyzer: он проверяет загрузку и получение результата,
+но не распознаёт содержимое видео. Для остановки используйте
+`docker compose --env-file .env.compose down`; volume при этом сохраняется.
+
+Контейнер backend устанавливает только API-зависимости. Для реальной ML-модели
+потребуются отдельный образ с ML-зависимостями, локальные checkpoint-файлы и
+подтверждённые типы событий; см. [план интеграции](../docs/frontend-backend-wiring-plan.md).
+
 ## Локальный запуск
 
 Используйте Node.js 24 (проверено на 24.14.0) или 22.13+, npm и отдельное

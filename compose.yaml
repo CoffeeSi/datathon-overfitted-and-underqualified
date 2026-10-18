@@ -1,0 +1,44 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    environment:
+      FORTEBANK_API_KEY: ${FORTEBANK_API_KEY:?Set FORTEBANK_API_KEY in .env.compose}
+      FORTEBANK_DATA_DIR: /app/data/service
+      FORTEBANK_MAX_UPLOAD_MB: "100"
+      FORTEBANK_ENABLE_MOCK_RESULTS: "true"
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - backend-data:/app/data/service
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2).read()"
+      interval: 10s
+      timeout: 3s
+      retries: 6
+      start_period: 15s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      BACKEND_URL: http://backend:8000
+      FORTEBANK_API_KEY: ${FORTEBANK_API_KEY:?Set FORTEBANK_API_KEY in .env.compose}
+      MAX_UPLOAD_MB: "100"
+      DEMO_ENABLED: "false"
+    ports:
+      - "127.0.0.1:3000:3000"
+    restart: unless-stopped
+
+volumes:
+  backend-data:
