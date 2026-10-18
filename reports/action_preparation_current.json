@@ -1,0 +1,2278 @@
+{
+  "schema": "catalog_actions_multilabel_v1",
+  "class_names": [
+    "cash_bag_received_without_visible_identity_authority_check",
+    "client_identity_check_not_visible",
+    "collection_cash_amount_registration_not_observed",
+    "employee_personal_items_in_cash_unit",
+    "recount_without_visible_controller",
+    "safe_key_left_in_lock",
+    "suspected_stamp_or_seal_left_unattended",
+    "unsecured_accepted_cash"
+  ],
+  "coverage": [
+    {
+      "event_type": "cash_bag_received_without_visible_identity_authority_check",
+      "has_train_positives": true,
+      "selected_for_training": true,
+      "train": {
+        "positive_points": 1,
+        "positive_videos": 1,
+        "candidate_positive_points": 1,
+        "known_negative_windows": 23
+      },
+      "validation": {
+        "positive_points": 0,
+        "positive_videos": 0,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 7
+      },
+      "trainable": true,
+      "validation_evaluable": false
+    },
+    {
+      "event_type": "cash_counted_without_client_present",
+      "has_train_positives": false,
+      "selected_for_training": false,
+      "train": {
+        "positive_points": 0,
+        "positive_videos": 0,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 24
+      },
+      "validation": {
+        "positive_points": 1,
+        "positive_videos": 1,
+        "candidate_positive_points": 1,
+        "known_negative_windows": 6
+      },
+      "trainable": false,
+      "validation_evaluable": true
+    },
+    {
+      "event_type": "cashier_leaves_during_client_service",
+      "has_train_positives": false,
+      "selected_for_training": false,
+      "train": {
+        "positive_points": 0,
+        "positive_videos": 0,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 24
+      },
+      "validation": {
+        "positive_points": 0,
+        "positive_videos": 0,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 7
+      },
+      "trainable": false,
+      "validation_evaluable": false
+    },
+    {
+      "event_type": "client_identity_check_not_visible",
+      "has_train_positives": true,
+      "selected_for_training": true,
+      "train": {
+        "positive_points": 1,
+        "positive_videos": 1,
+        "candidate_positive_points": 1,
+        "known_negative_windows": 23
+      },
+      "validation": {
+        "positive_points": 1,
+        "positive_videos": 1,
+        "candidate_positive_points": 1,
+        "known_negative_windows": 6
+      },
+      "trainable": true,
+      "validation_evaluable": true
+    },
+    {
+      "event_type": "collection_cash_amount_registration_not_observed",
+      "has_train_positives": true,
+      "selected_for_training": true,
+      "train": {
+        "positive_points": 1,
+        "positive_videos": 1,
+        "candidate_positive_points": 1,
+        "known_negative_windows": 23
+      },
+      "validation": {
+        "positive_points": 0,
+        "positive_videos": 0,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 7
+      },
+      "trainable": true,
+      "validation_evaluable": false
+    },
+    {
+      "event_type": "employee_personal_items_in_cash_unit",
+      "has_train_positives": true,
+      "selected_for_training": true,
+      "train": {
+        "positive_points": 1,
+        "positive_videos": 1,
+        "candidate_positive_points": 1,
+        "known_negative_windows": 23
+      },
+      "validation": {
+        "positive_points": 0,
+        "positive_videos": 0,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 7
+      },
+      "trainable": true,
+      "validation_evaluable": false
+    },
+    {
+      "event_type": "recount_without_visible_controller",
+      "has_train_positives": true,
+      "selected_for_training": true,
+      "train": {
+        "positive_points": 1,
+        "positive_videos": 1,
+        "candidate_positive_points": 1,
+        "known_negative_windows": 23
+      },
+      "validation": {
+        "positive_points": 0,
+        "positive_videos": 0,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 7
+      },
+      "trainable": true,
+      "validation_evaluable": false
+    },
+    {
+      "event_type": "safe_key_left_in_lock",
+      "has_train_positives": true,
+      "selected_for_training": true,
+      "train": {
+        "positive_points": 2,
+        "positive_videos": 2,
+        "candidate_positive_points": 2,
+        "known_negative_windows": 22
+      },
+      "validation": {
+        "positive_points": 0,
+        "positive_videos": 0,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 7
+      },
+      "trainable": true,
+      "validation_evaluable": false
+    },
+    {
+      "event_type": "suspected_stamp_or_seal_left_unattended",
+      "has_train_positives": true,
+      "selected_for_training": true,
+      "train": {
+        "positive_points": 1,
+        "positive_videos": 1,
+        "candidate_positive_points": 1,
+        "known_negative_windows": 23
+      },
+      "validation": {
+        "positive_points": 0,
+        "positive_videos": 0,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 7
+      },
+      "trainable": true,
+      "validation_evaluable": false
+    },
+    {
+      "event_type": "unsecured_accepted_cash",
+      "has_train_positives": true,
+      "selected_for_training": true,
+      "train": {
+        "positive_points": 2,
+        "positive_videos": 1,
+        "candidate_positive_points": 2,
+        "known_negative_windows": 22
+      },
+      "validation": {
+        "positive_points": 1,
+        "positive_videos": 1,
+        "candidate_positive_points": 0,
+        "known_negative_windows": 3
+      },
+      "trainable": true,
+      "validation_evaluable": true
+    }
+  ],
+  "unmapped": [
+    {
+      "clip_id": "X-1",
+      "canonical_id": "X-1",
+      "observed_event_type": "cash_received_counted_partially_returned",
+      "split": "train"
+    },
+    {
+      "clip_id": "X-15",
+      "canonical_id": "X-15",
+      "observed_event_type": "unattended_bag_contents_unknown",
+      "split": "train"
+    },
+    {
+      "clip_id": "X-26",
+      "canonical_id": "X-26",
+      "observed_event_type": "employee_steps_away_suspected_cash_on_desk",
+      "split": "train"
+    },
+    {
+      "clip_id": "X-28",
+      "canonical_id": "X-28",
+      "observed_event_type": "employee_steps_away_workstation_lock_unknown",
+      "split": "validation"
+    },
+    {
+      "clip_id": "X-30",
+      "canonical_id": "X-30",
+      "observed_event_type": "person_enters_cash_work_area_authorization_unknown",
+      "split": "train"
+    },
+    {
+      "clip_id": "X-32",
+      "canonical_id": "X-32",
+      "observed_event_type": "cash_area_door_open_during_work",
+      "split": "train"
+    },
+    {
+      "clip_id": "X-33",
+      "canonical_id": "X-33",
+      "observed_event_type": "employee_starts_work_entry_door_open",
+      "split": "train"
+    },
+    {
+      "clip_id": "X-38",
+      "canonical_id": "X-38",
+      "observed_event_type": "suspected_accepted_cash_left_after_client_departure",
+      "split": "validation"
+    },
+    {
+      "clip_id": "X-44",
+      "canonical_id": "X-44",
+      "observed_event_type": "employee_handles_suspected_cash_without_client",
+      "split": "validation"
+    },
+    {
+      "clip_id": "X-46",
+      "canonical_id": "X-46",
+      "observed_event_type": "beverage_near_suspected_cash",
+      "split": "train"
+    }
+  ],
+  "training_blockers": [],
+  "manifest": {
+    "schema": "catalog_actions_multilabel_v1",
+    "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+    "review": {
+      "label_mode": "per_type_v1",
+      "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+      "listed_actions_verified": true,
+      "catalog_mapping_verified": true,
+      "complete_action_lists": false,
+      "provenance": "Window-level action labels; unresolved entries masked. Historical experiment inputs retained privately."
+    },
+    "independent_evaluation": false,
+    "videos": [
+      {
+        "clip_id": "X-1",
+        "sha256": "8911a9219b9433091824e553a70bb80335f075fd8ac982d2062d2ecf023c16bc",
+        "split": "train",
+        "source_ids": [
+          "X-1"
+        ]
+      },
+      {
+        "clip_id": "X-2",
+        "sha256": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+        "split": "validation",
+        "source_ids": [
+          "X-2"
+        ]
+      },
+      {
+        "clip_id": "X-3",
+        "sha256": "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+        "split": "train",
+        "source_ids": [
+          "X-3"
+        ]
+      },
+      {
+        "clip_id": "X-4",
+        "sha256": "5385be9420e6a70547d6bcfd0b13d60f9c0738877645afa277d09550a96b8445",
+        "split": "train",
+        "source_ids": [
+          "X-4",
+          "X-47"
+        ]
+      },
+      {
+        "clip_id": "X-5",
+        "sha256": "1f5840bff58f298e89c4afa00cb1c18f6dafc5c4096c251d9b507604ebefe906",
+        "split": "train",
+        "source_ids": [
+          "X-5",
+          "X-48"
+        ]
+      },
+      {
+        "clip_id": "X-8",
+        "sha256": "6a53e10acdcf52396ad5b1697eead32d8322c0911d792523a5c33fe5b388f4e7",
+        "split": "train",
+        "source_ids": [
+          "X-8"
+        ]
+      },
+      {
+        "clip_id": "X-10",
+        "sha256": "57a0e46c7a45f0e831f61d9c80722fefe4b74dbcfe1d3031ff58307d481f9a5c",
+        "split": "validation",
+        "source_ids": [
+          "X-10"
+        ]
+      },
+      {
+        "clip_id": "X-11",
+        "sha256": "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+        "split": "train",
+        "source_ids": [
+          "X-11"
+        ]
+      },
+      {
+        "clip_id": "X-12",
+        "sha256": "955755baf54418b48ea645dcd98e7e8dcca1d1e227e9b286a9427062db304fd4",
+        "split": "train",
+        "source_ids": [
+          "X-12"
+        ]
+      },
+      {
+        "clip_id": "X-13",
+        "sha256": "a37930cf119bb691be77d8624b18333b04d9c67066a7f4627d63e3208dfa6057",
+        "split": "train",
+        "source_ids": [
+          "X-13"
+        ]
+      },
+      {
+        "clip_id": "X-14",
+        "sha256": "7d6890ecb4a2b28bbdd3b61b6711566eee84a53ab3439c40cd9b6a3a6714c681",
+        "split": "validation",
+        "source_ids": [
+          "X-14"
+        ]
+      },
+      {
+        "clip_id": "X-15",
+        "sha256": "69caf59620fcd80bedcb664514730ab38f2f800da27000a8e037d7440be5dc7a",
+        "split": "train",
+        "source_ids": [
+          "X-15"
+        ]
+      },
+      {
+        "clip_id": "X-16",
+        "sha256": "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+        "split": "validation",
+        "source_ids": [
+          "X-16"
+        ]
+      },
+      {
+        "clip_id": "X-17",
+        "sha256": "0378b8026b2e6afd1775a5d0fdd12dd09c491785b626e9c20428f7dc6bd59364",
+        "split": "train",
+        "source_ids": [
+          "X-17"
+        ]
+      },
+      {
+        "clip_id": "X-18",
+        "sha256": "90607b0b0cb772fcf29b0c7e0e56fa6af36da6fac0efe93b8a616b5de94a156c",
+        "split": "train",
+        "source_ids": [
+          "X-18"
+        ]
+      },
+      {
+        "clip_id": "X-19",
+        "sha256": "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+        "split": "train",
+        "source_ids": [
+          "X-19"
+        ]
+      },
+      {
+        "clip_id": "X-20",
+        "sha256": "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+        "split": "train",
+        "source_ids": [
+          "X-20"
+        ]
+      },
+      {
+        "clip_id": "X-21",
+        "sha256": "efd876a04224cac781ac64bf5d6e107ded67340b7b7715fd9ca3408b240a1075",
+        "split": "train",
+        "source_ids": [
+          "X-21"
+        ]
+      },
+      {
+        "clip_id": "X-22",
+        "sha256": "c9a30d44907e4a41b3a8ccf101774cd2e0804de20927bfbc9e1ccba1f2326b78",
+        "split": "train",
+        "source_ids": [
+          "X-22"
+        ]
+      },
+      {
+        "clip_id": "X-23",
+        "sha256": "b637677ef5a7f0fa54d9f116ce6493cf74a4c99b8149a9c9916b96ef257535bd",
+        "split": "train",
+        "source_ids": [
+          "X-23"
+        ]
+      },
+      {
+        "clip_id": "X-24",
+        "sha256": "c175a683749401d5a9ecf6f1c188b64fa8a09543f41482c1e4eb2232255715d3",
+        "split": "train",
+        "source_ids": [
+          "X-24"
+        ]
+      },
+      {
+        "clip_id": "X-25",
+        "sha256": "901f61cf1a1b8754dda56466308c19fc203a1a4c0e85d1e7827849d34e2d52f0",
+        "split": "train",
+        "source_ids": [
+          "X-25"
+        ]
+      },
+      {
+        "clip_id": "X-26",
+        "sha256": "e3a00b6e0f38b1d9b5498140f14906c71e204359262a90ce7a9974d64bf081e9",
+        "split": "train",
+        "source_ids": [
+          "X-26"
+        ]
+      },
+      {
+        "clip_id": "X-27",
+        "sha256": "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+        "split": "train",
+        "source_ids": [
+          "X-27"
+        ]
+      },
+      {
+        "clip_id": "X-28",
+        "sha256": "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+        "split": "validation",
+        "source_ids": [
+          "X-28"
+        ]
+      },
+      {
+        "clip_id": "X-29",
+        "sha256": "b9bfb76ac8ea47eb368fc78a2f6370e4d98e79185972f63cf301ee22f12b5941",
+        "split": "train",
+        "source_ids": [
+          "X-29"
+        ]
+      },
+      {
+        "clip_id": "X-30",
+        "sha256": "05af66ce27b83d7c10c5d33b6f1847ec042c01ed21afdcbd43a13abcefd28199",
+        "split": "train",
+        "source_ids": [
+          "X-30"
+        ]
+      },
+      {
+        "clip_id": "X-31",
+        "sha256": "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+        "split": "validation",
+        "source_ids": [
+          "X-31"
+        ]
+      },
+      {
+        "clip_id": "X-32",
+        "sha256": "bcc277cbf1a36245156b2bb9a0e0b826432390b42040c0b82201a8c21ab23ce9",
+        "split": "train",
+        "source_ids": [
+          "X-32"
+        ]
+      },
+      {
+        "clip_id": "X-33",
+        "sha256": "209e8aaca88df59064e5f28b3bcc489fee3eea9eb920889b69c03c83d52430c6",
+        "split": "train",
+        "source_ids": [
+          "X-33"
+        ]
+      },
+      {
+        "clip_id": "X-34",
+        "sha256": "f3e351bea71150f4e8c76e2c8f0656a4e92063319d7cd39e264078c5ba9139c3",
+        "split": "validation",
+        "source_ids": [
+          "X-34"
+        ]
+      },
+      {
+        "clip_id": "X-35",
+        "sha256": "26430119e074d6f0eb5dbc7ec3e26bbc31cf18903265bb4372bd7d7104908640",
+        "split": "train",
+        "source_ids": [
+          "X-35"
+        ]
+      },
+      {
+        "clip_id": "X-37",
+        "sha256": "ac4cf04844c0aa08a5e19f5f7fe984f1477943294922d6ef77bdc5b88b97160e",
+        "split": "train",
+        "source_ids": [
+          "X-37"
+        ]
+      },
+      {
+        "clip_id": "X-38",
+        "sha256": "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+        "split": "validation",
+        "source_ids": [
+          "X-38"
+        ]
+      },
+      {
+        "clip_id": "X-39",
+        "sha256": "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+        "split": "validation",
+        "source_ids": [
+          "X-39"
+        ]
+      },
+      {
+        "clip_id": "X-40",
+        "sha256": "6a81739ced0efdcd4a4feb76ea16562a20ceb53a2232a801528716c450366c9f",
+        "split": "train",
+        "source_ids": [
+          "X-40"
+        ]
+      },
+      {
+        "clip_id": "X-43",
+        "sha256": "39e28d7be01cdb090ede1881ce3ef704fa413271deb69d6735c1953f340d6069",
+        "split": "train",
+        "source_ids": [
+          "X-43"
+        ]
+      },
+      {
+        "clip_id": "X-44",
+        "sha256": "9774ed882153af3ba1a7e71c9b9249619e2b3a97ae336aad6143369802ca3522",
+        "split": "validation",
+        "source_ids": [
+          "X-44"
+        ]
+      },
+      {
+        "clip_id": "X-45",
+        "sha256": "524bf9ff2d5e81211dbbeff73129dbb5f3a5e5e35a64f443f53e16b1c2d471c7",
+        "split": "train",
+        "source_ids": [
+          "X-45"
+        ]
+      },
+      {
+        "clip_id": "X-46",
+        "sha256": "66fc5d28c2371592f9260305589bdc86636fdd2ebe7a7ec976eec00a23d43df4",
+        "split": "train",
+        "source_ids": [
+          "X-46"
+        ]
+      }
+    ],
+    "points": [
+      {
+        "clip_id": "X-2",
+        "center_sec": 10.0,
+        "types": [
+          "client_identity_check_not_visible"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+            "center_sec": 10.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "client_identity_check_not_visible"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted.",
+            "per_type_evidence": {
+              "unsecured_accepted_cash": {
+                "status": "absent",
+                "reviewer": "frame_sequence_review",
+                "reviewed_at": "2026-10-18T01:16:40.619812+00:00",
+                "method": "1Hz sequence and source-resolution reference/detail frames; no prediction consulted",
+                "note": "Within 8-12s the first visible customer is bringing the current deposit. Full 0-17s context shows no prior customer/cash transition. This does not establish the identification action."
+              }
+            }
+          }
+        ],
+        "source_ids": [
+          "X-2"
+        ],
+        "split": "validation"
+      },
+      {
+        "clip_id": "X-3",
+        "center_sec": 9.999944351697273,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+            "center_sec": 9.999944351697273,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-3"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-4",
+        "center_sec": 57.0,
+        "types": [
+          "unsecured_accepted_cash"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "5385be9420e6a70547d6bcfd0b13d60f9c0738877645afa277d09550a96b8445",
+            "center_sec": 57.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "unsecured_accepted_cash"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-4"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-4",
+        "center_sec": 68.0,
+        "types": [
+          "unsecured_accepted_cash"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "5385be9420e6a70547d6bcfd0b13d60f9c0738877645afa277d09550a96b8445",
+            "center_sec": 68.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "unsecured_accepted_cash"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-47"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-5",
+        "center_sec": 35.78331002331002,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "1f5840bff58f298e89c4afa00cb1c18f6dafc5c4096c251d9b507604ebefe906",
+            "center_sec": 35.78331002331002,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          },
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "1f5840bff58f298e89c4afa00cb1c18f6dafc5c4096c251d9b507604ebefe906",
+            "center_sec": 35.78331002331002,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-5",
+          "X-48"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-8",
+        "center_sec": 18.99998538011696,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "6a53e10acdcf52396ad5b1697eead32d8322c0911d792523a5c33fe5b388f4e7",
+            "center_sec": 18.99998538011696,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-8"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-10",
+        "center_sec": 7.766666666666667,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "57a0e46c7a45f0e831f61d9c80722fefe4b74dbcfe1d3031ff58307d481f9a5c",
+            "center_sec": 7.766666666666667,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted.",
+            "per_type_evidence": {
+              "unsecured_accepted_cash": {
+                "status": "unknown",
+                "reviewer": "frame_sequence_review",
+                "reviewed_at": "2026-10-18T01:16:40.619812+00:00",
+                "method": "1Hz sequence and source-resolution reference/detail frames; no prediction consulted",
+                "note": "Cashier handles banknotes alone. Their origin/operation status is not visible, so no absence of unsecured accepted cash is inferred from the binary negative label."
+              }
+            }
+          }
+        ],
+        "source_ids": [
+          "X-10"
+        ],
+        "split": "validation"
+      },
+      {
+        "clip_id": "X-11",
+        "center_sec": 18.0,
+        "types": [
+          "safe_key_left_in_lock"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+            "center_sec": 18.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "safe_key_left_in_lock"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-11"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-12",
+        "center_sec": 21.133307024467246,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "955755baf54418b48ea645dcd98e7e8dcca1d1e227e9b286a9427062db304fd4",
+            "center_sec": 21.133307024467246,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-12"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-13",
+        "center_sec": 47.0,
+        "types": [
+          "collection_cash_amount_registration_not_observed"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "a37930cf119bb691be77d8624b18333b04d9c67066a7f4627d63e3208dfa6057",
+            "center_sec": 47.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "collection_cash_amount_registration_not_observed"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-13"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-14",
+        "center_sec": 71.24998829861924,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "7d6890ecb4a2b28bbdd3b61b6711566eee84a53ab3439c40cd9b6a3a6714c681",
+            "center_sec": 71.24998829861924,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted.",
+            "per_type_evidence": {
+              "unsecured_accepted_cash": {
+                "status": "unknown",
+                "reviewer": "frame_sequence_review",
+                "reviewed_at": "2026-10-18T01:16:40.619812+00:00",
+                "method": "1Hz sequence and source-resolution reference/detail frames; no prediction consulted",
+                "note": "Cashier counts/sorts several banknotes alone at the midpoint. Their origin and completion of an earlier customer operation are not established."
+              }
+            }
+          }
+        ],
+        "source_ids": [
+          "X-14"
+        ],
+        "split": "validation"
+      },
+      {
+        "clip_id": "X-16",
+        "center_sec": 11.349950980392158,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+            "center_sec": 11.349950980392158,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted.",
+            "per_type_evidence": {
+              "unsecured_accepted_cash": {
+                "status": "unknown",
+                "reviewer": "frame_sequence_review",
+                "reviewed_at": "2026-10-18T01:16:40.619812+00:00",
+                "method": "1Hz sequence and source-resolution reference/detail frames; no prediction consulted",
+                "note": "Current visitor opens a bag; contents and prior cash-acceptance status are not sufficiently established for this storage-related type."
+              }
+            }
+          }
+        ],
+        "source_ids": [
+          "X-16"
+        ],
+        "split": "validation"
+      },
+      {
+        "clip_id": "X-17",
+        "center_sec": 7.0,
+        "types": [
+          "cash_bag_received_without_visible_identity_authority_check"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "0378b8026b2e6afd1775a5d0fdd12dd09c491785b626e9c20428f7dc6bd59364",
+            "center_sec": 7.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "cash_bag_received_without_visible_identity_authority_check"
+            ],
+            "absent_types": [
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-17"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-18",
+        "center_sec": 20.0,
+        "types": [
+          "client_identity_check_not_visible"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "90607b0b0cb772fcf29b0c7e0e56fa6af36da6fac0efe93b8a616b5de94a156c",
+            "center_sec": 20.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "client_identity_check_not_visible"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-18"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-19",
+        "center_sec": 28.69997093023256,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+            "center_sec": 28.69997093023256,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-19"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-20",
+        "center_sec": 5.0,
+        "types": [
+          "recount_without_visible_controller"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+            "center_sec": 5.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "recount_without_visible_controller"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-20"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-21",
+        "center_sec": 9.783247863247864,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "efd876a04224cac781ac64bf5d6e107ded67340b7b7715fd9ca3408b240a1075",
+            "center_sec": 9.783247863247864,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-21"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-22",
+        "center_sec": 14.0,
+        "types": [
+          "safe_key_left_in_lock"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "c9a30d44907e4a41b3a8ccf101774cd2e0804de20927bfbc9e1ccba1f2326b78",
+            "center_sec": 14.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "safe_key_left_in_lock"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-22"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-23",
+        "center_sec": 9.1165749235474,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "b637677ef5a7f0fa54d9f116ce6493cf74a4c99b8149a9c9916b96ef257535bd",
+            "center_sec": 9.1165749235474,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-23"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-24",
+        "center_sec": 8.0,
+        "types": [
+          "suspected_stamp_or_seal_left_unattended"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "c175a683749401d5a9ecf6f1c188b64fa8a09543f41482c1e4eb2232255715d3",
+            "center_sec": 8.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "suspected_stamp_or_seal_left_unattended"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-24"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-25",
+        "center_sec": 15.833315789473685,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "901f61cf1a1b8754dda56466308c19fc203a1a4c0e85d1e7827849d34e2d52f0",
+            "center_sec": 15.833315789473685,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-25"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-27",
+        "center_sec": 13.199957859249896,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+            "center_sec": 13.199957859249896,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-27"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-29",
+        "center_sec": 8.633203883495145,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "b9bfb76ac8ea47eb368fc78a2f6370e4d98e79185972f63cf301ee22f12b5941",
+            "center_sec": 8.633203883495145,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-29"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-31",
+        "center_sec": 11.883263009845288,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+            "center_sec": 11.883263009845288,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted.",
+            "per_type_evidence": {
+              "unsecured_accepted_cash": {
+                "status": "absent",
+                "reviewer": "frame_sequence_review",
+                "reviewed_at": "2026-10-18T01:16:40.619812+00:00",
+                "method": "1Hz sequence and source-resolution reference/detail frames; no prediction consulted",
+                "note": "Within the midpoint window, visible desk surfaces have no banknotes; employee returns to the workstation."
+              }
+            }
+          }
+        ],
+        "source_ids": [
+          "X-31"
+        ],
+        "split": "validation"
+      },
+      {
+        "clip_id": "X-34",
+        "center_sec": 13.0,
+        "types": [
+          "cash_counted_without_client_present"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "f3e351bea71150f4e8c76e2c8f0656a4e92063319d7cd39e264078c5ba9139c3",
+            "center_sec": 13.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "cash_counted_without_client_present"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted.",
+            "per_type_evidence": {
+              "unsecured_accepted_cash": {
+                "status": "unknown",
+                "reviewer": "frame_sequence_review",
+                "reviewed_at": "2026-10-18T01:16:40.619812+00:00",
+                "method": "1Hz sequence and source-resolution reference/detail frames; no prediction consulted",
+                "note": "Cash counting continues during customer departure. The distinction between active counting and cash left after a completed operation is not sufficiently established for this additional type."
+              }
+            }
+          }
+        ],
+        "source_ids": [
+          "X-34"
+        ],
+        "split": "validation"
+      },
+      {
+        "clip_id": "X-35",
+        "center_sec": 28.366637254901963,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "26430119e074d6f0eb5dbc7ec3e26bbc31cf18903265bb4372bd7d7104908640",
+            "center_sec": 28.366637254901963,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-35"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-37",
+        "center_sec": 7.916560958421424,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "ac4cf04844c0aa08a5e19f5f7fe984f1477943294922d6ef77bdc5b88b97160e",
+            "center_sec": 7.916560958421424,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-37"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-38",
+        "center_sec": 33.0,
+        "types": [
+          "unsecured_accepted_cash"
+        ],
+        "complete": false,
+        "negative_types": [],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+            "center_sec": 33.0,
+            "window_sec": 4.0,
+            "reviewer": "frame_sequence_review",
+            "reviewed_at": "2026-10-18T01:16:40.619812+00:00",
+            "present_types": [
+              "unsecured_accepted_cash"
+            ],
+            "absent_types": [],
+            "whole_video_absent_types": [],
+            "evidence_note": "7-12s: customer gives cash, cashier handles it at the counter; 24-27s: first customer leaves; a banknote remains on the desk through 31-35s while the next customer enters. The reviewed 33s point depicts cash left between customers. Accounting/legal status is not established by pixels.",
+            "per_type_evidence": {
+              "unsecured_accepted_cash": {
+                "status": "present",
+                "reviewer": "frame_sequence_review",
+                "reviewed_at": "2026-10-18T01:16:40.619812+00:00",
+                "method": "1Hz sequence and source-resolution reference/detail frames; no prediction consulted",
+                "note": "7-12s: customer gives cash, cashier handles it at the counter; 24-27s: first customer leaves; a banknote remains on the desk through 31-35s while the next customer enters. The reviewed 33s point depicts cash left between customers. Accounting/legal status is not established by pixels."
+              }
+            }
+          }
+        ],
+        "source_ids": [
+          "X-38"
+        ],
+        "split": "validation"
+      },
+      {
+        "clip_id": "X-39",
+        "center_sec": 39.349978804578214,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+            "center_sec": 39.349978804578214,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted.",
+            "per_type_evidence": {
+              "unsecured_accepted_cash": {
+                "status": "absent",
+                "reviewer": "frame_sequence_review",
+                "reviewed_at": "2026-10-18T01:16:40.619812+00:00",
+                "method": "1Hz sequence and source-resolution reference/detail frames; no prediction consulted",
+                "note": "Within the midpoint window the employee finishes closing the safe as the first customer leaves; desk is clear of the previously handled banknotes."
+              }
+            }
+          }
+        ],
+        "source_ids": [
+          "X-39"
+        ],
+        "split": "validation"
+      },
+      {
+        "clip_id": "X-40",
+        "center_sec": 17.0,
+        "types": [
+          "employee_personal_items_in_cash_unit"
+        ],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "6a81739ced0efdcd4a4feb76ea16562a20ceb53a2232a801528716c450366c9f",
+            "center_sec": 17.0,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [
+              "employee_personal_items_in_cash_unit"
+            ],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-40"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-43",
+        "center_sec": 11.666618979494515,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "39e28d7be01cdb090ede1881ce3ef704fa413271deb69d6735c1953f340d6069",
+            "center_sec": 11.666618979494515,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-43"
+        ],
+        "split": "train"
+      },
+      {
+        "clip_id": "X-45",
+        "center_sec": 16.649933065595718,
+        "types": [],
+        "complete": false,
+        "negative_types": [
+          "cash_bag_received_without_visible_identity_authority_check",
+          "cash_counted_without_client_present",
+          "cashier_leaves_during_client_service",
+          "client_identity_check_not_visible",
+          "collection_cash_amount_registration_not_observed",
+          "employee_personal_items_in_cash_unit",
+          "recount_without_visible_controller",
+          "safe_key_left_in_lock",
+          "suspected_stamp_or_seal_left_unattended",
+          "unsecured_accepted_cash"
+        ],
+        "whole_video_absent_types": [],
+        "reviews": [
+          {
+            "schema": "action_window_review_v1",
+            "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+            "video_sha256": "524bf9ff2d5e81211dbbeff73129dbb5f3a5e5e35a64f443f53e16b1c2d471c7",
+            "center_sec": 16.649933065595718,
+            "window_sec": 4.0,
+            "reviewer": "dataset_owner",
+            "reviewed_at": "2026-10-18T00:40:11.430311+00:00",
+            "present_types": [],
+            "absent_types": [
+              "cash_bag_received_without_visible_identity_authority_check",
+              "cash_counted_without_client_present",
+              "cashier_leaves_during_client_service",
+              "client_identity_check_not_visible",
+              "collection_cash_amount_registration_not_observed",
+              "employee_personal_items_in_cash_unit",
+              "recount_without_visible_controller",
+              "safe_key_left_in_lock",
+              "suspected_stamp_or_seal_left_unattended",
+              "unsecured_accepted_cash"
+            ],
+            "whole_video_absent_types": [],
+            "evidence_note": "Batch-supplied window labels; no independent frame-by-frame review. No whole-video absence asserted."
+          }
+        ],
+        "source_ids": [
+          "X-45"
+        ],
+        "split": "train"
+      }
+    ]
+  },
+  "catalog_mapping_verified": true,
+  "label_mode": "per_type_v1",
+  "reviewed_windows": 32,
+  "note": "Positive-only labels do not support a discriminative action classifier. Binary negatives are not action negatives without an explicit completeness review.",
+  "training_ready": true,
+  "readiness_reasons": []
+}

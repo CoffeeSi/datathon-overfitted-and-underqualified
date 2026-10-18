@@ -1,0 +1,2 @@
+# Full-file annotation hashes must survive Windows/Linux checkouts.
+data/annotations/events.csv text eol=lf

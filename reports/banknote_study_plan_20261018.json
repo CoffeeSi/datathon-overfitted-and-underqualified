@@ -1,0 +1,17 @@
+{
+  "schema": "banknote_study_plan_v1",
+  "created_utc": "2026-10-18T02:04:55Z",
+  "config": "configs/banknotes_initial.yaml",
+  "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+  "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+  "training": "52 reviewed endpoint frames, 12 positive boxes and 40 negatives; 8 original train parents. Fixed 60 epochs, last checkpoint, no validation epoch/threshold selection.",
+  "supplemental": "Use verified warm_sepia, cool_camera and cctv_low_quality versions of reviewed training parents only. Draw original-or-variant per point per epoch, without multiplying source weight. All 40 validation descendants prohibited. Synthetic scenarios remain unlabelled for this target and are not fitted.",
+  "pipeline": "Existing frozen multiview R3D predicts client and handover. New endpoint banknote detector replaces only the cash score. Existing causal sequence parameters remain unchanged.",
+  "evaluation": "All 10 unchanged real validation videos scanned; 39 known cash endpoints scored. Separately report sampled visual sequence performance on reviewed X-2/X-31/X-38/X-39; do not claim complete legal-event ground truth. Original X-38 reference31s remains unchanged.",
+  "limitations": [
+    "Validation repeatedly inspected during development, not independent test.",
+    "Bounding rectangles supervise a visual surrogate, not cash ownership or accounting.",
+    "Four synthetic originals do not constitute eight independent real examples.",
+    "No automatic deployment or legal verdict based solely on this experiment."
+  ]
+}

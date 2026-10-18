@@ -1,0 +1,39 @@
+{
+  "schema": "banknote_hard_negative_plan_v1",
+  "config": {
+    "schema": "counter_banknotes_v1",
+    "seed": 42,
+    "device": "cuda",
+    "events_path": "data/annotations/events.csv",
+    "split_path": "data/processed/split_proposal.csv",
+    "video_dir": "data/raw/videos",
+    "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "output_dir": "runs/banknotes_hard_negatives_20261018T022500Z",
+    "supplemental_manifest": "data/local_artifacts/supplemental_audit_20261018_final.json",
+    "supplemental_manifest_sha256": "64a680bc93697bc266a3c6ea4e69f94e6dad71cd485b5138cc2461b7be557d8a",
+    "supplemental_variants": [
+      "warm_sepia",
+      "cool_camera",
+      "cctv_low_quality"
+    ],
+    "roi": [
+      0.0,
+      0.3,
+      1.0,
+      0.6
+    ],
+    "resize_width": 512,
+    "epochs": 60,
+    "batch_size": 4,
+    "cpu_threads": 2,
+    "learning_rate": 0.001,
+    "threshold": 0.7,
+    "min_component_area": 6,
+    "training_protocol": "hard_negative_bce_dice_v3",
+    "hard_negative_ratio": 3,
+    "hard_negative_min_fraction": 0.01
+  },
+  "reason": "Before any validation prediction, v2 train detects12/12positive but25/40FP, mostlyidentitycards andhands. Full-background averaging underweights sparse confident errors. Train-only loss repair: topK negativeBCE, same60epochs/.7threshold/6pxcomponent. Final protocol fixed before validation.",
+  "previous_train_metrics": "runs/banknotes_balanced_20261018T021500Z/train_endpoint_metrics.json"
+}

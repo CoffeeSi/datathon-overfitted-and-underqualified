@@ -12,6 +12,7 @@ import { validateVideoFile } from "@/features/upload/validation";
 import { reviewEvents } from "./presentation";
 import { Timeline } from "./timeline";
 import { EvidenceGallery, EvidenceImage } from "./evidence";
+import { ActionContext, UnresolvedActions } from "./action-context";
 
 const verdictCopy = {
   violation: ["Требует внимания", "Сервис отметил возможные нарушения. Проверьте события в контексте записи."],
@@ -136,6 +137,7 @@ export function ReviewWorkspace({ jobId }: { jobId: string }) {
     {job?.status === "failed" && <section className="failed-state"><span className="state-symbol"><Icon name="alert" size={32} /></span><p className="eyebrow">ОБРАБОТКА НЕ ЗАВЕРШЕНА</p><h2>Не удалось разобрать запись.</h2><p>{job.error.message}</p><span className="error-code mono">Код: {job.error.code}</span><Link className="button button-primary" href="/">Выбрать видео заново <Icon name="arrow-right" /></Link><small>Повторная отправка создаст новое задание.</small></section>}
 
     {job?.status === "done" && <>
+      <UnresolvedActions candidates={job.unresolved_candidates} />
       <div className="verdict-bar" data-verdict={job.verdict}><div className="verdict-icon"><Icon name={job.verdict === "violation" ? "eye" : job.verdict === "no_violation" ? "check" : "alert"} /></div><div><h2>{verdictCopy[job.verdict][0]}</h2><p>{verdictCopy[job.verdict][1]}</p></div><span className="event-total"><strong>{String(events.length).padStart(2, "0")}</strong><span>событий</span></span></div>
       <div className="review-grid">
         <div className="viewer-column">
@@ -148,6 +150,7 @@ export function ReviewWorkspace({ jobId }: { jobId: string }) {
           </section>
           {localError && <p className="form-error" role="alert">{localError}</p>}
           <Timeline events={events} selectedId={selected?.id} extent={extent} position={playable ? position : selected?.timecode_sec ?? 0} videoAvailable={playable} onSelect={select} onSeek={seek} />
+          {selected && <ActionContext finding={selected} />}
           <section className="event-detail" aria-labelledby="detail-title">
             {selected ? <><div className="detail-heading"><div><p className="eyebrow">В КОНТЕКСТЕ / {String(selectedIndex + 1).padStart(2, "0")}</p><h2 id="detail-title">{selected.title}</h2></div><button className="time-copy" onClick={() => void copy(timecode(selected.timecode_sec, true), "Таймкод скопирован")} aria-label="Скопировать таймкод события"><span>{timecode(selected.timecode_sec, true)}</span><Icon name="copy" size={14} /></button></div><p className="event-description">{selected.description}</p><div className="evidence-heading"><span>КАДРЫ СОБЫТИЯ</span><span>{selected.evidence_frames.length} / JPEG</span></div><div className="evidence-strip">{selected.evidence_frames.map((frame, index) => <button key={`${selected.id}-${index}`} className="evidence-thumb" onClick={() => setGallery(index)} aria-label={`Открыть кадр ${index + 1}, ${timecode(frame.timestamp_sec, true)}`}><EvidenceImage frame={frame} alt={`Контекст ${selected.title}`} /><span className="mono">{timecode(frame.timestamp_sec, true)}<Icon name="expand" size={14} /></span></button>)}</div><details className="event-technical"><summary>Данные события</summary><dl><dt>Тип от сервиса</dt><dd>{selected.type}</dd><dt>Источник</dt><dd>{job.analysis_provider}</dd></dl></details></> : <div className="no-events-detail"><Icon name={job.verdict === "no_violation" ? "check" : "eye"} size={28} /><h2 id="detail-title">{job.verdict === "no_violation" ? "Список событий пуст." : "Нужен дополнительный контекст."}</h2><p>{job.verdict === "no_violation" ? "Вы можете просмотреть исходное видео самостоятельно или сохранить ответ сервиса в JSON." : "Попробуйте запись с лучшей видимостью кассовой зоны. Отсутствие событий в этом ответе не означает, что нарушений нет."}</p></div>}
           </section>

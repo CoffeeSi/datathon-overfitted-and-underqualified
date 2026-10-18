@@ -27,6 +27,50 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def annotation_fields_digest(rows, fields):
+    """Canonical digest of explicitly preserved source columns, including row order."""
+    payload = json.dumps(dict(fields=fields, rows=[{k: r[k] for k in fields} for r in rows]),
+                         ensure_ascii=False, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def verify_annotation_revision(path, expected_sha256, *, registry_path=None):
+    """Binary protocol: accept exact input or an explicitly registered metadata edit.
+
+    Checkpoint hashes remain historical. A registry entry explicitly approves a
+    particular pair of full-file hashes, plus all protected source values.
+    """
+    path = Path(path)
+    actual = sha256(path)
+    if actual == expected_sha256:
+        return None
+    registry = Path(registry_path) if registry_path else Path(__file__).resolve().parents[3]/"data/annotation_revisions.json"
+    entries = json.loads(registry.read_text(encoding="utf-8")) if registry.is_file() else []
+    for entry in entries:
+        if entry.get("before_sha256") != expected_sha256 or entry.get("after_sha256") != actual:
+            continue
+        allowed = entry.get("allowed_changed_fields")
+        legal_only = entry.get("schema") == "legal_basis_only_revision_v1" and allowed == ["legal_basis"]
+        description_only = (entry.get("schema") == "binary_metadata_revision_v1"
+                            and allowed in (["observed_event"], ["observed_event", "legal_basis"]))
+        action_review_only = (entry.get("schema") == "binary_action_review_revision_v1"
+                              and isinstance(allowed, list) and "action_review" in allowed
+                              and set(allowed) <= {"action_review", "observed_event", "legal_basis"})
+        primitive_review_only = (entry.get("schema") == "binary_primitive_review_revision_v1"
+                                 and isinstance(allowed, list) and "primitive_review" in allowed
+                                 and set(allowed) <= {"primitive_review", "action_review", "observed_event", "legal_basis"})
+        if not (legal_only or description_only or action_review_only or primitive_review_only):
+            raise ValueError("Invalid annotation revision scope")
+        with path.open(encoding="utf-8-sig", newline="") as stream:
+            reader = csv.DictReader(stream)
+            fields, rows = reader.fieldnames, list(reader)
+        protected = [k for k in fields if k not in allowed]
+        if (protected != entry["preserved_fields"] or annotation_fields_digest(rows, protected) != entry["preserved_fields_sha256"]):
+            raise ValueError("Annotation revision changed protected fields")
+        return entry
+    raise ValueError("events hash differs from checkpoint provenance; no approved metadata revision")
+
+
 def parse_time(value: str) -> float | None:
     if not value.strip() or value.strip() in {"—", "-"}:
         return None
@@ -198,7 +242,8 @@ class VideoWindowDataset(Dataset):
     """
 
     def __init__(self, records: list[VideoRecord], split: str, transform,
-                 window_sec: float = 4.0, frames: int = 16, negative_windows: int = 1):
+                 window_sec: float = 4.0, frames: int = 16, negative_windows: int = 1,
+                 *, negative_sampling="interior"):
         if split not in {"train", "validation"} or negative_windows < 1:
             raise ValueError("Invalid subset or negative window count")
         sample_times(0, 1, window_sec, frames)
@@ -206,11 +251,16 @@ class VideoWindowDataset(Dataset):
         self.window_sec = window_sec
         self.frames = frames
         self.samples = []
+        if negative_sampling not in {"interior", "coverage"}:
+            raise ValueError("Unknown negative sampling policy")
         for record in records:
             if record.split != split:
                 continue
             centers = record.event_times if record.label else tuple(
                 record.last_time * (i + 1) / (negative_windows + 1) for i in range(negative_windows))
+            if not record.label and negative_sampling == "coverage" and negative_windows > 1:
+                span = min(window_sec, record.last_time)
+                centers = tuple(float(t) for t in np.unique(np.linspace(span / 2, record.last_time - span / 2, negative_windows)))
             for center in centers:
                 self.samples.append((record, center))
 

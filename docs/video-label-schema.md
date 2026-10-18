@@ -1,5 +1,11 @@
 # Video annotation schema
 
+The optional `primitive_review` metadata now includes reviewed normalized xyxy
+`banknote_boxes` on explicit complete endpoint frames, plus `sequence_grid_review`
+for a scoped full-duration sampled visual sequence. These retain the original event
+labels/timestamps; they do not establish continuous legal ground truth. See
+[definitions, provenance and limitations](banknote-sequence.md).
+
 This is the current contract for `data/annotations/events.csv`, consumed by
 `notebooks/01_eda.ipynb`. The CSV is the annotation source; this document describes
 its fields. [video-labels-split.md](video-labels-split.md) is a readable snapshot,
@@ -37,15 +43,21 @@ assigned, not evidence that a reviewer ruled out an event.
   `HH:MM:SS`, with subordinate minute/second components below 60. A violation
   requires a valid marker inside the corresponding video.
 - `source_label_ru`: supplied Russian label, `Нарушение` or `Без нарушения`.
-- `observed_event`: Reworded Russian description of the reported action or
-  state. It is not guaranteed to reproduce the source description verbatim and
-  is not an independently confirmed observation of the footage.
+- `observed_event`: Russian description of the action or state. On 2026-10-18,
+  missing-text placeholders on 20 negative source rows were replaced after visual
+  review of 1 Hz frame sequences across 19 unique videos, plus selected original
+  frames. This sampled review does not certify every short action or legal condition.
+  See [review provenance](../reports/visible_descriptions_20261018.md).
 - `observed_event_type`: provisional event tag. The current negative rows
-  use `not_reported`. These tags are not a verified event taxonomy.
+  retain the supplied `not_reported` tag even where visible prose was added.
+  It means the original type was not assigned, not that the video is empty.
+  These tags are not a verified event taxonomy and were not inferred from the new prose.
 - `candidate_violation_type`: possible compliance category,
   empty for current negative rows. Category counts in EDA summarize these
   hypotheses, not independently annotated violation types.
-- `legal_basis`: candidate rule/internal-policy reference and qualifications
+- `legal_basis`: optional candidate reference to National Bank Regulation №231 only.
+  Empty means no confirmed reference in the supplied 231-only revision; it does not
+  change the binary label. Applicability conditions remain in the rule catalog.
   retained or modified during interpretation. EDA preserves this text without checking correctness,
   currency or applicability. Empty for current negative rows.
 - `source_label`: machine-readable equivalent of the Russian source label:
@@ -125,3 +137,30 @@ This protocol does not establish camera/session independence. Related recordings
 people and background may cross subsets; validation is small and not a final test set.
 P0 baseline readiness and independent evaluation readiness are reported separately.
 See [temporal-annotation-workflow.md](temporal-annotation-workflow.md).
+
+## Action-window supervision
+
+Optional `action_review` JSON cells in the same `events.csv` hold typed targets,
+explicit window absences and unknowns. They do not change binary labels or timestamps.
+On 18 October 2026 the owner confirmed the batch in chat. This is recorded as an
+owner attestation, not a new independent frame-by-frame review. Unmapped or explicitly
+unknown cases remain masked. Confirmed absences cover the sampled four-second window
+only; `whole_video_absent_types` remains empty. Historical binary input hashes and
+registered metadata-only revisions are preserved.
+
+## Visible primitive supervision
+
+Optional `primitive_review` JSON in the same CSV contains independent, sparse
+visual observations, not additional violation timestamps. Schema
+`visible_primitives_v1` pins the video hash and two-second causal context. Each
+point has `time_sec`, explicit 0/1 `labels`, inspected `evidence_seconds`, and a note.
+Missing keys stay unknown. The first two targets describe the endpoint; cash
+handover describes the trailing window. See [definitions and workflow](visible-primitives.md).
+
+The initial review covers 93 selected points in 14 canonical videos (54 train /
+39 validation). Original source fields and action targets are unchanged, including
+X-4/X-47's distinct violation points. This is a sampled visual review, not a claim
+of complete human-reviewed action absence across a video. The versioned binary
+metadata revision explicitly permits this new column while protecting labels,
+timestamps, source ID order and every other unchanged field. Historical action
+experiments retain their exact source snapshots.

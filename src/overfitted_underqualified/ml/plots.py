@@ -15,11 +15,13 @@ def show_windows(dataset, indices, titles=None):
     for row, index in enumerate(indices):
         record, center = dataset.samples[index]
         times = sample_times(center, record.last_time, dataset.window_sec, dataset.frames)
-        frames = decode_frames(record, times)
+        frames = dataset.decode_window(index) if hasattr(dataset, "decode_window") else decode_frames(record, times)
         for ax, frame_index in zip(axes[row], (0, 5, 10, 15)):
             ax.imshow(frames[frame_index].permute(1, 2, 0).numpy())
             ax.axis("off")
             prefix = titles[row] if titles is not None else f"{record.clip_id}; label={record.label}"
+            if titles is None and hasattr(dataset, "source_manifest"):
+                prefix += f"; {dataset.source_manifest[index]['variant']}"
             ax.set_title(f"{prefix}\n{times[frame_index]:.2f}s")
     fig.tight_layout()
     plt.show()

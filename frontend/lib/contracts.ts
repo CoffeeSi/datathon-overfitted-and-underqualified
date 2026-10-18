@@ -9,13 +9,31 @@ export interface Finding {
   timecode_sec: number;
   description: string;
   evidence_frames: EvidenceFrame[];
+  source_links?: RuleReference[];
+  applicability?: string[];
+  video_cannot_establish?: string[];
+  binary_score?: number;
+  type_confidence?: number;
+}
+
+export interface RuleReference {
+  event_type: string;
+  source: string;
+  locator: string;
+  url: string;
+  title: string;
+}
+export interface UnresolvedCandidate {
+  timestamp_sec: number;
+  binary_score: number;
+  reason: "background" | "unknown";
 }
 
 export type Verdict = "violation" | "no_violation" | "insufficient_data";
 type JobBase = { job_id: string; analysis_provider: string };
 export type Job =
   | (JobBase & { status: "processing" })
-  | (JobBase & { status: "done"; verdict: Verdict; violations: Finding[] })
+  | (JobBase & { status: "done"; verdict: Verdict; violations: Finding[]; unresolved_candidates?: UnresolvedCandidate[]; recognition_scope?: string[] })
   | (JobBase & { status: "failed"; error: { code: string; message: string } });
 
 export interface ServiceStatus {
@@ -68,7 +86,39 @@ function finding(value: unknown): Finding {
     timecode_sec: seconds(data.timecode_sec),
     description: text(data.description),
     evidence_frames: data.evidence_frames.map(frame),
+    ...(data.source_links !== undefined ? { source_links: references(data.source_links, text(data.type)) } : {}),
+    ...(data.applicability !== undefined ? { applicability: texts(data.applicability) } : {}),
+    ...(data.video_cannot_establish !== undefined ? { video_cannot_establish: texts(data.video_cannot_establish) } : {}),
+    ...(data.binary_score !== undefined ? { binary_score: probability(data.binary_score) } : {}),
+    ...(data.type_confidence !== undefined ? { type_confidence: probability(data.type_confidence) } : {}),
   };
+}
+
+function probability(value: unknown): number {
+  const result = seconds(value);
+  return result <= 1 ? result : invalid();
+}
+function texts(value: unknown): string[] {
+  return Array.isArray(value) ? value.map(text) : invalid();
+}
+function references(value: unknown, eventType: string): RuleReference[] {
+  if (!Array.isArray(value)) return invalid();
+  return value.map((entry) => {
+    const data = object(entry);
+    if (data.event_type !== eventType) return invalid();
+    let url: URL;
+    try { url = new URL(text(data.url)); } catch { return invalid(); }
+    if (url.protocol !== "https:" || url.username || url.password) return invalid();
+    return { event_type: eventType, url: url.href, source: text(data.source), locator: text(data.locator), title: text(data.title) };
+  });
+}
+function unresolved(value: unknown): UnresolvedCandidate[] {
+  if (!Array.isArray(value)) return invalid();
+  return value.map((entry) => {
+    const data = object(entry);
+    if (data.reason !== "background" && data.reason !== "unknown") return invalid();
+    return { timestamp_sec: seconds(data.timestamp_sec), binary_score: probability(data.binary_score), reason: data.reason };
+  });
 }
 
 export function parseJob(value: unknown): Job {
@@ -84,7 +134,12 @@ export function parseJob(value: unknown): Job {
   if (verdict !== "violation" && verdict !== "no_violation" && verdict !== "insufficient_data") return invalid();
   const violations = data.violations.map(finding);
   if ((verdict === "violation") !== (violations.length > 0)) return invalid();
-  return { ...base, status: "done", verdict, violations };
+  const candidates = data.unresolved_candidates === undefined ? undefined : unresolved(data.unresolved_candidates);
+  if (verdict === "no_violation" && candidates?.length) return invalid();
+  return { ...base, status: "done", verdict, violations,
+    ...(candidates !== undefined ? { unresolved_candidates: candidates } : {}),
+    ...(data.recognition_scope !== undefined ? { recognition_scope: texts(data.recognition_scope) } : {}),
+  };
 }
 
 export function parseService(value: unknown): ServiceStatus {

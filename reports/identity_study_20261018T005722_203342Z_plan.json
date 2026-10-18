@@ -1,0 +1,99 @@
+{
+  "schema": "identity_geometry_study_v1",
+  "created_utc": "2026-10-18T00:57:22.232247+00:00",
+  "events_sha256": "a584f6736b647ad0c3b2fdbb29de4f480b0ac3dfc3fb1c64d7684c3b2fe9421c",
+  "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+  "hypotheses": [
+    "Portrait source is distorted by forced landscape resize and centre crop.",
+    "Train-selected cashier/client ROI removes foreground and preserves aspect ratio.",
+    "One-class head and longer fixed optimization separate fitting failure from geometry failure."
+  ],
+  "variants": [
+    {
+      "name": "control",
+      "config_path": "configs/actions_identity_control.yaml",
+      "config": {
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "data/annotations/events.csv",
+        "split_path": "data/processed/split_proposal.csv",
+        "video_dir": "data/raw/videos",
+        "output_dir": "runs/identity_control_20261018T005722_203342Z",
+        "weights_cache": "models/pretrained",
+        "weights": "KINETICS400_V1",
+        "frames": 16,
+        "window_sec": 4.0,
+        "epochs": 30,
+        "batch_size": 8,
+        "cpu_threads": 4,
+        "learning_rate": 0.001,
+        "threshold": 0.7,
+        "background_ceiling": 0.2,
+        "review": {
+          "label_mode": "per_type_v1",
+          "events_sha256": "a584f6736b647ad0c3b2fdbb29de4f480b0ac3dfc3fb1c64d7684c3b2fe9421c",
+          "listed_actions_verified": true,
+          "catalog_mapping_verified": true,
+          "complete_action_lists": false,
+          "provenance": "Window-level action labels; unresolved entries masked. Historical experiment inputs retained privately."
+        },
+        "positive_weighting": "train_ratio",
+        "cache_frozen_features": true,
+        "target_types": [
+          "client_identity_check_not_visible"
+        ],
+        "preprocessing": "kinetics400_v1"
+      },
+      "config_sha256": "4bd8789fd33f39854e5078b3c2feb0d455cd0a06ba6e847d207cbbe8497de274"
+    },
+    {
+      "name": "roi",
+      "config_path": "configs/actions_identity_roi.yaml",
+      "config": {
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "data/annotations/events.csv",
+        "split_path": "data/processed/split_proposal.csv",
+        "video_dir": "data/raw/videos",
+        "output_dir": "runs/identity_roi_20261018T005722_203342Z",
+        "weights_cache": "models/pretrained",
+        "weights": "KINETICS400_V1",
+        "frames": 16,
+        "window_sec": 4.0,
+        "epochs": 30,
+        "batch_size": 8,
+        "cpu_threads": 4,
+        "learning_rate": 0.001,
+        "threshold": 0.7,
+        "background_ceiling": 0.2,
+        "review": {
+          "label_mode": "per_type_v1",
+          "events_sha256": "a584f6736b647ad0c3b2fdbb29de4f480b0ac3dfc3fb1c64d7684c3b2fe9421c",
+          "listed_actions_verified": true,
+          "catalog_mapping_verified": true,
+          "complete_action_lists": false,
+          "provenance": "Window-level action labels; unresolved entries masked. Historical experiment inputs retained privately."
+        },
+        "positive_weighting": "train_ratio",
+        "cache_frozen_features": true,
+        "target_types": [
+          "client_identity_check_not_visible"
+        ],
+        "preprocessing": "aspect_letterbox_v1",
+        "roi": [
+          0.0,
+          0.1,
+          1.0,
+          0.65
+        ]
+      },
+      "config_sha256": "b4c67cf460517dcaa4b8120a0c969e2160c6de02458b2bd7b455932a6dc9f340"
+    }
+  ],
+  "selection": "Both fixed last epochs reported; threshold 0.7 unchanged; no best-epoch or threshold selection.",
+  "limitations": [
+    "Validation X-2 already inspected; exploratory iteration, not independent test.",
+    "Only one independent positive training video. No new positives invented or validation moved.",
+    "Window remains 4 seconds: reviewed absences must not silently cover 8/12 seconds."
+  ]
+}

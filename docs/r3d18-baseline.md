@@ -50,7 +50,9 @@ There is no dependency on generated EDA inventory files or a second annotation t
 Each positive event produces one 4-second window with 16 evenly sampled frames.
 At a video boundary the window shifts inward; videos shorter than the window use
 their available span. Each negative video uses one midpoint window by default.
-`negative_windows` enables evenly spaced additional windows for both subsets.
+`negative_windows` enables evenly spaced additional training windows;
+`validation_negative_windows` can retain one midpoint window for comparable evaluation
+(omitting it preserves the historical behavior of applying the count to both subsets).
 Multiple source event markers on the same canonical video are preserved. Unannotated
 parts of positive videos are not automatically labeled negative.
 
@@ -61,6 +63,42 @@ This standard crop may lose useful peripheral detail in portrait footage; invest
 that limitation in later experiments rather than changing preprocessing silently.
 See the [official model documentation](https://docs.pytorch.org/vision/stable/models/generated/torchvision.models.video.r3d_18.html).
 
+## Versioned improvement experiments
+
+The historical `configs/r3d18.yaml` and old checkpoint preprocessing remain unchanged.
+The new optional `preprocessing: aspect_letterbox_v1` uses the saved normalized ROI
+when present, preserves its aspect ratio and pads to 112 square with the pretrained
+mean. `ml/preprocessing.py` is shared by training, evaluation and scanner restoration;
+an unknown version fails rather than silently using the old transform. The ROI is a
+camera-specific experimental choice, inspected on train; it is not a general detector.
+
+`negative_sampling: coverage` covers the start and end supports of confirmed negative
+train videos. `loss_weighting: video_class_balanced` gives equal total weight to each
+class and equal weight to each canonical video within it, divided over its windows.
+Different positive alias timestamps remain distinct samples. No unmarked segment of a
+positive video becomes a negative. Validation retains the agreed video assignment.
+
+`cache_frozen_features: true` extracts the frozen backbone once per run into CPU memory;
+only fc is trained on these features thereafter. BatchNorm remains in eval mode.
+It is rejected when the backbone is trainable. There is no cross-run cache to become
+stale after a data/ROI/preprocessing change. Gradient equivalence is tested.
+
+Predeclared configurations are `r3d18_negatives.yaml`, `r3d18_geometry.yaml` and
+`r3d18_roi.yaml`. The study script also adds a stable-optimizer control and a fixed
+8-second ROI experiment; it writes its complete plan and implementation hashes before
+training, then distinct checkpoints and full-video reports for every candidate:
+
+```sh
+PYTHONPATH=src python experiments/run_baseline_improvements.py
+PYTHONPATH=src python experiments/compare_candidate_policies.py --study runs/binary_improvements_<UTC>
+```
+
+On PowerShell set `$env:PYTHONPATH='src'` and use the repository venv Python.
+Notebook 02 accepts `TRAIN_CONFIG=configs/r3d18_roi.yaml`; training remains opt-in.
+These studies reuse a validation set whose errors were already examined: comparisons
+are exploratory, not an independent final test. Keep negative results in the study.
+Neither new geometry nor longer context is assumed better before measurement.
+
 The pretrained R3D-18 head is replaced by a two-logit linear layer:
 `no_violation=0`, `violation=1`. Default training freezes the backbone, including
 BatchNorm statistics, and updates only the head with AdamW and cross-entropy.
@@ -70,6 +108,9 @@ BatchNorm statistics, and updates only the head with AdamW and cross-entropy.
 
 Install the general and ML requirements using the existing Brev setup in README.
 Run from the repository root, with the original videos in `data/raw/videos`.
+Optional audited descendants live separately in `data/raw/supplemental/`; see
+[augmentation training and robustness evaluation](augmented-videos.md). Their
+canonical split is inherited, never randomly assigned per augmented file.
 The first run downloads approximately 127 MB of pretrained weights into
 `models/pretrained/checkpoints`; this cache and experiment outputs are ignored by Git.
 

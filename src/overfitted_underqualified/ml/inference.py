@@ -17,6 +17,7 @@ from torchvision.models.video import R3D_18_Weights
 
 from .dataset import VideoInfo, decode_frames, sha256
 from .train import load_checkpoint, seed_everything
+from .preprocessing import video_transform
 from ..rules.catalog import event_by_type, source_links_for, supported_event_types
 
 
@@ -28,6 +29,8 @@ class ScanConfig:
     threshold: float = 0.5
     merge_gap_sec: float = 0.0
     frames: int = 16
+    candidate_policy: str = "support_union"
+    peak_separation_sec: float = 4.0
 
     def __post_init__(self):
         if any(not math.isfinite(v) or v <= 0 for v in (self.window_sec, self.step_sec)):
@@ -40,6 +43,10 @@ class ScanConfig:
             raise ValueError("threshold must be in [0, 1]")
         if not math.isfinite(self.merge_gap_sec) or self.merge_gap_sec < 0:
             raise ValueError("merge_gap_sec must be finite and nonnegative")
+        if self.candidate_policy not in {"support_union", "window_peaks"}:
+            raise ValueError("Unknown event candidate policy")
+        if not math.isfinite(self.peak_separation_sec) or self.peak_separation_sec <= 0:
+            raise ValueError("Peak separation must be positive and finite")
 
 
 def inspect_video(path: Path) -> VideoInfo:
@@ -82,6 +89,8 @@ def merge_candidates(windows: list[dict], config: ScanConfig) -> list[dict]:
     alarm produces one candidate; it does not imply one true event in that span.
     """
     ordered = sorted(windows, key=lambda w: (w["start_sec"], w["window_index"]))
+    if config.candidate_policy == "window_peaks":
+        return peak_candidates(ordered, config)
     groups = []
     for window in ordered:
         probability = window["probability"]
@@ -94,6 +103,35 @@ def merge_candidates(windows: list[dict], config: ScanConfig) -> list[dict]:
             groups[-1]["end_sec"] = max(groups[-1]["end_sec"], window["end_sec"])
         else:
             groups.append(dict(start_sec=window["start_sec"], end_sec=window["end_sec"], windows=[window]))
+    return render_candidates(groups)
+
+
+def peak_candidates(ordered, config):
+    """Score-only local peaks with fixed temporal NMS; no reference timestamp lookup.
+
+    Separates peaks inside a long alarm, at the cost of additional candidates. This
+    is a diagnostic localization policy, not proof of distinct true actions.
+    """
+    for window in ordered:
+        if not math.isfinite(window["probability"]) or not 0 <= window["probability"] <= 1:
+            raise ValueError("Invalid probability")
+    peaks = []
+    for i, window in enumerate(ordered):
+        p = window["probability"]
+        before = ordered[i-1]["probability"] if i else -1
+        after = ordered[i+1]["probability"] if i+1 < len(ordered) else -1
+        if p >= config.threshold and p > before and p >= after:
+            peaks.append(window)
+    chosen = []
+    for peak in sorted(peaks, key=lambda w: (-w["probability"], w["center_sec"])):
+        if all(abs(peak["center_sec"]-other["center_sec"]) >= config.peak_separation_sec for other in chosen):
+            chosen.append(peak)
+    groups = [dict(start_sec=w["start_sec"], end_sec=w["end_sec"], windows=[w])
+              for w in sorted(chosen, key=lambda w: w["center_sec"])]
+    return render_candidates(groups)
+
+
+def render_candidates(groups):
     candidates = []
     for i, group in enumerate(groups):
         peak = max(group["windows"], key=lambda w: w["probability"])
@@ -124,7 +162,7 @@ class FullVideoScanner:
         self.config = config
         self.provenance = provenance
 
-    def scan(self, video_path: Path) -> dict:
+    def scan(self, video_path: Path, *, cancel_event=None) -> dict:
         synchronize(self.device)
         start = time.perf_counter()
         video = inspect_video(video_path)
@@ -133,6 +171,7 @@ class FullVideoScanner:
         self.model.eval()
         with torch.inference_mode():
             for offset in range(0, len(windows), self.config.batch_size):
+                check_cancelled(cancel_event)
                 batch_windows = windows[offset:offset + self.config.batch_size]
                 batch = []
                 for window in batch_windows:
@@ -148,6 +187,7 @@ class FullVideoScanner:
                 for window, probability in zip(batch_windows, probabilities):
                     window.update(probability=probability, prediction=int(probability >= self.config.threshold))
         candidates = merge_candidates(windows, self.config)
+        check_cancelled(cancel_event)
         if sha256(video.path) != digest:
             raise ValueError("Video changed during scanning")
         synchronize(self.device)
@@ -170,11 +210,16 @@ def prepare_scanner(checkpoint_path: Path, config: ScanConfig, device="cpu") -> 
         raise ValueError("Checkpoint changed during loading")
     provenance = dict(checkpoint_path=str(path), checkpoint_sha256=digest, epoch=checkpoint["epoch"],
                       model_config=saved, training_manifest=checkpoint["data_manifest"])
-    return FullVideoScanner(model, R3D_18_Weights[saved["weights"]].transforms(), config, device,
+    return FullVideoScanner(model, video_transform(saved), config, device,
                             provenance=provenance)
 
 
-def evidence_frames(video_path: Path, timestamp_sec: float, *, count=3, offset_sec=0.5) -> list[dict]:
+def check_cancelled(cancel_event):
+    if cancel_event is not None and cancel_event.is_set():
+        raise InterruptedError("Inference cancelled")
+
+
+def evidence_frames(video_path: Path, timestamp_sec: float, *, count=3, offset_sec=0.5, cancel_event=None) -> list[dict]:
     """Local-only JPEG context, with sequentially decoded indices and decoder PTS.
 
     Return backend-compatible fields plus sampling provenance. Frame indices are
@@ -195,6 +240,7 @@ def evidence_frames(video_path: Path, timestamp_sec: float, *, count=3, offset_s
     cap = cv2.VideoCapture(str(video.path))
     try:
         for index in range(max(indices) + 1):
+            check_cancelled(cancel_event)
             ok, frame = cap.read()
             if not ok:
                 raise ValueError(f"Cannot decode evidence frame {index}: {video.path}")

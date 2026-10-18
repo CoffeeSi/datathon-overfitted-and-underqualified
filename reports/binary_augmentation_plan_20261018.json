@@ -1,0 +1,42 @@
+{
+  "schema": "binary_augmentation_plan_v1",
+  "created_utc": "2026-10-18T02:38:26.607200+00:00",
+  "config": {
+    "seed": 42,
+    "device": "cuda",
+    "events_path": "data/annotations/events.csv",
+    "split_path": "data/processed/split_proposal.csv",
+    "video_dir": "data/raw/videos",
+    "output_dir": "runs/r3d18_augmented_20261018T023826_596184Z",
+    "weights_cache": "models/pretrained",
+    "weights": "KINETICS400_V1",
+    "freeze_backbone": true,
+    "frames": 16,
+    "window_sec": 4.0,
+    "negative_windows": 5,
+    "validation_negative_windows": 1,
+    "negative_sampling": "coverage",
+    "loss_weighting": "video_class_balanced",
+    "cache_frozen_features": true,
+    "preprocessing": "aspect_letterbox_v1",
+    "roi": [
+      0.0,
+      0.1,
+      1.0,
+      0.7
+    ],
+    "epochs": 20,
+    "batch_size": 16,
+    "num_workers": 0,
+    "cpu_threads": 2,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "supplemental_manifest": "data/raw/supplemental/audit.json",
+    "supplemental_manifest_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d"
+  },
+  "epochs_selection": "20 fixed epochs; best checkpoint selected by original validation loss only, never descendant metrics.",
+  "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+  "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+  "evaluation": "Original10 validation plus40 descendants as correlated robustness cases; fixed0.5 threshold.",
+  "original_checkpoint": "runs/binary_improvements_20261017T230201_728607Z/roi/best.pt"
+}

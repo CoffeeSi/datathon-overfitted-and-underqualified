@@ -17,7 +17,7 @@ import torchvision
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_recall_fscore_support
 
 from .dataset import sha256
-from .evaluate import prepare_evaluation
+from .evaluate import prepare_evaluation, verify_evaluation_inputs
 from .inference import FullVideoScanner, ScanConfig, merge_candidates, sliding_windows, synchronize
 from .train import ROOT
 
@@ -200,9 +200,7 @@ def save_full_report(prepared, result, output_dir):
         raise FileExistsError(f"Use a new report directory: {output}")
     p = prepared["evaluation"]
     config = p["config"]
-    for key in ("events", "split"):
-        if sha256(Path(config[f"{key}_path"])) != p["checkpoint"]["data_manifest"][f"{key}_sha256"]:
-            raise ValueError(f"{key} changed during evaluation")
+    verify_evaluation_inputs(p)
     if sha256(p["checkpoint_path"]) != p["checkpoint_sha256"]:
         raise ValueError("Checkpoint changed during evaluation")
     for record in prepared["records"]:
@@ -219,6 +217,8 @@ def save_full_report(prepared, result, output_dir):
                   scan_config=asdict(prepared["scanner"].config), matching_tolerance_sec=result["tolerance_sec"],
                   matching_rule="maximum cardinality then minimum total absolute error, one-to-one",
                   data_manifest=p["checkpoint"]["data_manifest"],
+                  evaluation_events_sha256=p.get("evaluation_events_sha256", p["checkpoint"]["data_manifest"]["events_sha256"]),
+                  annotation_revision=p.get("annotation_revision"),
                   evaluated_videos=[dict(clip_id=r.clip_id, sha256=r.sha256, source_clip_ids=list(r.aliases),
                                          event_times=list(r.event_times)) for r in prepared["records"]],
                   metrics=summary["metrics"],
@@ -247,6 +247,8 @@ def save_full_report(prepared, result, output_dir):
     errors = [r for r in summary["videos"] if r["outcome"] in {"FP", "FN"}]
     _write_csv(output / "video_errors.csv", errors, list(summary["videos"][0]))
     lines = ["# Full-video binary baseline evaluation", "", f"Checkpoint SHA-256: `{p['checkpoint_sha256']}`", "",
+             f"Training events SHA-256: `{p['checkpoint']['data_manifest']['events_sha256']}`", "",
+             f"Evaluation events SHA-256: `{report['evaluation_events_sha256']}`", "",
              "Metrics (full-video protocol; not annotation-centred F1):", "", "```json",
              json.dumps(summary["metrics"], indent=2), "```", "", "## Error analysis", ""]
     for row in errors:

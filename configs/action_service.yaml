@@ -1,0 +1,13 @@
+# Real experimental weights exist; F1=0 on the only evaluable validation type.
+# Keep default deployment disabled; use action_service_research.yaml to reproduce.
+binary_checkpoint: runs/binary_improvements_20261017T230201_728607Z/roi/best.pt
+action_checkpoint: runs/r3d18_actions_balanced_20261018T004011Z/last.pt
+enabled_types: []
+device: cpu
+scan:
+  window_sec: 4.0
+  step_sec: 2.0
+  batch_size: 2
+  threshold: 0.5
+  merge_gap_sec: 0.0
+  frames: 16

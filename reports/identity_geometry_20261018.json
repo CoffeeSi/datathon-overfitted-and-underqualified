@@ -1,0 +1,4310 @@
+{
+  "schema": "identity_geometry_results_v1",
+  "plan": "reports\\identity_study_20261018T005722_203342Z_plan.json",
+  "diagnostics": {
+    "events_sha256": "a584f6736b647ad0c3b2fdbb29de4f480b0ac3dfc3fb1c64d7684c3b2fe9421c",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "checkpoint_sha256": "4c307821390f6608d71a0f658b1875db72bdb2244330a510d22a843f035363ba",
+    "device": "cuda",
+    "records": [
+      {
+        "clip_id": "X-2",
+        "split": "validation",
+        "video_sha256": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+        "center_sec": 10.0,
+        "last_time_sec": 17.033202614379086,
+        "dimensions": [
+          464,
+          848
+        ],
+        "probes": [
+          {
+            "requested_span_sec": 4.0,
+            "start_sec": 8.0,
+            "end_sec": 12.0,
+            "probability": 0.24708491563796997
+          },
+          {
+            "requested_span_sec": 8.0,
+            "start_sec": 6.0,
+            "end_sec": 14.0,
+            "probability": 0.24812927842140198
+          },
+          {
+            "requested_span_sec": 12.0,
+            "start_sec": 4.0,
+            "end_sec": 16.0,
+            "probability": 0.25709930062294006
+          }
+        ]
+      },
+      {
+        "clip_id": "X-18",
+        "split": "train",
+        "video_sha256": "90607b0b0cb772fcf29b0c7e0e56fa6af36da6fac0efe93b8a616b5de94a156c",
+        "center_sec": 20.0,
+        "last_time_sec": 22.566568047337277,
+        "dimensions": [
+          464,
+          848
+        ],
+        "probes": [
+          {
+            "requested_span_sec": 4.0,
+            "start_sec": 18.0,
+            "end_sec": 22.0,
+            "probability": 0.4722900390625
+          },
+          {
+            "requested_span_sec": 8.0,
+            "start_sec": 14.566568047337277,
+            "end_sec": 22.566568047337277,
+            "probability": 0.38599690794944763
+          },
+          {
+            "requested_span_sec": 12.0,
+            "start_sec": 10.566568047337277,
+            "end_sec": 22.566568047337277,
+            "probability": 0.391507089138031
+          }
+        ]
+      }
+    ],
+    "note": "Sensitivity on already inspected validation; not an independent experiment or label expansion."
+  },
+  "results": [
+    {
+      "name": "control",
+      "run": "runs/identity_control_20261018T005722_203342Z",
+      "checkpoint_sha256": "1e858fb67ffba15f5f2278a4e8b135ab2ea60176a41915373ef6fca60b735733",
+      "evaluation": "reports/evaluation_actions_20261018T010131Z_dc1b498e",
+      "epochs": 30,
+      "configuration": {
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+        "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+        "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+        "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\identity_control_20261018T005722_203342Z",
+        "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+        "weights": "KINETICS400_V1",
+        "frames": 16,
+        "window_sec": 4.0,
+        "epochs": 30,
+        "batch_size": 8,
+        "cpu_threads": 4,
+        "learning_rate": 0.001,
+        "threshold": 0.7,
+        "background_ceiling": 0.2,
+        "review": {
+          "label_mode": "per_type_v1",
+          "events_sha256": "a584f6736b647ad0c3b2fdbb29de4f480b0ac3dfc3fb1c64d7684c3b2fe9421c",
+          "listed_actions_verified": true,
+          "catalog_mapping_verified": true,
+          "complete_action_lists": false,
+          "provenance": "Window-level action labels; unresolved entries masked. Historical experiment inputs retained privately."
+        },
+        "positive_weighting": "train_ratio",
+        "cache_frozen_features": true,
+        "target_types": [
+          "client_identity_check_not_visible"
+        ],
+        "preprocessing": "kinetics400_v1"
+      },
+      "train": {
+        "event_type": "client_identity_check_not_visible",
+        "support": 1,
+        "known_negatives": 23,
+        "unknown": 0,
+        "confusion_matrix": [
+          [
+            23,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "evaluable": true
+      },
+      "validation": {
+        "event_type": "client_identity_check_not_visible",
+        "support": 1,
+        "known_negatives": 6,
+        "unknown": 0,
+        "confusion_matrix": [
+          [
+            6,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "evaluable": true
+      },
+      "x2_score": 0.13286258280277252,
+      "final_x18_score": 0.8629274368286133,
+      "temporal": {
+        "event_type": "client_identity_check_not_visible",
+        "matched": 0,
+        "missed": 1,
+        "support": 1,
+        "recall": 0.0,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 1,
+        "binary_gate_coverage": 1.0,
+        "matched_timestamp_mae_sec": null
+      },
+      "typed_windows": 0,
+      "candidate_windows": 115,
+      "full_video_processing_sec": 96.4825061999727,
+      "frozen_tensors_verified": 120,
+      "history": [
+        {
+          "epoch": 1,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    21,
+                    2
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.4994450410207112
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.5526766777038574
+          }
+        },
+        {
+          "epoch": 2,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.338970124721527
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.47659924626350403
+          }
+        },
+        {
+          "epoch": 3,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.2953466574350994
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.42008692026138306
+          }
+        },
+        {
+          "epoch": 4,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.4648958444595337
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.39762696623802185
+          }
+        },
+        {
+          "epoch": 5,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.5478536834319432
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4045528769493103
+          }
+        },
+        {
+          "epoch": 6,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.7838101436694462
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4257868230342865
+          }
+        },
+        {
+          "epoch": 7,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.9114801386992137
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4435289204120636
+          }
+        },
+        {
+          "epoch": 8,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.9934745728969574
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.45989301800727844
+          }
+        },
+        {
+          "epoch": 9,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.9780277113119762
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.46579667925834656
+          }
+        },
+        {
+          "epoch": 10,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.9347855945428212
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4507550299167633
+          }
+        },
+        {
+          "epoch": 11,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.69561567902565
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.43870624899864197
+          }
+        },
+        {
+          "epoch": 12,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.5200988749663036
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4246775209903717
+          }
+        },
+        {
+          "epoch": 13,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.3856841623783112
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4063110053539276
+          }
+        },
+        {
+          "epoch": 14,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.1776972661415737
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3924682140350342
+          }
+        },
+        {
+          "epoch": 15,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.005335584282875
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3831079602241516
+          }
+        },
+        {
+          "epoch": 16,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.8588941891988119
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.38420653343200684
+          }
+        },
+        {
+          "epoch": 17,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.8107549101114273
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.38478603959083557
+          }
+        },
+        {
+          "epoch": 18,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.7560398528973261
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3843387961387634
+          }
+        },
+        {
+          "epoch": 19,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.7023702015479406
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.37772947549819946
+          }
+        },
+        {
+          "epoch": 20,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.6360288063685099
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3696705400943756
+          }
+        },
+        {
+          "epoch": 21,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.5310832858085632
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.36644336581230164
+          }
+        },
+        {
+          "epoch": 22,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4899263878663381
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3623228073120117
+          }
+        },
+        {
+          "epoch": 23,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.43324124813079834
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.360108882188797
+          }
+        },
+        {
+          "epoch": 24,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3882959981759389
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.36014482378959656
+          }
+        },
+        {
+          "epoch": 25,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.35427458584308624
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.36342042684555054
+          }
+        },
+        {
+          "epoch": 26,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.33620606114466983
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.36319679021835327
+          }
+        },
+        {
+          "epoch": 27,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3070954332749049
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3706115186214447
+          }
+        },
+        {
+          "epoch": 28,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.29624361793200177
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3660769462585449
+          }
+        },
+        {
+          "epoch": 29,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.256033293902874
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.36557960510253906
+          }
+        },
+        {
+          "epoch": 30,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.23431015014648438
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.36625808477401733
+          }
+        }
+      ]
+    },
+    {
+      "name": "roi",
+      "run": "runs/identity_roi_20261018T005722_203342Z",
+      "checkpoint_sha256": "c776473bfe7a1776acde8c0562d782e85ad87cabbbbe71637caab31a3457e202",
+      "evaluation": "reports/evaluation_actions_20261018T010555Z_f1037c92",
+      "epochs": 30,
+      "configuration": {
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+        "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+        "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+        "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\identity_roi_20261018T005722_203342Z",
+        "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+        "weights": "KINETICS400_V1",
+        "frames": 16,
+        "window_sec": 4.0,
+        "epochs": 30,
+        "batch_size": 8,
+        "cpu_threads": 4,
+        "learning_rate": 0.001,
+        "threshold": 0.7,
+        "background_ceiling": 0.2,
+        "review": {
+          "label_mode": "per_type_v1",
+          "events_sha256": "a584f6736b647ad0c3b2fdbb29de4f480b0ac3dfc3fb1c64d7684c3b2fe9421c",
+          "listed_actions_verified": true,
+          "catalog_mapping_verified": true,
+          "complete_action_lists": false,
+          "provenance": "Window-level action labels; unresolved entries masked. Historical experiment inputs retained privately."
+        },
+        "positive_weighting": "train_ratio",
+        "cache_frozen_features": true,
+        "target_types": [
+          "client_identity_check_not_visible"
+        ],
+        "preprocessing": "aspect_letterbox_v1",
+        "roi": [
+          0.0,
+          0.1,
+          1.0,
+          0.65
+        ]
+      },
+      "train": {
+        "event_type": "client_identity_check_not_visible",
+        "support": 1,
+        "known_negatives": 23,
+        "unknown": 0,
+        "confusion_matrix": [
+          [
+            23,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "evaluable": true
+      },
+      "validation": {
+        "event_type": "client_identity_check_not_visible",
+        "support": 1,
+        "known_negatives": 6,
+        "unknown": 0,
+        "confusion_matrix": [
+          [
+            6,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "evaluable": true
+      },
+      "x2_score": 0.17277462780475616,
+      "final_x18_score": 0.7618794441223145,
+      "temporal": {
+        "event_type": "client_identity_check_not_visible",
+        "matched": 0,
+        "missed": 1,
+        "support": 1,
+        "recall": 0.0,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 1,
+        "binary_gate_coverage": 1.0,
+        "matched_timestamp_mae_sec": null
+      },
+      "typed_windows": 0,
+      "candidate_windows": 115,
+      "full_video_processing_sec": 106.51777990005212,
+      "frozen_tensors_verified": 120,
+      "history": [
+        {
+          "epoch": 1,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    21,
+                    2
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.4098885456720989
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.6544351577758789
+          }
+        },
+        {
+          "epoch": 2,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.2385563850402832
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.5575991272926331
+          }
+        },
+        {
+          "epoch": 3,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.1565168102582295
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.47276243567466736
+          }
+        },
+        {
+          "epoch": 4,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.2184654970963795
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4081336557865143
+          }
+        },
+        {
+          "epoch": 5,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.2317941784858704
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3843381702899933
+          }
+        },
+        {
+          "epoch": 6,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.4159637540578842
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3804810345172882
+          }
+        },
+        {
+          "epoch": 7,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.5581687986850739
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.38768699765205383
+          }
+        },
+        {
+          "epoch": 8,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.7122831145922344
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3996657431125641
+          }
+        },
+        {
+          "epoch": 9,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.764141430457433
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.40758058428764343
+          }
+        },
+        {
+          "epoch": 10,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.7468115190664928
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4022078216075897
+          }
+        },
+        {
+          "epoch": 11,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.6246511042118073
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3975115120410919
+          }
+        },
+        {
+          "epoch": 12,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.5187584559122722
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.390383780002594
+          }
+        },
+        {
+          "epoch": 13,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.4248411357402802
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.37937769293785095
+          }
+        },
+        {
+          "epoch": 14,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.2657054265340169
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.37056535482406616
+          }
+        },
+        {
+          "epoch": 15,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 1.123797799150149
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.36410799622535706
+          }
+        },
+        {
+          "epoch": 16,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.9849882870912552
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.36283567547798157
+          }
+        },
+        {
+          "epoch": 17,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.9310443103313446
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.36116838455200195
+          }
+        },
+        {
+          "epoch": 18,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.8703509320815405
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.35897913575172424
+          }
+        },
+        {
+          "epoch": 19,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.8179028779268265
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3547866642475128
+          }
+        },
+        {
+          "epoch": 20,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.7541540066401163
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.35115036368370056
+          }
+        },
+        {
+          "epoch": 21,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.6498220215241114
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.34945836663246155
+          }
+        },
+        {
+          "epoch": 22,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.6101756766438484
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3482649028301239
+          }
+        },
+        {
+          "epoch": 23,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.5551547557115555
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.34742313623428345
+          }
+        },
+        {
+          "epoch": 24,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.5116800218820572
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3468356132507324
+          }
+        },
+        {
+          "epoch": 25,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.48238369822502136
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3465230166912079
+          }
+        },
+        {
+          "epoch": 26,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4660307864348094
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.34652039408683777
+          }
+        },
+        {
+          "epoch": 27,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.4480050553878148
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.34876617789268494
+          }
+        },
+        {
+          "epoch": 28,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.43655281762282055
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.34798678755760193
+          }
+        },
+        {
+          "epoch": 29,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.39694952964782715
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.34839364886283875
+          }
+        },
+        {
+          "epoch": 30,
+          "train": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 23,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    23,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3750164608160655
+          },
+          "validation": {
+            "per_class": [
+              {
+                "event_type": "client_identity_check_not_visible",
+                "support": 1,
+                "known_negatives": 6,
+                "unknown": 0,
+                "confusion_matrix": [
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ],
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "evaluable": true
+              }
+            ],
+            "macro": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "macro_class_count": 1,
+            "threshold": 0.7,
+            "loss": 0.3490917980670929
+          }
+        }
+      ]
+    }
+  ],
+  "annotation_and_split_unchanged": true,
+  "object_clarification": "X-2 blue rectangular item is a banknote, per dataset owner.",
+  "independent_evaluation": false,
+  "deployment_changed": false,
+  "additional_independent_positive_training_videos": 0
+}

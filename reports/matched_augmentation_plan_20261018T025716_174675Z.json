@@ -1,0 +1,47 @@
+{
+  "schema": "matched_augmentation_plan_v1",
+  "created_utc": "2026-10-18T02:57:17.600910+00:00",
+  "config": {
+    "seed": 42,
+    "device": "cuda",
+    "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+    "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+    "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+    "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z",
+    "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+    "weights": "KINETICS400_V1",
+    "freeze_backbone": true,
+    "frames": 16,
+    "window_sec": 4.0,
+    "negative_windows": 5,
+    "validation_negative_windows": 1,
+    "negative_sampling": "coverage",
+    "loss_weighting": "video_class_balanced",
+    "cache_frozen_features": true,
+    "preprocessing": "aspect_letterbox_v1",
+    "roi": [
+      0.0,
+      0.1,
+      1.0,
+      0.7
+    ],
+    "epochs": 1,
+    "matched_steps": 120,
+    "batch_size": 16,
+    "num_workers": 0,
+    "cpu_threads": 2,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "supplemental_manifest": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\supplemental\\audit.json",
+    "supplemental_manifest_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d"
+  },
+  "steps": 120,
+  "original_fractions": {
+    "control": 1.0,
+    "mild_augmented": 0.8
+  },
+  "selection": "Fixed final step; no validation-based epoch, threshold or model selection.",
+  "limitation": "Previously inspected development validation, not a new independent test.",
+  "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+  "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d"
+}

@@ -1,0 +1,24 @@
+# Experiment A: broader TRAIN negatives; fixed legacy geometry and validation windows.
+seed: 42
+device: cuda
+events_path: data/annotations/events.csv
+split_path: data/processed/split_proposal.csv
+video_dir: data/raw/videos
+output_dir: runs/r3d18_negatives
+weights_cache: models/pretrained
+weights: KINETICS400_V1
+freeze_backbone: true
+frames: 16
+window_sec: 4.0
+negative_windows: 5
+validation_negative_windows: 1
+negative_sampling: coverage
+loss_weighting: video_class_balanced
+cache_frozen_features: true
+preprocessing: kinetics400_v1
+epochs: 20
+batch_size: 16
+num_workers: 0
+cpu_threads: 4
+learning_rate: 0.0003
+weight_decay: 0.0001

@@ -44,3 +44,6 @@ reports/figures/*
 !reports/figures/.gitkeep
 reports/evaluation_*/
 reports/evaluation_*.zip
+
+# Private research evidence and annotation history
+data/local_artifacts/

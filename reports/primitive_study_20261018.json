@@ -1,0 +1,707 @@
+{
+  "schema": "visible_primitive_study_v1",
+  "experiments": {
+    "service_view": {
+      "report": "reports/evaluation_primitives_20261018T013342Z",
+      "checkpoint": "runs/primitives_20261018T013342_547979Z/last.pt",
+      "checkpoint_sha256": "eedc7ac2169589e8da259290ef8d32b79f0407a7800040a37a848dcb752bf264",
+      "config_sha256": "b9eca94fd3e64f55380c61438ffe092edfd5569df1af0407884d1ee9d2c0a3f0",
+      "config": {
+        "schema": "visible_primitives_v1",
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+        "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+        "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+        "events_sha256": "e1e428efdeb311adecb90eb2b5306655bfc861085fd37eeaba0875ba305aec64",
+        "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+        "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\primitives_20261018T013342_547979Z",
+        "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+        "weights": "KINETICS400_V1",
+        "frames": 16,
+        "window_sec": 2.0,
+        "sampling": "causal_endpoint_v1",
+        "epochs": 60,
+        "batch_size": 8,
+        "cpu_threads": 2,
+        "learning_rate": 0.001,
+        "threshold": 0.7,
+        "preprocessing": "aspect_letterbox_v1",
+        "roi": [
+          0.0,
+          0.12,
+          1.0,
+          0.66
+        ],
+        "scan_step_sec": 1.0,
+        "match_tolerance_sec": 5.0,
+        "sequence": {
+          "positive_threshold": 0.7,
+          "negative_threshold": 0.3,
+          "dwell_sec": 2.0,
+          "max_gap_sec": 2.0,
+          "receipt_ttl_sec": 120.0
+        }
+      },
+      "train_metrics": {
+        "per_class": [
+          {
+            "event_type": "client_at_counter",
+            "support": 38,
+            "known_negatives": 16,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                16,
+                0
+              ],
+              [
+                2,
+                36
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 0.9473684210526315,
+            "f1": 0.972972972972973,
+            "evaluable": true
+          },
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 14,
+            "known_negatives": 40,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                40,
+                0
+              ],
+              [
+                4,
+                10
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 0.7142857142857143,
+            "f1": 0.8333333333333334,
+            "evaluable": true
+          },
+          {
+            "event_type": "cash_handover_to_cashier",
+            "support": 5,
+            "known_negatives": 19,
+            "unknown": 30,
+            "confusion_matrix": [
+              [
+                19,
+                0
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 1.0,
+          "recall": 0.8205513784461154,
+          "f1": 0.8983983983983984
+        },
+        "macro_class_count": 3,
+        "threshold": 0.7,
+        "loss": 0.25044483160882286
+      },
+      "validation_metrics": {
+        "per_class": [
+          {
+            "event_type": "client_at_counter",
+            "support": 13,
+            "known_negatives": 26,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                26,
+                0
+              ],
+              [
+                0,
+                13
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "evaluable": true
+          },
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 14,
+            "known_negatives": 25,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                25,
+                0
+              ],
+              [
+                13,
+                1
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 0.07142857142857142,
+            "f1": 0.13333333333333333,
+            "evaluable": true
+          },
+          {
+            "event_type": "cash_handover_to_cashier",
+            "support": 3,
+            "known_negatives": 5,
+            "unknown": 31,
+            "confusion_matrix": [
+              [
+                5,
+                0
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "f1": 0.5,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 1.0,
+          "recall": 0.4682539682539682,
+          "f1": 0.5444444444444444
+        },
+        "macro_class_count": 3,
+        "threshold": 0.7,
+        "loss": 0.40291011142869326
+      },
+      "temporal": {
+        "matched": 0,
+        "missed": 1,
+        "recall": 0.0,
+        "precision": null,
+        "f1": null,
+        "reason": "No complete type-specific whole-video negative labels",
+        "timestamp_mae_sec": null
+      },
+      "full_scan_processing_sec": 118.28614189988002,
+      "total_candidates": 0,
+      "checks": {
+        "frozen_backbone_and_bn_unchanged": true,
+        "feature_extraction_sec": 25.380728400021326,
+        "total_sec": 27.353825099999085,
+        "positive_weights_train_only": [
+          0.42105263471603394,
+          2.857142925262451,
+          3.799999952316284
+        ],
+        "selection": "fixed last epoch; fixed thresholds"
+      },
+      "errors": [
+        {
+          "clip_id": "X-2",
+          "time_sec": 10.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.4359329044818878,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-2",
+          "time_sec": 12.0,
+          "primitive": "cash_handover_to_cashier",
+          "target": 1,
+          "score": 0.43805912137031555,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-10",
+          "time_sec": 2.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.13909943401813507,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-10",
+          "time_sec": 6.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.18162843585014343,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-10",
+          "time_sec": 10.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.11406495422124863,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-14",
+          "time_sec": 40.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.5289517641067505,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-14",
+          "time_sec": 50.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.19204047322273254,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-14",
+          "time_sec": 60.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.22819200158119202,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 7.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.35558173060417175,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 9.0,
+          "primitive": "cash_handover_to_cashier",
+          "target": 1,
+          "score": 0.6959940195083618,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 27.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.3805276155471802,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 30.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.2721247673034668,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 31.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.4551677107810974,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 32.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.23704826831817627,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 33.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.4869941174983978,
+          "error": "FN"
+        }
+      ]
+    },
+    "service_and_desk": {
+      "report": "reports/evaluation_primitives_multiview_20261018T013815Z",
+      "checkpoint": "runs/primitives_multiview_20261018T013815_768128Z/last.pt",
+      "checkpoint_sha256": "80b3f1f452b5a64c7b6cc7c5597567e29e45884af6915c65f0124ed8e0dfed22",
+      "config_sha256": "8971f8dd3300ff59a392c5ec1b8eb822d21337afa509653b1443c88b6c877086",
+      "config": {
+        "schema": "visible_primitives_v1",
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+        "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+        "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+        "events_sha256": "e1e428efdeb311adecb90eb2b5306655bfc861085fd37eeaba0875ba305aec64",
+        "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+        "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\primitives_multiview_20261018T013815_768128Z",
+        "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+        "weights": "KINETICS400_V1",
+        "frames": 16,
+        "window_sec": 2.0,
+        "sampling": "causal_endpoint_v1",
+        "epochs": 60,
+        "batch_size": 8,
+        "cpu_threads": 2,
+        "learning_rate": 0.001,
+        "threshold": 0.7,
+        "preprocessing": "aspect_letterbox_v1",
+        "roi": [
+          0.0,
+          0.12,
+          1.0,
+          0.66
+        ],
+        "scan_step_sec": 1.0,
+        "match_tolerance_sec": 5.0,
+        "sequence": {
+          "positive_threshold": 0.7,
+          "negative_threshold": 0.3,
+          "dwell_sec": 2.0,
+          "max_gap_sec": 2.0,
+          "receipt_ttl_sec": 120.0
+        },
+        "view_rois": [
+          [
+            0.0,
+            0.12,
+            1.0,
+            0.66
+          ],
+          [
+            0.0,
+            0.32,
+            0.82,
+            0.56
+          ]
+        ]
+      },
+      "train_metrics": {
+        "per_class": [
+          {
+            "event_type": "client_at_counter",
+            "support": 38,
+            "known_negatives": 16,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                16,
+                0
+              ],
+              [
+                0,
+                38
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "evaluable": true
+          },
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 14,
+            "known_negatives": 40,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                40,
+                0
+              ],
+              [
+                1,
+                13
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 0.9285714285714286,
+            "f1": 0.9629629629629629,
+            "evaluable": true
+          },
+          {
+            "event_type": "cash_handover_to_cashier",
+            "support": 5,
+            "known_negatives": 19,
+            "unknown": 30,
+            "confusion_matrix": [
+              [
+                19,
+                0
+              ],
+              [
+                0,
+                5
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 1.0,
+          "recall": 0.9761904761904763,
+          "f1": 0.9876543209876543
+        },
+        "macro_class_count": 3,
+        "threshold": 0.7,
+        "loss": 0.11661924489519813
+      },
+      "validation_metrics": {
+        "per_class": [
+          {
+            "event_type": "client_at_counter",
+            "support": 13,
+            "known_negatives": 26,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                26,
+                0
+              ],
+              [
+                0,
+                13
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "evaluable": true
+          },
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 14,
+            "known_negatives": 25,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                24,
+                1
+              ],
+              [
+                14,
+                0
+              ]
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "evaluable": true
+          },
+          {
+            "event_type": "cash_handover_to_cashier",
+            "support": 3,
+            "known_negatives": 5,
+            "unknown": 31,
+            "confusion_matrix": [
+              [
+                5,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 0.6666666666666666,
+          "recall": 0.5555555555555555,
+          "f1": 0.6
+        },
+        "macro_class_count": 3,
+        "threshold": 0.7,
+        "loss": 0.48060427476153816
+      },
+      "temporal": {
+        "matched": 0,
+        "missed": 1,
+        "recall": 0.0,
+        "precision": null,
+        "f1": null,
+        "reason": "No complete type-specific whole-video negative labels",
+        "timestamp_mae_sec": null
+      },
+      "full_scan_processing_sec": 124.70877619995736,
+      "total_candidates": 0,
+      "checks": {
+        "frozen_backbone_and_bn_unchanged": true,
+        "feature_extraction_sec": 27.049298899946734,
+        "total_sec": 28.88950119999936,
+        "positive_weights_train_only": [
+          0.42105263471603394,
+          2.857142925262451,
+          3.799999952316284
+        ],
+        "selection": "fixed last epoch; fixed thresholds"
+      },
+      "errors": [
+        {
+          "clip_id": "X-2",
+          "time_sec": 4.0,
+          "primitive": "banknotes_on_counter",
+          "target": 0,
+          "score": 0.7511377334594727,
+          "error": "FP"
+        },
+        {
+          "clip_id": "X-2",
+          "time_sec": 10.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.34595075249671936,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-2",
+          "time_sec": 12.0,
+          "primitive": "cash_handover_to_cashier",
+          "target": 1,
+          "score": 0.608240008354187,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-10",
+          "time_sec": 2.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.1868830770254135,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-10",
+          "time_sec": 6.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.1516450047492981,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-10",
+          "time_sec": 10.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.06955039501190186,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-14",
+          "time_sec": 40.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.38415223360061646,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-14",
+          "time_sec": 50.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.12425078451633453,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-14",
+          "time_sec": 60.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.14712347090244293,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 7.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.27913323044776917,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 27.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.1335916668176651,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 30.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.03303232416510582,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 31.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.05136009305715561,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 32.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.02363380417227745,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 33.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.09689602255821228,
+          "error": "FN"
+        },
+        {
+          "clip_id": "X-38",
+          "time_sec": 36.0,
+          "primitive": "banknotes_on_counter",
+          "target": 1,
+          "score": 0.33629196882247925,
+          "error": "FN"
+        }
+      ]
+    }
+  },
+  "events_sha256": "e1e428efdeb311adecb90eb2b5306655bfc861085fd37eeaba0875ba305aec64",
+  "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+  "fixed_split": {
+    "train": 30,
+    "validation": 10
+  },
+  "reviewed_points": {
+    "train": 54,
+    "validation": 39
+  },
+  "reviewed_videos": {
+    "train": 8,
+    "validation": 6
+  },
+  "independent_evaluation": false,
+  "deployment_enabled": false,
+  "p0_quality_closed": false,
+  "conclusion": "Client presence transfers to reviewed validation points; cash-on-counter recognition fails, so the temporal cash hypothesis remains unvalidated."
+}

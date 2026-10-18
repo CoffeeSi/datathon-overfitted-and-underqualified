@@ -17,6 +17,7 @@ from starlette.datastructures import UploadFile as StarletteUploadFile
 from .analyzer import Analyzer
 from .middleware import UploadLimitMiddleware
 from .settings import Settings
+from .schemas import AnalysisResult
 from .storage import JobStore, current_time
 from .video import has_valid_mov_container
 from .worker import run_retention_cleanup, run_worker
@@ -44,7 +45,7 @@ def _jury_job_response(job: dict[str, object]) -> dict[str, object]:
     if job["status"] == "done":
         result = job["result"]
         assert isinstance(result, dict)
-        response.update(result)
+        response.update(AnalysisResult.model_validate(result).model_dump())
     return response
 
 

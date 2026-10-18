@@ -70,3 +70,33 @@ class AnalysisResult(BaseModel):
         if bool(self.violations) != (self.verdict == "violation"):
             raise ValueError("violation verdicts must have findings, and other verdicts must not")
         return self
+
+
+class RuleReference(BaseModel):
+    event_type: str
+    source: str
+    locator: str
+    url: str
+    title: str
+
+
+class TypedFinding(Finding):
+    binary_score: float = Field(ge=0, le=1, allow_inf_nan=False)
+    type_confidence: float = Field(ge=0, le=1, allow_inf_nan=False)
+    source_links: list[RuleReference]
+    applicability: list[str]
+    video_cannot_establish: list[str]
+    legal_conclusion: None = None
+
+
+class UnresolvedCandidate(BaseModel):
+    timestamp_sec: float = Field(ge=0, allow_inf_nan=False)
+    binary_score: float = Field(ge=0, le=1, allow_inf_nan=False)
+    reason: Literal["background", "unknown"]
+
+
+class TypedAnalysisResult(AnalysisResult):
+    """UI-only additive metadata; jury responses project the original schema."""
+    violations: list[TypedFinding] = Field(default_factory=list)
+    unresolved_candidates: list[UnresolvedCandidate] = Field(default_factory=list)
+    recognition_scope: list[str] = Field(default_factory=list)

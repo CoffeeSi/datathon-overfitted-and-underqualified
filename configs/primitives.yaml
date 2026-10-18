@@ -1,0 +1,33 @@
+schema: visible_primitives_v1
+seed: 42
+device: cuda
+events_path: data/local_artifacts/annotation_snapshots/e1e428efdeb311adecb90eb2b5306655bfc861085fd37eeaba0875ba305aec64/events.csv
+split_path: data/processed/split_proposal.csv
+video_dir: data/raw/videos
+events_sha256: e1e428efdeb311adecb90eb2b5306655bfc861085fd37eeaba0875ba305aec64
+split_sha256: 19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d
+output_dir: runs/primitives_20261018T013342_547979Z
+weights_cache: models/pretrained
+weights: KINETICS400_V1
+frames: 16
+window_sec: 2.0
+sampling: causal_endpoint_v1
+epochs: 60
+batch_size: 8
+cpu_threads: 2
+learning_rate: 0.001
+threshold: 0.7
+preprocessing: aspect_letterbox_v1
+roi:
+- 0.0
+- 0.12
+- 1.0
+- 0.66
+scan_step_sec: 1.0
+match_tolerance_sec: 5.0
+sequence:
+  positive_threshold: 0.7
+  negative_threshold: 0.3
+  dwell_sec: 2.0
+  max_gap_sec: 2.0
+  receipt_ttl_sec: 120.0

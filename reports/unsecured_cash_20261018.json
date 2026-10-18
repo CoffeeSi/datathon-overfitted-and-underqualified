@@ -1,0 +1,98 @@
+{
+  "schema": "unsecured_cash_quality_v1",
+  "plan": "reports/unsecured_cash_20261018_plan.json",
+  "checkpoint": "runs/unsecured_cash_20261018T011640_619812Z/last.pt",
+  "checkpoint_sha256": "b6104e9ecea06a8f8a2565efdba80b89c43f5c05995c3d7682f7fb34e40d447f",
+  "config_sha256": "134e6b348c310c96297bd8b67ef83cf1299f67f1d2b55da4b4901b5687970853",
+  "events_sha256": "26b9afdeb5a1c99fb3a399564879928fe6e8e7aaace540e109feb8f9f4881adf",
+  "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+  "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+  "evaluation": "reports/evaluation_actions_20261018T011926Z_d818ae44",
+  "window_metrics": {
+    "event_type": "unsecured_accepted_cash",
+    "support": 1,
+    "known_negatives": 3,
+    "unknown": 4,
+    "confusion_matrix": [
+      [
+        3,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "evaluable": true
+  },
+  "known_windows": [
+    {
+      "clip_id": "X-2",
+      "center_sec": 10.0,
+      "target": 0,
+      "score": 0.642642080783844,
+      "predicted": 0
+    },
+    {
+      "clip_id": "X-31",
+      "center_sec": 11.883263009845288,
+      "target": 0,
+      "score": 0.03609251230955124,
+      "predicted": 0
+    },
+    {
+      "clip_id": "X-38",
+      "center_sec": 33.0,
+      "target": 1,
+      "score": 0.4160943925380707,
+      "predicted": 0
+    },
+    {
+      "clip_id": "X-39",
+      "center_sec": 39.349978804578214,
+      "target": 0,
+      "score": 0.3327668011188507,
+      "predicted": 0
+    }
+  ],
+  "temporal": {
+    "event_type": "unsecured_accepted_cash",
+    "matched": 0,
+    "missed": 1,
+    "support": 1,
+    "recall": 0.0,
+    "precision": null,
+    "f1": null,
+    "confirmed_background_false_positives": 0,
+    "unresolved_predictions": 1,
+    "binary_gate_hits": 1,
+    "binary_gate_coverage": 1.0,
+    "matched_timestamp_mae_sec": null
+  },
+  "full_video_processing_sec": 93.54789040004835,
+  "typed_windows": 2,
+  "candidate_windows": 115,
+  "useful_window_recognition_demonstrated": false,
+  "independent_evaluation": false,
+  "deployment_enabled": false,
+  "score_ordering_separates_all_known_targets": false,
+  "typed_alarms": [
+    {
+      "clip_id": "X-2",
+      "timestamp_sec": 4.0,
+      "confidence": 0.7553190588951111
+    }
+  ],
+  "posthoc_error_review": [
+    {
+      "clip_id": "X-2",
+      "timestamp_sec": 4.0,
+      "confidence": 0.7553190588951111,
+      "status": "false_alarm",
+      "reason": "Source-resolution X-2 sequence: at 2-6s the desk has no banknotes, the first customer is only entering. No preceding cash receipt is visible."
+    }
+  ]
+}

@@ -1,0 +1,768 @@
+{
+  "protocol": "exploratory_within_room",
+  "independent_evaluation": false,
+  "events_sha256": "63602430bcf5e63d40cf6309e1b8cae50b7ccf4c6ad80a6ab35f74a6dfbf9373",
+  "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+  "catalog_sha256": "8ceabe739482859817436f53b203290e90092e43153d33a2e7f6a079377eb2fe",
+  "runs": [
+    {
+      "run": "runs/r3d18_actions_owner_20261018T004011_430311Z",
+      "checkpoint_sha256": "1232cbcf29b8db65f4bf89f9131491f7927e34a106847d3eefd4dec6be6954cb",
+      "config_sha256": "529be3738f2013cdeae4d41bc4dfa77c5226aa8eb13eca792e6e70440fc920b2",
+      "evaluation": "reports/evaluation_actions_20261018T004341Z_efe9e4b9",
+      "positive_weighting": "none",
+      "epochs": 5,
+      "train_loss": [
+        0.32071468358238536,
+        0.2129020243883133,
+        0.20274804656704268,
+        0.18730049642423788,
+        0.17301003324488798
+      ],
+      "validation_loss": [
+        0.0978514381817409,
+        0.08906920892851693,
+        0.09366917610168457,
+        0.10801009408065251,
+        0.10193472249167305
+      ],
+      "window_metrics": {
+        "per_class": [
+          {
+            "event_type": "cash_bag_received_without_visible_identity_authority_check",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "client_identity_check_not_visible",
+            "support": 1,
+            "known_negatives": 6,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                6,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "evaluable": true
+          },
+          {
+            "event_type": "collection_cash_amount_registration_not_observed",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "employee_personal_items_in_cash_unit",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "recount_without_visible_controller",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "safe_key_left_in_lock",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "suspected_stamp_or_seal_left_unattended",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "unsecured_accepted_cash",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          }
+        ],
+        "macro": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "macro_class_count": 1,
+        "threshold": 0.7,
+        "loss": 0.10193472249167305
+      },
+      "window_errors": [
+        {
+          "clip_id": "X-2",
+          "center_sec": 10.0,
+          "event_type": "client_identity_check_not_visible",
+          "kind": "FN",
+          "probability": 0.05552910640835762
+        }
+      ],
+      "temporal": {
+        "per_class": [
+          {
+            "event_type": "cash_bag_received_without_visible_identity_authority_check",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "cash_counted_without_client_present",
+            "matched": 0,
+            "missed": 1,
+            "support": 1,
+            "recall": 0.0,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 1,
+            "binary_gate_coverage": 1.0,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "cashier_leaves_during_client_service",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "client_identity_check_not_visible",
+            "matched": 0,
+            "missed": 1,
+            "support": 1,
+            "recall": 0.0,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 1,
+            "binary_gate_coverage": 1.0,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "collection_cash_amount_registration_not_observed",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "employee_personal_items_in_cash_unit",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "recount_without_visible_controller",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "safe_key_left_in_lock",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "suspected_stamp_or_seal_left_unattended",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "unsecured_accepted_cash",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          }
+        ],
+        "errors": [
+          {
+            "clip_id": "X-34",
+            "event_type": "cash_counted_without_client_present",
+            "status": "unmatched_annotation",
+            "prediction_index": null,
+            "annotation_index": 0,
+            "predicted_sec": null,
+            "annotation_sec": 13.0,
+            "signed_error_sec": null,
+            "absolute_error_sec": null,
+            "unmatched_prediction_is_confirmed_fp": false
+          },
+          {
+            "clip_id": "X-2",
+            "event_type": "client_identity_check_not_visible",
+            "status": "unmatched_annotation",
+            "prediction_index": null,
+            "annotation_index": 0,
+            "predicted_sec": null,
+            "annotation_sec": 10.0,
+            "signed_error_sec": null,
+            "absolute_error_sec": null,
+            "unmatched_prediction_is_confirmed_fp": false
+          }
+        ],
+        "tolerance_sec": 5.0,
+        "precision_unavailable_reason": "Point-action lists do not confirm full temporal annotation coverage on positive videos."
+      },
+      "full_video_processing_sec": 102.91318829986267,
+      "candidate_windows": 115,
+      "typed_windows": 0,
+      "recognition_coverage": 0.0
+    },
+    {
+      "run": "runs/r3d18_actions_balanced_20261018T004011Z",
+      "checkpoint_sha256": "4c307821390f6608d71a0f658b1875db72bdb2244330a510d22a843f035363ba",
+      "config_sha256": "a4020ba208f06475827b8aae3da042099c6383574a5c010b79a8a0bda318a01f",
+      "evaluation": "reports/evaluation_actions_20261018T004537Z_34962505",
+      "positive_weighting": "train_ratio",
+      "epochs": 5,
+      "train_loss": [
+        2.53119695186615,
+        2.1693347841501236,
+        1.6759806436796982,
+        1.434161809583505,
+        1.2845990682641666
+      ],
+      "validation_loss": [
+        0.22785399215562002,
+        0.26435512942927225,
+        0.2570961607354028,
+        0.28227487206459045,
+        0.2420325811420168
+      ],
+      "window_metrics": {
+        "per_class": [
+          {
+            "event_type": "cash_bag_received_without_visible_identity_authority_check",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "client_identity_check_not_visible",
+            "support": 1,
+            "known_negatives": 6,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                6,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "evaluable": true
+          },
+          {
+            "event_type": "collection_cash_amount_registration_not_observed",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "employee_personal_items_in_cash_unit",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "recount_without_visible_controller",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "safe_key_left_in_lock",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "suspected_stamp_or_seal_left_unattended",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          },
+          {
+            "event_type": "unsecured_accepted_cash",
+            "support": 0,
+            "known_negatives": 7,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                7,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "evaluable": false
+          }
+        ],
+        "macro": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "macro_class_count": 1,
+        "threshold": 0.7,
+        "loss": 0.2420325811420168
+      },
+      "window_errors": [
+        {
+          "clip_id": "X-2",
+          "center_sec": 10.0,
+          "event_type": "client_identity_check_not_visible",
+          "kind": "FN",
+          "probability": 0.24706855416297913
+        }
+      ],
+      "temporal": {
+        "per_class": [
+          {
+            "event_type": "cash_bag_received_without_visible_identity_authority_check",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "cash_counted_without_client_present",
+            "matched": 0,
+            "missed": 1,
+            "support": 1,
+            "recall": 0.0,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 1,
+            "binary_gate_coverage": 1.0,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "cashier_leaves_during_client_service",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "client_identity_check_not_visible",
+            "matched": 0,
+            "missed": 1,
+            "support": 1,
+            "recall": 0.0,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 1,
+            "binary_gate_coverage": 1.0,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "collection_cash_amount_registration_not_observed",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "employee_personal_items_in_cash_unit",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "recount_without_visible_controller",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "safe_key_left_in_lock",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "suspected_stamp_or_seal_left_unattended",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          },
+          {
+            "event_type": "unsecured_accepted_cash",
+            "matched": 0,
+            "missed": 0,
+            "support": 0,
+            "recall": null,
+            "precision": null,
+            "f1": null,
+            "confirmed_background_false_positives": 0,
+            "unresolved_predictions": 0,
+            "binary_gate_hits": 0,
+            "binary_gate_coverage": null,
+            "matched_timestamp_mae_sec": null
+          }
+        ],
+        "errors": [
+          {
+            "clip_id": "X-34",
+            "event_type": "cash_counted_without_client_present",
+            "status": "unmatched_annotation",
+            "prediction_index": null,
+            "annotation_index": 0,
+            "predicted_sec": null,
+            "annotation_sec": 13.0,
+            "signed_error_sec": null,
+            "absolute_error_sec": null,
+            "unmatched_prediction_is_confirmed_fp": false
+          },
+          {
+            "clip_id": "X-2",
+            "event_type": "client_identity_check_not_visible",
+            "status": "unmatched_annotation",
+            "prediction_index": null,
+            "annotation_index": 0,
+            "predicted_sec": null,
+            "annotation_sec": 10.0,
+            "signed_error_sec": null,
+            "absolute_error_sec": null,
+            "unmatched_prediction_is_confirmed_fp": false
+          }
+        ],
+        "tolerance_sec": 5.0,
+        "precision_unavailable_reason": "Point-action lists do not confirm full temporal annotation coverage on positive videos."
+      },
+      "full_video_processing_sec": 94.31695000000764,
+      "candidate_windows": 115,
+      "typed_windows": 0,
+      "recognition_coverage": 0.0
+    }
+  ],
+  "default_deployment_enabled": false
+}

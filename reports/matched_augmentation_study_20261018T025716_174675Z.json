@@ -1,0 +1,491 @@
+{
+  "schema": "matched_augmentation_study_v1",
+  "run": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z",
+  "reports": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\reports\\evaluation_matched_20261018T025716_174675Z",
+  "plan": {
+    "schema": "matched_augmentation_plan_v1",
+    "created_utc": "2026-10-18T07:57:17.60091+05:00",
+    "config": {
+      "seed": 42,
+      "device": "cuda",
+      "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+      "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+      "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+      "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z",
+      "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+      "weights": "KINETICS400_V1",
+      "freeze_backbone": true,
+      "frames": 16,
+      "window_sec": 4.0,
+      "negative_windows": 5,
+      "validation_negative_windows": 1,
+      "negative_sampling": "coverage",
+      "loss_weighting": "video_class_balanced",
+      "cache_frozen_features": true,
+      "preprocessing": "aspect_letterbox_v1",
+      "roi": [
+        0.0,
+        0.1,
+        1.0,
+        0.7
+      ],
+      "epochs": 1,
+      "matched_steps": 120,
+      "batch_size": 16,
+      "num_workers": 0,
+      "cpu_threads": 2,
+      "learning_rate": 0.0003,
+      "weight_decay": 0.0001,
+      "supplemental_manifest": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\supplemental\\audit.json",
+      "supplemental_manifest_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d"
+    },
+    "steps": 120,
+    "original_fractions": {
+      "control": 1.0,
+      "mild_augmented": 0.8
+    },
+    "selection": "Fixed final step; no validation-based epoch, threshold or model selection.",
+    "limitation": "Previously inspected development validation, not a new independent test.",
+    "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d"
+  },
+  "results": {
+    "control": {
+      "schema": "binary_augmentation_robustness_v1",
+      "created_utc": "2026-10-18T08:00:52.116125+05:00",
+      "checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\control\\last.pt",
+      "checkpoint_sha256": "dab3376c6940c55f34ffd667a4aa538efb6631231ada69c958aadf05b4a7df3e",
+      "config": {
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+        "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+        "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+        "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\control",
+        "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+        "weights": "KINETICS400_V1",
+        "freeze_backbone": true,
+        "frames": 16,
+        "window_sec": 4.0,
+        "negative_windows": 5,
+        "validation_negative_windows": 1,
+        "negative_sampling": "coverage",
+        "loss_weighting": "video_class_balanced",
+        "cache_frozen_features": true,
+        "preprocessing": "aspect_letterbox_v1",
+        "roi": [
+          0.0,
+          0.1,
+          1.0,
+          0.7
+        ],
+        "epochs": 1,
+        "matched_steps": 120,
+        "batch_size": 16,
+        "num_workers": 0,
+        "cpu_threads": 2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "supplemental_manifest": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\supplemental\\audit.json",
+        "supplemental_manifest_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+        "original_fraction": 1.0,
+        "checkpoint_selection": "fixed_final_step_no_validation"
+      },
+      "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+      "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+      "audit_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+      "original_window_metrics": {
+        "loss": 0.7330904603004456,
+        "windows": 10,
+        "accuracy": 0.6,
+        "precision": 0.6666666666666666,
+        "recall": 0.4,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            4,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      "original_video_metrics": {
+        "videos": 10,
+        "accuracy": 0.6,
+        "precision": 0.6666666666666666,
+        "recall": 0.4,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            4,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      "augmented_window_metrics": {
+        "loss": 0.7274223402142524,
+        "windows": 40,
+        "accuracy": 0.65,
+        "precision": 0.8,
+        "recall": 0.4,
+        "f1": 0.5333333333333333,
+        "confusion_matrix": [
+          [
+            18,
+            2
+          ],
+          [
+            12,
+            8
+          ]
+        ]
+      },
+      "transformed_video_metrics": {
+        "videos": 40,
+        "accuracy": 0.65,
+        "precision": 0.8,
+        "recall": 0.4,
+        "f1": 0.5333333333333333,
+        "confusion_matrix": [
+          [
+            18,
+            2
+          ],
+          [
+            12,
+            8
+          ]
+        ]
+      },
+      "per_variant_video_metrics": {
+        "cctv_low_quality": {
+          "videos": 10,
+          "accuracy": 0.7,
+          "precision": 1.0,
+          "recall": 0.4,
+          "f1": 0.5714285714285714,
+          "confusion_matrix": [
+            [
+              5,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "cool_camera": {
+          "videos": 10,
+          "accuracy": 0.7,
+          "precision": 1.0,
+          "recall": 0.4,
+          "f1": 0.5714285714285714,
+          "confusion_matrix": [
+            [
+              5,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "mirror": {
+          "videos": 10,
+          "accuracy": 0.6,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "warm_sepia": {
+          "videos": 10,
+          "accuracy": 0.6,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      },
+      "canonical_validation_parents": 10,
+      "threshold": 0.5,
+      "processing_sec": 23.306380199966952,
+      "independent_evaluation": false,
+      "limitations": [
+        "Annotation-centred binary windows, not full-video localization or action-type recognition.",
+        "Four descendants of each validation parent are correlated robustness cases, not new independent videos.",
+        "Train descendants only fit weights; fixed final checkpoint selected without validation; validation descendants never optimize weights or thresholds.",
+        "Mirror orientation restored before fixed ROI; all other preprocessing matches training.",
+        "Same room/people and repeatedly inspected validation; no independent test."
+      ]
+    },
+    "mild_augmented": {
+      "schema": "binary_augmentation_robustness_v1",
+      "created_utc": "2026-10-18T08:01:16.534703+05:00",
+      "checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented\\last.pt",
+      "checkpoint_sha256": "00b07713d0fd1c219fcefa00416f6e68668201ee8abec0e8b6bd43682dab00d9",
+      "config": {
+        "seed": 42,
+        "device": "cuda",
+        "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+        "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+        "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+        "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented",
+        "weights_cache": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\models\\pretrained",
+        "weights": "KINETICS400_V1",
+        "freeze_backbone": true,
+        "frames": 16,
+        "window_sec": 4.0,
+        "negative_windows": 5,
+        "validation_negative_windows": 1,
+        "negative_sampling": "coverage",
+        "loss_weighting": "video_class_balanced",
+        "cache_frozen_features": true,
+        "preprocessing": "aspect_letterbox_v1",
+        "roi": [
+          0.0,
+          0.1,
+          1.0,
+          0.7
+        ],
+        "epochs": 1,
+        "matched_steps": 120,
+        "batch_size": 16,
+        "num_workers": 0,
+        "cpu_threads": 2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "supplemental_manifest": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\supplemental\\audit.json",
+        "supplemental_manifest_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+        "original_fraction": 0.8,
+        "checkpoint_selection": "fixed_final_step_no_validation"
+      },
+      "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+      "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+      "audit_sha256": "8769781b802e5598b6cc3747a82ae62de0a7e34cf0fe6bc5f10122fe0afa888d",
+      "original_window_metrics": {
+        "loss": 0.725384533405304,
+        "windows": 10,
+        "accuracy": 0.6,
+        "precision": 0.6666666666666666,
+        "recall": 0.4,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            4,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      "original_video_metrics": {
+        "videos": 10,
+        "accuracy": 0.6,
+        "precision": 0.6666666666666666,
+        "recall": 0.4,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            4,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      "augmented_window_metrics": {
+        "loss": 0.7218079596757889,
+        "windows": 40,
+        "accuracy": 0.65,
+        "precision": 0.8,
+        "recall": 0.4,
+        "f1": 0.5333333333333333,
+        "confusion_matrix": [
+          [
+            18,
+            2
+          ],
+          [
+            12,
+            8
+          ]
+        ]
+      },
+      "transformed_video_metrics": {
+        "videos": 40,
+        "accuracy": 0.65,
+        "precision": 0.8,
+        "recall": 0.4,
+        "f1": 0.5333333333333333,
+        "confusion_matrix": [
+          [
+            18,
+            2
+          ],
+          [
+            12,
+            8
+          ]
+        ]
+      },
+      "per_variant_video_metrics": {
+        "cctv_low_quality": {
+          "videos": 10,
+          "accuracy": 0.7,
+          "precision": 1.0,
+          "recall": 0.4,
+          "f1": 0.5714285714285714,
+          "confusion_matrix": [
+            [
+              5,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "cool_camera": {
+          "videos": 10,
+          "accuracy": 0.7,
+          "precision": 1.0,
+          "recall": 0.4,
+          "f1": 0.5714285714285714,
+          "confusion_matrix": [
+            [
+              5,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "mirror": {
+          "videos": 10,
+          "accuracy": 0.6,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        "warm_sepia": {
+          "videos": 10,
+          "accuracy": 0.6,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5,
+          "confusion_matrix": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      },
+      "canonical_validation_parents": 10,
+      "threshold": 0.5,
+      "processing_sec": 24.352677100047003,
+      "independent_evaluation": false,
+      "limitations": [
+        "Annotation-centred binary windows, not full-video localization or action-type recognition.",
+        "Four descendants of each validation parent are correlated robustness cases, not new independent videos.",
+        "Train descendants only fit weights; fixed final checkpoint selected without validation; validation descendants never optimize weights or thresholds.",
+        "Mirror orientation restored before fixed ROI; all other preprocessing matches training.",
+        "Same room/people and repeatedly inspected validation; no independent test."
+      ]
+    }
+  },
+  "independent_evaluation": false,
+  "production_model_replaced": false,
+  "reached_100_percent_all_scopes": false,
+  "verification": {
+    "notebook_outputs_cleared": true,
+    "annotations_unchanged": true,
+    "notebook_checks": [
+      {
+        "notebook": "02_detection.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified",
+        "code_cells": 4,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      },
+      {
+        "notebook": "03_evaluation.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified",
+        "code_cells": 3,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      },
+      {
+        "notebook": "02_detection.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\notebooks",
+        "code_cells": 4,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      },
+      {
+        "notebook": "03_evaluation.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\notebooks",
+        "code_cells": 3,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      }
+    ],
+    "python_tests_passed": 130,
+    "threshold_fixed": 0.5,
+    "epoch_selected_using_validation": false,
+    "split_unchanged": true
+  }
+}

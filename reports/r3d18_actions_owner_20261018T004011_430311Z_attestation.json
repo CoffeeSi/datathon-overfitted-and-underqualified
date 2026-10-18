@@ -1,0 +1,7 @@
+{
+  "historical_events_sha256": "63602430bcf5e63d40cf6309e1b8cae50b7ccf4c6ad80a6ab35f74a6dfbf9373",
+  "current_events_sha256": "a584f6736b647ad0c3b2fdbb29de4f480b0ac3dfc3fb1c64d7684c3b2fe9421c",
+  "reviewed_source_rows": 32,
+  "chat_quotation_removed": true,
+  "note": "Historical training targets unchanged. Original detailed experiment input retained in local snapshots."
+}

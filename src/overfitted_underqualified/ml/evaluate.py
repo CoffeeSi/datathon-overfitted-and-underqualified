@@ -20,8 +20,9 @@ from sklearn.metrics import accuracy_score, confusion_matrix, precision_recall_f
 from torch.utils.data import DataLoader
 from torchvision.models.video import R3D_18_Weights
 
-from .dataset import VideoWindowDataset, load_records, sha256
+from .dataset import VideoWindowDataset, load_records, sha256, verify_annotation_revision
 from .train import ROOT, load_checkpoint, run_epoch, seed_everything
+from .preprocessing import video_transform
 
 
 def resolve_checkpoint(checkpoint_path=None, *, root=ROOT):
@@ -63,9 +64,9 @@ def prepare_evaluation(checkpoint_path, *, device="cpu", events_path=None,
         config[key] = str(path if path.is_absolute() else ROOT / path)
     seed_everything(config["seed"], config["cpu_threads"])
     manifest = checkpoint["data_manifest"]
-    for key in ("events", "split"):
-        if sha256(Path(config[f"{key}_path"])) != manifest[f"{key}_sha256"]:
-            raise ValueError(f"{key} hash differs from checkpoint provenance")
+    revision = verify_annotation_revision(config["events_path"], manifest["events_sha256"])
+    if sha256(Path(config["split_path"])) != manifest["split_sha256"]:
+        raise ValueError("split hash differs from checkpoint provenance")
     records = load_records(Path(config["events_path"]), Path(config["split_path"]),
                            Path(config["video_dir"]))
     videos = [{"clip_id": r.clip_id, "split": r.split, "sha256": r.sha256,
@@ -73,15 +74,27 @@ def prepare_evaluation(checkpoint_path, *, device="cpu", events_path=None,
                "label": r.label} for r in records]
     if videos != manifest["videos"]:
         raise ValueError("Video records differ from checkpoint provenance")
-    dataset = VideoWindowDataset(records, "validation", R3D_18_Weights[config["weights"]].transforms(),
-                                 config["window_sec"], config["frames"], config["negative_windows"])
+    dataset = VideoWindowDataset(records, "validation", video_transform(config),
+                                 config["window_sec"], config["frames"],
+                                 config.get("validation_negative_windows", config["negative_windows"]),
+                                 negative_sampling=config.get("negative_sampling", "interior"))
     windows = [{"clip_id": r.clip_id, "center_sec": t, "label": r.label} for r, t in dataset.samples]
     if windows != manifest["windows"]["validation"]:
         raise ValueError("Validation windows differ from checkpoint provenance")
     loader = DataLoader(dataset, batch_size=config["batch_size"], shuffle=False, num_workers=0)
     return dict(model=model, checkpoint=checkpoint, config=config, dataset=dataset,
                 loader=loader, device=torch.device(device), checkpoint_path=checkpoint_path,
-                checkpoint_sha256=checkpoint_digest)
+                checkpoint_sha256=checkpoint_digest, annotation_revision=revision,
+                evaluation_events_sha256=sha256(Path(config["events_path"])))
+
+
+def verify_evaluation_inputs(prepared):
+    config, manifest = prepared["config"], prepared["checkpoint"]["data_manifest"]
+    for key in ("events", "split"):
+        expected = (prepared.get("evaluation_events_sha256", manifest["events_sha256"])
+                    if key == "events" else manifest["split_sha256"])
+        if sha256(Path(config[f"{key}_path"])) != expected:
+            raise ValueError(f"{key} changed during evaluation")
 
 
 def evaluate_prepared(prepared):
@@ -175,9 +188,7 @@ def save_evaluation_report(prepared, checkpoint_path, output_dir, window_metrics
     if {row["clip_id"] for row in videos} != expected:
         raise ValueError("Incomplete validation video coverage")
     config = prepared["config"]
-    for key in ("events", "split"):
-        if sha256(Path(config[f"{key}_path"])) != prepared["checkpoint"]["data_manifest"][f"{key}_sha256"]:
-            raise ValueError(f"{key} changed during evaluation")
+    verify_evaluation_inputs(prepared)
     if sha256(checkpoint_path) != checkpoint_digest:
         raise ValueError("Checkpoint changed during evaluation")
     report = dict(
@@ -185,6 +196,8 @@ def save_evaluation_report(prepared, checkpoint_path, output_dir, window_metrics
         checkpoint_sha256=checkpoint_digest, epoch=prepared["checkpoint"]["epoch"],
         saved_config=prepared["checkpoint"]["config"], effective_config=config,
         data_manifest=prepared["checkpoint"]["data_manifest"],
+        evaluation_events_sha256=prepared.get("evaluation_events_sha256", prepared["checkpoint"]["data_manifest"]["events_sha256"]),
+        annotation_revision=prepared.get("annotation_revision"),
         protocol="within_room_unique_video; annotation-centred window aggregation",
         aggregation="max probability per canonical video", threshold=0.5,
         confusion_matrix_order=["no_violation", "violation"],
@@ -216,7 +229,8 @@ def save_evaluation_report(prepared, checkpoint_path, output_dir, window_metrics
             writer.writerows(rows)
     matrix = video_metrics["confusion_matrix"]
     lines = ["# Baseline evaluation", "", f"Checkpoint SHA-256: `{checkpoint_digest}`; epoch {report['epoch']}.",
-             f"Events SHA-256: `{report['data_manifest']['events_sha256']}`.",
+             f"Training events SHA-256: `{report['data_manifest']['events_sha256']}`.",
+             f"Evaluation events SHA-256: `{report.get('evaluation_events_sha256', report['data_manifest']['events_sha256'])}`.",
              f"Split SHA-256: `{report['data_manifest']['split_sha256']}`.", "",
              "Protocol: max probability per canonical validation video over known annotation-centred windows; threshold 0.5.",
              "", f"Videos: {len(videos)}; windows: {len(windows)}.",

@@ -1,0 +1,754 @@
+{
+  "schema": "banknote_study_v1",
+  "scope": "Minimum local research acceptance for one visual sequence; not independent generalization or legal certification",
+  "supported_candidate_type": "unsecured_accepted_cash",
+  "minimum_visual_prototype_acceptance": true,
+  "deployment_enabled": false,
+  "independent_evaluation": false,
+  "experiments": {
+    "weighted_from_scratch": {
+      "run": "runs/banknotes_augmented_20261018T020455Z",
+      "checkpoint_sha256": "33f887a87b5da4be7e670dfc4de4f42aa691fd9e213920d70b21c3b14a8d9a77",
+      "config_sha256": "b4120db61179c6475b3e27474e6730df291feecc58e49c67f04ccca50e7e6ea5",
+      "training_protocol": "weighted_bce_dice_v1",
+      "epochs": 60,
+      "learning_rate": 0.001,
+      "first_train_loss": 1.4310947840030377,
+      "last_train_loss": 1.018825494326078,
+      "train_endpoint_metrics": {
+        "per_class": [
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 12,
+            "known_negatives": 40,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                40,
+                0
+              ],
+              [
+                12,
+                0
+              ]
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "macro_class_count": 1,
+        "threshold": 0.7
+      },
+      "checks": {
+        "validation_parameters_unchanged": true,
+        "positive_weight_train_pixels_only": 50.0,
+        "train_frames": 52,
+        "validation_frames": 0,
+        "total_sec": 68.37527940003201,
+        "selection": "fixed last epoch; no validation threshold selection",
+        "torch": "2.13.0+cu126",
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU"
+      }
+    },
+    "balanced_from_scratch": {
+      "run": "runs/banknotes_balanced_20261018T021500Z",
+      "checkpoint_sha256": "aaf209afc6971108eff04d888d1e9c807834ea9c5b2dcd3cb604026ce0ac0f8c",
+      "config_sha256": "50dad0b06dd177e78365658ba980cc257dc60fd50e64259c99a35460c6b8d683",
+      "training_protocol": "balanced_bce_dice_v2",
+      "epochs": 60,
+      "learning_rate": 0.001,
+      "first_train_loss": 1.1917775548421419,
+      "last_train_loss": 0.16614658381933203,
+      "train_endpoint_metrics": {
+        "per_class": [
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 12,
+            "known_negatives": 40,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                15,
+                25
+              ],
+              [
+                0,
+                12
+              ]
+            ],
+            "precision": 0.32432432432432434,
+            "recall": 1.0,
+            "f1": 0.4897959183673469,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 0.32432432432432434,
+          "recall": 1.0,
+          "f1": 0.4897959183673469
+        },
+        "macro_class_count": 1,
+        "threshold": 0.7
+      },
+      "checks": {
+        "validation_parameters_unchanged": true,
+        "positive_weight_train_pixels_only": null,
+        "training_protocol": "balanced_bce_dice_v2",
+        "train_frames": 52,
+        "validation_frames": 0,
+        "total_sec": 67.75816159998067,
+        "selection": "fixed last epoch; no validation threshold selection",
+        "torch": "2.13.0+cu126",
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU"
+      }
+    },
+    "hard_negatives_from_scratch": {
+      "run": "runs/banknotes_hard_negatives_20261018T022500Z",
+      "checkpoint_sha256": "4f99c29890a9db9fd0206548c632af8fd01c7fd7db6f5ec7b864ff13471fbef0",
+      "config_sha256": "9c92cd19942fc5dc9a4b9a3c02d4e279db129980827f0168b31e14da0b64a6c2",
+      "training_protocol": "hard_negative_bce_dice_v3",
+      "epochs": 60,
+      "learning_rate": 0.001,
+      "first_train_loss": 1.2978805028475249,
+      "last_train_loss": 1.26060751080513,
+      "train_endpoint_metrics": {
+        "per_class": [
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 12,
+            "known_negatives": 40,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                40,
+                0
+              ],
+              [
+                12,
+                0
+              ]
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "macro_class_count": 1,
+        "threshold": 0.7
+      },
+      "checks": {
+        "validation_parameters_unchanged": true,
+        "positive_weight_train_pixels_only": null,
+        "training_protocol": "hard_negative_bce_dice_v3",
+        "train_frames": 52,
+        "validation_frames": 0,
+        "total_sec": 68.75276659999508,
+        "selection": "fixed last epoch; no validation threshold selection",
+        "torch": "2.13.0+cu126",
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU"
+      }
+    },
+    "balanced_then_hard_negatives": {
+      "run": "runs/banknotes_finetune_20261018T021538_229103Z",
+      "checkpoint_sha256": "9342b52b0385fd8392fa3f32e0833b4f7b350e052ea4d053e6b779d7f2884135",
+      "config_sha256": "6c5a2134cec77b7878be7b47fa6e6b70b5bce11061eb136913d79bcc81cec9c9",
+      "training_protocol": "hard_negative_bce_dice_v3",
+      "epochs": 30,
+      "learning_rate": 0.0001,
+      "first_train_loss": 0.5214837227697269,
+      "last_train_loss": 0.1834322395734489,
+      "train_endpoint_metrics": {
+        "per_class": [
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 12,
+            "known_negatives": 40,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                39,
+                1
+              ],
+              [
+                0,
+                12
+              ]
+            ],
+            "precision": 0.9230769230769231,
+            "recall": 1.0,
+            "f1": 0.96,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 0.9230769230769231,
+          "recall": 1.0,
+          "f1": 0.96
+        },
+        "macro_class_count": 1,
+        "threshold": 0.7
+      },
+      "checks": {
+        "validation_parameters_unchanged": true,
+        "positive_weight_train_pixels_only": null,
+        "training_protocol": "hard_negative_bce_dice_v3",
+        "train_frames": 52,
+        "initialization": {
+          "checkpoint_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\banknotes_balanced_20261018T021500Z\\last.pt",
+          "checkpoint_sha256": "aaf209afc6971108eff04d888d1e9c807834ea9c5b2dcd3cb604026ce0ac0f8c",
+          "parent_architecture": "tiny_unet_groupnorm_leaky_v2",
+          "parent_config": {
+            "schema": "counter_banknotes_v1",
+            "seed": 42,
+            "device": "cuda",
+            "events_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+            "split_path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+            "video_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\raw\\videos",
+            "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+            "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+            "output_dir": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\banknotes_balanced_20261018T021500Z",
+            "supplemental_manifest": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\local_artifacts\\supplemental_audit_20261018_final.json",
+            "supplemental_manifest_sha256": "64a680bc93697bc266a3c6ea4e69f94e6dad71cd485b5138cc2461b7be557d8a",
+            "supplemental_variants": [
+              "warm_sepia",
+              "cool_camera",
+              "cctv_low_quality"
+            ],
+            "roi": [
+              0.0,
+              0.3,
+              1.0,
+              0.6
+            ],
+            "resize_width": 512,
+            "epochs": 60,
+            "batch_size": 4,
+            "cpu_threads": 2,
+            "learning_rate": 0.001,
+            "threshold": 0.7,
+            "min_component_area": 6,
+            "training_protocol": "balanced_bce_dice_v2"
+          },
+          "parent_epoch": 60,
+          "parent_data_manifest_sha256": "fd63f6c242883d0aafef96e50c39033f1533153089937a4e9fc1114ccad465af",
+          "optimizer": "new AdamW; parent optimizer state is never restored",
+          "selection": "Explicit preselected training initialization; validation never updates weights"
+        },
+        "validation_frames": 0,
+        "total_sec": 37.90536199999042,
+        "selection": "fixed last epoch; no validation threshold selection",
+        "torch": "2.13.0+cu126",
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU"
+      }
+    }
+  },
+  "evaluation_comparison": {
+    "detector_only": {
+      "report": "reports/evaluation_banknotes_20261018",
+      "summary_sha256": "cfa030a07fa12e08a2bce60ca005217e8cf20e949972bee0e28423331deeaf12",
+      "archive": "reports/evaluation_banknotes_20261018.zip",
+      "archive_sha256": "1d21c5fa1fcdfa6441a887e9d1fd0871c96a5b2abb106ddab9fdd26b72c4119e",
+      "primitive_checkpoint_sha256": "80b3f1f452b5a64c7b6cc7c5597567e29e45884af6915c65f0124ed8e0dfed22",
+      "banknote_checkpoint_sha256": "9342b52b0385fd8392fa3f32e0833b4f7b350e052ea4d053e6b779d7f2884135",
+      "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+      "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+      "standalone_point_metrics": {
+        "per_class": [
+          {
+            "event_type": "client_at_counter",
+            "support": 13,
+            "known_negatives": 26,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                26,
+                0
+              ],
+              [
+                0,
+                13
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "evaluable": true
+          },
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 14,
+            "known_negatives": 25,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                24,
+                1
+              ],
+              [
+                4,
+                10
+              ]
+            ],
+            "precision": 0.9090909090909091,
+            "recall": 0.7142857142857143,
+            "f1": 0.8,
+            "evaluable": true
+          },
+          {
+            "event_type": "cash_handover_to_cashier",
+            "support": 3,
+            "known_negatives": 5,
+            "unknown": 31,
+            "confusion_matrix": [
+              [
+                5,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 0.9696969696969697,
+          "recall": 0.7936507936507936,
+          "f1": 0.8666666666666667
+        },
+        "macro_class_count": 3,
+        "threshold": 0.7
+      },
+      "sampled_grid_video_metrics": {
+        "videos": 4,
+        "positives": 1,
+        "negatives": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.75,
+        "confusion_matrix": [
+          [
+            3,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "evaluable": true
+      },
+      "sampled_grid_temporal_metrics": {
+        "matched": 0,
+        "missed": 1,
+        "unmatched_predictions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "timestamp_mae_sec": null,
+        "tolerance_sec": 5.0
+      },
+      "known_action_markers": {
+        "matched": 0,
+        "missed": 1,
+        "recall": 0.0,
+        "precision": null,
+        "f1": null,
+        "reason": "No complete type-specific continuous legal-event ground truth; extra candidates remain unresolved",
+        "timestamp_mae_sec": null,
+        "tolerance_sec": 5.0
+      },
+      "reviewed_videos": [
+        {
+          "clip_id": "X-2",
+          "outcome": "TN",
+          "reference_times_sec": [],
+          "predicted_times_sec": []
+        },
+        {
+          "clip_id": "X-31",
+          "outcome": "TN",
+          "reference_times_sec": [],
+          "predicted_times_sec": []
+        },
+        {
+          "clip_id": "X-38",
+          "outcome": "FN",
+          "reference_times_sec": [
+            31.0
+          ],
+          "predicted_times_sec": []
+        },
+        {
+          "clip_id": "X-39",
+          "outcome": "TN",
+          "reference_times_sec": [],
+          "predicted_times_sec": []
+        }
+      ],
+      "excluded_unknown_videos": [
+        "X-10",
+        "X-14",
+        "X-16",
+        "X-28",
+        "X-34",
+        "X-44"
+      ],
+      "timing": {
+        "preparation_sec": 2.011328399996273,
+        "validation_point_processing_sec": 13.442893899977207,
+        "full_scan_processing_sec": 126.32656179997139,
+        "total_before_export_sec": 141.969935000001,
+        "scope": "Sequential full-video decode, transforms, both models, state machine and input hashes; no report export"
+      },
+      "tracking_config": null,
+      "total_candidates": 0
+    },
+    "image_tracking": {
+      "report": "reports/evaluation_banknotes_tracked_20261018",
+      "summary_sha256": "d25eb92047271039a3667068a3ac73f7842b943231a079a554ca4bcbd578ea9a",
+      "archive": "reports/evaluation_banknotes_tracked_20261018.zip",
+      "archive_sha256": "45b2fbc98abb266d98f5da5a42d55e80c09e0d7defd4e0797f65df161e2937ba",
+      "primitive_checkpoint_sha256": "80b3f1f452b5a64c7b6cc7c5597567e29e45884af6915c65f0124ed8e0dfed22",
+      "banknote_checkpoint_sha256": "9342b52b0385fd8392fa3f32e0833b4f7b350e052ea4d053e6b779d7f2884135",
+      "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+      "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+      "standalone_point_metrics": {
+        "per_class": [
+          {
+            "event_type": "client_at_counter",
+            "support": 13,
+            "known_negatives": 26,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                26,
+                0
+              ],
+              [
+                0,
+                13
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "evaluable": true
+          },
+          {
+            "event_type": "banknotes_on_counter",
+            "support": 14,
+            "known_negatives": 25,
+            "unknown": 0,
+            "confusion_matrix": [
+              [
+                24,
+                1
+              ],
+              [
+                4,
+                10
+              ]
+            ],
+            "precision": 0.9090909090909091,
+            "recall": 0.7142857142857143,
+            "f1": 0.8,
+            "evaluable": true
+          },
+          {
+            "event_type": "cash_handover_to_cashier",
+            "support": 3,
+            "known_negatives": 5,
+            "unknown": 31,
+            "confusion_matrix": [
+              [
+                5,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "evaluable": true
+          }
+        ],
+        "macro": {
+          "precision": 0.9696969696969697,
+          "recall": 0.7936507936507936,
+          "f1": 0.8666666666666667
+        },
+        "macro_class_count": 3,
+        "threshold": 0.7
+      },
+      "sampled_grid_video_metrics": {
+        "videos": 4,
+        "positives": 1,
+        "negatives": 3,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "confusion_matrix": [
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "evaluable": true
+      },
+      "sampled_grid_temporal_metrics": {
+        "matched": 1,
+        "missed": 0,
+        "unmatched_predictions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "timestamp_mae_sec": 2.0,
+        "tolerance_sec": 5.0
+      },
+      "known_action_markers": {
+        "matched": 1,
+        "missed": 0,
+        "recall": 1.0,
+        "precision": null,
+        "f1": null,
+        "reason": "No complete type-specific continuous legal-event ground truth; extra candidates remain unresolved",
+        "timestamp_mae_sec": 4.0,
+        "tolerance_sec": 5.0
+      },
+      "reviewed_videos": [
+        {
+          "clip_id": "X-2",
+          "outcome": "TN",
+          "reference_times_sec": [],
+          "predicted_times_sec": []
+        },
+        {
+          "clip_id": "X-31",
+          "outcome": "TN",
+          "reference_times_sec": [],
+          "predicted_times_sec": []
+        },
+        {
+          "clip_id": "X-38",
+          "outcome": "TP",
+          "reference_times_sec": [
+            31.0
+          ],
+          "predicted_times_sec": [
+            29.0
+          ]
+        },
+        {
+          "clip_id": "X-39",
+          "outcome": "TN",
+          "reference_times_sec": [],
+          "predicted_times_sec": []
+        }
+      ],
+      "excluded_unknown_videos": [
+        "X-10",
+        "X-14",
+        "X-16",
+        "X-28",
+        "X-34",
+        "X-44"
+      ],
+      "timing": {
+        "preparation_sec": 1.9250873000128195,
+        "validation_point_processing_sec": 13.509353399975225,
+        "full_scan_processing_sec": 125.90658050007187,
+        "total_before_export_sec": 141.51754259999143,
+        "scope": "Sequential full-video decode, transforms, both models, state machine and input hashes; no report export"
+      },
+      "tracking_config": {
+        "schema": "banknote_image_tracker_v1",
+        "detection_threshold": 0.7,
+        "match_threshold": 0.9,
+        "max_displacement_fraction": 0.015,
+        "max_total_displacement_fraction": 0.03,
+        "min_patch_contrast": 8.0,
+        "max_rgb_difference": 12.0,
+        "max_gap_sec": 2.0,
+        "max_age_sec": 10.0,
+        "cut_rgb_difference": 35.0,
+        "max_tracks": 16
+      },
+      "total_candidates": 1
+    }
+  },
+  "supplemental_audit": {
+    "path": "data/local_artifacts/supplemental_audit_20261018_final.json",
+    "sha256": "64a680bc93697bc266a3c6ea4e69f94e6dad71cd485b5138cc2461b7be557d8a",
+    "counts": {
+      "augmentations": {
+        "eligible_train_parent": 128,
+        "quarantined_validation_descendant": 40
+      },
+      "synthetic": {
+        "auxiliary_train_only_requires_visual_review": 8,
+        "quarantined_unlabelled": 1
+      }
+    },
+    "used_canonical_train_parents": 8,
+    "used_augmented_videos": 24,
+    "synthetic_sources_used_for_training": 0,
+    "independent_new_real_scenes": 0
+  },
+  "annotation_integrity": {
+    "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "unchanged_annotation_columns": [
+      "clip_id",
+      "timecode",
+      "source_label_ru",
+      "observed_event",
+      "observed_event_type",
+      "candidate_violation_type",
+      "legal_basis",
+      "source_label",
+      "timecode_sec",
+      "action_review"
+    ],
+    "unchanged_original_primitive_points": 93,
+    "clean_syntax_checked_notebooks": [
+      "01_eda.ipynb",
+      "02_detection.ipynb",
+      "03_evaluation.ipynb"
+    ],
+    "note": "Box and sampled-grid metadata added; original labels, action review and primitive observations preserved."
+  },
+  "example_event": {
+    "event_type": "unsecured_accepted_cash",
+    "timestamp_sec": 29.0,
+    "receipt_sec": 7.0,
+    "departure_sec": 27.0,
+    "cash_persistent_since_sec": 27.0,
+    "confidence": 0.7086798548698425,
+    "status": "research_candidate",
+    "requires_review": true,
+    "limitations": "Cash identity/ownership, completed operation and legal applicability are unverified.",
+    "rule_candidates": [
+      {
+        "event_type": "unsecured_accepted_cash",
+        "source": "Правила НБ РК №231",
+        "locator": "п. 20, абз. 2, предл. 2",
+        "url": "https://adilet.zan.kz/rus/docs/V1900019680#z20",
+        "title": "Правила осуществления кассовых операций и операций по инкассации банкнот, монет и ценностей в банках второго уровня, филиалах банков-нерезидентов Республики Казахстан, Национальном операторе почты и юридических лицах, исключительной деятельностью которых является инкассация банкнот, монет и ценностей"
+      }
+    ]
+  },
+  "limitations": [
+    "Single positive validation video for this visual scenario; three reviewed negative videos; other six unknown.",
+    "Repeatedly inspected development validation in a common room with unknown sessions.",
+    "39 sparse primitive points do not measure bounding-box IoU or complete legal-event quality.",
+    "Template tracking carries a detector hypothesis using fresh imagery, not verified banknote identity or ownership.",
+    "Catalog links are conditional review context; legal precision and F1 are null.",
+    "Synthetic scenarios were audited but not fitted without object-specific reviewed boxes."
+  ],
+  "verification": {
+    "clean_kernel_new_sections": [
+      {
+        "notebook": "01_eda.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified",
+        "code_cells": 1,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      },
+      {
+        "notebook": "02_detection.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified",
+        "code_cells": 3,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      },
+      {
+        "notebook": "03_evaluation.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified",
+        "code_cells": 3,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      },
+      {
+        "notebook": "01_eda.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\notebooks",
+        "code_cells": 1,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      },
+      {
+        "notebook": "02_detection.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\notebooks",
+        "code_cells": 3,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      },
+      {
+        "notebook": "03_evaluation.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\notebooks",
+        "code_cells": 3,
+        "status": "passed",
+        "training": false,
+        "full_scan": false
+      }
+    ],
+    "original_annotations_unchanged": true,
+    "clean_kernel_complete_notebooks": [
+      {
+        "notebook": "02_detection.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified",
+        "status": "passed",
+        "training": false,
+        "full_scan": false,
+        "scope": "complete notebook; saved experiments and report inspection"
+      },
+      {
+        "notebook": "03_evaluation.ipynb",
+        "cwd": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\notebooks",
+        "status": "passed",
+        "training": false,
+        "full_scan": false,
+        "scope": "complete notebook; saved experiments and report inspection"
+      }
+    ],
+    "outputs_cleared": true,
+    "python_tests": 118,
+    "python_tests_passed": true,
+    "split_unchanged": true
+  }
+}

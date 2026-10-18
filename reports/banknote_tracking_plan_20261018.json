@@ -1,0 +1,22 @@
+{
+  "schema": "banknote_tracking_plan_v1",
+  "created_utc": "2026-10-18T02:23:56.012054+00:00",
+  "tracker": {
+    "schema": "banknote_image_tracker_v1",
+    "detection_threshold": 0.7,
+    "match_threshold": 0.9,
+    "max_displacement_fraction": 0.015,
+    "max_total_displacement_fraction": 0.03,
+    "min_patch_contrast": 8.0,
+    "max_rgb_difference": 12.0,
+    "max_gap_sec": 2.0,
+    "max_age_sec": 10.0,
+    "cut_rgb_difference": 35.0,
+    "max_tracks": 16
+  },
+  "checkpoint_sha256": "9342b52b0385fd8392fa3f32e0833b4f7b350e052ea4d053e6b779d7f2884135",
+  "rationale": "Detector-only validation identified flicker. Add fresh image matching with fixed conservative defaults; no score/sequence threshold tuning or further training.",
+  "evaluation": "First check training videos; then one full fixed validation scan. Development validation is already inspected, not independent.",
+  "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+  "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b"
+}

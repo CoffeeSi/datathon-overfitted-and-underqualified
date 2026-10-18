@@ -42,6 +42,14 @@ the centre of the maximum-score window; equal scores choose the earliest window.
 This is an estimated event time, not a learned onset. Support intervals are predictions,
 not new training annotations.
 
+An opt-in `candidate_policy: window_peaks` instead extracts local maxima above the
+same fixed threshold and applies temporal suppression with `peak_separation_sec: 4`.
+It can retain multiple candidates inside one long alarm. It has no annotation lookup;
+plateau ties choose the earliest point. More peaks can increase negative-video false
+alarms, so the old `support_union` remains the default. The study's policy comparison
+reports this tradeoff from saved scores without retraining or threshold search.
+Neither policy provides learned event boundaries or verified action types.
+
 Sampling uses nominal FPS and frame indices, as in training. Variable FPS/container
 timing can differ from this convention. `evidence_frames` selects up to three nearby
 indices, sequentially decodes them and records `frame_index`, nominal time and actual
@@ -135,13 +143,17 @@ scanning alone does not repair poor class discrimination or train temporal local
 ## Catalog and FastAPI integration boundary
 
 Coverage is audited by `rules/coverage.py`; see
-[the coverage report](../reports/catalog_coverage.md). Descriptive tags remain
-provisional; no multiclass targets are created, and validation is never used for
-training or to move examples between subsets.
+[the coverage report](../reports/catalog_coverage.md). The historical audit does
+not assert action-label completeness. On 18 October the
+owner confirmed listed observations but not catalog-wide negative labels. The new
+[action audit and pipeline](action-recognition.md) preserve that distinction;
+validation is never used for training or to move examples between subsets.
 
 `ActionRecognizer.recognize(video_path, candidate) -> ActionObservation | None`
-is the extension point for an independently evaluated component. No concrete action
-recognizer is supplied. Its output includes a supported catalog type, a separate
+is the single-observation extension point. `action_inference.R3DActionRecognizer`
+adds `recognize_many` and per-window multi-label decisions before merging. The
+implementation exists, but a real action checkpoint is blocked by missing confirmed
+negative labels. Its output includes a supported catalog type, a separate
 type confidence, component provenance and visible description. `link_action` validates
 against `supported_event_types()`, calls `source_links_for()` and retains applicability
 and conditions video cannot establish. It does not convert binary scores to types or
@@ -149,10 +161,12 @@ prove that applicability conditions hold. Catalog interpretation is inherited fr
 the existing reviewed repository catalog, not newly legally verified by this change.
 
 The public `Analyzer.async analyze(video_path) -> AnalysisResult`, `Finding` and
-`EvidenceFrame` remain unchanged. A production provider still needs the actual
-action recognizer, handling of unknown/ambiguous candidates, and human-reviewed
-applicability logic. Only then can an async adapter run scanning/recognition outside
-the event loop and construct supported Findings. Do not set
+`EvidenceFrame` remain compatible. `backend.local_analyzer` supplies a threaded
+adapter with cooperative cancellation and retained admission slots. UI-only metadata
+carries rules and unresolved candidates; the jury endpoint projects the old schema.
+The real provider remains unavailable without both checkpoints and explicitly enabled,
+evaluated types. See [configuration and remaining blockers](action-recognition.md).
+Do not set
 `FORTEBANK_ANALYZER_FACTORY` to this scanner: it intentionally returns an internal ML
 result, not a completed legal analysis. Existing configured/mock backend behavior
 is preserved; no ground-truth lookup is added to production inference.

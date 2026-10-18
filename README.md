@@ -138,6 +138,11 @@ The catalog's data coverage and action-recognition limitations are recorded in
 
 ## EDA inputs and outputs
 
+Private research evidence, annotation snapshots and supplemental audits live in
+`data/local_artifacts/` (ignored by Git). This replaces the former `outputs/`
+directory. Historical annotation snapshots are immutable provenance; `events.csv`
+remains the editable annotation source. Model checkpoints remain in `runs/`.
+
 The notebook also discovers videos in `data/raw/videos/`. Set `VIDEO_DIR` to use an explicit directory.
 Run the notebook with the repository's `.venv` interpreter, from top to bottom.
 Reusable EDA functions live in `src/overfitted_underqualified/eda/`; the notebook
@@ -148,8 +153,10 @@ These readers intentionally have different semantics.
 
 - `data/annotations/events.csv` is the sole editable source of event labels and timestamps, accepted by the team. EDA never overwrites it or requires a separate approval table.
   `source_label` and `timecode` preserve the supplied supervision. Descriptions, event tags, candidate categories and rule references
-  are provisional interpretations of the supplied text, used only for exploration.
-  They are not verified multiclass targets or classifier input features. The former
+  were initially provisional interpretations. On 18 October the owner confirmed the
+  listed observations, but not completeness against the catalog or negative action
+  labels. The separate action experiment masks unknown targets and currently blocks
+  training; descriptions and rule text are never model input features. The former
   `confidence` and `review_status` columns have been removed.
 - `data/processed/validation_issues.csv` lists missing files, duplicate IDs, invalid timestamps,
   decoding problems and conflicting duplicate labels. Failed MOV seeks are retried by
@@ -188,6 +195,52 @@ this verifies the pipeline, not useful detector quality. Historical metrics rema
 See [the annotation workflow](docs/temporal-annotation-workflow.md) for the single-source annotation protocol and current split limitation.
 
 P1 rules catalog: [`src/overfitted_underqualified/rules/catalog.json`](src/overfitted_underqualified/rules/catalog.json).
+
+Action recognition: [implementation and commands](docs/action-recognition.md),
+[current P0 status](reports/action_recognition_status.md). Separate multilabel R3D-18
+training, per-window recognition, typed event merging, catalog enrichment, evaluation
+exports and a real async backend adapter are implemented. Trained research action
+checkpoints exist; their measured limitations are documented below. Real readiness
+stays false until both models and evaluated types are configured. Notebook 02 audits
+coverage and offers explicit action training; notebook 03 has an opt-in action protocol.
+Existing binary experiments, labels and split remain unchanged.
+Two real five-epoch action experiments now exist (unweighted and train-only loss
+balancing). Their only evaluable positive validation example is missed at the fixed
+0.7 threshold: F1=0. See [action experiment results](reports/action_training_20261018.md).
+Use `configs/actions_balanced.yaml` and the explicit research service config to
+reproduce; default service type activation remains disabled.
+The subsequent [X-18/X-2 geometry study](reports/identity_geometry_20261018.md)
+compares a single-class head with the original crop and an aspect-preserving ROI.
+Both fixed 30-epoch runs fit train but miss X-2; additional positive videos are needed.
+The notebooks include the saved comparison; action preprocessing is shared with inference.
+The [subsequent cash-storage check](reports/unsecured_cash_20261018.md) resolves X-38
+as a positive action window and verifies three negative windows, masking four uncertain
+negatives. Its fixed-threshold model still misses X-38 (F1=0); a full-scan alarm on
+X-2 is false. This is a measured failure, not successful P0 quality acceptance.
+The historical 231-only CSV revision changed only `legal_basis`. The current source
+also cites №14 and №53. Verified №14 paragraph 8 is research context; final №53
+paragraph 53 remains unverified. Active action links still use №231; applicability
+remains conditional. See [current action readiness](reports/action_preparation_20261018.md). An explicit
+[annotation revision record](data/annotation_revisions.json) allows historical binary
+checkpoints to evaluate that exact revision while preserving both source hashes.
+See [migration checks](reports/annotations_231_migration.md); arbitrary annotation drift is rejected.
+Missing descriptions on 20 source rows were filled from [sampled video review](reports/visible_descriptions_20261018.md).
+The 19 unique videos were reviewed at 1 Hz with selected original frames. This changes
+visible prose only; binary supervision and unassigned action tags remain unchanged.
+The exact registered metadata revisions also preserve historical checkpoint evaluation.
+Current [annotation/catalog audit](reports/action_annotation_review_20261018.md)
+identifies four uncertain mappings. `python experiments/review_action_annotations.py`
+creates a private review page in ignored `data/local_artifacts/`. Per-type present/absent/unknown
+decisions can be imported into the sole `events.csv`; omitted types remain masked.
+The default action config uses this partial-review protocol, not catalog-wide approval.
+
+Binary improvement study: [measured results and checkpoints](reports/binary_improvements_20261018.md).
+On the same 10 previously examined validation videos, the selected 4-second ROI
+candidate reached full-video F1 0.714 (baseline 0.615), matched 5/5 known markers
+within ±5 seconds and reduced negative-video alarm candidates from 8 to 5.
+Four of five negative videos still receive false alarms; this is exploratory progress,
+not independent validation or production readiness. All five trained variants and
+the failed initial attempt are retained. Same-seed retraining reproduced identical weights.
 Verification notes and acceptance checklist:
 [docs/rules-catalog-review.md](docs/rules-catalog-review.md).
 Only `api_supported` event types may be attached to a finding; binary `violation`
@@ -195,6 +248,39 @@ is not an event type. Unconfirmed claims (X-1, X-28, door/№14, X-46) stay excl
 
 Optional frame zones live in `data/annotations/zones.json`, using
 `{"X-N": {"zone_name": [x1, y1, x2, y2]}}`. Coordinates are checked against the decoded frame.
+
+Visible-primitives research now separates client presence, cash on the counter and
+cash handover from the temporal service-history hypothesis. It uses sparse reviewed
+facts inside the same `events.csv`, causal 16-frame inputs and the unchanged 30/10
+split. Training and full-video scanning are opt-in in 02/03; reusable code lives in
+`ml/primitive_data.py`, `primitive_model.py`, `cash_sequence.py`,
+`primitive_inference.py` and `primitive_evaluation.py`.
+See [workflow and CLI commands](docs/visible-primitives.md) and
+[measured experiment results](reports/primitive_study_20261018.md).
+Candidates require review; this experiment does not replace the FastAPI analyzer.
+
+The spatial experiment adds a small counter-banknote detector and audited
+train-only external augmentations. It retains the fixed split and old checkpoints;
+the synthetic S-scenarios are recorded separately and never counted as real test
+videos. Notebooks 01/02/03 include source coverage, box inspection, explicit training,
+hybrid evaluation, error trajectories and downloadable reports. See
+[banknote workflow](docs/banknote-sequence.md). All images stay local and notebook
+outputs must be cleared before committing.
+The [measured detector/tracking comparison](reports/banknote_study_20261018.md)
+now finds X-38 at 29 s, within 4 s of its current action marker. Three reviewed
+negative videos have no candidates. This meets the minimum local prototype check
+for one visual scenario; four repeatedly inspected videos do not establish
+independent legal-event quality. Other validation videos remain unknown for this
+type, and the FastAPI analyzer is not automatically switched.
+
+Additional source videos are imported into ignored `data/raw/supplemental/`.
+The [augmentation workflow](docs/augmented-videos.md) trains binary R3D-18 on
+canonical train descendants and evaluates validation descendants separately,
+preserving the existing split and the sole annotation source `events.csv`.
+The [matched augmentation protocol](docs/matched-augmentation.md) fixes optimizer
+updates and compares original-only sampling with an 80/20 mixture. Final
+checkpoints are frozen before validation; accuracy is reported without threshold
+or split adjustments.
 
 Run the validation tests with:
 

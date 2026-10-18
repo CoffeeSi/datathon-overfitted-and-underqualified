@@ -24,6 +24,8 @@ from torch.utils.data import DataLoader
 from torchvision.models.video import R3D_18_Weights, r3d_18
 
 from .dataset import LABELS, VideoWindowDataset, load_records, sha256
+from .preprocessing import video_transform
+from .features import WeightedWindows, cache_frozen_loaders
 
 ROOT = Path(__file__).resolve().parents[3]
 
@@ -72,12 +74,15 @@ def run_epoch(model, loader, device, optimizer=None, freeze_backbone=True):
     rows = []
     with torch.set_grad_enabled(training):
         for batch in loader:
-            inputs = batch["video"].to(device)
+            if "features" in batch and training and not freeze_backbone:
+                raise ValueError("Cached features cannot train the backbone")
+            inputs = batch["features" if "features" in batch else "video"].to(device)
             labels = batch["label"].to(device)
             if training:
                 optimizer.zero_grad(set_to_none=True)
-            logits = model(inputs)
-            loss = nn.functional.cross_entropy(logits, labels)
+            logits = model.fc(inputs) if "features" in batch else model(inputs)
+            losses = nn.functional.cross_entropy(logits, labels, reduction="none")
+            loss = (losses * batch["sample_weight"].to(device)).mean() if training and "sample_weight" in batch else losses.mean()
             if not torch.isfinite(loss):
                 raise RuntimeError("Non-finite loss")
             if training:
@@ -121,11 +126,18 @@ def load_checkpoint(path: Path, device="cpu"):
 
 def prepare_training(config: dict) -> dict:
     config = dict(config)
+    transform = video_transform(config)
+    if config.get("loss_weighting", "none") not in {"none", "video_class_balanced"}:
+        raise ValueError("Unknown loss weighting policy")
+    if config.get("cache_frozen_features", False) and not config["freeze_backbone"]:
+        raise ValueError("Feature cache requires freeze_backbone=true")
     if config["weights"] != "KINETICS400_V1":
         raise ValueError("Baseline requires pretrained KINETICS400_V1 weights")
     if not isinstance(config["freeze_backbone"], bool):
         raise ValueError("freeze_backbone must be boolean")
-    for field in ("epochs", "batch_size", "cpu_threads", "negative_windows"):
+    for field in ("epochs", "batch_size", "cpu_threads", "negative_windows", "validation_negative_windows"):
+        if field == "validation_negative_windows" and field not in config:
+            continue
         if not isinstance(config[field], int) or config[field] < 1:
             raise ValueError(f"{field} must be a positive integer")
     if config["num_workers"] < 0 or config["learning_rate"] <= 0 or config["weight_decay"] < 0:
@@ -144,11 +156,25 @@ def prepare_training(config: dict) -> dict:
     seed_everything(config["seed"], config["cpu_threads"])
     torch.hub.set_dir(config["weights_cache"])
     records = load_records(Path(config["events_path"]), Path(config["split_path"]), Path(config["video_dir"]))
-    weights = R3D_18_Weights[config["weights"]]
-    datasets = {subset: VideoWindowDataset(records, subset, weights.transforms(), config["window_sec"],
-                                          config["frames"], config["negative_windows"])
+    datasets = {subset: VideoWindowDataset(records, subset, transform, config["window_sec"],
+                                          config["frames"], config.get("validation_negative_windows", config["negative_windows"])
+                                          if subset == "validation" else config["negative_windows"],
+                                          negative_sampling=config.get("negative_sampling", "interior"))
                 for subset in ("train", "validation")}
-    loaders = {subset: DataLoader(dataset, batch_size=config["batch_size"], shuffle=subset == "train",
+    supplemental = None
+    if config.get("supplemental_manifest"):
+        from .augmented_data import read_audit, AugmentedBinaryWindows
+        audit_path = Path(config["supplemental_manifest"])
+        audit_path = audit_path if audit_path.is_absolute() else ROOT / audit_path
+        config["supplemental_manifest"] = str(audit_path.resolve())
+        audit = read_audit(audit_path, config["supplemental_manifest_sha256"],
+                          config["events_path"], config["split_path"])
+        datasets["train"] = AugmentedBinaryWindows(datasets["train"], audit, "train")
+        supplemental = dict(audit_sha256=config["supplemental_manifest_sha256"],
+                            training_sources=datasets["train"].source_manifest,
+                            validation_policy="Original validation only during training; descendants evaluated separately")
+    loaders = {subset: DataLoader(WeightedWindows(dataset) if subset == "train" and config.get("loss_weighting") == "video_class_balanced" else dataset,
+                                 batch_size=config["batch_size"], shuffle=subset == "train",
                                  num_workers=config["num_workers"], worker_init_fn=seed_worker,
                                  generator=torch.Generator().manual_seed(config["seed"]),
                                  pin_memory=device.type == "cuda") for subset, dataset in datasets.items()}
@@ -161,6 +187,8 @@ def prepare_training(config: dict) -> dict:
                             "label": r.label} for r in records],
                 "windows": {subset: [{"clip_id": r.clip_id, "center_sec": t, "label": r.label}
                                       for r, t in dataset.samples] for subset, dataset in datasets.items()}}
+    if supplemental is not None:
+        manifest["supplemental"] = supplemental
     return dict(config=config, output=output, device=device, records=records,
                 datasets=datasets, loaders=loaders, manifest=manifest)
 
@@ -174,8 +202,10 @@ def train_prepared(prepared: dict, model: nn.Module) -> Path:
     for key, manifest_key in (("events_path", "events_sha256"), ("split_path", "split_sha256")):
         if sha256(Path(config[key])) != manifest[manifest_key]:
             raise ValueError(f"Input changed after preparation: {key}")
-    weights = R3D_18_Weights[config["weights"]]
     model.to(device)
+    if config.get("cache_frozen_features", False):
+        print("Caching frozen features once per run (train/validation remain separate)", flush=True)
+        loaders = cache_frozen_loaders(model, loaders, device, config["batch_size"], config["seed"])
     optimizer = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad],
                                  lr=config["learning_rate"], weight_decay=config["weight_decay"])
     output.mkdir(parents=True, exist_ok=True)
@@ -184,7 +214,8 @@ def train_prepared(prepared: dict, model: nn.Module) -> Path:
     environment = {"python": platform.python_version(), "torch": str(torch.__version__),
                    "torchvision": str(torchvision.__version__), "cuda_runtime": torch.version.cuda,
                    "device": str(device), "gpu": torch.cuda.get_device_name(device) if device.type == "cuda" else None,
-                   "preprocessing": str(weights.transforms()), "seed": config["seed"]}
+                   "preprocessing": str(video_transform(config)), "seed": config["seed"],
+                   "feature_cache": "per_run_cpu_memory" if config.get("cache_frozen_features") else "disabled"}
     (output / "environment.json").write_text(json.dumps(environment, indent=2), encoding="utf-8")
     history = []
     best_loss = float("inf")

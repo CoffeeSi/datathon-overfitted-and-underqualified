@@ -2,6 +2,16 @@
 
 Status: **draft for team alignment**. Confirm the open questions at the end with the organizers before treating the proposed details as final.
 
+The optional typed provider is documented in [action recognition](action-recognition.md).
+The jury endpoint retains the original Finding fields. The UI-only endpoint adds
+`source_links`, `applicability`, `video_cannot_establish`, `binary_score`,
+`type_confidence`, and `legal_conclusion: null` on findings; `recognition_scope`
+and `unresolved_candidates` on the result. An unresolved candidate has a timestamp,
+binary score and `unknown`/`background` reason. Positive binary alarms with no
+accepted action type produce `insufficient_data`, not `no_violation`. Results with
+accepted findings and additional unresolved windows retain both in the UI response.
+These references require human applicability review and do not establish legal guilt.
+
 ## Goal
 
 Accept a cashier video, process it locally, and return a human-reviewable result: a video-level verdict plus any visible event findings, with timestamps, evidence frames, explanations, and Kazakhstan public-source references.

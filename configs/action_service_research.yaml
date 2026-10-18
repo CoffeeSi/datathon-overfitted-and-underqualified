@@ -1,0 +1,13 @@
+# Research only: measured validation F1=0, not a deployment recommendation.
+binary_checkpoint: runs/binary_improvements_20261017T230201_728607Z/roi/best.pt
+action_checkpoint: runs/r3d18_actions_balanced_20261018T004011Z/last.pt
+enabled_types:
+  - client_identity_check_not_visible
+device: cpu
+scan:
+  window_sec: 4.0
+  step_sec: 2.0
+  batch_size: 2
+  threshold: 0.5
+  merge_gap_sec: 0.0
+  frames: 16
