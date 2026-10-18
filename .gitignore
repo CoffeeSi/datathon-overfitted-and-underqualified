@@ -39,6 +39,7 @@ runs/
 *.avi
 
 data/service/
+data/service_real/
 configs/action_service.local.yaml
 
 # Generated outputs

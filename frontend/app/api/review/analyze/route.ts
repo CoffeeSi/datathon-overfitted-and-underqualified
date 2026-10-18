@@ -1,5 +1,5 @@
 import { ApiError, parseAccepted } from "@/lib/contracts";
-import { backendJson, errorResponse, privateJson, serverConfig } from "@/lib/server/backend";
+import { assertAnalysisProvider, backendJson, errorResponse, privateJson, serverConfig } from "@/lib/server/backend";
 import { limitUploadStream, MULTIPART_OVERHEAD_BYTES, validateUploadRequest } from "@/lib/server/policy";
 
 export const runtime = "nodejs";
@@ -9,6 +9,9 @@ export async function POST(request: Request) {
   try {
     const config = serverConfig();
     validateUploadRequest(request, config.maxUploadBytes);
+    const readiness = await backendJson("/readyz", { signal: request.signal });
+    const ready = readiness && typeof readiness === "object" ? readiness as Record<string, unknown> : null;
+    assertAnalysisProvider(ready?.status === "ready" ? ready.analysis_provider : null);
     // Stream multipart unchanged. FastAPI owns the single-file, filename, container and exact file-size checks.
     const body = limitUploadStream(request.body!, config.maxUploadBytes + MULTIPART_OVERHEAD_BYTES, () => { limitExceeded = true; });
     const accepted = parseAccepted(await backendJson("/api/v1/analyze", {

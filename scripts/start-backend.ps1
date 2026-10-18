@@ -1,6 +1,6 @@
 param(
-    [ValidateRange(1, 65535)][int]$Port = 8001,
-    [string]$ActionConfig = "configs/action_service_backend_smoke.yaml"
+    [ValidateRange(1, 65535)][int]$Port = 8000,
+    [string]$ActionConfig = "configs/action_service_cash_sequence.yaml"
 )
 
 $ErrorActionPreference = "Stop"
@@ -19,5 +19,5 @@ $env:PYTHONPATH = Join-Path $RepoRoot "src"
 $env:FORTEBANK_ANALYZER_FACTORY = "overfitted_underqualified.backend.local_analyzer:create_analyzer"
 $env:FORTEBANK_ACTION_CONFIG = $ActionConfig
 $env:FORTEBANK_ENABLE_MOCK_RESULTS = "false"
-& $Python -m uvicorn overfitted_underqualified.backend.api:app --env-file .env --host 127.0.0.1 --port $Port
+& $Python scripts/run_backend.py --port $Port --action-config $ActionConfig
 exit $LASTEXITCODE

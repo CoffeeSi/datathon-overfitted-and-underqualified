@@ -29,9 +29,10 @@ export function RecentJobs() {
   return (
     <section className="recent-section" aria-labelledby="recent-title">
       <div className="section-heading">
-        <div><p className="eyebrow">НА ЭТОМ УСТРОЙСТВЕ</p><h2 ref={titleRef} tabIndex={-1} id="recent-title">Недавние задания</h2></div>
+        <div><p className="eyebrow">НА ЭТОМ УСТРОЙСТВЕ</p><h2 ref={titleRef} tabIndex={-1} id="recent-title">Недавние видео</h2></div>
         {jobs.length > 0 && <button className="text-button" type="button" onClick={() => { forgetRecentJobs(); titleRef.current?.focus(); }}>Очистить список <Icon name="close" /></button>}
       </div>
+      {jobs.length > 0 && <p className="recent-hint">Загрузки сохраняются здесь автоматически. Нажмите на видео, чтобы открыть анализ.</p>}
       {jobs.length > 0 ? (
         <ul className="recent-list">
           {jobs.map((job) => <li key={job.jobId}>

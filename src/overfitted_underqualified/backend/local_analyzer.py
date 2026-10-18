@@ -18,6 +18,7 @@ class LocalActionAnalyzer:
 
     def __init__(self, pipeline):
         self.pipeline = pipeline
+        self.name = getattr(pipeline, "provider_name", type(self).name)
         self._lock = asyncio.Lock()
 
     def _analyze_sync(self, video_path, cancelled):
@@ -33,9 +34,12 @@ class LocalActionAnalyzer:
                 type_confidence=event["type_confidence"], source_links=action["source_links"],
                 applicability=action["applicability"], video_cannot_establish=action["video_cannot_establish"],
                 evidence_frames=evidence_frames(video_path, event["timestamp_sec"], cancel_event=cancelled)))
+        scope = result.get("recognition_scope")
+        if scope is None:
+            scope = sorted(self.pipeline.recognizer.enabled_types)
         return TypedAnalysisResult(verdict=result["verdict"], violations=findings,
                                    unresolved_candidates=[UnresolvedCandidate(**c) for c in result["unresolved_candidates"]],
-                                   recognition_scope=sorted(self.pipeline.recognizer.enabled_types))
+                                   recognition_scope=scope)
 
     async def analyze(self, video_path):
         async with self._lock:
@@ -80,6 +84,12 @@ def create_analyzer(_settings):
         if not config_path.is_absolute():
             config_path = ROOT / config_path
         config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+        mode = config.get("pipeline", "r3d18_actions")
+        if mode == "cash_sequence":
+            from ..ml.sequence_service import prepare_cash_sequence_pipeline
+            return LocalActionAnalyzer(prepare_cash_sequence_pipeline(config, ROOT))
+        if mode != "r3d18_actions":
+            raise ValueError("Unknown configured inference pipeline")
         pipeline = prepare_typed_pipeline(ROOT / config["binary_checkpoint"], ROOT / config["action_checkpoint"],
                                           enabled_types=config["enabled_types"], device=config["device"],
                                           scan=ScanConfig(**config["scan"]))

@@ -80,7 +80,7 @@ describe("analysis job lifecycle", () => {
     expect(result.current.error).toBeNull();
   });
 
-  it.each([401, 403, 404])("pauses after HTTP %i until an explicit retry", async (status) => {
+  it.each([401, 403, 404, 410])("pauses after HTTP %i until an explicit retry", async (status) => {
     fetchMock.mockRejectedValueOnce(new ApiError("Unavailable", status)).mockResolvedValue(done());
     const { result } = renderHook(() => useAnalysisJob("job-1"));
     await tick();

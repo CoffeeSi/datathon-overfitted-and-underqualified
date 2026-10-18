@@ -56,6 +56,8 @@ img { display: block; max-width: 100%; }
 .site-header { border-bottom: 1px solid var(--line); background: var(--paper); }
 .header-inner { max-width: 1504px; padding: 0 48px; height: 88px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .brand { display: flex; align-items: center; gap: 12px; font-size: 30px; font-weight: 800; letter-spacing: -.07em; }
+.brand-name { max-width: 230px; font-size: 19px; line-height: 1.2; letter-spacing: -.03em; }
+.brand-symbol { flex-shrink: 0; }
 .brand-caption { margin-left: 12px; border-left: 1px solid #c5c8bd; padding-left: 15px; font-size: 8px; letter-spacing: .14em; line-height: 1.6; font-weight: 700; }
 .brand-symbol { width: 27px; height: 27px; position: relative; }
 .brand-symbol i { position: absolute; width: 8px; height: 8px; border: solid var(--wine); border-width: 2px 0 0 2px; }
@@ -142,6 +144,7 @@ img { display: block; max-width: 100%; }
 .upload-progress-fill { display: block; background: var(--wine); height: 100%; transition: width 150ms linear; }
 .upload-progress-track[data-indeterminate="true"] .upload-progress-fill { animation: indeterminate 1.4s ease-in-out infinite; }
 .recent-section { margin-top: 48px; }
+.recent-hint { margin-bottom: 16px; color: var(--muted); font-size: 12px; }
 .section-heading { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; gap: 16px; }
 .section-heading .eyebrow { color: var(--muted); margin-bottom: 8px; }
 .section-heading h2 { font-size: 21px; letter-spacing: -.04em; font-weight: 600; }
@@ -344,6 +347,9 @@ kbd { border: 1px solid #c7cebf; border-bottom-width: 2px; padding: 3px 7px; bac
 }
 @media (max-width: 600px) {
   .header-inner { padding-inline: 20px; height: 70px; gap: 16px; }.header-inner nav { gap: 20px; }.nav-link { font-size: 10px; }.brand { font-size: 24px; gap: 8px; }.brand-symbol { transform: scale(.8); }.tiny-arrow { display: none; }
+  .header-inner { height: auto; min-height: 70px; padding-block: 16px; flex-wrap: wrap; }
+  .brand-name { font-size: 16px; max-width: 210px; }
+  .header-inner nav { flex-basis: 100%; justify-content: space-between; }
   .home-page { margin-inline: 20px; padding: 30px 0 40px; }.home-heading { display: block; margin-bottom: 26px; }.home-heading .eyebrow { margin-bottom: 16px; }.home-title { font-size: 44px; }.home-intro { max-width: 330px; margin-top: 20px; font-size: 11px; line-height: 1.8; }
   .home-grid { grid-template-columns: 1fr; gap: 32px; }.upload-dropzone { min-height: 310px; padding-top: 30px; }.upload-drop-copy { font-size: 11px; }.upload-local-note { font-size: 9px; }.service-state { padding-inline: 16px; font-size: 9px; }.process-rail { padding: 0; }.process-title { font-size: 25px; margin-bottom: 22px; }.process-step-copy p { max-width: none; }.rail-footer { margin-top: 0; }.demo-entry { max-width: 320px; }.recent-section { margin-top: 36px; }.section-heading h2 { font-size: 20px; }.section-heading .text-button { font-size: 10px; }.recent-empty { align-items: flex-start; gap: 14px; }.recent-open-form { gap: 10px; display: block; }.recent-open-form label { display: block; margin-bottom: 10px; }.recent-open-form > div { width: 100%; }.recent-open-form input { flex: 1; width: 0; }.recent-open-form .button { padding-inline: 14px; }.recent-row { padding-inline: 4px; gap: 12px; }.recent-status { font-size: 9px; }.recent-status .status-dot { display: none; }.recent-row > svg:last-child { display: none; }
   .site-footer { margin-inline: 20px; font-size: 8px; gap: 20px; align-items: baseline; }.site-footer > span:last-child { text-align: right; max-width: 190px; }

@@ -1,4 +1,4 @@
-# Фокус — просмотр кассового видео
+# Overfitted and Underqualified — просмотр кассового видео
 
 Рабочий интерфейс ForteBank Datathon: загрузка `.mov`, ожидание задания,
 просмотр результата, временная шкала, описание событий и подтверждающие кадры.
@@ -6,13 +6,74 @@ Next.js App Router, React, TypeScript и Tailwind; зависимости фик
 
 ## Docker Compose
 
+### Brev: оба сервиса в Docker с NVIDIA GPU
+
+Используйте оба файла: `compose.yaml` и `compose.real.yaml`. Базовый файл
+рассчитан на ML на локальном хосте и сам не запускает backend по умолчанию.
+Override включает backend, ML-зависимости, одну NVIDIA GPU, read-only `runs/`
+и текущий `configs/action_service_cash_sequence.yaml`. Frontend обращается к
+`http://backend:8000`; он стартует после успешного `/readyz` модели.
+
+Создайте `.env.compose` с непустым `FORTEBANK_API_KEY`. Перенесите все три веса
+по путям из конфига: они не входят в Git. Если в старом `.env.compose` задан
+`ACTION_SERVICE_CONFIG`, замените его на `./configs/action_service_cash_sequence.yaml`.
+
+```bash
+docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml up --build -d
+docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml ps
+curl -i http://127.0.0.1:8000/readyz
+```
+
+Ожидается `local-cash-sequence`. Диагностика:
+`docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml logs --tail=100 backend`.
+Нужны NVIDIA GPU, совместимый драйвер и GPU runtime Docker; одним наличием GPU
+в `nvidia-smi` на хосте её доступ внутри контейнера не подтверждается.
+
+### Текущий запуск: настоящая ML-модель на Windows, frontend в Docker
+
+Backend запускается из корня через `scripts/start-backend.ps1 -Port 8000`.
+Общий `FORTEBANK_API_KEY` задаётся в `.env.compose`: Compose читает его через
+`env_file`, а `scripts/start-backend.ps1` — через Python launcher. Значение из
+файла имеет приоритет над устаревшим ключом в терминале. После изменения ключа
+нужно перезапустить backend и пересоздать контейнер frontend (не только restart).
+Для локального `npm run dev` тот же ключ указывается в `frontend/.env.local`,
+с `BACKEND_URL=http://127.0.0.1:8000` и `DEMO_ENABLED=false`.
+Файлы с ключами не коммитятся.
+
+```powershell
+.\scripts\start-backend.ps1 -Port 8000
+# В другом терминале, из корня:
+docker compose --env-file .env.compose -f compose.yaml -f compose.host-ml.yaml up -d --build --no-deps frontend
+```
+
+Docker frontend обращается к `http://host.docker.internal:8000`.
+Это также адрес по умолчанию в базовом `compose.yaml`; обычный повторный запуск
+не переключает frontend обратно на не настроенный контейнер backend.
+Overrides `compose.real.yaml` и `compose.mock.yaml` явно выбирают контейнерный API.
+Откройте `http://127.0.0.1:3000`; `/api/review/service` должен вернуть
+`provider=local-cash-sequence`, `ready=true`, `demoEnabled=false`.
+В этом режиме mock-провайдер блокируется перед загрузкой и при чтении старых
+результатов; ошибки backend не заменяются синтетическими ответами.
+Старые задания от mock не превращаются в ML-результаты после смены провайдера:
+нужно заново загрузить исходное видео. Если доступен старый mock-результат,
+API возвращает 410 с пояснением; автоматический опрос такого задания прекращается.
+Активен `configs/action_service_cash_sequence.yaml`: распознавание клиента и передачи
+денег, детектор купюр и временная цепочка. Только сценарий денег, оставшихся после
+ухода клиента; остальные типы не поддержаны. Отсутствие полной цепочки возвращает
+`insufficient_data`. Область анализа показана в интерфейсе. Старые задания
+`local-r3d18-actions` сохраняют прежние результаты; для нового анализа нужна новая загрузка.
+Измеренная приёмка охватывает лишь 4 просмотренных development-видео, не независимый test.
+См. [проверку реального backend](../reports/cash_sequence_backend_20261018.md).
+
+### Явный mock для разработки интерфейса
+
 Из корня репозитория скопируйте `.env.compose.example` в `.env.compose`, задайте
 непустой `FORTEBANK_API_KEY` и запустите:
 
 ```powershell
 Copy-Item .env.compose.example .env.compose
 # Задайте FORTEBANK_API_KEY в .env.compose
-docker compose --env-file .env.compose up --build -d
+docker compose --env-file .env.compose -f compose.yaml -f compose.mock.yaml up --build -d
 ```
 
 Откройте [http://127.0.0.1:3000](http://127.0.0.1:3000). Проверка соединения:
@@ -29,9 +90,9 @@ Next.js BFF и FastAPI в одной Docker-сети; API также досту�
 `docker compose --env-file .env.compose down`; volume при этом сохраняется.
 
 Для текущего R3D-18 action analyzer предусмотрен отдельный Compose override.
-Нужны **два локальных checkpoint** (binary и action), совместимый конфиг с
+Нужны **три локальных checkpoint** (primitives, banknotes и auxiliary binary), совместимый конфиг с
 путями к ним и хотя бы один оценённый тип в `enabled_types`. Скопируйте
-`configs/action_service.yaml` в `configs/action_service.local.yaml`, укажите
+`configs/action_service_cash_sequence.yaml` в `configs/action_service.local.yaml`, укажите
 пути относительно корня проекта внутри контейнера (`runs/...`), проверенные
 типы и `device: cpu`. Этот локальный конфиг игнорируется Git. Укажите в
 `.env.compose` `MODEL_RUNS_PATH=./runs` (или полный путь к вашему каталогу runs)
@@ -43,11 +104,13 @@ docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml up -
 
 Override устанавливает ML-зависимости, монтирует веса только для чтения и
 выключает mock без автоматической подмены. Проверьте `/readyz`: ожидается
-`analysis_provider=local-r3d18-actions`. При отсутствии файлов, несовместимых
+`analysis_provider=local-cash-sequence`. При отсутствии файлов, несовместимых
 весах или пустом `enabled_types` readiness останется 503; причина будет в
-`docker compose logs backend`. В текущем checkout веса отсутствуют, а
-поставляемый конфиг намеренно содержит `enabled_types: []`, поскольку качество
-action-типа ещё не подтверждено. См. [план интеграции](../docs/frontend-backend-wiring-plan.md)
+`docker compose logs backend`. Веса не входят в Git; конфиг по умолчанию
+содержит `enabled_types: []`. Для текущего cash-sequence варианта используйте
+пути, SHA-256 и типы из `configs/action_service_cash_sequence.yaml`; на CPU явно замените
+`device: cuda` на `device: cpu` в своём локальном конфиге. Качество action-типов
+не подтверждено. См. [план интеграции](../docs/frontend-backend-wiring-plan.md)
 и [оценку модели](../reports/action_recognition_status.md).
 
 ## Локальный запуск
@@ -58,10 +121,7 @@ Python-окружение backend. Команды ниже выполняютс�
 Из корня репозитория запустите API:
 
 ```powershell
-$env:PYTHONPATH = "src"
-$env:FORTEBANK_API_KEY = "<ваш локальный секрет>"
-$env:FORTEBANK_MAX_UPLOAD_MB = "100"
-.\.venv\Scripts\python.exe -m uvicorn overfitted_underqualified.backend.api:app --host 127.0.0.1 --port 8000
+.\scripts\start-backend.ps1 -Port 8000
 ```
 
 В другом терминале:

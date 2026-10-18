@@ -1,0 +1,8 @@
+# Docker frontend -> real model running on the Windows host, port 8000.
+# Start ML with scripts/start-backend.ps1, then:
+# docker compose --env-file .env.compose -f compose.yaml -f compose.host-ml.yaml up -d --build --no-deps frontend
+services:
+  frontend:
+    environment:
+      BACKEND_URL: http://host.docker.internal:8000
+      DEMO_ENABLED: "false"

@@ -1,0 +1,68 @@
+{
+  "provider": "local-cash-sequence",
+  "service_config": "configs/action_service_cash_sequence.yaml",
+  "jobs": [
+    {
+      "clip_id": "X-2",
+      "job_id": "b22b4563-1a5c-4967-8642-3c5bf80f6e3c",
+      "status": "done",
+      "provider": "local-cash-sequence",
+      "verdict": "insufficient_data",
+      "recognition_scope": [
+        "unsecured_accepted_cash"
+      ],
+      "elapsed_sec": 7.818913299997803,
+      "unresolved_count": 0,
+      "findings": [],
+      "jury_contract_checked": true
+    },
+    {
+      "clip_id": "X-38",
+      "job_id": "069cacc6-d773-4ce8-bd3a-540fea746dab",
+      "status": "done",
+      "provider": "local-cash-sequence",
+      "verdict": "violation",
+      "recognition_scope": [
+        "unsecured_accepted_cash"
+      ],
+      "elapsed_sec": 19.587337100005243,
+      "unresolved_count": 1,
+      "findings": [
+        {
+          "type": "unsecured_accepted_cash",
+          "timecode_sec": 29,
+          "type_confidence": 0.7086798548698425,
+          "binary_score": 0.4585248529911041,
+          "evidence_frame_count": 3,
+          "source_links": [
+            {
+              "event_type": "unsecured_accepted_cash",
+              "url": "https://adilet.zan.kz/rus/docs/V1900019680#z20",
+              "source": "Правила НБ РК №231",
+              "locator": "п. 20, абз. 2, предл. 2",
+              "title": "Правила осуществления кассовых операций и операций по инкассации банкнот, монет и ценностей в банках второго уровня, филиалах банков-нерезидентов Республики Казахстан, Национальном операторе почты и юридических лицах, исключительной деятельностью которых является инкассация банкнот, монет и ценностей"
+            }
+          ],
+          "legal_conclusion": null
+        }
+      ],
+      "jury_contract_checked": true
+    },
+    {
+      "clip_id": "X-31",
+      "job_id": "81f4eaa8-c0b9-41f8-a6aa-ac618ebec796",
+      "status": "done",
+      "provider": "local-cash-sequence",
+      "verdict": "insufficient_data",
+      "recognition_scope": [
+        "unsecured_accepted_cash"
+      ],
+      "elapsed_sec": 7.7535313999978825,
+      "unresolved_count": 0,
+      "findings": [],
+      "jury_contract_checked": true
+    }
+  ],
+  "evidence_images_exported": false,
+  "mock_enabled": false
+}
