@@ -44,7 +44,17 @@ overriding stale terminal settings. Check `GET http://127.0.0.1:8001/readyz` for
 200 and `local-r3d18-actions`. This is an integration checkpoint with validation
 F1=0, not an approved recognition model; see [the experiment report](reports/action_backend_20261018.md).
 
-## Frontend — Фокус
+## Action model improvement study
+
+The current action model is compared with a newly trained visible-cash sequence in
+[the action improvement study](reports/action_improvement_20261018.md).
+`PYTHONPATH=src python -m overfitted_underqualified.ml.action_improvement --config configs/action_improvement.yaml`
+runs the fixed baseline evaluation, three training stages and a common reviewed-grid
+comparison. Use a fresh `output_dir` for each run. It preserves the split and old
+weights; this candidate recognizes one cash scenario, not every legal type. The
+running backend is not switched automatically.
+
+## Frontend — Overfitted and Underqualified
 
 The research-review UI lives in [`frontend/`](frontend/README.md): MOV upload,
 job status, synchronized event timeline, evidence frames and local recent-job metadata.

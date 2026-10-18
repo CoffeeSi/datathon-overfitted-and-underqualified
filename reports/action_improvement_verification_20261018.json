@@ -1,0 +1,26 @@
+{
+  "uploaded_video_sha256": "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+  "matches_original": true,
+  "random_filename": "a42dfebb73da47c59a487bfcce060c62.mov",
+  "csv_reads_forbidden": true,
+  "events": [
+    {
+      "event_type": "unsecured_accepted_cash",
+      "timestamp_sec": 29.0,
+      "confidence": 0.7086798548698425
+    }
+  ],
+  "processing_sec": 22.202643700002227,
+  "python_tests_passed": 150,
+  "source_and_baseline_hashes_unchanged": true,
+  "checkpoints": {
+    "primitives": {
+      "path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\action_improvement_20261018\\primitives\\last.pt",
+      "sha256": "175d2cbd46bca3c084b5a86097ef7c229f660af3fe7f8117c76f08e699ba2411"
+    },
+    "banknotes": {
+      "path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\action_improvement_20261018\\banknotes_stage2\\last.pt",
+      "sha256": "57f74d4efc547d2c72fedb56b22ff919b425b99c07bacdcb044c4e1ab312c1c8"
+    }
+  }
+}

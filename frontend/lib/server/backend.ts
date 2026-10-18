@@ -25,6 +25,16 @@ export function privateJson(value: unknown, status = 200): Response {
   } });
 }
 
+/** Synthetic providers are permitted only in explicitly enabled demo sessions. */
+export function assertAnalysisProvider(provider: unknown): void {
+  if (typeof provider !== "string" || !provider.trim()) {
+    throw new ApiError("Анализатор ещё не подключён.", 503, "provider_unavailable");
+  }
+  if (!serverConfig().demoEnabled && (provider === "mock" || provider === "synthetic-demo")) {
+    throw new ApiError("Подключён тестовый анализатор. Запустите backend с настоящей ML-моделью.", 503, "synthetic_provider_disabled");
+  }
+}
+
 export function errorResponse(error: unknown): Response {
   const known = error instanceof ApiError ? error : new ApiError("Сервис временно недоступен. Попробуйте ещё раз.", 503, "service_unavailable");
   return privateJson({ error: { code: known.code ?? "request_failed", message: known.message } }, known.status || 503);

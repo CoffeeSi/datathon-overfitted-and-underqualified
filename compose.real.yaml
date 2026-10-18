@@ -1,6 +1,12 @@
 # Opt-in service adapter for the R3D-18 binary + action checkpoints.
 # Use with: docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml up --build -d
 services:
+  frontend:
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      BACKEND_URL: http://backend:8000
   backend:
     build:
       args:

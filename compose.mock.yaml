@@ -1,0 +1,13 @@
+# Explicit transport/UI development only. No video recognition.
+# docker compose --env-file .env.compose -f compose.yaml -f compose.mock.yaml up -d --build
+services:
+  backend:
+    environment:
+      FORTEBANK_ENABLE_MOCK_RESULTS: "true"
+  frontend:
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      BACKEND_URL: http://backend:8000
+      DEMO_ENABLED: "true"

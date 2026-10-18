@@ -1,0 +1,1789 @@
+{
+  "schema": "action_improvement_study_v1",
+  "inputs": {
+    "events_path": {
+      "path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\annotations\\events.csv",
+      "sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b"
+    },
+    "split_path": {
+      "path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\data\\processed\\split_proposal.csv",
+      "sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d"
+    },
+    "baseline_checkpoint": {
+      "path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_actions_backend_20261018\\last.pt",
+      "sha256": "63ac3f12001f78a26f238ca0f8c57da342c023692a0b6a9201e5017788748674"
+    },
+    "binary_checkpoint": {
+      "path": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\r3d18_matched_20261018T025716_174675Z\\mild_augmented\\last.pt",
+      "sha256": "00b07713d0fd1c219fcefa00416f6e68668201ee8abec0e8b6bd43682dab00d9"
+    }
+  },
+  "config": {
+    "seed": 42,
+    "device": "cuda",
+    "cpu_threads": 2,
+    "output_dir": "runs/action_improvement_20261018",
+    "baseline_config": "configs/actions_backend_smoke.yaml",
+    "baseline_checkpoint": "runs/r3d18_actions_backend_20261018/last.pt",
+    "binary_checkpoint": "runs/r3d18_matched_20261018T025716_174675Z/mild_augmented/last.pt",
+    "primitive_template": "configs/primitives_multiview.yaml",
+    "banknote_stage1_template": "configs/banknotes_balanced.yaml",
+    "banknote_stage2_template": "configs/banknotes.yaml",
+    "events_path": "data/annotations/events.csv",
+    "split_path": "data/processed/split_proposal.csv",
+    "video_dir": "data/raw/videos",
+    "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "match_tolerance_sec": 5.0,
+    "track_banknotes": true
+  },
+  "checkpoints": {
+    "primitives": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\action_improvement_20261018\\primitives\\last.pt",
+    "banknotes": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\action_improvement_20261018\\banknotes_stage2\\last.pt"
+  },
+  "checkpoint_sha256": {
+    "primitives": "175d2cbd46bca3c084b5a86097ef7c229f660af3fe7f8117c76f08e699ba2411",
+    "banknotes": "57f74d4efc547d2c72fedb56b22ff919b425b99c07bacdcb044c4e1ab312c1c8"
+  },
+  "baseline_report": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\reports\\evaluation_actions_20261018T053410Z_75cdce1e",
+  "candidate_report": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\reports\\evaluation_action_improvement_20261018",
+  "baseline_window_metrics": {
+    "per_class": [
+      {
+        "event_type": "client_identity_check_not_visible",
+        "support": 1,
+        "known_negatives": 6,
+        "unknown": 1,
+        "confusion_matrix": [
+          [
+            6,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "evaluable": true
+      },
+      {
+        "event_type": "unsecured_accepted_cash",
+        "support": 1,
+        "known_negatives": 3,
+        "unknown": 4,
+        "confusion_matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "evaluable": true
+      }
+    ],
+    "macro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "macro_class_count": 2,
+    "threshold": 0.7,
+    "loss": 0.5684970942410555
+  },
+  "baseline_temporal": {
+    "per_class": [
+      {
+        "event_type": "cash_bag_received_without_visible_identity_authority_check",
+        "matched": 0,
+        "missed": 0,
+        "support": 0,
+        "recall": null,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 0,
+        "binary_gate_coverage": null,
+        "matched_timestamp_mae_sec": null
+      },
+      {
+        "event_type": "cash_counted_without_client_present",
+        "matched": 0,
+        "missed": 1,
+        "support": 1,
+        "recall": 0.0,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 0,
+        "binary_gate_coverage": 0.0,
+        "matched_timestamp_mae_sec": null
+      },
+      {
+        "event_type": "cashier_leaves_during_client_service",
+        "matched": 0,
+        "missed": 0,
+        "support": 0,
+        "recall": null,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 0,
+        "binary_gate_coverage": null,
+        "matched_timestamp_mae_sec": null
+      },
+      {
+        "event_type": "client_identity_check_not_visible",
+        "matched": 0,
+        "missed": 1,
+        "support": 1,
+        "recall": 0.0,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 0,
+        "binary_gate_coverage": 0.0,
+        "matched_timestamp_mae_sec": null
+      },
+      {
+        "event_type": "collection_cash_amount_registration_not_observed",
+        "matched": 0,
+        "missed": 0,
+        "support": 0,
+        "recall": null,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 0,
+        "binary_gate_coverage": null,
+        "matched_timestamp_mae_sec": null
+      },
+      {
+        "event_type": "employee_personal_items_in_cash_unit",
+        "matched": 0,
+        "missed": 0,
+        "support": 0,
+        "recall": null,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 0,
+        "binary_gate_coverage": null,
+        "matched_timestamp_mae_sec": null
+      },
+      {
+        "event_type": "recount_without_visible_controller",
+        "matched": 0,
+        "missed": 0,
+        "support": 0,
+        "recall": null,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 0,
+        "binary_gate_coverage": null,
+        "matched_timestamp_mae_sec": null
+      },
+      {
+        "event_type": "safe_key_left_in_lock",
+        "matched": 0,
+        "missed": 0,
+        "support": 0,
+        "recall": null,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 0,
+        "binary_gate_coverage": null,
+        "matched_timestamp_mae_sec": null
+      },
+      {
+        "event_type": "suspected_stamp_or_seal_left_unattended",
+        "matched": 0,
+        "missed": 0,
+        "support": 0,
+        "recall": null,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 0,
+        "binary_gate_hits": 0,
+        "binary_gate_coverage": null,
+        "matched_timestamp_mae_sec": null
+      },
+      {
+        "event_type": "unsecured_accepted_cash",
+        "matched": 0,
+        "missed": 1,
+        "support": 1,
+        "recall": 0.0,
+        "precision": null,
+        "f1": null,
+        "confirmed_background_false_positives": 0,
+        "unresolved_predictions": 1,
+        "binary_gate_hits": 1,
+        "binary_gate_coverage": 1.0,
+        "matched_timestamp_mae_sec": null
+      }
+    ],
+    "errors": [
+      {
+        "clip_id": "X-34",
+        "event_type": "cash_counted_without_client_present",
+        "status": "unmatched_annotation",
+        "prediction_index": null,
+        "annotation_index": 0,
+        "predicted_sec": null,
+        "annotation_sec": 13.0,
+        "signed_error_sec": null,
+        "absolute_error_sec": null,
+        "unmatched_prediction_is_confirmed_fp": false
+      },
+      {
+        "clip_id": "X-2",
+        "event_type": "client_identity_check_not_visible",
+        "status": "unmatched_annotation",
+        "prediction_index": null,
+        "annotation_index": 0,
+        "predicted_sec": null,
+        "annotation_sec": 10.0,
+        "signed_error_sec": null,
+        "absolute_error_sec": null,
+        "unmatched_prediction_is_confirmed_fp": false
+      },
+      {
+        "clip_id": "X-2",
+        "event_type": "unsecured_accepted_cash",
+        "status": "unmatched_prediction",
+        "prediction_index": 0,
+        "annotation_index": null,
+        "predicted_sec": 4.0,
+        "annotation_sec": null,
+        "signed_error_sec": null,
+        "absolute_error_sec": null,
+        "unmatched_prediction_is_confirmed_fp": false
+      },
+      {
+        "clip_id": "X-38",
+        "event_type": "unsecured_accepted_cash",
+        "status": "unmatched_annotation",
+        "prediction_index": null,
+        "annotation_index": 0,
+        "predicted_sec": null,
+        "annotation_sec": 33.0,
+        "signed_error_sec": null,
+        "absolute_error_sec": null,
+        "unmatched_prediction_is_confirmed_fp": false
+      }
+    ],
+    "tolerance_sec": 5.0,
+    "precision_unavailable_reason": "Point-action lists do not confirm full temporal annotation coverage on positive videos."
+  },
+  "candidate_metrics": {
+    "schema": "banknote_pipeline_evaluation_v1",
+    "created_utc": "2026-10-18T05:39:23.495388+00:00",
+    "primitive_checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\action_improvement_20261018\\primitives\\last.pt",
+    "primitive_checkpoint_sha256": "175d2cbd46bca3c084b5a86097ef7c229f660af3fe7f8117c76f08e699ba2411",
+    "banknote_checkpoint": "D:\\CodeSpace\\datathon\\datathon-overfitted-and-underqualified\\runs\\action_improvement_20261018\\banknotes_stage2\\last.pt",
+    "banknote_checkpoint_sha256": "57f74d4efc547d2c72fedb56b22ff919b425b99c07bacdcb044c4e1ab312c1c8",
+    "events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "split_sha256": "19c33f7e336b51fe5705f62d1804fb05e9c557076217aa5c0d6f986eb22f363d",
+    "primitive_training_events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "banknote_training_events_sha256": "4332f2bbfdff79534ad98d881287137baba83cc4c47756d3607af409742ee42b",
+    "banknote_tracking_enabled": true,
+    "banknote_tracking_config": {
+      "schema": "banknote_image_tracker_v1",
+      "detection_threshold": 0.7,
+      "match_threshold": 0.9,
+      "max_displacement_fraction": 0.015,
+      "max_total_displacement_fraction": 0.03,
+      "min_patch_contrast": 8.0,
+      "max_rgb_difference": 12.0,
+      "max_gap_sec": 2.0,
+      "max_age_sec": 10.0,
+      "cut_rgb_difference": 35.0,
+      "max_tracks": 16
+    },
+    "primitive_point_protocol": "Standalone endpoints: original R3D client/handover and banknote detector; tracking is never applied to these metrics",
+    "full_scan_protocol": "Causal primitive sequence with image-evidence banknote tracking",
+    "coverage": [
+      {
+        "primitive": "client_at_counter",
+        "train": {
+          "positive": 38,
+          "negative": 16,
+          "unknown": 0,
+          "positive_videos": [
+            "X-1",
+            "X-18",
+            "X-35",
+            "X-37",
+            "X-4",
+            "X-5"
+          ],
+          "negative_videos": [
+            "X-1",
+            "X-18",
+            "X-35",
+            "X-37",
+            "X-4",
+            "X-43",
+            "X-5",
+            "X-8"
+          ]
+        },
+        "validation": {
+          "positive": 13,
+          "negative": 26,
+          "unknown": 0,
+          "positive_videos": [
+            "X-2",
+            "X-38",
+            "X-39"
+          ],
+          "negative_videos": [
+            "X-10",
+            "X-14",
+            "X-2",
+            "X-31",
+            "X-38",
+            "X-39"
+          ]
+        }
+      },
+      {
+        "primitive": "banknotes_on_counter",
+        "train": {
+          "positive": 14,
+          "negative": 40,
+          "unknown": 0,
+          "positive_videos": [
+            "X-18",
+            "X-35",
+            "X-4"
+          ],
+          "negative_videos": [
+            "X-1",
+            "X-18",
+            "X-35",
+            "X-37",
+            "X-4",
+            "X-43",
+            "X-5",
+            "X-8"
+          ]
+        },
+        "validation": {
+          "positive": 14,
+          "negative": 25,
+          "unknown": 0,
+          "positive_videos": [
+            "X-10",
+            "X-14",
+            "X-2",
+            "X-38"
+          ],
+          "negative_videos": [
+            "X-14",
+            "X-2",
+            "X-31",
+            "X-38",
+            "X-39"
+          ]
+        }
+      },
+      {
+        "primitive": "cash_handover_to_cashier",
+        "train": {
+          "positive": 5,
+          "negative": 19,
+          "unknown": 30,
+          "positive_videos": [
+            "X-1",
+            "X-18",
+            "X-35",
+            "X-37",
+            "X-4"
+          ],
+          "negative_videos": [
+            "X-1",
+            "X-18",
+            "X-35",
+            "X-37",
+            "X-4",
+            "X-5"
+          ]
+        },
+        "validation": {
+          "positive": 3,
+          "negative": 5,
+          "unknown": 31,
+          "positive_videos": [
+            "X-2",
+            "X-38",
+            "X-39"
+          ],
+          "negative_videos": [
+            "X-2",
+            "X-38",
+            "X-39"
+          ]
+        }
+      }
+    ],
+    "reviewed_validation_points": 39,
+    "primitive_metrics": {
+      "per_class": [
+        {
+          "event_type": "client_at_counter",
+          "support": 13,
+          "known_negatives": 26,
+          "unknown": 0,
+          "confusion_matrix": [
+            [
+              26,
+              0
+            ],
+            [
+              0,
+              13
+            ]
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "evaluable": true
+        },
+        {
+          "event_type": "banknotes_on_counter",
+          "support": 14,
+          "known_negatives": 25,
+          "unknown": 0,
+          "confusion_matrix": [
+            [
+              24,
+              1
+            ],
+            [
+              4,
+              10
+            ]
+          ],
+          "precision": 0.9090909090909091,
+          "recall": 0.7142857142857143,
+          "f1": 0.8,
+          "evaluable": true
+        },
+        {
+          "event_type": "cash_handover_to_cashier",
+          "support": 3,
+          "known_negatives": 5,
+          "unknown": 31,
+          "confusion_matrix": [
+            [
+              5,
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "evaluable": true
+        }
+      ],
+      "macro": {
+        "precision": 0.9696969696969697,
+        "recall": 0.7936507936507936,
+        "f1": 0.8666666666666667
+      },
+      "macro_class_count": 3,
+      "threshold": 0.7
+    },
+    "original_r3d_metrics": {
+      "per_class": [
+        {
+          "event_type": "client_at_counter",
+          "support": 13,
+          "known_negatives": 26,
+          "unknown": 0,
+          "confusion_matrix": [
+            [
+              26,
+              0
+            ],
+            [
+              0,
+              13
+            ]
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "evaluable": true
+        },
+        {
+          "event_type": "banknotes_on_counter",
+          "support": 14,
+          "known_negatives": 25,
+          "unknown": 0,
+          "confusion_matrix": [
+            [
+              24,
+              1
+            ],
+            [
+              14,
+              0
+            ]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "evaluable": true
+        },
+        {
+          "event_type": "cash_handover_to_cashier",
+          "support": 3,
+          "known_negatives": 5,
+          "unknown": 31,
+          "confusion_matrix": [
+            [
+              5,
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "evaluable": true
+        }
+      ],
+      "macro": {
+        "precision": 0.6666666666666666,
+        "recall": 0.5555555555555555,
+        "f1": 0.6
+      },
+      "macro_class_count": 3,
+      "threshold": 0.7,
+      "loss": 0.48060427476153816
+    },
+    "sampled_grid_proxy": {
+      "schema": "cash_sequence_grid_v1",
+      "visual_target": "receipt_then_cash_after_departure",
+      "mapped_candidate_type": "unsecured_accepted_cash",
+      "scope": "Complete reviewed one-second sampled grids only; not continuous legal ground truth",
+      "continuous_legal_review": false,
+      "independent_evaluation": false,
+      "video": {
+        "videos": 4,
+        "positives": 1,
+        "negatives": 3,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "confusion_matrix": [
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "evaluable": true
+      },
+      "videos": [
+        {
+          "clip_id": "X-2",
+          "target": 0,
+          "prediction": 0,
+          "outcome": "TN",
+          "candidates": 0,
+          "reference_times_sec": [],
+          "predicted_times_sec": [],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              17.033202614379086
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Receipt around 10-12s; first client remains until end. No departure-after-receipt episode.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-2_evidence.json"
+          }
+        },
+        {
+          "clip_id": "X-31",
+          "target": 0,
+          "prediction": 0,
+          "outcome": "TN",
+          "candidates": 0,
+          "reference_times_sec": [],
+          "predicted_times_sec": [],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              18.0,
+              19.0,
+              20.0,
+              21.0,
+              22.0,
+              23.0,
+              23.766526019690577
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Employee opens room and sits at work position; no client receipt and no resting cash in sampled grid.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-31_evidence.json"
+          }
+        },
+        {
+          "clip_id": "X-38",
+          "target": 1,
+          "prediction": 1,
+          "outcome": "TP",
+          "candidates": 1,
+          "reference_times_sec": [
+            31.0
+          ],
+          "predicted_times_sec": [
+            29.0
+          ],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              18.0,
+              19.0,
+              20.0,
+              21.0,
+              22.0,
+              23.0,
+              24.0,
+              25.0,
+              26.0,
+              27.0,
+              28.0,
+              29.0,
+              30.0,
+              31.0,
+              32.0,
+              33.0,
+              34.0,
+              35.0,
+              36.0,
+              37.0,
+              38.0,
+              39.0,
+              40.0,
+              41.0,
+              42.0,
+              43.0,
+              44.0,
+              45.0,
+              46.0,
+              47.0,
+              48.0,
+              49.0,
+              50.0,
+              51.0,
+              52.0,
+              53.0,
+              54.0,
+              55.0,
+              56.0,
+              57.0,
+              58.0,
+              58.93329560460291
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [
+              31.0
+            ],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Receipt around 7-9s; first client departs by 27s; banknotes remain through next service. One continuing visible cash episode; original reference point 31s retained.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-38_evidence.json"
+          }
+        },
+        {
+          "clip_id": "X-39",
+          "target": 0,
+          "prediction": 0,
+          "outcome": "TN",
+          "candidates": 0,
+          "reference_times_sec": [],
+          "predicted_times_sec": [],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              18.0,
+              19.0,
+              20.0,
+              21.0,
+              22.0,
+              23.0,
+              24.0,
+              25.0,
+              26.0,
+              27.0,
+              28.0,
+              29.0,
+              30.0,
+              31.0,
+              32.0,
+              33.0,
+              34.0,
+              35.0,
+              36.0,
+              37.0,
+              38.0,
+              39.0,
+              40.0,
+              41.0,
+              42.0,
+              43.0,
+              44.0,
+              45.0,
+              46.0,
+              47.0,
+              48.0,
+              49.0,
+              50.0,
+              51.0,
+              52.0,
+              53.0,
+              54.0,
+              55.0,
+              56.0,
+              57.0,
+              58.0,
+              59.0,
+              60.0,
+              61.0,
+              62.0,
+              63.0,
+              64.0,
+              65.0,
+              66.0,
+              67.0,
+              68.0,
+              69.0,
+              70.0,
+              71.0,
+              72.0,
+              73.0,
+              74.0,
+              75.0,
+              76.0,
+              77.0,
+              78.0,
+              78.69995760915643
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Two services; received banknotes are put into safe before each departure. Counter clear after departures around 36-42s and 74-78s.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-39_evidence.json"
+          }
+        }
+      ],
+      "excluded_unknown_videos": [
+        "X-10",
+        "X-14",
+        "X-16",
+        "X-28",
+        "X-34",
+        "X-44"
+      ],
+      "temporal": {
+        "matched": 1,
+        "missed": 0,
+        "unmatched_predictions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "timestamp_mae_sec": 2.0,
+        "tolerance_sec": 5.0
+      },
+      "matching": [
+        {
+          "clip_id": "X-38",
+          "status": "matched",
+          "prediction_index": 0,
+          "annotation_index": 0,
+          "predicted_sec": 29.0,
+          "annotation_sec": 31.0,
+          "signed_error_sec": -2.0,
+          "absolute_error_sec": 2.0
+        }
+      ]
+    },
+    "known_action_markers": {
+      "matched": 1,
+      "missed": 0,
+      "recall": 1.0,
+      "precision": null,
+      "f1": null,
+      "reason": "No complete type-specific continuous legal-event ground truth; extra candidates remain unresolved",
+      "timestamp_mae_sec": 4.0,
+      "tolerance_sec": 5.0
+    },
+    "total_candidates": 1,
+    "validation_videos": 10,
+    "videos": [
+      {
+        "clip_id": "X-2",
+        "sha256": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+        "candidates": 0,
+        "processing_sec": 8.08754300000146,
+        "uncertain_observations": 5
+      },
+      {
+        "clip_id": "X-10",
+        "sha256": "57a0e46c7a45f0e831f61d9c80722fefe4b74dbcfe1d3031ff58307d481f9a5c",
+        "candidates": 0,
+        "processing_sec": 6.610720700002275,
+        "uncertain_observations": 7
+      },
+      {
+        "clip_id": "X-14",
+        "sha256": "7d6890ecb4a2b28bbdd3b61b6711566eee84a53ab3439c40cd9b6a3a6714c681",
+        "candidates": 0,
+        "processing_sec": 49.26888170000166,
+        "uncertain_observations": 43
+      },
+      {
+        "clip_id": "X-16",
+        "sha256": "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+        "candidates": 0,
+        "processing_sec": 7.299085500009824,
+        "uncertain_observations": 13
+      },
+      {
+        "clip_id": "X-28",
+        "sha256": "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+        "candidates": 0,
+        "processing_sec": 5.531128000002354,
+        "uncertain_observations": 12
+      },
+      {
+        "clip_id": "X-31",
+        "sha256": "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+        "candidates": 0,
+        "processing_sec": 8.535824699967634,
+        "uncertain_observations": 21
+      },
+      {
+        "clip_id": "X-34",
+        "sha256": "f3e351bea71150f4e8c76e2c8f0656a4e92063319d7cd39e264078c5ba9139c3",
+        "candidates": 0,
+        "processing_sec": 6.653978199989069,
+        "uncertain_observations": 7
+      },
+      {
+        "clip_id": "X-38",
+        "sha256": "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+        "candidates": 1,
+        "processing_sec": 20.276572300004773,
+        "uncertain_observations": 17
+      },
+      {
+        "clip_id": "X-39",
+        "sha256": "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+        "candidates": 0,
+        "processing_sec": 27.53858880000189,
+        "uncertain_observations": 17
+      },
+      {
+        "clip_id": "X-44",
+        "sha256": "9774ed882153af3ba1a7e71c9b9249619e2b3a97ae336aad6143369802ca3522",
+        "candidates": 0,
+        "processing_sec": 7.362887500028592,
+        "uncertain_observations": 17
+      }
+    ],
+    "timing": {
+      "preparation_sec": 2.389808300009463,
+      "validation_point_processing_sec": 16.99421109998366,
+      "full_scan_processing_sec": 147.16521040000953,
+      "total_before_export_sec": 166.74053920002189,
+      "scope": "Sequential full-video decode, transforms, both models, state machine and input hashes; no report export"
+    },
+    "independent_evaluation": false,
+    "deployment_enabled": false,
+    "limitations": [
+      "Same room/people, unknown sessions and repeatedly inspected validation; exploratory results.",
+      "Video-level proxy metrics cover only complete sampled visual grids, not all validation videos or continuous legal events.",
+      "Bounding rectangles are weak segmentation labels; uncertain/unreviewed states remain unknown.",
+      "A receipt/departure/cash sequence does not prove cash identity, completed accounting or legal applicability.",
+      "No candidate does not certify absence; legal precision/F1 remain unavailable.",
+      "Nominal FPS sampling can differ from variable-frame-rate presentation timestamps."
+    ]
+  },
+  "comparison": {
+    "baseline": {
+      "schema": "cash_sequence_grid_v1",
+      "visual_target": "receipt_then_cash_after_departure",
+      "mapped_candidate_type": "unsecured_accepted_cash",
+      "scope": "Complete reviewed one-second sampled grids only; not continuous legal ground truth",
+      "continuous_legal_review": false,
+      "independent_evaluation": false,
+      "video": {
+        "videos": 4,
+        "positives": 1,
+        "negatives": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.5,
+        "confusion_matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "evaluable": true
+      },
+      "videos": [
+        {
+          "clip_id": "X-2",
+          "target": 0,
+          "prediction": 1,
+          "outcome": "FP",
+          "candidates": 1,
+          "reference_times_sec": [],
+          "predicted_times_sec": [
+            4.0
+          ],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              17.033202614379086
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Receipt around 10-12s; first client remains until end. No departure-after-receipt episode.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-2_evidence.json"
+          }
+        },
+        {
+          "clip_id": "X-31",
+          "target": 0,
+          "prediction": 0,
+          "outcome": "TN",
+          "candidates": 0,
+          "reference_times_sec": [],
+          "predicted_times_sec": [],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              18.0,
+              19.0,
+              20.0,
+              21.0,
+              22.0,
+              23.0,
+              23.766526019690577
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Employee opens room and sits at work position; no client receipt and no resting cash in sampled grid.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-31_evidence.json"
+          }
+        },
+        {
+          "clip_id": "X-38",
+          "target": 1,
+          "prediction": 0,
+          "outcome": "FN",
+          "candidates": 0,
+          "reference_times_sec": [
+            31.0
+          ],
+          "predicted_times_sec": [],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              18.0,
+              19.0,
+              20.0,
+              21.0,
+              22.0,
+              23.0,
+              24.0,
+              25.0,
+              26.0,
+              27.0,
+              28.0,
+              29.0,
+              30.0,
+              31.0,
+              32.0,
+              33.0,
+              34.0,
+              35.0,
+              36.0,
+              37.0,
+              38.0,
+              39.0,
+              40.0,
+              41.0,
+              42.0,
+              43.0,
+              44.0,
+              45.0,
+              46.0,
+              47.0,
+              48.0,
+              49.0,
+              50.0,
+              51.0,
+              52.0,
+              53.0,
+              54.0,
+              55.0,
+              56.0,
+              57.0,
+              58.0,
+              58.93329560460291
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [
+              31.0
+            ],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Receipt around 7-9s; first client departs by 27s; banknotes remain through next service. One continuing visible cash episode; original reference point 31s retained.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-38_evidence.json"
+          }
+        },
+        {
+          "clip_id": "X-39",
+          "target": 0,
+          "prediction": 0,
+          "outcome": "TN",
+          "candidates": 0,
+          "reference_times_sec": [],
+          "predicted_times_sec": [],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              18.0,
+              19.0,
+              20.0,
+              21.0,
+              22.0,
+              23.0,
+              24.0,
+              25.0,
+              26.0,
+              27.0,
+              28.0,
+              29.0,
+              30.0,
+              31.0,
+              32.0,
+              33.0,
+              34.0,
+              35.0,
+              36.0,
+              37.0,
+              38.0,
+              39.0,
+              40.0,
+              41.0,
+              42.0,
+              43.0,
+              44.0,
+              45.0,
+              46.0,
+              47.0,
+              48.0,
+              49.0,
+              50.0,
+              51.0,
+              52.0,
+              53.0,
+              54.0,
+              55.0,
+              56.0,
+              57.0,
+              58.0,
+              59.0,
+              60.0,
+              61.0,
+              62.0,
+              63.0,
+              64.0,
+              65.0,
+              66.0,
+              67.0,
+              68.0,
+              69.0,
+              70.0,
+              71.0,
+              72.0,
+              73.0,
+              74.0,
+              75.0,
+              76.0,
+              77.0,
+              78.0,
+              78.69995760915643
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Two services; received banknotes are put into safe before each departure. Counter clear after departures around 36-42s and 74-78s.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-39_evidence.json"
+          }
+        }
+      ],
+      "excluded_unknown_videos": [
+        "X-10",
+        "X-14",
+        "X-16",
+        "X-28",
+        "X-34",
+        "X-44"
+      ],
+      "temporal": {
+        "matched": 0,
+        "missed": 1,
+        "unmatched_predictions": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "timestamp_mae_sec": null,
+        "tolerance_sec": 5.0
+      },
+      "matching": [
+        {
+          "clip_id": "X-2",
+          "status": "unmatched_prediction",
+          "prediction_index": 0,
+          "annotation_index": null,
+          "predicted_sec": 4.0,
+          "annotation_sec": null,
+          "signed_error_sec": null,
+          "absolute_error_sec": null
+        },
+        {
+          "clip_id": "X-38",
+          "status": "unmatched_annotation",
+          "prediction_index": null,
+          "annotation_index": 0,
+          "predicted_sec": null,
+          "annotation_sec": 31.0,
+          "signed_error_sec": null,
+          "absolute_error_sec": null
+        }
+      ]
+    },
+    "candidate": {
+      "schema": "cash_sequence_grid_v1",
+      "visual_target": "receipt_then_cash_after_departure",
+      "mapped_candidate_type": "unsecured_accepted_cash",
+      "scope": "Complete reviewed one-second sampled grids only; not continuous legal ground truth",
+      "continuous_legal_review": false,
+      "independent_evaluation": false,
+      "video": {
+        "videos": 4,
+        "positives": 1,
+        "negatives": 3,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "confusion_matrix": [
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "evaluable": true
+      },
+      "videos": [
+        {
+          "clip_id": "X-2",
+          "target": 0,
+          "prediction": 0,
+          "outcome": "TN",
+          "candidates": 0,
+          "reference_times_sec": [],
+          "predicted_times_sec": [],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              17.033202614379086
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Receipt around 10-12s; first client remains until end. No departure-after-receipt episode.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-2_evidence.json"
+          }
+        },
+        {
+          "clip_id": "X-31",
+          "target": 0,
+          "prediction": 0,
+          "outcome": "TN",
+          "candidates": 0,
+          "reference_times_sec": [],
+          "predicted_times_sec": [],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              18.0,
+              19.0,
+              20.0,
+              21.0,
+              22.0,
+              23.0,
+              23.766526019690577
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Employee opens room and sits at work position; no client receipt and no resting cash in sampled grid.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-31_evidence.json"
+          }
+        },
+        {
+          "clip_id": "X-38",
+          "target": 1,
+          "prediction": 1,
+          "outcome": "TP",
+          "candidates": 1,
+          "reference_times_sec": [
+            31.0
+          ],
+          "predicted_times_sec": [
+            29.0
+          ],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              18.0,
+              19.0,
+              20.0,
+              21.0,
+              22.0,
+              23.0,
+              24.0,
+              25.0,
+              26.0,
+              27.0,
+              28.0,
+              29.0,
+              30.0,
+              31.0,
+              32.0,
+              33.0,
+              34.0,
+              35.0,
+              36.0,
+              37.0,
+              38.0,
+              39.0,
+              40.0,
+              41.0,
+              42.0,
+              43.0,
+              44.0,
+              45.0,
+              46.0,
+              47.0,
+              48.0,
+              49.0,
+              50.0,
+              51.0,
+              52.0,
+              53.0,
+              54.0,
+              55.0,
+              56.0,
+              57.0,
+              58.0,
+              58.93329560460291
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [
+              31.0
+            ],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Receipt around 7-9s; first client departs by 27s; banknotes remain through next service. One continuing visible cash episode; original reference point 31s retained.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-38_evidence.json"
+          }
+        },
+        {
+          "clip_id": "X-39",
+          "target": 0,
+          "prediction": 0,
+          "outcome": "TN",
+          "candidates": 0,
+          "reference_times_sec": [],
+          "predicted_times_sec": [],
+          "review": {
+            "schema": "cash_sequence_grid_v1",
+            "visual_target": "receipt_then_cash_after_departure",
+            "mapped_candidate_type": "unsecured_accepted_cash",
+            "video_sha256": "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+            "sampled_seconds": [
+              0.0,
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              7.0,
+              8.0,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              14.0,
+              15.0,
+              16.0,
+              17.0,
+              18.0,
+              19.0,
+              20.0,
+              21.0,
+              22.0,
+              23.0,
+              24.0,
+              25.0,
+              26.0,
+              27.0,
+              28.0,
+              29.0,
+              30.0,
+              31.0,
+              32.0,
+              33.0,
+              34.0,
+              35.0,
+              36.0,
+              37.0,
+              38.0,
+              39.0,
+              40.0,
+              41.0,
+              42.0,
+              43.0,
+              44.0,
+              45.0,
+              46.0,
+              47.0,
+              48.0,
+              49.0,
+              50.0,
+              51.0,
+              52.0,
+              53.0,
+              54.0,
+              55.0,
+              56.0,
+              57.0,
+              58.0,
+              59.0,
+              60.0,
+              61.0,
+              62.0,
+              63.0,
+              64.0,
+              65.0,
+              66.0,
+              67.0,
+              68.0,
+              69.0,
+              70.0,
+              71.0,
+              72.0,
+              73.0,
+              74.0,
+              75.0,
+              76.0,
+              77.0,
+              78.0,
+              78.69995760915643
+            ],
+            "grid_step_sec": 1.0,
+            "complete_for_sampled_grid": true,
+            "continuous_legal_review": false,
+            "reference_times_sec": [],
+            "method": "full_duration_sampled_frame_sequence_review",
+            "reviewed_at": "2026-10-18T02:03:54.304636+00:00",
+            "reviewer": "frame_sequence_review",
+            "note": "Two services; received banknotes are put into safe before each departure. Counter clear after departures around 36-42s and 74-78s.",
+            "limitations": "Evaluable visual proxy on the reviewed 1-second grid, not complete continuous legal-event ground truth; ownership/accounting not established.",
+            "evidence_manifest": "outputs/cash_sequence_review/X-39_evidence.json"
+          }
+        }
+      ],
+      "excluded_unknown_videos": [
+        "X-10",
+        "X-14",
+        "X-16",
+        "X-28",
+        "X-34",
+        "X-44"
+      ],
+      "temporal": {
+        "matched": 1,
+        "missed": 0,
+        "unmatched_predictions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "timestamp_mae_sec": 2.0,
+        "tolerance_sec": 5.0
+      },
+      "matching": [
+        {
+          "clip_id": "X-38",
+          "status": "matched",
+          "prediction_index": 0,
+          "annotation_index": 0,
+          "predicted_sec": 29.0,
+          "annotation_sec": 31.0,
+          "signed_error_sec": -2.0,
+          "absolute_error_sec": 2.0
+        }
+      ]
+    },
+    "scope": "unsecured_accepted_cash visual proxy, complete reviewed one-second grids only; not all legal types",
+    "independent_evaluation": false
+  },
+  "baseline_weights_unchanged": true,
+  "split_and_events_unchanged": true,
+  "active_service_replaced": false,
+  "independent_evaluation": false,
+  "limitation": "Candidate supports a visual cash sequence only. Identity-check absence and other legal types are unsupported, not proved negative."
+}

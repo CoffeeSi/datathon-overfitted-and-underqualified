@@ -104,9 +104,11 @@ export function useAnalysisJob(jobId: string) {
           ? cause
           : new ApiError("Не удалось проверить задание. Повторим запрос после восстановления связи.", 0, "network_error");
         publish({ error, loading: false });
-        if (error.status === 401 || error.status === 403 || error.status === 404) {
+        if (error.status === 401 || error.status === 403 || error.status === 404 || error.status === 410
+            || error.code === "synthetic_provider_disabled") {
           halt = "manual";
           clearTimeout(budgetTimer);
+          clearInterval(clockTimer);
           publish({ paused: true });
         } else {
           failures += 1;

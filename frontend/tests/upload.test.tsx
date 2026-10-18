@@ -73,7 +73,7 @@ describe("upload workflow", () => {
   it("submits once, stores only metadata and transfers the file in memory", async () => {
     let accept!: (value: { job_id: string }) => void;
     uploadMock.mockImplementation(() => new Promise((resolve) => { accept = resolve; }));
-    render(<UploadWorkspace />);
+    const view = render(<UploadWorkspace />);
     await screen.findByText("Сервис готов к анализу");
     const file = new File(["private-content"], "clip.mov");
     choose(file);
@@ -83,10 +83,16 @@ describe("upload workflow", () => {
     const id = "00000000-0000-0000-0000-000000000001";
     await act(async () => { accept({ job_id: id }); });
     expect(push).toHaveBeenCalledWith(`/review/${id}`);
+    expect(screen.getByRole("link", { name: /clip.mov/ }).getAttribute("href")).toBe(`/review/${id}`);
     expect(getVideo(id)).toBe(file);
     expect(Object.keys(readRecentJobs()[0]).sort()).toEqual(["createdAt", "filename", "jobId", "status"]);
     expect(JSON.stringify(localStorage)).not.toContain("private-content");
     expect(revokeUrl).toHaveBeenCalledWith("blob:test-clip.mov");
+    view.unmount();
+    clearVideos();
+    render(<UploadWorkspace />);
+    expect(await screen.findByRole("link", { name: /clip.mov/ })).toBeTruthy();
+    expect(screen.getByRole("link", { name: /clip.mov/ }).getAttribute("href")).toBe(`/review/${id}`);
   });
 
   it("does not retry an ambiguous upload failure", async () => {
