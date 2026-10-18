@@ -6,10 +6,19 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-COPY requirements-backend.txt ./
+COPY requirements-backend.txt requirements-service-ml.txt requirements-ml.txt ./
 RUN pip install --no-cache-dir -r requirements-backend.txt
 
+# The default image stays small for the explicit mock setup. The real-model
+# Compose override enables the project's pinned Torch/CUDA stack.
+ARG INSTALL_ML=false
+RUN if [ "$INSTALL_ML" = "true" ]; then \
+      pip install --no-cache-dir -r requirements-service-ml.txt \
+      && pip install --no-cache-dir -r requirements-ml.txt; \
+    fi
+
 COPY src/ ./src/
+COPY configs/ ./configs/
 
 RUN useradd --system --create-home appuser \
     && mkdir -p /app/data/service \

@@ -11,6 +11,7 @@ experiments
 tests
 docs
 .env*
+configs/action_service.local.yaml
 *.mov
 *.mp4
 *.avi

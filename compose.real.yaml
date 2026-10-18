@@ -1,0 +1,24 @@
+# Opt-in service adapter for the R3D-18 binary + action checkpoints.
+# Use with: docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml up --build -d
+services:
+  backend:
+    build:
+      args:
+        INSTALL_ML: "true"
+    environment:
+      FORTEBANK_ENABLE_MOCK_RESULTS: "false"
+      FORTEBANK_ANALYZER_FACTORY: overfitted_underqualified.backend.local_analyzer:create_analyzer
+      FORTEBANK_ACTION_CONFIG: /app/configs/action_service.yaml
+    volumes:
+      - type: bind
+        source: ${MODEL_RUNS_PATH:-./runs}
+        target: /app/runs
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${ACTION_SERVICE_CONFIG:-./configs/action_service.local.yaml}
+        target: /app/configs/action_service.yaml
+        read_only: true
+        bind:
+          create_host_path: false

@@ -1,0 +1,6 @@
+# Inference dependencies imported by the local analyzer and its model loaders.
+# Torch and torchvision remain pinned in requirements-ml.txt.
+numpy==2.5.4
+opencv-python-headless==5.0.0.93
+scikit-learn==1.9.1
+PyYAML==6.0.3

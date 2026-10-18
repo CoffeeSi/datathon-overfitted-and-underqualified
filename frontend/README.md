@@ -28,9 +28,27 @@ Next.js BFF и FastAPI в одной Docker-сети; API также досту�
 но не распознаёт содержимое видео. Для остановки используйте
 `docker compose --env-file .env.compose down`; volume при этом сохраняется.
 
-Контейнер backend устанавливает только API-зависимости. Для реальной ML-модели
-потребуются отдельный образ с ML-зависимостями, локальные checkpoint-файлы и
-подтверждённые типы событий; см. [план интеграции](../docs/frontend-backend-wiring-plan.md).
+Для текущего R3D-18 action analyzer предусмотрен отдельный Compose override.
+Нужны **два локальных checkpoint** (binary и action), совместимый конфиг с
+путями к ним и хотя бы один оценённый тип в `enabled_types`. Скопируйте
+`configs/action_service.yaml` в `configs/action_service.local.yaml`, укажите
+пути относительно корня проекта внутри контейнера (`runs/...`), проверенные
+типы и `device: cpu`. Этот локальный конфиг игнорируется Git. Укажите в
+`.env.compose` `MODEL_RUNS_PATH=./runs` (или полный путь к вашему каталогу runs)
+и `ACTION_SERVICE_CONFIG=./configs/action_service.local.yaml`, затем запустите:
+
+```powershell
+docker compose --env-file .env.compose -f compose.yaml -f compose.real.yaml up --build -d
+```
+
+Override устанавливает ML-зависимости, монтирует веса только для чтения и
+выключает mock без автоматической подмены. Проверьте `/readyz`: ожидается
+`analysis_provider=local-r3d18-actions`. При отсутствии файлов, несовместимых
+весах или пустом `enabled_types` readiness останется 503; причина будет в
+`docker compose logs backend`. В текущем checkout веса отсутствуют, а
+поставляемый конфиг намеренно содержит `enabled_types: []`, поскольку качество
+action-типа ещё не подтверждено. См. [план интеграции](../docs/frontend-backend-wiring-plan.md)
+и [оценку модели](../reports/action_recognition_status.md).
 
 ## Локальный запуск
 
